@@ -262,11 +262,10 @@
 							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-main-the-awards-2024-best-of-awards-mauna-red-electrified-gv70-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  									
-									<div class="card-body">
-										<h2 class="card-title">카 디자인 어워드 2023</h2>
-										<p class="card-text">제네시스 X 컨버터블, '올해의 콘셉트카'로 선정</p>
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">카즈닷컴 어워드 2024</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 ELECTRIFIED GV70, 美 카즈닷컴</p>
+									<p class="card-text card-p1" style="font-size: 20pt;">'2024 최고의 고급차' 수상</p>
+									<p class="card-p2">GV70 전동화 모델은 우아한 외관과 잘 정돈된 실내, 인상적인 주행성능을 갖춘 전기차로 인정받았습니다.</p>
 								</div>
 							</div>
 							<div class="col-md-1"></div>
@@ -283,11 +282,10 @@
 							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text"></p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">레드닷 어워드 2023</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">G90, 수송 디자인 분야 본상</p>
+									<p class="card-p2">세계적인 디자인 상 '레드 닷 어워드'에서 '역동적인 우아함'이라는 제네시스
+										디자인 정체성이 반영된 품격있는 외관으로 본상을 받았습니다</p>
 								</div>
 							</div>
 						</div>
@@ -295,33 +293,29 @@
 							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text">LONG WHEEL BASE</p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">카 디자인 어워드 2023</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 X 컨버터블, '올해의 콘셉트카'로 선정</p>
+									<p class="card-p2">'오토 앤드 디자인'에서 주최하는 '카 디자인 어워드 2023' 에서 '올해의 콘셉트카'로 선정되며 디자인
+										우수성을 인정받았습니다.</p>
 								</div>
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-3 inner-award">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text"></p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">레드닷 어워드 2023</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">G90, 수송 디자인 분야 본상</p>
+									<p class="card-p2">세계적인 디자인 상 '레드 닷 어워드'에서 '역동적인 우아함'이라는 제네시스
+										디자인 정체성이 반영된 품격있는 외관으로 본상을 받았습니다</p>
 								</div>
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-3 inner-award" style="opacity: 50%;">
-								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-21-inch-diamond-cutting-wheels-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text"></p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">2023 모터트렌드 올해의 차</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 G90, 모터트렌드 올해의 차</p>
+									<p class="card-p2">세계적으로 권위 있는 자동차 전문지 모터트렌드의 6가지 항목 평가에서 G90가 '2023년 올해의 차 (미국 사양 기준)'에 선정되었습니다.</p>
 								</div>
 							</div>
 						</div>
@@ -329,33 +323,87 @@
 							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text"></p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">레드닷 어워드 2023</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">G90, 수송 디자인 분야 본상</p>
+									<p class="card-p2">세계적인 디자인 상 '레드 닷 어워드'에서 '역동적인 우아함'이라는 제네시스
+										디자인 정체성이 반영된 품격있는 외관으로 본상을 받았습니다</p>
 								</div>
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-3 inner-award">
-								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-21-inch-diamond-cutting-wheels-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text"></p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">2023 모터트렌드 올해의 차</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 G90, 모터트렌드 올해의 차</p>
+									<p class="card-p2">세계적으로 권위 있는 자동차 전문지 모터트렌드의 6가지 항목 평가에서 G90가 '2023년 올해의 차 (미국 사양 기준)'에 선정되었습니다.</p>
 								</div>
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-showroom-vehicles-tasman-blue-g90-21my-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text"></p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									</div>
+									<h5 class="card-title">레드닷 어워드 2022</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스, '2022 레드 닷 어워드'에서 4개 부문 수상</p>
+									<p class="card-p2">제네시스가 독일 노르트하인 베스트팔린 디자인센터가 주관하는 '2022 레드 닷 어워드'에서 총 4개의 디자인상을 수상하였습니다.</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-21-inch-diamond-cutting-wheels-660x396.jpg">
+								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
+									<h5 class="card-title">2023 모터트렌드 올해의 차</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 G90, 모터트렌드 올해의 차</p>
+									<p class="card-p2">세계적으로 권위 있는 자동차 전문지 모터트렌드의 6가지 항목 평가에서 G90가 '2023년 올해의 차 (미국 사양 기준)'에 선정되었습니다.</p>
+								</div>
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-showroom-vehicles-tasman-blue-g90-21my-660x396.jpg">
+								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
+									<h5 class="card-title">레드닷 어워드 2022</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스, '2022 레드 닷 어워드'에서 4개 부문 수상</p>
+									<p class="card-p2">제네시스가 독일 노르트하인 베스트팔린 디자인센터가 주관하는 '2022 레드 닷 어워드'에서 총 4개의 디자인상을 수상하였습니다.</p>
+								</div>
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-main-the-awards-2024-best-of-awards-mauna-red-electrified-gv70-660x396.jpg">
+								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  									
+									<h5 class="card-title">카즈닷컴 어워드 2024</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 ELECTRIFIED GV70, 美 카즈닷컴</p>
+									<p class="card-text card-p1" style="font-size: 20pt;">'2024 최고의 고급차' 수상</p>
+									<p class="card-p2">GV70 전동화 모델은 우아한 외관과 잘 정돈된 실내, 인상적인 주행성능을 갖춘 전기차로 인정받았습니다.</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-showroom-vehicles-tasman-blue-g90-21my-660x396.jpg">
+								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
+									<h5 class="card-title">레드닷 어워드 2022</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스, '2022 레드 닷 어워드'에서 4개 부문 수상</p>
+									<p class="card-p2">제네시스가 독일 노르트하인 베스트팔린 디자인센터가 주관하는 '2022 레드 닷 어워드'에서 총 4개의 디자인상을 수상하였습니다.</p>
+								</div>
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-main-the-awards-2024-best-of-awards-mauna-red-electrified-gv70-660x396.jpg">
+								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  									
+									<h5 class="card-title">카즈닷컴 어워드 2024</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 ELECTRIFIED GV70, 美 카즈닷컴</p>
+									<p class="card-text card-p1" style="font-size: 20pt;">'2024 최고의 고급차' 수상</p>
+									<p class="card-p2">GV70 전동화 모델은 우아한 외관과 잘 정돈된 실내, 인상적인 주행성능을 갖춘 전기차로 인정받았습니다.</p>
+								</div>
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
+								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
+									<h5 class="card-title">카 디자인 어워드 2023</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 X 컨버터블, '올해의 콘셉트카'로 선정</p>
+									<p class="card-p2">'오토 앤드 디자인'에서 주최하는 '카 디자인 어워드 2023' 에서 '올해의 콘셉트카'로 선정되며 디자인
+										우수성을 인정받았습니다.</p>
 								</div>
 							</div>
 						</div>

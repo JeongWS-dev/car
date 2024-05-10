@@ -9,7 +9,7 @@
 <!-- bootstrap -->
 <link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 <!-- 내가만든 css -->
-<link rel="stylesheet" href="<%= ctxPath%>/css/myPage.css">
+<link rel="stylesheet" href="<%= ctxPath%>/css/myPage/myPage.css">
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -18,6 +18,12 @@
 <script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+	  
+  }
+  
+</script>
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +50,7 @@
 			
 			
 			<div class="btn-group">
-				<button class="btn" id="btn1">로그인</button>
+				<button class="btn" id="btn1" onclick="location.href='<%= ctxPath%>/myPage/myPageLogin.car'">로그인</button>
 				<button class="btn" id="btn2">회원가입</button>
 			</div>
 			

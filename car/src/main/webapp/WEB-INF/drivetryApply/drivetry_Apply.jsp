@@ -18,13 +18,7 @@
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>제네시스 시승신청 &amp;스페이스 | 제네시스</title>
-</head>
-<body>
+<jsp:include page="../Main_Header.jsp"></jsp:include>
 
 <div id="container">
 
@@ -64,9 +58,11 @@
 		       <p class="el-desc">
 		          <br>시승 체험<br><br>제네시스의 모든 라인업을 가장 완벽한 환경에서 체험하고 시승하실 수 있는 공간<br><br>
 		       </p>
-		       <div id="image_2_button">
-		           <button type="button" class="driving-lounge" title="예약 확인 및 변경하기">예약 확인 및 변경하기</button>
-		       </div>
+             <a class="nav-link" href="<%= ctxPath%>/drivetryApply/space.car"  class="btn">
+                <div id="image_2_button">
+                    <button type="button" class="go-space" title="스페이스 바로가기">스페이스 바로가기</button>
+                </div>
+             </a>
 	       </div>
 	    </div>
 
@@ -122,5 +118,4 @@
 
 </div>
 
-</body>
-</html>
+<jsp:include page="../Main_Footer.jsp"></jsp:include>

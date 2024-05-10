@@ -51,45 +51,7 @@
 			
 			
 			<div class="btn-group">
-				<button class="btn" id="btn1" onclick="location.href='<%= ctxPath%>/myPage/myPageLogin.car'">로그인</button>
-=======
-<link rel="stylesheet" href="<%= ctxPath%>/css/myPage.css">
-<!-- Font Awesome 6 Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Optional JavaScript -->
-<script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
-<script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
-		
-	<!-- Brand -->
-	<img src="<%= ctxPath%>/images/myPage/logo.png" style = "width:6%;">
-
-	<!-- Links -->
-	
-</nav>
-
-</head>
-<body>
-	
-	<div class="background-image" >
-		<div class="container">
-			
-			<h1>My Page</h1>
-			
-			
-			<div class="btn-group">
 				<button class="btn" id="btn1">로그인</button>
->>>>>>> branch 'kimmr' of https://github.com/JeongWS-dev/car.git
 				<button class="btn" id="btn2">회원가입</button>
 			</div>
 			

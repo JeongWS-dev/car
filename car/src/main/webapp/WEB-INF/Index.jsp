@@ -247,8 +247,10 @@
 				</div>
 				<div class="col-md-1"></div>
 				<div class="col-md-2 main-icon" type = "button">
-					<img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Book-a-Test-Drive_black_60x60.gif">
-					<div class="icon-text">시승신청</div>
+					<a class="nav-link" href="<%= ctxPath%>/drivetryApply/drivetryApply.car"  class="btn">
+						<img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Book-a-Test-Drive_black_60x60.gif">
+						<div class="icon-text">시승신청</div>
+					</a>
 				</div>
 			</div>
 		</div>

@@ -269,5 +269,29 @@ div.the-awards > div > div.carousel > div.carousel-inner .inner-award p.card-p2{
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ the awards end ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ customer's voice start ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+div.customer-voice {
+	height: 960px;
+}
 
+button.customer-voice-button{
+	margin-left: 200px;
+	margin-top: 20px;
+	width: 250px;
+	height:50px;
+	background-color: rgba(0,0,0,0);
+	border:solid 2px white;
+	color:white;
+}
+
+button.customer-voice-button:hover{
+	margin-left: 200px;
+	margin-top: 20px;
+	width: 250px;
+	height:50px;
+	background-color: rgb(255, 255, 255);
+	border:solid 2px rgb(255, 255, 255);
+	color:rgb(0, 0, 0);
+	font-weight: bolder;
+	transition:0.5s;
+}
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ customer's voice end ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */

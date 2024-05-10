@@ -368,7 +368,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="customer's voice">
-
+		<div class="customer-voice" style="background-image: url('<%= ctxPath%>/images/MainPage/customer-voice/genesis-kr-main-genesis-events-17-desktop-1920x960-ko-3.jpg');">
+			<div style="position:relative; top:300px; color:white; font-size: 50pt; font-weight: lighter; margin:100px 0 0 200px;">GENESIS</div>
+			<div style="position:relative; color:white; font-size: 20pt; font-weight: lighter; margin:330px 0 0 200px;">당신의 앞길을 응원합니다.</div>
+			<button class="customer-voice-button">고객의소리</button>
 		</div>
 	<jsp:include page="Main_Footer.jsp"></jsp:include>

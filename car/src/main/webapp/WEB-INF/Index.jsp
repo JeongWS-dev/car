@@ -411,6 +411,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="customer's voice">
+
+		</div>
 	</div>
 
 	<nav class="navbar navbar-expand-sm navbar-dark bottom">

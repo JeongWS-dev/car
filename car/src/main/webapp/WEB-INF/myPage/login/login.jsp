@@ -1,13 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+    String ctxPath = request.getContextPath();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 페이지</title>
-
+<title>로그인페이지</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="../bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 <!-- 내가만든 css -->
-<link rel="stylesheet" href="../../../css/myPage/login.css">
+<link rel="stylesheet" href="<%= ctxPath%>/css/myPage/login.css">
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -15,7 +21,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 		
 	<!-- Brand -->
-	<img src="../../../images/myPage/logo.png" style = "width:6.3%;"> 
+	<img src="<%= ctxPath%>/images/myPage/logo.png" style = "width:6.3%;"> 
 
 	<!-- Links -->
 	
@@ -27,7 +33,7 @@
 	
     <div class="container">
         
-        <h5>* 이메일 로그인</h5>
+        <h7>* 이메일 로그인</h7>
         <form action="#" method="post">
             <div class="input-group">
                 <input type="email" id="email" name="email" required placeholder="이메일 주소">

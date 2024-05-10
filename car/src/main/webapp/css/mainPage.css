@@ -193,6 +193,8 @@ div.icon-text {
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ main middle icon end ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ the awards start ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+
+
 @media (max-width: 768px) {
 	div.the-awards .carousel-inner .carousel-item > div {
 		display: none;
@@ -226,10 +228,16 @@ div.the-awards .carousel-inner .carousel-item-right,
 div.the-awards .carousel-inner .carousel-item-left{ 
   transform: translateX(0);
 }
+	
+div.the-awards > div > div.carousel{
+	overflow: hidden;
+}
 
 div.the-awards > div > div.carousel > div.carousel-inner{
 	border:solid 0px red;
 	position:relative;
+	width: 150%;
+	left:-19%;
 }
 
 div.the-awards > div > div.carousel > div.carousel-inner .card{
@@ -237,4 +245,25 @@ div.the-awards > div > div.carousel > div.carousel-inner .card{
 	height:300px;
 }
 
+div.the-awards > div > div.carousel > div.carousel-inner .inner-award{
+	border:solid 0px yellow;
+}
+
+div.the-awards {
+	padding-top: 100px; 
+	height:1200px; 
+	background-size: cover; 
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+}
+
+div.the-awards > div > div.carousel > div.carousel-inner .inner-award p.card-p1{
+	color:white
+}
+
+div.the-awards > div > div.carousel > div.carousel-inner .inner-award p.card-p2{
+	color:rgb(177, 177, 177);
+	font-size: 10pt;
+	margin-top: 20px;
+}
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ the awards end ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */

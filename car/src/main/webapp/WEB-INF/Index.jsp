@@ -253,32 +253,34 @@
 			</div>
 		</div>
 		<!-- 5/9 -->
-		<div class = "the-awards">
-			<div class="mx-auto my-auto">
-				<div id="recipeCarousel" class="carousel slide" data-ride="carousel">
+		<div class = "the-awards" style="background-image: url('<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg');">
+			<span style="color:rgb(255, 255, 255); font-size: 50px; font-weight: lighter; margin-left: 15%;">THE AWARDS</span>
+			<div class="row mx-auto my-auto">
+				<div id="recipeCarousel" class="carousel slide mt-5" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="carousel-item active">
-							<div class="inner-award" style="opacity: 50%;">
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-main-the-awards-2024-best-of-awards-mauna-red-electrified-gv70-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  									
 									<div class="card-body">
-										<h5 class="card-title">G90 Black</h5>
-										<p class="card-text"></p>
+										<h2 class="card-title">카 디자인 어워드 2023</h2>
+										<p class="card-text">제네시스 X 컨버터블, '올해의 콘셉트카'로 선정</p>
 										<button class="our-models-button">자세히보기</button>
 									</div>
 								</div>
 							</div>
-							<div class="inner-award">
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-									<h5 class="card-title">G90</h5>
-									<p class="card-text">LONG WHEEL BASE</p>
-									<div class="card-body">
-										<button class="our-models-button">자세히보기</button>
-									  </div>
+									<h5 class="card-title">카 디자인 어워드 2023</h5>
+									<p class="card-text card-p1" style="font-size: 20pt;">제네시스 X 컨버터블, '올해의 콘셉트카'로 선정</p>
+									<p class="card-p2">'오토 앤드 디자인'에서 주최하는 '카 디자인 어워드 2023' 에서 '올해의 콘셉트카'로 선정되며 디자인
+										우수성을 인정받았습니다.</p>
 								</div>
 							</div>
-							<div class="inner-award" style="opacity: 50%;">
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
@@ -290,17 +292,18 @@
 							</div>
 						</div>
 						<div class="carousel-item">
-							<div class="col-md-4" style="opacity: 50%;">
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text">LONG WHEEL BASE</p>
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
-									  </div>
+									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
@@ -310,44 +313,49 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4" style="opacity: 50%;">
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
-									  </div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<div class="col-md-4">
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
-									<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
-									  </div>
+									</div>
 								</div>
-							</div><div class="col-md-4">
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
-									<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
-									  </div>
+									</div>
 								</div>
-							</div><div class="col-md-4">
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-3 inner-award" style="opacity: 50%;">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-showroom-vehicles-tasman-blue-g90-21my-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
-									<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
-									  </div>
+									</div>
 								</div>
 							</div>
 						</div>

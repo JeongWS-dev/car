@@ -1,0 +1,137 @@
+@charset "UTF-8";
+#container {
+	background-color: black;
+}
+
+#container > div > h1{
+	/* border: solid 1px red; */
+	text-align: center;
+}
+#container > div > p{
+/* border: solid 1px red; */
+	text-align: center;
+	color:white;
+}
+#container > div{
+	color:white;
+}
+#container > div > div > div.image_1 > div{
+	/* border: solid 1px red; */
+	position: relative;
+	background-image: url("../images/drivetry_ApplyPage/genesis-kr-test-drive-main-genesis-gv80-24my-large.jpg");
+	width: 830px;
+	height: 450px;
+	background-position: center;
+}
+#container > div > div > div.image_2 > div{
+	position: relative;
+	background-image: url("../images/drivetry_ApplyPage/genesis-kr-main-genesis0space-desktop-960x540-ko.jpg");
+	width: 830px;
+	height: 450px;
+	background-position: center;
+}
+#container > div > div{
+	/* border: solid 1px red; */
+	text-align: center;
+}
+#container > div > div > div.image_1,
+#container > div > div > div.image_2{
+	display: inline-block;
+	margin: 2%;
+}
+
+#container > div > div.image > div.image_1 > div > strong > span,
+#container > div > div.image > div.image_2 > div > strong > span{
+	/* border: solid 1px red; */
+	font-size: 40pt;
+	font-weight: 300;
+}
+
+#container > div > div.image > div.image_1 > div,
+#container > div > div.image > div.image_2 > div{
+	/* border: solid 1px red; */
+	padding-top: 9%;
+}
+#image_1_button > button:nth-child(1),
+#image_1_button > button:nth-child(2),
+#image_2_button > button{		/* 이미지 버튼 수정 */
+  background-color: #000000; 
+  border: none;
+  color: white;
+  width: 360px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: solid 2px white;
+  transition-duration: 0.4s;
+}
+
+#image_1_button > button:nth-child(1):hover,
+#image_1_button > button:nth-child(2):hover,
+#image_2_button > button:hover {
+  background-color: white;
+  color: black;
+}
+#image_1_button > button:nth-child(1),
+#image_1_button > button:nth-child(2){
+	margin-right:2%;
+	margin-left:2%;
+}
+
+/* 표 */
+#driveTry_Table{
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#driveTry_Table > tb#addressTable, #driveTry_Table th {
+  border: 1px solid #a9a9a9;
+  background-color: #121212;
+  padding: 8px;
+}
+
+#driveTry_Table tr:nth-child(even){
+	border: 1px solid #a9a9a9;
+}
+
+#driveTry_Table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #121212;
+  color: white;
+}
+
+#container > div > div.cp-table__item > h2{
+	text-align: left;
+	margin-left: 8%;
+	margin-top: 7%;
+	margin-bottom: 2%;
+	font-weight: 300;
+}
+#addressTable > tr:nth-child(1) > td:nth-child(2),
+#addressTable > tr:nth-child(2) > td:nth-child(2),
+#addressTable > tr:nth-child(3) > td:nth-child(2),
+#addressTable > tr:nth-child(4) > td:nth-child(2),
+#addressTable > tr:nth-child(5) > td:nth-child(2),
+#addressTable > tr:nth-child(6) > td:nth-child(2),
+#addressTable > tr:nth-child(1) > td:nth-child(3),
+#addressTable > tr:nth-child(2) > td:nth-child(3),
+#addressTable > tr:nth-child(3) > td:nth-child(3),
+#addressTable > tr:nth-child(4) > td:nth-child(3),
+#addressTable > tr:nth-child(5) > td:nth-child(3),
+#addressTable > tr:nth-child(6) > td:nth-child(3){
+	text-align: left;
+	padding-left: 2%;
+	color: white;
+}
+div.cp-table__item{
+	padding-bottom: 10%;
+}
+
+

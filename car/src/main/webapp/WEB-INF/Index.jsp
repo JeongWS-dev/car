@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String ctxPath = request.getContextPath();
+    //    /MyMVC
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,26 +11,22 @@
 <title>GENESIS</title>
 
 <!-- bootstrap -->
-<link rel="stylesheet" href="../bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 <!-- 내가만든 css -->
-<link rel="stylesheet" href="css/mainPage.css">
+<link rel="stylesheet" href="<%= ctxPath%>/css/mainPage.css">
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Optional JavaScript -->
-<script src="../js/jquery-3.7.1.min.js" type="text/javascript"></script>
-<script src="../js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+<script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
-<!-- 내가만든 js -->
-<script type="text/javascript" src = "js/main.js"></script>
-
-</head>
 <body>
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 		
 		<!-- Brand -->
-		<img src="image/logo.png" style = "width:6%;"> 
+		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
 	
 		<!-- Links -->
 		<ul class="navbar-nav">
@@ -67,70 +67,70 @@
 			</ol>
 			<div class="carousel-inner">
 			  <div class="carousel-item active">
-				<img src="image/genesis-main/genesis-kr-main-key-visual-genesis-x-gran-berlinetta-vgt-concept-desktop-2560x900.jpg" class="d-block w-100" alt="..."> <!-- d-block 은 display: block; 이고  w-100 은 width 의 크기는 <div class="carousel-item active">의 width 100% 로 잡으라는 것이다. -->
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-kr-main-key-visual-genesis-x-gran-berlinetta-vgt-concept-desktop-2560x900.jpg" class="d-block w-100" alt="..."> <!-- d-block 은 display: block; 이고  w-100 은 width 의 크기는 <div class="carousel-item active">의 width 100% 로 잡으라는 것이다. -->
 				<div class="carousel-caption d-none d-md-block"> <!-- d-none 은 display : none; 이므로 화면에 보이지 않다가, d-md-block 이므로 d-md-block 은 width 가 768px이상인 것에서만 display: block; 으로 보여라는 말이다.  --> 
 				  <h5>GENESIS</h5>
 				  <p>GENESIS X GRAN BERLINETTA CONCEPT</p>
 				</div>
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-kr-main-key-visual-gv80-24fl-desktop-2560x900.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-kr-main-key-visual-gv80-24fl-desktop-2560x900.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>GV80</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-kr-main-key-visual-gv80-coupe-24lc-desktop-2560x900.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-kr-main-key-visual-gv80-coupe-24lc-desktop-2560x900.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>GV80 COUPE</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-main-key-visual-g90-24my-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-main-key-visual-g90-24my-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>G90</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-main-key-visual-g90-black-24my-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-main-key-visual-g90-black-24my-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>G90 BLACK</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-main-key-visual-g90-long-wheel-base-24my-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-main-key-visual-g90-long-wheel-base-24my-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>G90 LONG WHEEL BASE</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-main-key-visual-gv70-25fl-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-main-key-visual-gv70-25fl-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GV70</h5>
 				  <p>모든 순간,스타일이 되다.</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-main-key-visual-magma-program-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-main-key-visual-magma-program-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>MAGMA</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-main-key-visual-neolun-concept-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-main-key-visual-neolun-concept-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>NEOLUN CONCEPT</p>
 				</div>		      
 			  </div>
 			  <div class="carousel-item">
-				<img src="image/genesis-main/genesis-main-keyvisual-g80-24fl-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
+				<img src="<%= ctxPath%>/images/MainPage/genesis-main/genesis-main-keyvisual-g80-24fl-main-hero-desktop-2560x900-kr.jpg" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
 				  <h5>GENESIS</h5>
 				  <p>G80</p>
@@ -168,7 +168,7 @@
 									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 										<h5 class="card-title">G90 Black</h5>
 										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-black-desktop-630x240-ko.png">
+										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-black-desktop-630x240-ko.png">
 										<div class="card-body">
 											<button class="our-models-button">자세히보기</button>
 									  	</div>
@@ -178,7 +178,7 @@
 									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 										<h5 class="card-title">G90</h5>
 										<p class="card-text">LONG WHEEL BASE</p>
-										<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-lwb-desktop-630x240-ko.png">
+										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-lwb-desktop-630x240-ko.png">
 										<div class="card-body">
 											<button class="our-models-button">자세히보기</button>
 									  	</div>
@@ -188,7 +188,7 @@
 									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 										<h5 class="card-title">G90</h5>
 										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
+										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 										<div class="card-body">
 											<button class="our-models-button">자세히보기</button>
 									  	</div>
@@ -200,7 +200,7 @@
 									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 										<h5 class="card-title">G90</h5>
 										<p class="card-text">LONG WHEEL BASE</p>
-										<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-lwb-desktop-630x240-ko.png">
+										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-lwb-desktop-630x240-ko.png">
 										<div class="card-body">
 											<button class="our-models-button">자세히보기</button>
 									  	</div>
@@ -210,7 +210,7 @@
 									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 										<h5 class="card-title">G90</h5>
 										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
+										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 										<div class="card-body">
 											<button class="our-models-button">자세히보기</button>
 									  	</div>
@@ -222,7 +222,7 @@
 									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 										<h5 class="card-title">G90</h5>
 										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
+										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 										<div class="card-body">
 											<button class="our-models-button">자세히보기</button>
 									  	</div>
@@ -237,17 +237,17 @@
 		<div class="row main-middle-icon">
 			<div class="col-md-2"></div>
 				<div class="col-md-2 main-icon" type = "button">
-					<img class="img-fluid card-img-top icon-image" src="image/main-middle-icon/Build-And-Price_black_60x60_hover.gif">
+					<img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Build-And-Price_black_60x60_hover.gif">
 					<div class="icon-text">견적내기</div>
 				</div>
 				<div class="col-md-1"></div>
 				<div class="col-md-2 main-icon" type = "button">
-					<img class="img-fluid card-img-top icon-image" src="image/main-middle-icon/Price_black_60x60_hover.gif">
+					<img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Price_black_60x60_hover.gif">
 					<div class="icon-text">구매상담신청</div>
 				</div>
 				<div class="col-md-1"></div>
 				<div class="col-md-2 main-icon" type = "button">
-					<img class="img-fluid card-img-top icon-image" src="image/main-middle-icon/Book-a-Test-Drive_black_60x60.gif">
+					<img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Book-a-Test-Drive_black_60x60.gif">
 					<div class="icon-text">시승신청</div>
 				</div>
 			</div>
@@ -259,7 +259,7 @@
 					<div class="carousel-inner" role="listbox">
 						<div class="carousel-item active">
 							<div class="inner-award" style="opacity: 50%;">
-								<img class="img-fluid card-img-top" src="image/the-Award/genesis-main-the-awards-2024-best-of-awards-mauna-red-electrified-gv70-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-main-the-awards-2024-best-of-awards-mauna-red-electrified-gv70-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  									
 									<div class="card-body">
 										<h5 class="card-title">G90 Black</h5>
@@ -269,7 +269,7 @@
 								</div>
 							</div>
 							<div class="inner-award">
-								<img class="img-fluid card-img-top" src="image/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text">LONG WHEEL BASE</p>
@@ -279,7 +279,7 @@
 								</div>
 							</div>
 							<div class="inner-award" style="opacity: 50%;">
-								<img class="img-fluid card-img-top" src="image/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
@@ -291,7 +291,7 @@
 						</div>
 						<div class="carousel-item">
 							<div class="col-md-4" style="opacity: 50%;">
-								<img class="img-fluid card-img-top" src="image/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-crane-white-genesis-x-convertible-exterior-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text">LONG WHEEL BASE</p>
@@ -301,7 +301,7 @@
 								</div>
 							</div>
 							<div class="col-md-4">
-								<img class="img-fluid card-img-top" src="image/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
@@ -311,7 +311,7 @@
 								</div>
 							</div>
 							<div class="col-md-4" style="opacity: 50%;">
-								<img class="img-fluid card-img-top" src="image/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
+								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-kr-main-the-awards-uyuni-white-g90-in-front-of-the-building-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
@@ -326,7 +326,7 @@
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
-									<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
+									<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
 									  </div>
@@ -335,7 +335,7 @@
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
-									<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
+									<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
 									  </div>
@@ -344,7 +344,7 @@
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
 									<h5 class="card-title">G90</h5>
 									<p class="card-text"></p>
-									<img class="img-fluid card-img-top" src="image/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
+									<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
 									<div class="card-body">
 										<button class="our-models-button">자세히보기</button>
 									  </div>
@@ -391,7 +391,7 @@
 	</nav>
 	<div class="text-center" id="footer">
 		<div class="col-md-12">
-			<img class ="mb-3 mt-5"src="image/logo.png" style = "width:6%;"> 
+			<img class ="mb-3 mt-5"src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
 			<p style="color: white; font-size: 12px;">
 				© Copyright 2024 Hyundai Motor Company.
 		   </p>

@@ -18,13 +18,7 @@
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>제네시스 시승신청 &amp;스페이스 | 제네시스</title>
-</head>
-<body>
+<jsp:include page="../Main_Header.jsp"></jsp:include>
 
 <div id="container">
 
@@ -122,5 +116,4 @@
 
 </div>
 
-</body>
-</html>
+<jsp:include page="../Main_Footer.jsp"></jsp:include>

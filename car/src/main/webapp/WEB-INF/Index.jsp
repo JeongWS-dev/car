@@ -4,52 +4,7 @@
     String ctxPath = request.getContextPath();
     //    /MyMVC
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>GENESIS</title>
-
-<!-- bootstrap -->
-<link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
-<!-- 내가만든 css -->
-<link rel="stylesheet" href="<%= ctxPath%>/css/mainPage.css">
-<!-- Font Awesome 6 Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Optional JavaScript -->
-<script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
-<script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-
-<body>
-	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
-		
-		<!-- Brand -->
-		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
-	
-		<!-- Links -->
-		<ul class="navbar-nav">
-			<li class="nav-item"> 
-				<a class="nav-link" href="#">모델</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">구매</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">체험</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">고객센터</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<%= ctxPath%>/myPage/myPage.car"  class="btn">마이페이지</a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-			</li>
-		</ul>
-	</nav>
+<jsp:include page="Main_Header.jsp"></jsp:include>
 
 	<div class = "main-page">
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -416,50 +371,4 @@
 		<div class="customer's voice">
 
 		</div>
-	</div>
-
-	<nav class="navbar navbar-expand-sm navbar-dark bottom">
-		<!-- Links -->
-		<ul class="navbar-nav">
-			<li class="nav-item"> 
-				<a class="nav-link" href="#">사이트맵</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">이용약관</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">개인정보 처리방침</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">저작권안내</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">보증안내</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">자동차 교환 및 환불 중재 규정 안내 </a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="https://www.facebook.com/GenesisWorldwide"><i class="fa-brands fa-instagram"></i></a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="#"><i class="fa-brands fa-youtube"></i></a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="#"><i class="fa-brands fa-facebook-f"></i></a>
-			</li>
-		</ul>
-	</nav>
-	<div class="text-center" id="footer">
-		<div class="col-md-12">
-			<img class ="mb-3 mt-5"src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
-			<p style="color: white; font-size: 12px;">
-				© Copyright 2024 Hyundai Motor Company.
-		   </p>
-		   <p style="color: white; font-size: 12px;">
-			All Rights Reserved.
-		   </p>
-		</div>
-	</div>
-</body>
-</html>
+	<jsp:include page="Main_Footer.jsp"></jsp:include>

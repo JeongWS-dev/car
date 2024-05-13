@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+div.body {
+    border:solid 0px red;
+    height:840px;
+    display: flex;
+}
+
+div.optionMain{
+    border:solid 0px red;
+    margin:auto;
+}
+
+div.body > div.optionMain > div{
+    text-align: center;
+    width:40%;
+    margin:auto;
+    border: solid 0px green;
+}
+
+
+div.body > div.optionMain > div > div {
+    width: 33%;
+    border-right: solid 1px rgb(133, 133, 133);
+}
+
+div.body > div.optionMain > div > div:nth-child(1){
+    border-left: solid 1px rgb(133, 133, 133);
+}
+
+div.option {
+    font-size: 10pt;
+    color: rgb(167, 167, 167);
+    width:100%;
+}
+
+div.optionVal{
+    font-size: 35pt;
+    color:white;
+    font-weight: lighter;
+    width:100%;
+}
+
+.gap{
+    margin:auto;
+}
+
+.tab {
+    float: right;
+    border-left: 1px solid #555555;
+    background-color: rgb(0,0,0,0);
+    width: 30%;
+    height: 840px;
+ }
+
+div.powertrainType{
+    color:rgb(175, 117, 62);
+    font-size: 20pt;
+    font-weight: lighter;
+    text-align: left;
+    border-bottom:solid 1px #383838;
+    margin:100px 10% 0 10%;
+}
+
+div.choice_option{
+    border-bottom:solid 1px  #383838;
+    height:130px;
+    font-size:10pt;
+    color:white;
+    opacity: 30%;
+    margin:0 10%;
+}
+
+div.choice_option_inner{
+    border: solid 0px red;
+    height: 50px;
+    margin:auto 0;
+}
+
+div.option_title{
+    font-weight: bold;
+}
+
+div.choice_option:hover{
+    cursor: pointer;
+    height:130px;
+    font-size:10pt;
+    color:white;
+    opacity: 100%;
+}
+
+div.price{
+    padding: 3%;
+    border-top:solid 1px #383838;
+    width:29%;
+    position: absolute;
+    bottom:0;
+    height:250px;
+}
+
+div.total_price{
+    color:white;
+    font-size:25pt;
+}
+
+button.before {
+    background-color:  rgb(0,0,0,0);
+    border:solid 1px white;
+    color:white;
+    width:30%;
+    height:50px;
+    margin:20px 0 0 0;
+}
+
+button.before:hover {
+    background-color:  rgb(255, 255, 255);
+    border:solid 1px rgb(0, 0, 0);
+    color:rgb(0, 0, 0);
+    width:30%;
+    height:50px;
+    margin:20px 0 0 0;
+    transition:0.2s;
+}
+
+button.after {
+    background-color:  rgb(255, 255, 255);
+    border:solid 1px rgb(0, 0, 0);
+    color:rgb(0, 0, 0);
+    width:30%;
+    height:50px;
+    margin:20px 0 0 0;
+}
+
+button.after:hover {
+    background-color:  rgb(0, 0, 0);
+    border:solid 1px rgb(255, 255, 255);
+    color:rgb(255, 255, 255);
+    width:30%;
+    height:50px;
+    margin:20px 0 0 0;
+    transition:0.2s;
+}

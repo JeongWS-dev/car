@@ -26,7 +26,7 @@
 </head>
 <body><div id="container">
 	<video id="spaceVideo" autoplay muted loop>
-	    <source src="css/video/SnapSave.io-THE GENESIS STAGE. G80 _ 제네시스-(1080p).mp4" type="video/mp4">
+	    <source src="<%= ctxPath%>/video/drivetry_ApplyPage/SnapSave.io-THE GENESIS STAGE. G80 _ 제네시스-(1080p).mp4" type="video/mp4">
 	</video>
 	
 	<div id = "head-text">
@@ -54,28 +54,28 @@
 		</ol>
 		<div class="carousel-inner">
 		  <div class="carousel-item active">
-			<img src="../drivetry_apply/css/images/genesis-kr-main-genesis-space-carousel-gangnam-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
+			<img src="<%= ctxPath%>/images/drivetry_ApplyPage/genesis-kr-main-genesis-space-carousel-gangnam-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
 			<div id="space-gangnam" class="carousel-caption d-none d-md-block">
 			  <span id="space-name">제네시스 강남</span>
 			  <p id="space-feature">외부의 모든 자극을 차단하고 오롯이 차량에만 집중할 수 있는 공간</p>
 			</div>
 		  </div>
 		  <div id="space-hanam" class="carousel-item">
-			<img src="../drivetry_apply/css/images/genesis-kr-main-genesis-space-carousel-hanam-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
+			<img src="<%= ctxPath%>/images/drivetry_ApplyPage/genesis-kr-main-genesis-space-carousel-hanam-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
 			<div class="carousel-caption d-none d-md-block">
 			  <span id="space-name">제네시스 스튜디오 하남</span>
 			  <p id="space-feature">제네시스의 브랜드 철학을 담은 첫번째 체험 공간</p>
 			</div>		      
 		  </div>
 		  <div id="space-suji" class="carousel-item">
-			<img src="../drivetry_apply/css/images/genesis-kr-main-genesis-space-carousel-suji-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
+			<img src="<%= ctxPath%>/images/drivetry_ApplyPage/genesis-kr-main-genesis-space-carousel-suji-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
 			<div class="carousel-caption d-none d-md-block">
 			  <span id="space-name">제네시스 수지</span>
 			  <p id="space-feature">제네시스 차량의 전 라인업을 경험하기에 가장 완벽한 공간</p>
 			</div>		      
 		  </div>
 		  <div id="space-anseong" class="carousel-item">
-			<img src="../drivetry_apply/css/images/genesis-kr-main-genesis-space-carousel-anseong-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
+			<img src="<%= ctxPath%>/images/drivetry_ApplyPage/genesis-kr-main-genesis-space-carousel-anseong-desktop-2560x900-ko.jpg" class="d-block w-100" alt="...">
 			<div class="carousel-caption d-none d-md-block">
 				<span id="space-name">제네시스 스튜디오 안성</span>
 				<p id="space-feature">제네시스의 끊임없는 혁신에 대한 열망을 담은 공간.</p>

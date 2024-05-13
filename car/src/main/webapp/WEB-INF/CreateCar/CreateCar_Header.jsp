@@ -24,6 +24,9 @@
 <script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
+<%-- JQueryUI CSS 및 JS --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		// **** 특정 회원을 클릭하면 그 회원의 상세정보를 보여주도록 한다. **** //

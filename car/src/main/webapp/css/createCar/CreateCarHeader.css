@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+body > nav > div {
+	border:solid 0px red;
+	width: 10%;
+}
+
+body > nav > div > span.model-name{
+	color:rgb(209, 209, 209);
+	font-size: 20pt;
+}
+
+body > nav.top > ul {
+	border:solid 0px blue;
+	margin: 0 auto;
+}
+
+body > nav.top > ul > li {
+	font-size: 15pt;
+	margin: 0 10px 0 10px;
+}
+
+body > nav > ul > span{
+	border:solid 0px red;
+	height:35px;
+	margin: auto;
+	color:rgb(197, 197, 197);
+	font-size: 17pt;
+}
+
+body{
+	background-color: #111111;
+}
+
+body > nav {
+	height: 70px;
+	background-color: black;
+}
+
+body > nav.top{
+	border-bottom: solid 1px gray;
+}
+
+body > nav.bottom > ul {
+	border: solid 0px red;
+	width:90%;
+	margin: auto;
+}
+
+body > nav.bottom > ul > li {
+	border: solid 0px green;
+	display: inline-block;
+	margin: 0 0.5%;
+}
+
+body > div#footer {
+	border-top: solid 1px gray;
+	background-color: black;
+	height: 200px;
+}

@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+body{
+	background-color: rgb(21, 21, 21);
+	color:white;
+	font-stretch: condensed;
+}
+
+
+body > div#container{
+	border: solid 0px blueviolet;
+}
+
+body > div#container > div#top{
+	margin : 0 30%;
+}
+
+.empty{
+	height : 90px;
+	border: solid 2px blueviolet;
+}
+
+.btn-carselect {
+	width : 100%;
+	height: 55px;
+	border-color: #ffffff; /* 테두리 색상 설정 */
+	color: #ffffff; /* 글자색 설정 */
+}
+
+.btn-carselect:hover {
+	background-color: #ffffff; /* 배경색 설정 */
+	color: #000000; /* 호버 시 글자색 변경 */
+}
+
+body > div#container > div.main_top{
+	width : 1000px;
+	margin : auto;
+	border: solid 0px rgb(97, 228, 21);
+}
+
+body > div#container > div.main_top > div.category_main{
+	display : flex;
+}
+
+body > div#container > div.main_top > div.category_main > div.car_select{
+	border: solid 1px white;
+	width : 20%;
+	border: solid 2px red;
+	height: 260px;
+	margin: 0 5%;
+}
+
+
+body > div#container > div.tap-bar > div.cm-vehicle-tab-btn > ul {
+    list-style: none; /* 목록 기호 제거 */
+    text-align: center; /* 가로 가운데 정렬 */
+	border: solid 1px BLUE;
+}
+
+body > div#container > div.tap-bar > div.cm-vehicle-tab-btn > ul > li div{
+    display: inline-block; /* 인라인 요소로 배치 */
+	border: solid 0px yellow;
+	width: 15%;
+	padding: 10px;
+	font-size: medium;
+	border-bottom:2px solid white;
+}
+
+
+
+a:link {
+	color : gray;
+	text-decoration: none;
+}
+  a:visited {
+	color : gray;
+	text-decoration: none;
+}
+a:hover {
+ 	color : white;
+	text-decoration: none;
+}
+a:active {
+	color : white;
+	text-decoration: none;
+  }
+
+  

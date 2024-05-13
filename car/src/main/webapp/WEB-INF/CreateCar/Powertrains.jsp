@@ -7,6 +7,12 @@
 <!-- 내가만든 css -->
 <link rel="stylesheet" href="<%= ctxPath%>/css/createCar/PowerTrains.css">
 
+<script type = "text/javascript">
+	$(document).ready(function(){
+
+	})// end of $(document).ready(function(){
+</script>
+
 <jsp:include page="CreateCar_Header.jsp"></jsp:include>
 <div class="body">
 	<div class = "optionMain">
@@ -49,9 +55,11 @@
 			<div style="color:rgb(150, 150, 150)">예상 가격</div>
 			<div class="total_price">43,470,000원</div>
 			<button class="before">이전</button>
-			<button class="after" src="<%=ctxPath%>/createCar/drivetrains.car">다음</button>
+			<button class="after">다음</button>
 		</div>
-		<form name ></form>
 	</div>
 </div>
+<form name="powertrainChoiceFrm">
+	<input type="text" value="43470000"/>
+</form>
 

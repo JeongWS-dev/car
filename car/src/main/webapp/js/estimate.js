@@ -10,15 +10,23 @@ $(document).ready(function(){
     // 새로운 Swiper 객체를 생성합니다.
     swiper = new Swiper('.swiper-container', {
         loop: false,
-    slidesPerView: 4, // 한 번에 표시할 슬라이드 수
-    navigation: {
-        nextEl: '.swiper-button-next', // 다음 버튼 요소 (선택 사항)
-        prevEl: '.swiper-button-prev', // 이전 버튼 요소 (선택 사항)
-    },
-    slidesOffsetAfter:20,
-    slidesOffsetBefore:20,
+        slidesPerView: 4, // 한 번에 표시할 슬라이드 수
+        navigation: {
+            nextEl: '.swiper-button-next', // 다음 버튼 요소 (선택 사항)
+            prevEl: '.swiper-button-prev', // 이전 버튼 요소 (선택 사항)
+        },
         freeModeSticky: false,
+        autoHeight : true,  // 현재 활성 슬라이드높이 맞게 높이조정
+        slidesOffsetBefore: 30,
     });
+
+    if (swiper.activeIndex===0) {
+        $('.left-slide').hide()
+        $('.right-slide').show()
+      } else if (swiper.activeIndex === swiper.slides.length-1) {
+        $('.left-slide').show()
+        $('.right-slide').hide()
+      }
 
 
    

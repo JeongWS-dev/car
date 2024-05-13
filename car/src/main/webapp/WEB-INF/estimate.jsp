@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%
-	String ctxPath = request.getContextPath();
-	//		/MyMVC
+    String ctxPath = request.getContextPath();
+    //    /MyMVC
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>GENESIS</title>
 
 <%-- bootstrap --%>
 <link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
@@ -35,11 +34,38 @@
 <%-- 직접만든 js --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/estimate.js"></script>
 
-
 </head>
 <body>
+	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
+		
+		<!-- Brand -->
+		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
+	
+		<!-- Links -->
+		<ul class="navbar-nav">
+			<li class="nav-item"> 
+				<a class="nav-link" href="#">모델</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<%= ctxPath%>/estimate/estimate.car">구매</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">체험</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">고객센터</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<%= ctxPath%>/myPage/myPage.car"  class="btn">마이페이지</a>
+			</li>
+			<li class="nav-item">
+				<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+			</li>
+		</ul>
+	</nav>
+	
 	<div id="container">
-		<div id="top" class="type-space-pt2 type-space-pb2">
+		<div id="top_context">
 			<h1>
 				<span>견적 내기</span>
 			</h1>
@@ -51,7 +77,7 @@
 					<div id="new_image">
 						<img src="<%= ctxPath%>/images/Estimate/new_80x40.png" height="22px" width="46px"/> 
 					</div>
-					<div id="g90black" style="font-size : 70px; line-height : 0.9; font-weight: lighter;">
+					<div id="g90black" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">
 						G90<br>BLACK
 					</div>
 					<br>
@@ -249,16 +275,14 @@
 						</div>
 				  	</div>
 				</div>
+				
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
-			</div>
-			
+			</div>		
 		</div>
-		
+
 	
 	
 	</div>
 	
-
-</body>
-</html>
+<jsp:include page="Main_Footer.jsp"></jsp:include>

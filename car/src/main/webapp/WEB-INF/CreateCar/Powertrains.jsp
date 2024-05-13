@@ -14,6 +14,15 @@
 </script>
 
 <jsp:include page="CreateCar_Header.jsp"></jsp:include>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("button.after").click(function(){
+			// 다음 버튼을 클릭하면 form태그에 있는 값을 가지고 submit해야함.
+		})
+	})
+</script>
+
 <div class="body">
 	<div class = "optionMain">
 		<img src="<%=ctxPath%>/images/createCar/powertrains/powertrainsMain/g70-23my-bto-engine-g2.5-desktop-1024x576.png"/>

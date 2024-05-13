@@ -1,14 +1,15 @@
 @charset "UTF-8";
 
-body{
+
+body {
+	border: solid 0px blueviolet;
 	background-color: rgb(21, 21, 21);
 	color:white;
 	font-stretch: condensed;
-}
-
-
-body > div#container{
-	border: solid 0px blueviolet;
+	max-width:100%;
+	overflow-x:hidden;
+	margin: 0;
+	padding: 0;
 }
 
 body > div#container > div#top{
@@ -45,19 +46,18 @@ body > div#container > div.main_top > div.category_main{
 body > div#container > div.main_top > div.category_main > div.car_select{
 	border: solid 1px white;
 	width : 20%;
-	border: solid 2px red;
 	height: 260px;
 	margin: 0 5%;
 }
 
 
-body > div#container > div.tap-bar > div.cm-vehicle-tab-btn > ul {
+body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul {
     list-style: none; /* 목록 기호 제거 */
     text-align: center; /* 가로 가운데 정렬 */
 	border: solid 1px BLUE;
 }
 
-body > div#container > div.tap-bar > div.cm-vehicle-tab-btn > ul > li div{
+body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li div{
     display: inline-block; /* 인라인 요소로 배치 */
 	border: solid 0px yellow;
 	width: 15%;
@@ -85,4 +85,82 @@ a:active {
 	text-decoration: none;
   }
 
-  
+
+div.bar_image{
+	height: 87px;
+	width: 300px;
+}
+
+img.car_image{
+	width: 100%;
+	border: solid 1px yellow;
+}
+
+div.swiper-slide,
+div.slide_pieces {
+	width: 300px;
+	height: 310px;
+}
+
+span.icon img{
+	width: auto;
+    height: 100%;
+    max-height: 17px;
+    align-items: flex-end; 
+}
+
+div.vehicle_title{
+	width : 82.5%;
+	display: flex;
+    justify-content: space-between;
+    align-items: center; /* 요소들을 수직 방향으로 가운데 정렬 */
+    border: solid 0px red;
+}
+
+div.brand_title{
+	width : 82.5%;
+	height: 17px;
+	margin-bottom: 6px;
+}
+
+
+div.vehicle_name {
+	font-size: 20px;
+	color:white;
+	
+	text-align: left; /* 텍스트를 왼쪽 정렬 */
+}
+
+span.icon {
+    text-align: right; /* 이미지를 오른쪽 정렬 */
+}
+
+.swiper-container {
+    position: relative; /* 슬라이드 컨테이너를 상대적으로 위치시킵니다. */
+    height :25%;
+    
+}
+.swiper-wrapper{
+	width : 90%;
+	border: solid 2px red;
+}
+
+.swiper-button-prev {
+    position: fixed; /* 다음 버튼을 화면에 고정 */
+    z-index: 1; /* 다른 요소보다 위에 위치하도록 설정합니다. */
+    left: 10px; /* 원하는 위치로 이동 */
+    top: 50%; /* 세로 중앙 정렬 */
+    transform: translateY(-50%); /* 수직 정렬 */
+}
+
+.swiper-button-next {
+    position: fixed; /* 다음 버튼을 화면에 고정 */
+    z-index: 1; /* 다른 요소보다 위에 위치하도록 설정합니다. */
+    right: 10px; /* 원하는 위치로 이동 */
+    top: 50%; /* 세로 중앙 정렬 */
+    transform: translateY(-50%); /* 수직 정렬 */
+}
+
+:root {
+    --swiper-theme-color: #ffffff!important;
+}

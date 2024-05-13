@@ -95,7 +95,6 @@ replay_pid*
 
 # semi project team이 직접 ignore한 것.
 /car/src/main/webapp/WEB-INF/Command.properties
-/car/src/main/java/common/controller/
 /car/src/main/webapp/bootstrap-4.6.2-dist/
 /car/src/main/webapp/jquery-ui-1.13.1.custom/
 /car/src/main/webapp/META-INF/

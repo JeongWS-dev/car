@@ -94,11 +94,6 @@ hs_err_pid*
 replay_pid*
 
 # semi project team이 직접 ignore한 것.
-/car/src/main/webapp/WEB-INF/Command.properties
-/car/src/main/webapp/bootstrap-4.6.2-dist/
-/car/src/main/webapp/jquery-ui-1.13.1.custom/
-/car/src/main/webapp/META-INF/
-/car/src/main/webapp/WEB-INF/web.xml
-.classpath
+
 
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse

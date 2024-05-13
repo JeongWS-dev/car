@@ -23,31 +23,31 @@
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
+		<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
+			
+			<!-- Brand -->
+			<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
 		
-		<!-- Brand -->
-		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
-	
-		<!-- Links -->
-		<ul class="navbar-nav">
-			<li class="nav-item"> 
-				<a class="nav-link" href="#">모델</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">구매</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">체험</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">고객센터</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<%= ctxPath%>/myPage/myPage.car"  class="btn">마이페이지</a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-			</li>
-		</ul>
-	</nav>
-	<div style="margin-top:70px;"></div>
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"> 
+					<a class="nav-link" href="#">모델</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">구매</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">체험</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">고객센터</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<%= ctxPath%>/myPage/myPage.car"  class="btn">마이페이지</a>
+				</li>
+				<li class="nav-item">
+					<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+				</li>
+			</ul>
+		</nav>
+		<div style="margin-top:70px;"></div>

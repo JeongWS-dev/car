@@ -49,7 +49,9 @@
 			<div style="color:rgb(150, 150, 150)">예상 가격</div>
 			<div class="total_price">43,470,000원</div>
 			<button class="before">이전</button>
-			<button class="after">다음</button>
+			<button class="after" src="<%=ctxPath%>/createCar/drivetrains.car">다음</button>
 		</div>
+		<form name ></form>
 	</div>
 </div>
+

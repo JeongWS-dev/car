@@ -7,6 +7,12 @@
 <!-- 내가만든 css -->
 <link rel="stylesheet" href="<%= ctxPath%>/css/createCar/PowerTrains.css">
 
+<script type = "text/javascript">
+	$(document).ready(function(){
+
+	})// end of $(document).ready(function(){
+</script>
+
 <jsp:include page="CreateCar_Header.jsp"></jsp:include>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -70,8 +76,15 @@
 			<button class="after">다음</button>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<form name="powertrainChoiceFrm">
 		<input type="hidden" value="43470000"/>
 	</form>
 </div>
+=======
+</div>
+<form name="powertrainChoiceFrm">
+	<input type="text" value="43470000"/>
+</form>
+>>>>>>> refs/heads/main
 

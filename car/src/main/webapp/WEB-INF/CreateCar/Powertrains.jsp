@@ -7,16 +7,19 @@
 <!-- 내가만든 css -->
 <link rel="stylesheet" href="<%= ctxPath%>/css/createCar/PowerTrains.css">
 
-<script type = "text/javascript">
-	$(document).ready(function(){
-
-	})// end of $(document).ready(function(){
-</script>
-
 <jsp:include page="CreateCar_Header.jsp"></jsp:include>
-
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		$("div.choice_option").click(function(e){
+			$("div.choice_option").css({"opacity":"30%"});
+			$(e.target).css({"opacity":"100%"});
+		})// end of $("div.choice_option").click(function(){
+		
+		$("div.choice_option").bind("hover",function(e){
+			$(e.target).css({"opacity":"100%"});
+		})
+		
 		$("button.after").click(function(){
 			// 다음 버튼을 클릭하면 form태그에 있는 값을 가지고 submit해야함.
 		})
@@ -67,8 +70,8 @@
 			<button class="after">다음</button>
 		</div>
 	</div>
+	<form name="powertrainChoiceFrm">
+		<input type="hidden" value="43470000"/>
+	</form>
 </div>
-<form name="powertrainChoiceFrm">
-	<input type="text" value="43470000"/>
-</form>
 

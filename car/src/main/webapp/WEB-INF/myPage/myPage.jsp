@@ -18,12 +18,27 @@
 <script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		 $("button#btn1").click(function(){
+			 location.href = "<%= ctxPath%>/myPage/myPage/login.car";
+		  });// end of $("button#btn1").click(function(){
+		  
+		  $("button#btn2").click(function(){
+				 location.href = "<%= ctxPath%>/myPage/myPage/memberRegister.car";
+			  });// end of $("button.btn-success").click(function(){})-----
+	});
+	
+	
+	
+</script>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 		

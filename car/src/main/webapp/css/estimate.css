@@ -64,7 +64,7 @@ body > div#footer {
 
 
 body > div#container {
-	border: solid 1px green;
+	border: solid 0px green;
 	background-color: rgb(21, 21, 21);
 	color:white;
 	font-stretch: condensed;
@@ -74,13 +74,13 @@ body > div#container {
 }
 
 body > div#container > div#top_context{
-	border: solid 1px yellow;
+	border: solid 0px yellow;
 	width : 60%;
 	margin: 0 auto;
 }
 
 body > div#container > div#main_top{
-	border: solid 5px red;
+	border: solid 0px red;
 	width : 60%;
 	margin: 0 auto;
 }
@@ -107,7 +107,7 @@ div.empty{
 body > div#container > div.main_top{
 	width : 60%;
 	margin : auto;
-	border: solid 1px rgb(97, 228, 21);
+	border: solid 0px rgb(97, 228, 21);
 }
 
 body > div#container > div.main_top > div.category_main{
@@ -115,7 +115,7 @@ body > div#container > div.main_top > div.category_main{
 }
 
 body > div#container > div.main_top > div.category_main > div.car_select{
-	border: solid 1px white;
+	border: solid 0px white;
 	width : 20%;
 	height: 260px;
 	margin-right:7%;
@@ -125,7 +125,7 @@ body > div#container > div.main_top > div.category_main > div.car_select{
 body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul {
     list-style: none; /* 목록 기호 제거 */
     text-align: center; /* 가로 가운데 정렬 */
-	border: solid 1px BLUE;
+	border: solid 0px BLUE;
 }
 
 body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li div{
@@ -164,7 +164,7 @@ div.bar_image{
 
 img.car_image{
 	width: 100%;
-	border: solid 1px yellow;
+	border: solid 0px yellow;
 }
 
 div.swiper-slide,
@@ -212,7 +212,7 @@ span.icon {
     
 }
 .swiper-wrapper{
-	border: solid 2px green;
+	border: solid 0px green;
 	margin-left: 18px;
 	padding : 0;
 	margin-right:0;
@@ -224,7 +224,7 @@ span.icon {
     left: 10px; /* 원하는 위치로 이동 */
     top: 50%; /* 세로 중앙 정렬 */
     transform: translateY(-50%); /* 수직 정렬 */
-    border: solid 1px red;
+    border: solid 0px red;
 }
 
 .swiper-button-next {
@@ -250,4 +250,9 @@ div.slider_outline{
 .slider_outline .swiper-container {
 	position: unset;
     margin: 0 45px;
+}
+
+.swiper-button-disabled {
+      visibility: hidden;
+      opacity: 0;
 }

@@ -108,8 +108,9 @@
 							</span>
 						</div>
 						<div class="btn-wrap">
+							<a href = "#" class="tab-btn" role="tab" id="SEDAN">SEDAN</a>
 							<span class="line">
-								<a href = "#" class="tab-btn" role="tab" id="SEDAN">SEDAN</a>
+								<span class="line-inner" style="width:100%"></span>
 							</span>
 							
 						</div>

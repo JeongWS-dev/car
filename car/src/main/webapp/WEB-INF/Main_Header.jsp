@@ -34,7 +34,7 @@
 				<a class="nav-link" href="#">모델</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">구매</a>
+				<a class="nav-link" href="<%= ctxPath%>/estimate/estimate.car">구매</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">체험</a>
@@ -50,3 +50,5 @@
 			</li>
 		</ul>
 	</nav>
+	<div style="margin-top:70px;"></div>
+

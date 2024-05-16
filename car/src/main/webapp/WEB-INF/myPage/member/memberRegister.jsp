@@ -112,17 +112,18 @@
 		document.getElementById('showModalBtn1').onclick = function() {
 		  document.getElementById('myModal').style.display = "block";
 		}
-		
 		document.getElementById('showModalBtn2').onclick = function() {
 			  document.getElementById('myModa2').style.display = "block";
 		}
 
 		// 모달 닫기
-		document.getElementsByClassName('modal-footer')[0].onclick = function() {
-		  document.getElementById('myModal').style.display = "none";
-		}
-		document.getElementsByClassName('modal-footer').onclick = function() {
-			  document.getElementById('myModal2').style.display = "none";
+		var closeButtons = document.getElementsByClassName('modal-footer');
+		for (var i = 0; i < closeButtons.length; i++) {
+  			closeButtons[i].onclick = function() {
+    		// 버튼이 클릭되었을 때 모달 창을 닫습니다.
+    		var modalId = this.nextElementSibling.id; // 클릭된 버튼의 다음 형제 요소의 ID를 가져옵니다.
+	    	document.getElementById(modalId).style.display = "none";
+	  		}
 		}
 		
 		// 모달 외부를 클릭하여 닫기
@@ -237,7 +238,7 @@
 			<br>
 
 			</div>
-		<div class="modal-footer" style="background-color: black; color: white; justify-content: center;">확인</div>
+		<div class="closeBtn" role="button" style="background-color: black; color: white; justify-content: center;">확인</div>
 		</div>
 		
 	</div>

@@ -31,19 +31,19 @@
 	
 	<div id = "head-text">
 		<p class="display-pc"><br>제네시스 스페이스 선택<br></p>
-		<p class="el-desc "><br>시승 신청 또는 예약 내역 변경을 희망하시는 스페이스를 선택해주세요.</p>
+		<p class="el-desc "><br>시승 신청 또는 예약 내역 변경을 희망하시는 스페이스를 선택해주세요.<br><br><br><br></p>
 	</div>
 
 	<a class="nav-link dropdown-toggle h5" href="#" id="space-dropdown" data-toggle="dropdown" style="color:white">
-		SPACE를 선택하세요:           
+		스페이스 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           
 	</a>
 	<div class="dropdown-menu our-space-Dropdown" aria-labelledby="our-space-Dropdown" style="background-color: black;">
-		<a class="dropdown-item" href="#space-gangnam" value = "BLACK" style="color:white">제네시스 수지</a>
-		<a class="dropdown-item" href="#" value = "BLACK" style="color:white">제네시스 강남</a>
-		<a class="dropdown-item" href="#" value = "SEDAN" style="color:white">제네시스 스튜디오 안성</a>
-		<a class="dropdown-item" href="#" value = "SUV" style="color:white">제네시스 스튜디오 하남</a>
+		<a class="dropdown-item" href="#space-gangnam" value="spaceSUJI" style="color:white">제네시스 수지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<a class="dropdown-item" href="#" value="spaceGANGNAM" style="color:white">제네시스 강남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<a class="dropdown-item" href="#" value="spaceANSEONG" style="color:white">제네시스 스튜디오 안성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<a class="dropdown-item" href="#" value="spaceHANAM" style="color:white">제네시스 스튜디오 하남&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 	</div>
-
+	<br><br>
 	<!-- 캐러셀 이미지 -->
 	<div id="space-info" class="carousel slide carousel-fade" data-ride="carousel">
 		<ol class="carousel-indicators">
@@ -84,11 +84,9 @@
 		</div>
 		<a class="carousel-control-prev" href="#space-info" role="button" data-slide="prev">
 		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Previous</span>
 		</a>
 		<a class="carousel-control-next" href="#space-info" role="button" data-slide="next">
 		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Next</span>
 		</a>
 	  </div>		
 </div>

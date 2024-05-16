@@ -20,10 +20,11 @@
 }
 #head-text > p.el-desc{
 	color:#D5D5D5;
+	
 }
 
 #space-dropdown{
-	border: solid 1px red;
+/* 	border: solid 1px red; */
 	width: 25%;
 	margin-left: auto;
 	margin-right: auto;
@@ -40,4 +41,17 @@
 	/* border: solid 1px red; */
 	text-align: left;
 	padding-bottom: 470px;
+}
+
+#space-info > a.carousel-control-prev > span.carousel-control-prev-icon,
+#space-info > a.carousel-control-next > span.carousel-control-next-icon{
+	/* border: solid 1px red; */
+	width: 100px;
+	height: 100px;
+	transform: scaleX(0.7); /* 가로 비율을 0.5로 축소 */
+	background-size: 100px 100px; 
+}
+#space-dropdown{
+	width:24%;
+	border-bottom: solid 1px white; 
 }

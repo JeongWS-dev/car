@@ -32,6 +32,22 @@ create table tbl_car
 ,constraint Pk_tbl_car_Pk_CarName primary key(Pk_CarName)
 );
 
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90 BLACK','138000000','SEDAN');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90','95400000','SEDAN');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90 LONG WHEEL BASE','167200000','SEDAN');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G80','58900000','SEDAN');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G80 ELECTRIFIED','88210000','SEDAN');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G70','43470000','SEDAN');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G70 SHOOTING BRAKE','45450000','SEDAN');
+
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('GV80','69300000','SUV');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('GV80 COUPE','82550000','SUV');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('GV70','53800000','SUV');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('GV70 ELECTRIFIED','77230000','SUV');
+insert into tbl_car(Pk_CarName,CarPrice,CarType)values('GV60','67760000','SUV');
+
+select *
+from tbl_car;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 옵션_선택품목 테이블 (생성 완료)
@@ -40,11 +56,21 @@ create table tbl_Option
 ,Fk_CarName  VARCHAR2(20)       not null -- 차량이름
 ,Option_Img   VARCHAR2(300)   not null -- 품목 사진
 ,OptionDesc    VARCHAR2(300) -- 품목 설명
+,OptionDetailDesc VARCHAR2(4000) -- 품목 상세설명
 ,OptionPrice    NUMBER default 0 -- 옵션가격
 ,constraint Pk_tbl_Option_Pk_OptionCode primary key(Pk_OptionCode)
 ,constraint Fk_tbl_Option_Fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
 
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_Black_ChoiceOption_built-in-cam','G90 BLACK','G90_Black_ChoiceOption_built-in-cam.jpg','파노라마 선루프','2000000','탁 트인 개방감을 선사하여 채광과 환기 효과를 더하며, 선루프 무드조명을 추가하여 고급감 및 편의성을 향상시켰습니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_Black_ChoiceOption_panorama','G90 BLACK','G90_Black_ChoiceOption_panorama.jpg','빌트인 캠 패키지','800000','차량의 트림을 제거할 필요 없이 빌트인 적용된 주행 중 영상기록장치로, AVN 화면을 통해 영상을 바로 확인할 수 있을 뿐만 아니라 스마트폰 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다. 주행뿐만 아니라 주차 상황에서도 최대 12시간까지 녹화가 가능합니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_Black_ChoiceOption_protection-film','G90 BLACK','G90_Black_ChoiceOption_protection-film.jpg','차량 보호 필름(제네시스 액세서리)','540000','카라이프 중 손상되기 쉬운 프론트 & 리어 범퍼등 8부위에 우레탄 계열의 투명한 보호필름을 부착하여 스톤칩으로 인한 페인트 손상 및 생활 스크래치를 예방하여 깨끗한 바디를 유지할 수 있도록 합니다. 또한 3년/6만km의 보증을 제공해드립니다.');
+
+select *
+from tbl_Option;
+
+select *
+from tbl_car;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 내 선택품목 테이블(생성 완료)
@@ -74,6 +100,9 @@ create table tbl_power
 ,constraint FK_tbl_power_Fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
 
+insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc) values ('G90_BLACK_POWER','G90 BLACK','G90_BLACK_POWER.png','G90_BLACK_POWER_Icon.png','가솔린 3.5 터보 48V 일렉트릭 슈퍼차저');
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 -- FAQ 테이블 (생성 완료)
@@ -96,11 +125,13 @@ create table tbl_InColor
 ,InColorIcon_Img         VARCHAR2(300) not null         --내장컬러 아이콘 사진
 ,InColorCar_Img          VARCHAR2(300) not null         --내장컬러별 차량 사진
 ,InColorPrice            NUMBER        default 0        --내장컬러 가격
-,registerday  date default sysdate not null 
-,updateday    date 
 ,constraint PK_tbl_InColor_InColorCode primary key(Pk_InColorCode)
 ,constraint FK_tbl_InColor_fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName) 
 );
+
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img) values('G90_Black_InColor','G90 BLACK','G90_Black_Inside_Black_icon.jpg','G90_Black_InSide_Black.jpg');
+commit;
+-- 커밋 완료.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -115,6 +146,9 @@ create table tbl_OutColor
 ,constraint FK_tbl_OutColor_fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
 
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img) values ('G90_BLACK_OutSideColor','G90 BLACK','G90_BLACK_OutSideColorIcon.png','G90_BLACK_OUTSIDECOLOR_BLACK.png');
+commit;
+-- 커밋 완료.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 내 견적서 생성 (생성 완료)
@@ -172,3 +206,7 @@ create sequence PK_LoginSeq;
 
  -- QnA 시퀀스 생성 (생성 완료)
  create sequence PK_QnASeq;
+ 
+ 
+ 
+ 

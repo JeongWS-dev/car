@@ -143,7 +143,7 @@ a:link {
 	color : gray;
 	text-decoration: none;
 }
-  a:visited {
+a:visited {
 	color : gray;
 	text-decoration: none;
 }
@@ -154,7 +154,25 @@ a:hover {
 a:active {
 	color : white;
 	text-decoration: none;
+}
+
+a.top_button:link {
+	color : white;
+	text-decoration: none;
+}
+a.top_button:visited {
+	color : white;
+	text-decoration: none;
+}
+a.top_button:hover {
+ 	color : white;
+	text-decoration: none;
+}
+a.top_button:active {
+	color : white;
+	text-decoration: none;
   }
+
 
 
 div.bar_image{
@@ -255,4 +273,24 @@ div.slider_outline{
 .swiper-button-disabled {
       visibility: hidden;
       opacity: 0;
+}
+
+ul.util_list{
+	list-style:none;
+	width : 200px;
+	border: solid 0px red;
+	padding: 0;
+	margin :0;
+}
+
+ul.util_list > li{
+	display: inline;
+	margin-right: 10%;
+	padding :0;
+}
+
+div.share_bar{
+	display: flex;
+	margin-left: 5%;
+	margin-right: 3%;
 }

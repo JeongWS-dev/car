@@ -78,7 +78,8 @@
            background-color: #555;
        }
 
-       .modal {
+      .modal,
+      .modal2 {
 	  display: none;
 	  position: fixed;
 	  z-index: 1;
@@ -90,14 +91,15 @@
 	  background-color: rgba(0, 0, 0, 0.5);
 	}
 	
-	#myModal > div {
+	#myModal > div,
+	#myModa2 > div {
 	  background-color: #fefefe;
 	  margin: 10% auto;
 	  margin-buttom: 30%;
 	  padding: 1%;
 	  border: 1px solid #888;
 	  width: 30%;
-	  height: 70%; /* 내용이 많아도 모달 창의 높이가 고정되도록 설정합니다. */
+	  height: 60%; /* 내용이 많아도 모달 창의 높이가 고정되도록 설정합니다. */
 	  font-size: 12px;
 	}
 
@@ -113,11 +115,14 @@
 		
 		document.getElementById('showModalBtn2').onclick = function() {
 			  document.getElementById('myModa2').style.display = "block";
-			}
+		}
 
 		// 모달 닫기
 		document.getElementsByClassName('modal-footer')[0].onclick = function() {
 		  document.getElementById('myModal').style.display = "none";
+		}
+		document.getElementsByClassName('modal-footer').onclick = function() {
+			  document.getElementById('myModal2').style.display = "none";
 		}
 		
 		// 모달 외부를 클릭하여 닫기
@@ -126,6 +131,11 @@
 		  if (event.target == modal) {
 		    modal.style.display = "none";
 		  }
+		  
+		  var modal2 = document.getElementById('myModal2');
+		  if (event.target == modal2) {
+			    modal.style.display = "none";
+			  }
 		}
 	});
 
@@ -200,7 +210,7 @@
 	</div>
 	
 	    <!-- 통합계정 모달 창 -->
-	<div id="myModa2" class="moda2">
+	<div id="myModa2" class="modal">
 	  <div class="modal-content">
 	    
 	    <!-- Modal header -->

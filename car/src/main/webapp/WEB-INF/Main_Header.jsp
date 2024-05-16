@@ -32,14 +32,14 @@
 		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
 	
 		<!-- Links -->
-		<header id="header" class="p-3 bg-black text-white" style="position: relative;">
+		<header id="header" class="p-3 bg-black text-white" style="position: relative; border: solid 1px red;" >
 			<div class="container"  style="margin-left: 2%;">
 				<div id="1"  class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					
-					<ul class="nav col-6 col-lg-auto me-lg-auto mb-4 justify-content-center mb-md-0">
+					<ul class="nav col-6 col-lg-auto me-lg-auto mb-4 mb-md-0">
 						<li class="nav-item" id="nav-item1"> 
 							<a href="#" class="nav-link px-2 text-white">모델</a>
-							<ul class="nav-item sub-menu" >
+							<ul id="sub-menu1" class="nav-item sub-menu" >
 								
 								<div style="display: flex; margin-left: 3.5%;">	
 									<div id="sidebar-wrapper" style="display: flex; font-size: large; font-weight: 475;">
@@ -68,7 +68,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 6%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: none;">
@@ -77,7 +77,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 6%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: none;">
@@ -86,7 +86,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 										</div>
 
@@ -99,7 +99,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 6%; width: 21rem; background-color:#141414; border: none;">
@@ -108,7 +108,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 6%;  width: 21rem; background-color:#141414; border: none;">
@@ -117,7 +117,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 										</div>
 
@@ -129,7 +129,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 7%; width: 21rem; background-color:#141414; border: none;">
@@ -138,7 +138,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 7%; width: 21rem; background-color:#141414; border: none;">
@@ -147,7 +147,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 										</div>
 
@@ -159,7 +159,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 7%; width: 21rem; background-color:#141414; border: none;">
@@ -168,7 +168,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 
 											<div class="card" style="height: 100%; margin-left: 7%; width: 21rem; background-color:#141414; border: none;">
@@ -177,7 +177,7 @@
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
 													<a href="#" class="custom-button">자세히 보기</a>
 												</div>
-												<a style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
+												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
 											</div>
 										</div>
 									</div>
@@ -190,24 +190,59 @@
 						</li>
 						<li class="nav-item" id="nav-item2">
 							<a href="#" class="nav-link px-2 text-white">구매</a>
+							<ul id="sub-menu2" class="nav-item sub-menu" >
+								
+								<div style="display: flex; margin-left: 5%;">	
+									<div id="sidebar-wrapper" style="display: flex;  font-weight: 475;">
+										<div style="display: inline; margin-top: 5%;">
+											<div style="font-size: x-large; width: 100%; margin-bottom: 11%;">구매</div>
+											<div style="font-size: small; width: 160%; color:#b3b3b3;">당신만의 제네시스를 찾아가는 여정을 지원합니다.</div> 
+										</div>
+
+										<div style="margin-top: 7.5%; height: 103%; opacity: 0.3;" class="vertical-line"></div>
+
+									
+									</div>
+
+									<div style="width:30%; display: flex; margin-top: 0.7%; margin-left: 0.5%;">
+										<div>
+											<a id="purchase" href="#">견적내기</a> 
+										</div>
+										<div style="margin-left: 9%;">
+											<a id="purchase" href="#">구매 상담 신청</a>
+										</div>
+									</div>
+									
+								</div>  
+								
+								<div style="margin-top: 0.25%; border-bottom: solid 1px #404040; opacity: 0.3;"></div>
+
+								<div style="margin-top: 0.28%; margin-left: 11.825%; font-size: 14px; font-weight: normal;">
+									<a id="purchase" href="#">시승신청 ></a>
+									<a style="margin-left: 0.75%;" id="purchase" href="#">전시장 찾기 ></a>
+								</div>
+								
+							</ul>
 							<ul class="nav-item sub-menu">
 							</ul>
 						</li>
+						
+						
 						<li class="nav-item" id="nav-item3">
 							<a href="#" class="nav-link px-2 text-white">체험</a>
 							<ul class="nav-item sub-menu">
 							</ul>
 						</li>
 						<li class="nav-item" id="nav-item4" style="margin-left: 60%;">
-							<a href="#" class="nav-link px-2 text-white">고객센터</a>
+							<a style="margin-left: 10%; width: 100%;" href="#" class="nav-link px-2 text-white">고객센터</a>
 							<ul class="nav-item sub-menu">
 							</ul>
 						</li>
 						<li class="nav-item" id="nav-item5" >
-							<a class="nav-link" href="<%= ctxPath%>/myPage/myPage.car"  class="btn">마이페이지</a>
+							<a style="margin-left: 10%; width: 100%;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage/myPage.car">마이페이지</a>
 						</li>
 						<li class="nav-item" id="nav-item6" >
-							<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+							<a style="margin-left: 70%;" class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
 						</li>
 					</ul>
 				</div>

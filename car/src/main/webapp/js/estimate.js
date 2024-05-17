@@ -59,3 +59,20 @@ tabButtons.forEach(button => {
 
     });
 });
+
+
+const btnShareTw = document.querySelector('#bar_share_tw');
+
+btnShareTw.addEventListener('click', () => {
+  const sendText = '제네시스 견적내기';
+  const pageUrl = '${pageContext.request.contextPath}/estimate/estimate.car';
+  window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
+});
+
+
+const btnShareFb = document.querySelector('#bar_share_fb');
+
+btnShareFb.addEventListener('click', () => {
+  const pageUrl = '${pageContext.request.contextPath}/estimate/estimate.car';
+  window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+});

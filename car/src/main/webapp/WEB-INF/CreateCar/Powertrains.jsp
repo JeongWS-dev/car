@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String ctxPath = request.getContextPath();
     //    /MyMVC
@@ -31,7 +32,7 @@
 		<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 			<div>
 				<div style="color:rgb(151, 151, 151);">GENESIS</div>
-				<span class="model-name">G70</span>
+				<span class="model-name">${requestScope.carName}</span>
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
@@ -103,25 +104,21 @@
 		<div class="gap"></div>
 		<div class="tab">
 			<div class = "powertrainType">1. 엔진 타입</div>
-			<div class = "choice_option" style="display: flex;">
-				<div class= "choice_option_inner">
-					<div class = "option_title">가솔린 2.5T</div>
-					<div class = option_price>+0 원</div>
-				</div>
-				<div class="gap"></div>
-				<img src="<%=ctxPath%>/images/createCar/powertrains/powertrainsIcon/g70-23my-bto-engine-g2.5-thumbnail-160x160.png"/>
-			</div>
-			<div class = "choice_option" style="display: flex;">
-				<div class= "choice_option_inner">
-					<div class = "option_title">가솔린 3.3T</div>
-					<div class = option_price>+4,950,000 원</div>
-				</div>
-				<div class="gap"></div>
-				<img src="<%=ctxPath%>/images/createCar/powertrains/powertrainsIcon/g70-23my-bto-engine-g3.3-thumbnail-160x160.png"/>
-			</div>
+			<c:if test="${not empty requestScope.mapList}">
+				<c:forEach var = "paraMap" items="${requestScope.mapList}">
+					<div class = "choice_option" style="display: flex;">
+						<div class= "choice_option_inner">
+							<div class = "option_title">${paraMap.get('PowerDesc')}</div>
+							<div class = option_price>+${paraMap.get('PowerPrice')}원</div>
+						</div>
+						<div class="gap"></div>
+						<img src="<%=ctxPath%>/images/createCar/powertrains/powertrainsIcon/${paraMap.get('PowerIcon_Img')}"/>
+					</div>
+				</c:forEach>
+			</c:if>
 			<div class="price">
 				<div style="color:rgb(150, 150, 150)">예상 가격</div>
-				<div class="total_price">43,470,000원</div>
+				<div class="total_price">43,470,000원</div> <%-- 금액 변경하는거 어쩌면 for문으로 가능할지도? --%>
 				<button class="before">이전</button>
 				<button class="after">다음</button>
 			</div>

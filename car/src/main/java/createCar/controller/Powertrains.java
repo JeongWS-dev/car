@@ -21,7 +21,7 @@ public class Powertrains extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String CarName = "G90";
 		
-		List<Map<String,String>> mapList = cdao.selectPowerTrain(CarName);// 차량 이름에 해당하는 엔진옵션 가져오기
+		List<Map<String,String>> mapList = cdao.selectPowerTrain(CarName);// 차량 이름에 해당하는 엔진정보 가져오기
 		
 		request.setAttribute("carName", CarName);
 		request.setAttribute("mapList", mapList);

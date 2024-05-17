@@ -105,9 +105,8 @@ insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,Power
 insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc,PowerPrice) values ('G90_PowerTrain_3.5t_48V_ET','G90','G90_PowerTrain_3.5t_48V_ET_Main.png','G90_PowerTrain_3.5t_48V_ET_Icon.png','가솔린 3.5 터보 48V 일렉트릭 슈퍼차저',6000000);
 insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc) values ('G90_PowerTrain_3.5T','G90','G90_PowerTrain_3.5T_main.png','G90_PowerTrain_3.5T_Icon.png','가솔린 3.5 터보');
 
-select Pk_PowerCode, PowerMain_Img, PowerIcon_Img, PowerPrice, PowerDesc
+select Pk_PowerCode, PowerMain_Img, PowerIcon_Img, PowerPrice, PowerDesc, Fk_CarName
 from tbl_power
-where Fk_CarName = 'G90';
 
 commit;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

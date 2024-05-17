@@ -76,15 +76,11 @@
 			<button class="after">다음</button>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<form name="powertrainChoiceFrm">
 		<input type="hidden" value="43470000"/>
 	</form>
 </div>
-=======
-</div>
 <form name="powertrainChoiceFrm">
 	<input type="text" value="43470000"/>
 </form>
->>>>>>> refs/heads/main
 

@@ -142,9 +142,9 @@
 		$("div.optionMain").html(html);
 
 		const add_total_price = Number(total_price) + Number(option_price)
-		
+
 		const handle = setInterval(() => {
-			$("div.total_price").html(Math.ceil(add_total_price - total_price).toLocaleString('en')+"원");
+		$("div.total_price").html(Math.ceil(add_total_price - total_price).toLocaleString('en')+"원");
 
 		// 목표에 도달하면 정지
 		if (total_price < 1) {
@@ -156,7 +156,6 @@
 
 		total_price -= step;
 		}, 50);
-
 	}
 </script>
 

@@ -286,8 +286,8 @@
 	
 	</div>
 
-	<div class="share_bar" style="height: 40px;">
-		<div class="col-md-1" style="font-size: 13pt; color: white; text-align: center;">
+	<div class="share_bar" style="height: 40px; padding-top : 0.2%;">
+		<div class="col-md-1" style="font-size: 13pt; color: white; text-align: center; font-stretch: condensed;">
 			share
 		</div>
 		
@@ -297,16 +297,16 @@
 					<a class="bar_share_tw" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 				</li>
 				<li id="twitter">
-					<a class="bar_share_tw" href="#"><i class="fa-brands fa-x-twitter"></i></i></a>
+					<a class="bar_share_tw" href="#"><i class="fa-brands fa-x-twitter"></i></a>
 				</li>
 				<li id="copy">
-					<a class="bar_share_copy" href="#"><i class="fa-solid fa-copy"></i></i></a>
+					<a class="bar_share_copy" href="#"><i class="fa-solid fa-copy"></i></a>
 				</li>
 			</ul>
 		</div>
 
-		<div class = "col-md-1" style="font-size: 13pt; color: white; border: solid 2px ">
-			<a class="top_button" href="#" style="color:white">Top <i class="fa-solid fa-angle-up"></i></a>
+		<div class = "col-md-1">
+			<a class="top_button"  href="#" style="color:white; font-size: 13pt; font-stretch: condensed;" >Top <i class="fa-solid fa-angle-up"></i></a>
 
 		</div>
 	</div>

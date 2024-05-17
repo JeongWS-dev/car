@@ -28,8 +28,49 @@ $(document).ready(function(){
         $('.right-slide').hide()
       }
 
+    const btnShareTw = document.querySelector('.bar_share_tw');
 
+    btnShareTw.addEventListener('click', () => {
+    const sendText = '제네시스 견적내기';
+    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
+    window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
+    });
+
+
+    const btnShareFb = document.querySelector('.bar_share_fb');
+
+    btnShareFb.addEventListener('click', () => {
+    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
+    window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+    });
    
+
+    $("div.btn-wrap").click(function(){
+        // 바에 있는 버튼 클릭 했을 때
+        $.ajax({
+            url:`estimate_all.up`,
+            type:"get",
+            data:dataObj,
+                 dataType:"json",
+                 success:function(json){ 
+                  // json 은 {"group_id":"R2GWPBT7UoW308sI","success_count":1,"error_count":0} 처럼 된다. 
+                
+                  if(json.success_count == 1) {
+                  $("div#smsResult").html("<span style='color:red; font-weight:bold;'>문자전송이 성공되었습니다.^^</span>");
+                }
+                else if(json.error_count != 0) {
+                   $("div#smsResult").html("<span style='color:red; font-weight:bold;'>문자전송이 실패되었습니다.ㅜㅜ</span>");
+                }
+                
+                $("div#smsResult").show();
+                $("textarea#smsContent").val("")
+             },
+             error: function(request, status, error){
+                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+                }
+        });
+
+    });
 });
 
 const tabButtons = document.querySelectorAll('.tab-btn');
@@ -61,18 +102,4 @@ tabButtons.forEach(button => {
 });
 
 
-const btnShareTw = document.querySelector('#bar_share_tw');
 
-btnShareTw.addEventListener('click', () => {
-  const sendText = '제네시스 견적내기';
-  const pageUrl = '${pageContext.request.contextPath}/estimate/estimate.car';
-  window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
-});
-
-
-const btnShareFb = document.querySelector('#bar_share_fb');
-
-btnShareFb.addEventListener('click', () => {
-  const pageUrl = '${pageContext.request.contextPath}/estimate/estimate.car';
-  window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
-});

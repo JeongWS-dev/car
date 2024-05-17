@@ -36,11 +36,12 @@
            font-family: Arial, sans-serif;
            margin-top: 7%;
            padding: 0;
+           background-color: #f2f2f2;
        }
 
        .container {
            max-width: 600px;
-           margin: 50px auto;
+           margin: 1% auto;
            text-align: center;
        }
 
@@ -78,8 +79,8 @@
            background-color: #555;
        }
 
-      .modal,
-      .modal2 {
+      .modal {
+      
 	  display: none;
 	  position: fixed;
 	  z-index: 1;
@@ -91,8 +92,8 @@
 	  background-color: rgba(0, 0, 0, 0.5);
 	}
 	
-	#myModal > div,
-	#myModa2 > div {
+	#myModal > div, #myModal2 > div {
+		border: solid 1px red;
 	  background-color: #fefefe;
 	  margin: 10% auto;
 	  margin-buttom: 30%;
@@ -108,25 +109,25 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		// 모달 열기
+		// 모달 열기 시작
 		document.getElementById('showModalBtn1').onclick = function() {
 		  document.getElementById('myModal').style.display = "block";
 		}
 		document.getElementById('showModalBtn2').onclick = function() {
-			  document.getElementById('myModa2').style.display = "block";
+			  document.getElementById('myModal2').style.display = "block";
 		}
+		//	모달 열기 끝
 
-		// 모달 닫기
-		var closeButtons = document.getElementsByClassName('modal-footer');
-		for (var i = 0; i < closeButtons.length; i++) {
-  			closeButtons[i].onclick = function() {
-    		// 버튼이 클릭되었을 때 모달 창을 닫습니다.
-    		var modalId = this.nextElementSibling.id; // 클릭된 버튼의 다음 형제 요소의 ID를 가져옵니다.
-	    	document.getElementById(modalId).style.display = "none";
-	  		}
+		// 모달 닫기 시작
+		document.getElementsByClassName('modal-footer')[0].onclick = function() {
+		  document.getElementById('myModal').style.display = "none";
 		}
+		document.getElementsByClassName('modal-footer')[1].onclick = function() {
+			  document.getElementById('myModal2').style.display = "none";
+		}
+		// 모달 닫기 끝
 		
-		// 모달 외부를 클릭하여 닫기
+		// 모달 외부를 클릭하여 닫기 시작
 		window.onclick = function(event) {
 		  var modal = document.getElementById('myModal');
 		  if (event.target == modal) {
@@ -135,14 +136,45 @@
 		  
 		  var modal2 = document.getElementById('myModal2');
 		  if (event.target == modal2) {
-			    modal.style.display = "none";
+			    modal2.style.display = "none";
 			  }
 		}
-	});
+		// 모달 외부를 클릭하여 닫기 끝
+		
+		
+		
+	});	//	end of $(document).ready(function(){-------
 
+	//	모두 선택 
+	function func_allCheck(bool){
+	    const checkbox_list = document.querySelectorAll("input[type='checkbox']");
+	    
+	    for(let checkbox of checkbox_list){
+	        checkbox.checked = bool;
+	    }
+	 }  //  end of function func_allCheck(bool){--------------
+
+	function func_usaCheck(bool) {
+
+		var checkbox1 = document.getElementById("agreeTerms");
+		var checkbox2 = document.getElementById("agreePrivacy");
+		var agreeAllCheckbox = document.getElementById("agreeAll");
+		var nextButton = document.getElementsByClassName("btn-next");
+		
+		if(checkbox1.checked && checkbox2.checked){
+			agreeAllCheckbox.checked = true;
+			nextButton.disabled = false;
+		}
+		else{
+			agreeAllCheckbox.checked = false;
+			nextButton.disabled = true;
+		}
+	}; //  end of function func_usaCheck(bool) {----------------
+
+
+	
     function nextPage() {
-        // 다음 페이지로 이동하는 기능을 여기에 추가하세요
-        // 예: location.href = "nextpage.html";
+       location.href = "<%= ctxPath%>/myPage/memberRegister/cert.car";
    };
 	    
 </script>
@@ -161,15 +193,25 @@
     <div class="container">
         <h2 class="title">제네시스 통합계정</h2>
         <p class="description">통합계정 이용약관 및 개인정보 수집·이용에 동의해주세요.</p>
-     	<hr>
+    </div>
+   	<hr>
+    <br><br>
+    <div class="container">
         <div class="checkbox-group">
-            <label><input type="checkbox" id="agreeAll"> 모두 동의하기</label>
+            <label><input type="checkbox" id="agreeAll" onclick="func_allCheck(this.checked);"> 모두 동의하기</label>
             <hr>
-            <label><input type="checkbox" id="agreeTerms"> 통합계정 이용 동의 (필수) <a href="#" id="showModalBtn1" style="float: right; font-size: 12px;">더보기</a></label>
-            <label><input type="checkbox" id="agreePrivacy"> 개인정보 수집·이용 동의 (필수) <a href="#" id="showModalBtn2" style="float: right; font-size: 12px;">더보기</a></label>
+            <label><input type="checkbox" id="agreeTerms" onclick="func_usaCheck(this.checked)"> 통합계정 이용 동의 (필수) <a href="#" id="showModalBtn1" style="float: right; font-size: 12px;">더보기</a></label>
+            <label><input type="checkbox" id="agreePrivacy" onclick="func_usaCheck(this.checked)"> 개인정보 수집·이용 동의 (필수) <a href="#" id="showModalBtn2" style="float: right; font-size: 12px;">더보기</a></label>
         </div>
-        <hr>
+   	</div>
+    <br><br>
+    <hr>
+    <div class="container">
         <button class="btn-next" onclick="nextPage()">다음</button>
+    </div>
+    <br>
+    <div class="container">
+    	<a href="<%= ctxPath%>/myPage/login.car" style="color: black; text-decoration: underline; font-size:10pt;">로그인 페이지로 이동</a>
     </div>
 
     <!-- 통합계정 모달 창 -->
@@ -211,7 +253,7 @@
 	</div>
 	
 	    <!-- 통합계정 모달 창 -->
-	<div id="myModa2" class="modal">
+	<div id="myModal2" class="modal">
 	  <div class="modal-content">
 	    
 	    <!-- Modal header -->
@@ -238,7 +280,7 @@
 			<br>
 
 			</div>
-		<div class="closeBtn" role="button" style="background-color: black; color: white; justify-content: center;">확인</div>
+		<div class="modal-footer" style="background-color: black; color: white; justify-content: center;">확인</div>
 		</div>
 		
 	</div>

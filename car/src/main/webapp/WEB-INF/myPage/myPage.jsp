@@ -21,11 +21,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		 $("button#btn1").click(function(){
-			 location.href = "<%= ctxPath%>/myPage/myPage/login.car";
+			 location.href = "<%= ctxPath%>/myPage/login.car";
 		  });// end of $("button#btn1").click(function(){
 		  
 		  $("button#btn2").click(function(){
-				 location.href = "<%= ctxPath%>/myPage/myPage/memberRegister.car";
+				 location.href = "<%= ctxPath%>/myPage/memberRegister.car";
 			  });// end of $("button.btn-success").click(function(){})-----
 	});
 	

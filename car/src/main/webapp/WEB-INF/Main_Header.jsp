@@ -43,7 +43,7 @@
 				<a class="nav-link" href="#">고객센터</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<%= ctxPath%>/myPage/myPage.car"  class="btn">마이페이지</a>
+				<a class="nav-link" href="<%= ctxPath%>/myPage.car"  class="btn">마이페이지</a>
 			</li>
 			<li class="nav-item">
 				<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>

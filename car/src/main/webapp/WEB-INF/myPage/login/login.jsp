@@ -9,15 +9,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>로그인</title>
 <!-- bootstrap -->
-<link rel="stylesheet" href="../../bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
-    <style>
+<style>
     body > nav {
 		height: 10%;
 		background-color: black;
@@ -38,6 +38,7 @@
             margin: 5% auto;
             
         }
+
         input[type="text"],
         input[type="password"],
         input[type="submit"] {
@@ -72,7 +73,6 @@
             width: 100%;
         }
     </style>
-
 
 
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top top">

@@ -19,7 +19,7 @@ public class Powertrains extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String CarName = "G90";
+		String CarName = request.getParameter("pk_carname");
 		
 		List<Map<String,String>> mapList = cdao.selectPowerTrain(CarName);// 차량 이름에 해당하는 엔진정보 가져오기
 		

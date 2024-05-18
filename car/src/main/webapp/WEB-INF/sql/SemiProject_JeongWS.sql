@@ -102,7 +102,13 @@ create table tbl_power
 
 insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc) values ('G90_BLACK_POWER','G90 BLACK','G90_BLACK_POWER.png','G90_BLACK_POWER_Icon.png','가솔린 3.5 터보 48V 일렉트릭 슈퍼차저');
 
+insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc,PowerPrice) values ('G90_PowerTrain_3.5t_48V_ET','G90','G90_PowerTrain_3.5t_48V_ET_Main.png','G90_PowerTrain_3.5t_48V_ET_Icon.png','가솔린 3.5 터보 48V 일렉트릭 슈퍼차저',6000000);
+insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc) values ('G90_PowerTrain_3.5T','G90','G90_PowerTrain_3.5T_main.png','G90_PowerTrain_3.5T_Icon.png','가솔린 3.5 터보');
 
+select Pk_PowerCode, PowerMain_Img, PowerIcon_Img, PowerPrice, PowerDesc, Fk_CarName
+from tbl_power
+
+commit;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 -- FAQ 테이블 (생성 완료)

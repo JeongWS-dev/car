@@ -108,8 +108,9 @@
 							</span>
 						</div>
 						<div class="btn-wrap">
+							<a href = "#" class="tab-btn" role="tab" id="SEDAN">SEDAN</a>
 							<span class="line">
-								<a href = "#" class="tab-btn" role="tab" id="SEDAN">SEDAN</a>
+								<span class="line-inner" style="width:100%"></span>
 							</span>
 							
 						</div>
@@ -284,5 +285,31 @@
 	
 	
 	</div>
-	
+
+	<div class="share_bar" style="height: 40px; padding-top : 0.2%;">
+		<div class="col-md-1" style="font-size: 13pt; color: white; text-align: center; font-stretch: condensed;">
+			share
+		</div>
+		
+		<div class = "col-md-10"  >
+			<ul class="util_list">
+				<li id="facebook">
+					<a class="bar_share_tw" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+				</li>
+				<li id="twitter">
+					<a class="bar_share_tw" href="#"><i class="fa-brands fa-x-twitter"></i></a>
+				</li>
+				<li id="copy">
+					<a class="bar_share_copy" href="#"><i class="fa-solid fa-copy"></i></a>
+				</li>
+			</ul>
+		</div>
+
+		<div class = "col-md-1">
+			<a class="top_button"  href="#" style="color:white; font-size: 13pt; font-stretch: condensed;" >Top <i class="fa-solid fa-angle-up"></i></a>
+
+		</div>
+	</div>
+
+
 <jsp:include page="Main_Footer.jsp"></jsp:include>

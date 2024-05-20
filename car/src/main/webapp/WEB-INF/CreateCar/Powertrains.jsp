@@ -173,11 +173,10 @@
 	}// end of function change_Main(MainImg,ctxPath,total_price,option_price){
 
 	function goNext(){
-		const option_title = $("input[name='option_title']").val();
-		let total_price = $("input[name='add_total_price']").val().split(",").join("");
-		total_price = total_price.substring(0,total_price.indexOf("원"))
-
-		alert(total_price)
+		const frm = document.powertrainChoiceFrm;
+		frm.action = "drivetrains.car";
+		frm.method = "post";
+		frm.submit();
 	}// end of function goNext(){
 </script>
 
@@ -284,6 +283,7 @@
 			</div>
 		</div>
 		<form name="powertrainChoiceFrm">
+            <input name="car_name" type="hidden" value="${requestScope.carName}"/>
 			<input name="option_title" type="hidden" value=""/>
 			<input name="add_total_price" type="hidden" value="${requestScope.Price}"/>
 		</form>

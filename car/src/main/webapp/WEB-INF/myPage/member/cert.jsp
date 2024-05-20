@@ -56,17 +56,7 @@
            text-decoration: underline;
        }
 
-       .checkbox-group {
-           text-align: left;
-           margin-bottom: 20px;
-       }
-
-       .checkbox-group label {
-       	   display: block;
-           margin-bottom: 10px;
-       }
-
-       .btn-emailcert {
+       #emailPopup {
            padding: 10px 20px;
            background-color: black;
            color: #fff;
@@ -75,43 +65,81 @@
            cursor: pointer;
        }
 
-       .btn-emailcert:hover {
+       #emailPopup:hover {
            background-color: #555;
            color: white;
        }
 
-      .modal {
-      
-	  display: none;
-	  position: fixed;
-	  z-index: 1;
-	  left: 0;
-	  top: 0;
-	  width: 100%;
-	  height: 100%;
-	  overflow-y: initial !imporant;
-	  background-color: rgba(0, 0, 0, 0.5);
-	}
+		.popup {
+		  display: none;
+		  position: fixed;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  background-color: #fefefe;
+		  border: 1px solid #888;
+		  z-index: 9999;
+		}
+		
+		.popup-content {
+		  padding: 20px;
+		}
+		
+		.close {
+		  position: absolute;
+		  top: 10px;
+		  right: 15px;
+		  font-size: 20px;
+		  cursor: pointer;
+		}
 	
-	#myModal > div, #myModal2 > div {
-		border: solid 1px red;
-	  background-color: #fefefe;
-	  margin: 10% auto;
-	  margin-buttom: 30%;
-	  padding: 1%;
-	  border: 1px solid #888;
-	  width: 30%;
-	  height: 60%; /* 내용이 많아도 모달 창의 높이가 고정되도록 설정합니다. */
-	  font-size: 12px;
-	}
-
+	
 	
 </style>
 
 <script type="text/javascript">
 	$(document).ready(function(){
+	
+		const popupButton = document.getElementById("emailPopup");
 
+		popupButton.addEventListener("click", function() {
+			const width = 600;
+		  const height = 400;
+		  const left = (window.innerWidth - width) / 2;
+		  const top = (window.innerHeight - height) / 2;
+		  const options = `width=${width},height=${height},left=${left},top=${top}`;
+		
+		  const popupContent = document.querySelector('.popup-content').innerHTML;
+		  const newWindow = window.open('', '팝업', options);
+		  newWindow.document.write(popupContent);
+		});
 	 });
+	
+	
+	function goemail(){
+	const email = $("input:text[name='email']").val();
+	  
+	   // const regExp_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;  
+	   // 또는
+	      const regExp_email = new RegExp(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);  
+		  // 이메일 정규표현식 객체 생성 
+	         
+	      const bool = regExp_email.test(email);
+	 
+	      if(!bool) {
+	         // 이메일이 정규표현식에 위배된 경우
+	         alert("e메일을 올바르게 입력하세요!!");
+			 return; // 종료
+	      }    
+	       
+	      const frm = document.idFindFrm;
+		  frm.action = "<%= ctxPath%>/login/idFind.up";
+		  frm.method = "post";
+	      frm.submit();
+		  
+	  }// end of function goFind(){}-----------------------
+	  
+	  
 		
 
 </script>
@@ -130,17 +158,38 @@
     <div class="container">
         <h2 class="title">본인인증</h2>
         <p class="description">본인 인증을 위한 필수 정보를 입력하세요.</p>
+        
     </div>
    	<hr>
     <br><br>
     <div class="container">
-       <span style="font-size: 10pt;">회원 본인 확인 시 휴대폰 인증 기관 또는 아이핀(i-PIN) 인증을 통해 본인확인이 가능합니다.</span>
-       <button type="button" class="btn btn-emailcert">이메일인증</button> 
+       <span style="font-size: 10pt;">회원 본인 확인 시 이메일 인증을 통해 본인확인이 가능합니다.</span>
+       <br><br>
+       <button type="button" id="emailPopup">이메일인증</button> 
+       
    	</div>
     <br><br>
     <hr>
-    >
+    
+	
+	<form name="pwdFindFrm">
 
+   <ul style="list-style-type: none;">
+      <li style="margin: 25px 0">
+          <label style="display: inline-block; width: 90px;">아이디</label>
+          <input type="text" name="userid" size="25" autocomplete="off" /> 
+      </li>
+      <li style="margin: 25px 0">
+          <label style="display: inline-block; width: 90px;">이메일</label>
+          <input type="text" name="email" size="25" autocomplete="off" /> 
+      </li>
+   </ul> 
+
+   <div class="my-3 text-center">
+      <button type="button" class="btn btn-success">찾기</button>
+   </div>   
+   
+</form>  
 	
 
 

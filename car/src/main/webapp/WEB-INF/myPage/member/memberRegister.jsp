@@ -74,10 +74,11 @@
            border-radius: 5px;
            cursor: pointer;
        }
+       
+       .btn-next.active {
+    		background-color: #555;
+		}
 
-       .btn-next:hover {
-           background-color: #555;
-       }
 
       .modal {
       
@@ -142,16 +143,17 @@
 		// 모달 외부를 클릭하여 닫기 끝
 		
 		
-		
 	});	//	end of $(document).ready(function(){-------
 
+    
 	//	모두 선택 
 	function func_allCheck(bool){
-	    const checkbox_list = document.querySelectorAll("input[type='checkbox']");
+		const checkbox_list = document.querySelectorAll("input[type='checkbox']");	
 	    
 	    for(let checkbox of checkbox_list){
 	        checkbox.checked = bool;
 	    }
+		toggleNextBtn();
 	 }  //  end of function func_allCheck(bool){--------------
 
 	function func_usaCheck(bool) {
@@ -159,23 +161,35 @@
 		var checkbox1 = document.getElementById("agreeTerms");
 		var checkbox2 = document.getElementById("agreePrivacy");
 		var agreeAllCheckbox = document.getElementById("agreeAll");
-		var nextButton = document.getElementsByClassName("btn-next");
+		
 		
 		if(checkbox1.checked && checkbox2.checked){
 			agreeAllCheckbox.checked = true;
-			nextButton.disabled = false;
 		}
 		else{
 			agreeAllCheckbox.checked = false;
-			nextButton.disabled = true;
 		}
+		toggleNextBtn();
+		
 	}; //  end of function func_usaCheck(bool) {----------------
 
-
+	function toggleNextBtn(){
+		var agreeAllCheckbox = document.getElementById("agreeAll");
+		var nextButton = document.getElementsByClassName("btn-next");
+		
+		
+		if(agreeAllCheckbox.checked){
+			nextButton.disable = false;	
+			
+			nextButton[0].addEventListener("click", () => {		
+				location.href = "<%= ctxPath%>/myPage/memberRegister/cert.car";
+			});
+			
+		}
+		
+	};
+		
 	
-    function nextPage() {
-       location.href = "<%= ctxPath%>/myPage/memberRegister/cert.car";
-   };
 	    
 </script>
 
@@ -207,7 +221,7 @@
     <br><br>
     <hr>
     <div class="container">
-        <button class="btn-next" onclick="nextPage()">다음</button>
+        <button class="btn-next" disable>다음</button>
     </div>
     <br>
     <div class="container">

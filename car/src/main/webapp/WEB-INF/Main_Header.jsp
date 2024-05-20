@@ -210,7 +210,7 @@
 
 									<div style="width:30%; display: flex; margin-top: 0.7%; margin-left: 0.5%;">
 										<div>
-											<a id="purchase" href="#">견적내기</a> 
+											<a id="purchase" href="<%= ctxPath %>/estimate/estimate.car">견적내기</a> 
 										</div>
 										<div style="margin-left: 9%;">
 											<a id="purchase" href="#">구매 상담 신청</a>

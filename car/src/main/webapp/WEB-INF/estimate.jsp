@@ -4,65 +4,22 @@
     String ctxPath = request.getContextPath();
     //    /MyMVC
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>GENESIS</title>
 
-<%-- bootstrap --%>
-<link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 <%-- 내가만든 css --%>
 <link rel="stylesheet" href="<%= ctxPath%>/css/estimate.css">
-<%-- Font Awesome 6 Icons --%>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<%-- Required meta tags --%>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Optional JavaScript -->
 <script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-
 <%-- CSS --%>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
 <%--js --%>
 <script type="text/javascript" src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
 
 <%-- 직접만든 js --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/estimate.js"></script>
 
-</head>
-<body>
-	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
-		
-		<!-- Brand -->
-		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
-	
-		<!-- Links -->
-		<ul class="navbar-nav">
-			<li class="nav-item"> 
-				<a class="nav-link" href="#">모델</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<%= ctxPath%>/estimate/estimate.car">구매</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">체험</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">고객센터</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<%= ctxPath%>/myPage/myPage.car"  class="btn">마이페이지</a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-			</li>
-		</ul>
-	</nav>
+<jsp:include page="Main_Header.jsp"></jsp:include>
 	
 	<div id="container">
 		<div id="top_context">

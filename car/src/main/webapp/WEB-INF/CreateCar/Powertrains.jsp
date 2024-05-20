@@ -28,8 +28,10 @@
 <%-- JQueryUI CSS 및 JS --%>
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
 
+<!-- 내가만든 js -->
 <script type = "text/javascript">
 	$(document).ready(function(){
+
 		$("div.MainImg").hide();
 		$("div.ctxPath").hide();
 
@@ -216,21 +218,25 @@
 
 	<div class="body">
 		<div class = "optionMain">
-			<img name="MainImg" src="<%=ctxPath%>/images/createCar/powertrains/powertrainsMain/g70-23my-bto-engine-g2.5-desktop-1024x576.png"/>
-			<div style = "display:flex">
-				<div>
-					<div class = "option">배기량(cc)</div>
-					<div class = "optionVal">2,497</div>
-				</div>
-				<div>
-					<div class="option">최고출력(ps)</div>
-					<div class = "optionVal">304</div>
-				</div>
-				<div>
-					<div class="option">최대토크(kgf.m)</div>
-					<div class = "optionVal">43.0</div>
-				</div>
-			</div>
+			<c:if test="${not empty requestScope.mapList}">
+				<c:forEach var="paraMap" items="${requestScope.mapList}" begin="0" end="0">
+					<img name="MainImg" src="<%=ctxPath%>/images/createCar/powertrains/powertrainsMain/${paraMap.get('PowerMain_Img')}"/>
+					<div style = "display:flex">
+						<div>
+							<div class = "option">배기량(cc)</div>
+							<div class = "optionVal">2,497</div>
+						</div>
+						<div>
+							<div class="option">최고출력(ps)</div>
+							<div class = "optionVal">304</div>
+						</div>
+						<div>
+							<div class="option">최대토크(kgf.m)</div>
+							<div class = "optionVal">43.0</div>
+						</div>
+					</div>
+				</c:forEach>
+			</c:if>
 		</div>
 		<div class="gap"></div>
 		<div class="tab">

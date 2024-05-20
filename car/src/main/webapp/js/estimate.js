@@ -45,12 +45,16 @@ $(document).ready(function(){
     });
    
 
-    $("div.btn-wrap").click(function(){
+    $("a.tab-btn").click(function(){
         // 바에 있는 버튼 클릭 했을 때
+        e.preventDefault(); // 링크의 기본 동작을 막음
+
+        var cartype = $(this).text() // 차 종류를 가져옴
+
         $.ajax({
             url:`estimate_all.up`,
             type:"get",
-            data:dataObj,
+            data: {"cartype" : cartype},
                  dataType:"json",
                  success:function(json){ 
                   // json 은 {"group_id":"R2GWPBT7UoW308sI","success_count":1,"error_count":0} 처럼 된다. 
@@ -102,4 +106,26 @@ tabButtons.forEach(button => {
 });
 
 
+
+
+/*
+
+var swiper = new Swiper('.swiper-container', {
+    // 슬라이더 옵션 설정
+  });
+
+  // 슬라이더 슬라이드 변경 시 이벤트 처리
+  swiper.on('slideChange', function () {
+    if (swiper.activeIndex === 0) {
+      $('.left-slide').hide();
+      $('.right-slide').show();
+    } else if (swiper.activeIndex === swiper.slides.length - 3) {
+      $('.left-slide').show();
+      $('.right-slide').hide();
+    } else {
+      $('.left-slide').show();
+      $('.right-slide').show();
+    }
+  });
+*/
 

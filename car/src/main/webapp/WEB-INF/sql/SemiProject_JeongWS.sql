@@ -32,6 +32,10 @@ create table tbl_car
 ,constraint Pk_tbl_car_Pk_CarName primary key(Pk_CarName)
 );
 
+select pk_carName, carPrice
+from tbl_car
+where pk_carName = 'G90';
+
 insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90 BLACK','138000000','SEDAN');
 insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90','95400000','SEDAN');
 insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90 LONG WHEEL BASE','167200000','SEDAN');
@@ -105,8 +109,9 @@ insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,Power
 insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc,PowerPrice) values ('G90_PowerTrain_3.5t_48V_ET','G90','G90_PowerTrain_3.5t_48V_ET_Main.png','G90_PowerTrain_3.5t_48V_ET_Icon.png','가솔린 3.5 터보 48V 일렉트릭 슈퍼차저',6000000);
 insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc) values ('G90_PowerTrain_3.5T','G90','G90_PowerTrain_3.5T_main.png','G90_PowerTrain_3.5T_Icon.png','가솔린 3.5 터보');
 
-select Pk_PowerCode, PowerMain_Img, PowerIcon_Img, PowerPrice, PowerDesc, Fk_CarName
+select PowerPrice
 from tbl_power
+where powerdesc = '가솔린 3.5 터보 48V 일렉트릭 슈퍼차저' and fk_carname = 'G90';
 
 commit;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -131,9 +136,22 @@ create table tbl_InColor
 ,InColorIcon_Img         VARCHAR2(300) not null         --내장컬러 아이콘 사진
 ,InColorCar_Img          VARCHAR2(300) not null         --내장컬러별 차량 사진
 ,InColorPrice            NUMBER        default 0        --내장컬러 가격
+,InColorDesc             VARCHAR2(300)
 ,constraint PK_tbl_InColor_InColorCode primary key(Pk_InColorCode)
 ,constraint FK_tbl_InColor_fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName) 
 );
+
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_beige_two_tone_Icon','G90','G90_inside_sds_beige_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_black_mono_tone_Icon','G90','G90_inside_sds_black_mono_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_brown_two_tone_Icon','G90','G90_inside_sds_brown_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_gray_two_tone_Icon','G90','G90_inside_sds_gray_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_white_two_tone_Icon','G90','G90_inside_sds_white_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_std_beige_two_tone_Icon','G90','G90_inside_std_beige_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_Inside_std_black_Icon','G90','G90_Inside_std_black_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_Inside_std_brown_two_tone_Icon','G90','G90_Inside_std_brown_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_std_gray_two_tone_Icon','G90','G90_inside_std_gray_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_Inside_std_white_two_tone_Icon','G90','G90_Inside_std_white_two_tone_Icon.jpg','',,'');
+
 
 insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img) values('G90_Black_InColor','G90 BLACK','G90_Black_Inside_Black_icon.jpg','G90_Black_InSide_Black.jpg');
 commit;
@@ -148,9 +166,42 @@ create table tbl_OutColor
 ,OutColorIcon_Img         VARCHAR2(300) not null    --외장컬러 아이콘 사진
 ,OutColorCar_Img          VARCHAR2(300) not null    --외장컬러별 차량 사진
 ,OutColorPrice            NUMBER        default 0   --외장컬러 가격
+,OutColorDesc             VARCHAR2(300)
 ,constraint PK_tbl_OutColor_OutColorCode primary key(Pk_OutColorCode)
 ,constraint FK_tbl_OutColor_fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
+
+alter table tbl_OutColor add OutColorDesc VARCHAR2(300);
+commit;
+
+select pk_outcolorcode, fk_carname, outcoloricon_img, outcolorcar_img,outcolorprice,outcolordesc
+from tbl_OutColor
+where fk_carname = 'G90';
+
+update tbl_OutColor set OutColorDesc='마우이 블랙 [HBK]' where pk_OutColorCode = 'G90_HBK';
+update tbl_OutColor set OutColorDesc='한라산 그린 [MDY]' where pk_OutColorCode = 'G90_MDY';
+update tbl_OutColor set OutColorDesc='마칼루 그레이 [NCM]' where pk_OutColorCode = 'G90_NCM';
+update tbl_OutColor set OutColorDesc='카프리 블루 [NRB]' where pk_OutColorCode = 'G90_NRB';
+update tbl_OutColor set OutColorDesc='비크 블랙 [PH3]' where pk_OutColorCode = 'G90_PH3';
+update tbl_OutColor set OutColorDesc='세빌 실버 [SSS]' where pk_OutColorCode = 'G90_SSS';
+update tbl_OutColor set OutColorDesc='태즈먼 블루 [URA]' where pk_OutColorCode = 'G90_URA';
+update tbl_OutColor set OutColorDesc='우유니 화이트 [UYH]' where pk_OutColorCode = 'G90_UYH';
+update tbl_OutColor set OutColorDesc='마칼루 그레이 [MPE]' where pk_OutColorCode = 'G90_MATT_MPE';
+update tbl_OutColor set OutColorDesc='베르비에 화이트 [NA3]' where pk_OutColorCode = 'G90_MATT_NA3';
+
+commit;
+
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_HBK','G90','G90_HBK_Icon.png','G90_HBK_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_MDY','G90','G90_MDY_Icon.png','G90_MDY_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_NCM','G90','G90_NCM_Icon.png','G90_NCM_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_NRB','G90','G90_NRB_Icon.png','G90_NRB_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_PH3','G90','G90_PH3_Icon.png','G90_PH3_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_SSS','G90','G90_SSS_Icon.png','G90_SSS_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_URA','G90','G90_URA_Icon.png','G90_URA_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_UYH','G90','G90_UYH_Icon.png','G90_UYH_Car.png',0);
+
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_MATT_MPE','G90','G90_MATT_MPE_Icon.png','G90_MATT_MPE_Car.png',800000);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_MATT_NA3','G90','G90_MATT_NA3_Icon.png','G90_MATT_NA3_Car.png',800000);
 
 insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img) values ('G90_BLACK_OutSideColor','G90 BLACK','G90_BLACK_OutSideColorIcon.png','G90_BLACK_OUTSIDECOLOR_BLACK.png');
 commit;

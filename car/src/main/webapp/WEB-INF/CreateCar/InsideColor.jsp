@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 
 <!-- 내가만든 css -->
-<link rel="stylesheet" href="<%= ctxPath%>/css/createCar/PowerTrains.css">
+<link rel="stylesheet" href="<%= ctxPath%>/css/createCar/InColor.css">
 
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -134,21 +134,7 @@
 	
 	function change_Main(MainImg,ctxPath,total_price,option_price,option_title){
 		
-		let html = `<img name="MainImg" src="\${ctxPath}/images/createCar/powertrains/powertrainsMain/\${MainImg}"/>
-						<div style = "display:flex">
-							<div>
-								<div class = "option">배기량(cc)</div>
-								<div class = "optionVal">2,497</div>
-							</div>
-							<div>
-								<div class="option">최고출력(ps)</div>
-								<div class = "optionVal">304</div>
-							</div>
-							<div>
-								<div class="option">최대토크(kgf.m)</div>
-								<div class = "optionVal">43.0</div>
-							</div>
-						</div>`;
+		let html = `<img name="MainImg" src="\${ctxPath}/images/createCar/InColor/InColorCar/\${MainImg}"/>`;
 
 		$("div.optionMain").html(html);
 
@@ -174,7 +160,7 @@
 
 	function goNext(){
 		const frm = document.powertrainChoiceFrm;
-		frm.action = "drivetrains.car";
+		frm.action = "insideColor.car";
 		frm.method = "post";
 		frm.submit();
 	}// end of function goNext(){
@@ -184,52 +170,52 @@
 		<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 			<div>
 				<div style="color:rgb(151, 151, 151);">GENESIS</div>
-				<span class="model-name">${requestScope.carName}</span>
+				<span class="model-name">${sessionScope.cvo.carName}</span>
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
 				<li class="nav-item choicePower"> 
-					<a class="nav-link" href="<%= ctxPath%>/createCar/powertrains.car">엔진 타입</a>
+					<a class="nav-link">엔진 타입</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="<%= ctxPath%>/createCar/drivetrains.car" style="color:white;">구동 타입</a>
+					<a class="nav-link">구동 타입</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">스포츠 패키지</a>
+					<a class="nav-link">스포츠 패키지</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">외장 컬러</a>
+					<a class="nav-link" style="color:white; font-weight:bold;">외장 컬러</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">휠&타이어</a>
+					<a class="nav-link">휠&타이어</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">내장 디자인&컬러</a>
+					<a class="nav-link">내장 디자인&컬러</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">내장 가니쉬</a>
+					<a class="nav-link">내장 가니쉬</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">파퓰러 패키지</a>
+					<a class="nav-link">파퓰러 패키지</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">선택 품목</a>
+					<a class="nav-link">선택 품목</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">미리보기</a>
+					<a class="nav-link">미리보기</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">견적완료</a>
+					<a class="nav-link">견적완료</a>
 				</li>
 			</ul>
 		</nav>
@@ -239,42 +225,30 @@
 		<div class = "optionMain">
 			<c:if test="${not empty requestScope.mapList}">
 				<c:forEach var="paraMap" items="${requestScope.mapList}" begin="0" end="0">
-					<img name="MainImg" src="<%=ctxPath%>/images/createCar/powertrains/powertrainsMain/${paraMap.get('PowerMain_Img')}"/>
-					<div style = "display:flex">
-						<div>
-							<div class = "option">배기량(cc)</div>
-							<div class = "optionVal">2,497</div>
-						</div>
-						<div>
-							<div class="option">최고출력(ps)</div>
-							<div class = "optionVal">304</div>
-						</div>
-						<div>
-							<div class="option">최대토크(kgf.m)</div>
-							<div class = "optionVal">43.0</div>
-						</div>
-					</div>
+					<img name="MainImg" src="<%=ctxPath%>/images/createCar/InColor/InColorCar/${paraMap.get('InColorCar_Img')}"/>
 				</c:forEach>
 			</c:if>
 		</div>
 		<div class="gap"></div>
 		<div class="tab">
-			<div class = "powertrainType">1. 구동 타입</div>
-			<c:if test="${not empty requestScope.mapList}">
-				<c:forEach var = "paraMap" items="${requestScope.mapList}">
-					<div class = "choice_option" style="display: flex;">
-						<div class= "choice_option_inner">
-							<div class = "option_title">${paraMap.get('PowerDesc')}</div>
-							<div class = "option_price" value="${paraMap.get('PowerPrice')}">+${paraMap.get('PowerPrice')}원</div>
+			<div class = "outColor">3. 내장 컬러</div>
+			<div class = "scrollbar" style="overflow: auto; height:430px;">
+				<c:if test="${not empty requestScope.mapList}">
+					<c:forEach var = "paraMap" items="${requestScope.mapList}">
+						<div class = "choice_option" style="display: flex;">
+							<div class= "choice_option_inner">
+								<div class = "option_title">${paraMap.get('InColorDesc')}</div>
+								<div class = "option_price" value="${paraMap.get('InColorPrice')}">+${paraMap.get('InColorPrice')}원</div>
 
-							<div class = "MainImg">${paraMap.get("PowerMain_Img")}</div>
-							<div class = "ctxPath"><%=ctxPath%></div>
+								<div class = "MainImg">${paraMap.get('InColorCar_Img')}</div>
+								<div class = "ctxPath"><%=ctxPath%></div>
+							</div>
+							<div class="gap"></div>
+							<img src="<%=ctxPath%>/images/createCar/InColor/InColorIcon/${paraMap.get('InColorIcon_Img')}"/>
 						</div>
-						<div class="gap"></div>
-						<img src="<%=ctxPath%>/images/createCar/powertrains/powertrainsIcon/${paraMap.get('PowerIcon_Img')}"/>
-					</div>
-				</c:forEach>
-			</c:if>
+					</c:forEach>
+				</c:if>
+			</div>
 			<div class="price">
 				<div style="color:rgb(150, 150, 150)">예상 가격</div>
 				<div class="total_price">${requestScope.Price}</div> <%-- 금액 변경하는거 어쩌면 for문으로 가능할지도? --%>

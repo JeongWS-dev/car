@@ -53,8 +53,8 @@
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
-				console.log(option_price);
-
+				//console.log(option_price);
+				
 				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 			}
 			else if ($(e.target).is("div.option_price")){
@@ -68,7 +68,7 @@
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
-				console.log(option_price);
+				//console.log(option_price);
 
 				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 			}
@@ -83,7 +83,7 @@
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
-				console.log(option_price);
+				//console.log(option_price);
 
 				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 			}
@@ -98,7 +98,7 @@
 				//alert(option_title);
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
-				console.log(option_price);
+				//console.log(option_price);
 
 				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 		    }
@@ -151,10 +151,12 @@
 						</div>`;
 
 		$("div.optionMain").html(html);
-
+		
+		const powerTrainPrice = $("input[name='powerTrainPrice']").val();
+		
 		const add_total_price = Number(total_price) + Number(option_price)
 		$("input[name='add_total_price']").val(add_total_price.toLocaleString('en')+"원");
-
+		
 		const handle = setInterval(() => {
 		$("div.total_price").html(Math.ceil(add_total_price - total_price).toLocaleString('en')+"원");
 
@@ -174,7 +176,7 @@
 
 	function goNext(){
 		const frm = document.powertrainChoiceFrm;
-		frm.action = "drivetrains.car";
+		frm.action = "outsideColor.car";
 		frm.method = "post";
 		frm.submit();
 	}// end of function goNext(){
@@ -184,7 +186,7 @@
 		<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 			<div>
 				<div style="color:rgb(151, 151, 151);">GENESIS</div>
-				<span class="model-name">${requestScope.carName}</span>
+				<span class="model-name">${sessionScope.cvo.carName}</span>
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
@@ -277,7 +279,7 @@
 			</c:if>
 			<div class="price">
 				<div style="color:rgb(150, 150, 150)">예상 가격</div>
-				<div class="total_price">${requestScope.Price}</div> <%-- 금액 변경하는거 어쩌면 for문으로 가능할지도? --%>
+					<div class="total_price">${sessionScope.cvo.totalPrice}</div>
 				<button class="before">이전</button>
 				<button class="after"  onclick="goNext()">다음</button>
 			</div>
@@ -285,7 +287,8 @@
 		<form name="powertrainChoiceFrm">
             <input name="car_name" type="hidden" value="${requestScope.carName}"/>
 			<input name="option_title" type="hidden" value=""/>
-			<input name="add_total_price" type="hidden" value="${requestScope.Price}"/>
+			<input name="add_total_price" type="hidden" value="${sessionScope.cvo.totalPrice}"/>
+			<input name="powerTrainPrice" type="hidden" value="${requestScope.powerTrainPrice}"/>
 		</form>
 	</div>
 </body>

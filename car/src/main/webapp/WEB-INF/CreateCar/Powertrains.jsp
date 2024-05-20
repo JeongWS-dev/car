@@ -48,12 +48,14 @@
 
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
+				const option_title = $(e.target).text();
+				// alert(option_title);
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
 				console.log(option_price);
 
-				change_Main(MainImg,ctxPath,total_price,option_price);
+				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 			}
 			else if ($(e.target).is("div.option_price")){
 				$(".choice_option").css({"opacity":"0.3", "border":""});
@@ -61,12 +63,14 @@
 
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
+				const option_title = $(e.target).parent().find("div.option_title").text();
+				alert(option_title);
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
 				console.log(option_price);
 
-				change_Main(MainImg,ctxPath,total_price,option_price);
+				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 			}
 			else if ($(e.target).is("img")){
 				$(".choice_option").css({"opacity":"0.3", "border":""});
@@ -74,12 +78,14 @@
 
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
+				const option_title = $(e.target).parent().find("div.option_title").text();
+				alert(option_title);
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
 				console.log(option_price);
 
-				change_Main(MainImg,ctxPath,total_price,option_price);
+				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 			}
 			else {
 				$("div.choice_option").css({"opacity":"0.3"});
@@ -88,11 +94,13 @@
 				const MainImg = $(e.target).find("div.MainImg").text();
 				const ctxPath = $(e.target).find("div.ctxPath").text();
 				let option_price = $(e.target).find("div.option_price").text();
+				const option_title = $(e.target).find("div.option_title").text();
+				alert(option_title);
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
 				console.log(option_price);
 
-				change_Main(MainImg,ctxPath,total_price,option_price);
+				change_Main(MainImg,ctxPath,total_price,option_price,option_title);
 		    }
 		});
 
@@ -123,6 +131,7 @@
 		*/
 		// <div class = "option_price" value="${paraMap.get('PowerPrice')}">+${paraMap.get('PowerPrice')}원</div>
 	})// end of $(document).ready(function(){
+	
 	function change_Main(MainImg,ctxPath,total_price,option_price){
 		
 		let html = `<img name="MainImg" src="\${ctxPath}/images/createCar/powertrains/powertrainsMain/\${MainImg}"/>
@@ -158,7 +167,11 @@
 
 		total_price -= step;
 		}, 50);
-	}
+	}// end of function change_Main(MainImg,ctxPath,total_price,option_price){
+
+	function goNext(){
+		alert($("div."))
+	}// end of function goNext(){
 </script>
 
 <body>
@@ -260,7 +273,7 @@
 				<div style="color:rgb(150, 150, 150)">예상 가격</div>
 				<div class="total_price">43,470,000원</div> <%-- 금액 변경하는거 어쩌면 for문으로 가능할지도? --%>
 				<button class="before">이전</button>
-				<button class="after">다음</button>
+				<button class="after"  onclick="goNext()">다음</button>
 			</div>
 		</div>
 		<form name="powertrainChoiceFrm">

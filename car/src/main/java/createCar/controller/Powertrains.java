@@ -21,10 +21,13 @@ public class Powertrains extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String CarName = request.getParameter("pk_carname");
 		
+		String Price = cdao.selectCarPrice(CarName);// 차량 기본 가격을 알아오는 메소드 생성.
+		
 		List<Map<String,String>> mapList = cdao.selectPowerTrain(CarName);// 차량 이름에 해당하는 엔진정보 가져오기
 		
 		request.setAttribute("carName", CarName);
 		request.setAttribute("mapList", mapList);
+		request.setAttribute("Price", Price);
 		super.setViewPage("/WEB-INF/CreateCar/Powertrains.jsp");
 	}// end of public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 

@@ -88,5 +88,31 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		}
 		return ListMap;
 	}// end of public List<Map<String, String>> selectPowerTrain(String carName) throws SQLException {
+	
+	// 차량 기본 가격을 알아오는 메소드 생성.
+	@Override
+	public String selectCarPrice(String carName) throws SQLException {
+		String price = "";
+		try {
+			conn = ds.getConnection();
+			
+			String sql =  " select carPrice "
+						+ " from tbl_car "
+						+ " where pk_carName = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, carName);
+			rs = pstmt.executeQuery();
+			
+			DecimalFormat df = new DecimalFormat("#,###");
+			
+			while(rs.next()) {
+				
+				price = df.format(rs.getInt("carPrice"))+"원";
+			}
+		}finally {
+			close();
+		}
+		return price;
+	}// end of public Map<String, String> selectCarPrice(String carName) throws SQLException {
     
 }

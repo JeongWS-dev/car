@@ -64,7 +64,7 @@
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
 				const option_title = $(e.target).parent().find("div.option_title").text();
-				alert(option_title);
+				//alert(option_title);
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
@@ -79,7 +79,7 @@
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
 				const option_title = $(e.target).parent().find("div.option_title").text();
-				alert(option_title);
+				//alert(option_title);
 				let option_price = $(e.target).parent().find("div.option_price").text();
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
@@ -95,7 +95,7 @@
 				const ctxPath = $(e.target).find("div.ctxPath").text();
 				let option_price = $(e.target).find("div.option_price").text();
 				const option_title = $(e.target).find("div.option_title").text();
-				alert(option_title);
+				//alert(option_title);
 				option_price = option_price.split(",").join("");
 				option_price = option_price.substring(1,option_price.indexOf("원"))
 				console.log(option_price);
@@ -132,7 +132,7 @@
 		// <div class = "option_price" value="${paraMap.get('PowerPrice')}">+${paraMap.get('PowerPrice')}원</div>
 	})// end of $(document).ready(function(){
 	
-	function change_Main(MainImg,ctxPath,total_price,option_price){
+	function change_Main(MainImg,ctxPath,total_price,option_price,option_title){
 		
 		let html = `<img name="MainImg" src="\${ctxPath}/images/createCar/powertrains/powertrainsMain/\${MainImg}"/>
 						<div style = "display:flex">
@@ -153,6 +153,7 @@
 		$("div.optionMain").html(html);
 
 		const add_total_price = Number(total_price) + Number(option_price)
+		$("input[name='add_total_price']").val(add_total_price.toLocaleString('en')+"원");
 
 		const handle = setInterval(() => {
 		$("div.total_price").html(Math.ceil(add_total_price - total_price).toLocaleString('en')+"원");
@@ -167,10 +168,16 @@
 
 		total_price -= step;
 		}, 50);
+
+		$("input[name='option_title']").val(option_title);
 	}// end of function change_Main(MainImg,ctxPath,total_price,option_price){
 
 	function goNext(){
-		alert($("div."))
+		const option_title = $("input[name='option_title']").val();
+		let total_price = $("input[name='add_total_price']").val().split(",").join("");
+		total_price = total_price.substring(0,total_price.indexOf("원"))
+
+		alert(total_price)
 	}// end of function goNext(){
 </script>
 
@@ -271,13 +278,14 @@
 			</c:if>
 			<div class="price">
 				<div style="color:rgb(150, 150, 150)">예상 가격</div>
-				<div class="total_price">43,470,000원</div> <%-- 금액 변경하는거 어쩌면 for문으로 가능할지도? --%>
+				<div class="total_price">${requestScope.Price}</div> <%-- 금액 변경하는거 어쩌면 for문으로 가능할지도? --%>
 				<button class="before">이전</button>
 				<button class="after"  onclick="goNext()">다음</button>
 			</div>
 		</div>
 		<form name="powertrainChoiceFrm">
-			<input type="hidden" value="43470000"/>
+			<input name="option_title" type="hidden" value=""/>
+			<input name="add_total_price" type="hidden" value="${requestScope.Price}"/>
 		</form>
 	</div>
 </body>

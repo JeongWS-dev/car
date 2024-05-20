@@ -32,6 +32,10 @@ create table tbl_car
 ,constraint Pk_tbl_car_Pk_CarName primary key(Pk_CarName)
 );
 
+select pk_carName, carPrice
+from tbl_car
+where carName = 'G90';
+
 insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90 BLACK','138000000','SEDAN');
 insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90','95400000','SEDAN');
 insert into tbl_car(Pk_CarName,CarPrice,CarType)values('G90 LONG WHEEL BASE','167200000','SEDAN');

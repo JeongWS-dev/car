@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -43,9 +44,10 @@
 		          <br>차량 시승<br><br>가깝고 편리한 환경에서 제네시스 차량을 시승하실 수 있는 공간<br><br>
 		       </p>
 		       <div id="image_1_button">
-				<button type="button" class="driving-lounge" title="드라이빙 라운지 바로가기">드라이빙 라운지 바로가기</button>
-
-		        <button type="button" class="driving-lounge" title="예약 확인 및 변경하기">예약 확인 및 변경하기</button>
+					<button type="button" onclick="location.href='<%= ctxPath %>/drivetryApply/drivingLounge.car'" class="driving-lounge" title="드라이빙 라운지 바로가기">
+    					드라이빙 라운지 바로가기
+					</button>
+		        	<button type="button" class="driving-lounge" title="예약 확인 및 변경하기">예약 확인 및 변경하기</button>
 	       		</div>
 	       </div>
 	    </div>

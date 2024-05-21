@@ -66,12 +66,57 @@ create table tbl_Option
 ,constraint Fk_tbl_Option_Fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
 
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_Black_ChoiceOption_built-in-cam','G90 BLACK','G90_Black_ChoiceOption_built-in-cam.jpg','파노라마 선루프','2000000','탁 트인 개방감을 선사하여 채광과 환기 효과를 더하며, 선루프 무드조명을 추가하여 고급감 및 편의성을 향상시켰습니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_Black_ChoiceOption_panorama','G90 BLACK','G90_Black_ChoiceOption_panorama.jpg','빌트인 캠 패키지','800000','차량의 트림을 제거할 필요 없이 빌트인 적용된 주행 중 영상기록장치로, AVN 화면을 통해 영상을 바로 확인할 수 있을 뿐만 아니라 스마트폰 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다. 주행뿐만 아니라 주차 상황에서도 최대 12시간까지 녹화가 가능합니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_Black_ChoiceOption_protection-film','G90 BLACK','G90_Black_ChoiceOption_protection-film.jpg','차량 보호 필름(제네시스 액세서리)','540000','카라이프 중 손상되기 쉬운 프론트 & 리어 범퍼등 8부위에 우레탄 계열의 투명한 보호필름을 부착하여 스톤칩으로 인한 페인트 손상 및 생활 스크래치를 예방하여 깨끗한 바디를 유지할 수 있도록 합니다. 또한 3년/6만km의 보증을 제공해드립니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_panoramic_sunroof','G90','G90_options_panoramic_sunroof.jpg','파노라마 선루프',2000000,'탁 트인 개방감을 선사하여 채광과 환기 효과를 더하며, 선루프 무드조명을 추가하여 고급감 및 편의성을 향상시켰습니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_rear_dual_monitor','G90','G90_options_rear_dual_monitor.jpg','전동식 뒷좌석 듀얼 모니터',2900000,'터치 방식의 10.2인치 대화면 모니터는 뒷좌석 좌우 승객이 독립적으로 사용가능하며, 시트 모드에 따라 각도가 연동됩니다. 목적지까지의 경로와 남은 시간 등도 확인할 수 있습니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_bang_olufsen_sound_package','G90','G90_options_bang_olufsen_sound_system.jpg','뱅앤올룹슨 사운드 패키지',3900000);
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_built_in_cam','G90','G90_options_built_in_cam.jpg','빌트인 캠 (보조배터리 포함)',800000,'차량의 트림을 제거할 필요 없이 빌트인 적용된 주행 중 영상기록장치로, AVN 화면을 통해 영상을 바로 확인할 수 있을 뿐만 아니라 스마트폰 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다. 주행뿐만 아니라 주차 상황에서도 최대 12시간까지 녹화가 가능합니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_driver_passanger_ergo_relaxing_seat','G90','G90_options_driver_passanger_ergo_relaxing_seat.jpg','운전석 / 동승석 에르고 릴렉싱 시트',2000000,'시트백 10개 포켓과 쿠션 2셀 구조를 활용하여 전신 모드 외 3가지의 마사지 모드를 제공하며 최적의 착좌감을 제공합니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_easy_close_system','G90','G90_options_easy_close_system.jpg','이지 클로즈 시스템',1500000,'승차 후 손을 뻗어 도어를 당길 필요 없이 편안하게 앉은 상태에서 콘솔의 버튼을 누르면 도어가 부드럽게 닫힙니다. 하차할 때는 도어 트림의 버튼을 누르고 가볍게 미는 동작으로 도어가 손쉽게 열립니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_back_comport_package_1','G90','G90_options_rear_seat.jpg','뒷좌석 컴포트 패키지I',3500000);
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_back_comport_package_1+2','G90','G90_options_rear_seat.jpg','뒷좌석 컴포트 패키지I+II',6400000);
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('back_comport_package_1+2+front_comport','G90','G90_options_rear_seat.jpg','뒷좌석 컴포트 패키지I+II+운전석 / 동승석 에르고 릴렉싱 시트',7900000);
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_hightech_package','G90','G90_options_head_up_display.jpg','하이테크 패키지',2000000);
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_rws_airsuspension','G90','G90_options_rws.jpg','능동형 후륜 조향 (RWS) + 멀티챔버 에어 서스펜션',5000000);
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_air_suspension','G90','G90_options_air_suspension.jpg','멀티챔버 에어 서스펜션',3500000,'차고 조절 기능 및 멀티 챔버 방식을 적용하여 부드러운 승차감과 함께 다이내믹한 핸들링 성능을 제공합니다. 방지턱 진입 전에는 차고 및 서스펜션 감쇠력을 조절해 승차감을 향상시키고, 경사로 주행 시에는 차고를 상향해 차체 하부 손상을 막아줍니다. 험로 인지 시에는 차고 상향으로 주행 안정감을 확보하고 고속도로에서는 고속주행 안정성을 향상시킵니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_protection_film','G90','G90_options_protection_film.jpg','차량 보호 필름',540000,'카라이프 중 손상되기 쉬운 프론트 / 리어 범퍼등 8부위에 우레탄 계열의 투명한 보호필름을 부착하여 스톤칩으로 인한 페인트 손상 및 생활 스크래치를 예방하여 깨끗한 바디를 유지할 수 있도록 합니다. 또한 3년동안 6만km의 보증을 제공해드립니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_wheel_cap','G90','G90_options_wheel_cap.jpg','플로팅 휠 캡 / 메탈 페달','200000','주행 시 엠블럼을 수평 상태로 유지 시켜주는 휠 캡과 메탈 소재 커버가 적용된 브레이크/엑셀 페달이 적용됩니다.');
+
+commit;
 
 select *
-from tbl_Option;
+from tbl_option
+where fk_carname = 'G90';
+
+-- 선택품목 상세 테이블(생성 완료)
+create table tbl_option_detail
+(option_detail_code NUMBER(30)
+,Fk_OptionCode      VARCHAR2(300)           -- 선택품목 시퀀스
+,Fk_CarName         VARCHAR2(20)
+,OptionName         VARCHAR2(300)
+,OptionDESC         VARCHAR2(300)
+,OptionImg          VARCHAR2(100)
+,constraint  PK_tbl_option_detail primary key(option_detail_code)
+,constraint  tbl_option_detail_OptionCode foreign key(Fk_OptionCode) references tbl_Option(Pk_OptionCode)
+,constraint  tbl_option_detail_Fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
+);
+
+create sequence tbl_option_detail_seq;
+commit;
+
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_bang_olufsen_sound_package','G90','뱅앤올룹슨 프리미어 3D 사운드 시스템','헤드레스트와 헤드라이닝, 전동 팝업 트위터 등을 포함한 총 23개의 스피커가 섬세하고 풍부한 사운드를 제공합니다.','G90_options_bang_olufsen_sound_system.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_bang_olufsen_sound_package','G90','버츄얼 베뉴','버추얼 베뉴는 가상의 3D 서라운드 음향으로 유명 공연장과 홈사운드의 음장 특성을 재현해 현장감 넘치는 사운드 공간을 완성합니다.','G90_options_virtual_venue.jpg');
+commit;
+
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','뒷좌석 전동 시트 / 통풍 시트','전/후 방향 조절로 원하는 시트 각도를 설정할 수 있는 뒷좌석 전동 시트는 히터/통풍 기능을 통해 사계절 내내 쾌적한 승차감을 제공합니다.','G90_options_rear_seat.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','VIP 좌석 레그레스트','세단에 적용되는 레그레스트로, 2열 우측 좌석에만 적용되며 더욱 편안한 착좌감을 제공합니다.','G90_options_leg_foot_rest.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','어드밴스드 3존 공조 (B필러 에어벤트)','2열 센터콘솔에 뒷좌석의 온도를 조절할 수 있는 LCD 공조창을 적용하여 운전석, 조수석과는 별도로 개별 온도 제어가 가능하여 쾌적한 실내공간을 제공합니다.','G90_options_advanced_3zone.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','뒷좌석 목베개 / 윙아웃 헤드레스트','뒷좌석 목베개와 윙아웃 헤드레스트는 머리를 지지하여 편안한 릴렉스 자세를 취할 수 있도록 도와줍니다.','G90_options_rear_neck_head_rest.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','뒷좌석 스마트폰 무선 충전','뒷좌석에 무선 충전 패드가 마련되어 별도의 케이블 없이도 손쉽게 스마트폰을 충전할 수 있습니다.','G90_options_smart_phone_charger.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','뒷좌석 자세 메모리 시스템','간단한 버튼 조작으로 좌석을 제어하여 설정된 위치까지 자동으로 조절하는 장치입니다.','G90_options_ims.jpg');
+commit;
+
+select *
+from tbl_option_detail;
 
 select *
 from tbl_car;

@@ -62,6 +62,20 @@ create sequence Pk_MyOptionSeq;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- 선택품목 상세 테이블(생성 완료)
+create table tbl_option_detail
+(Pk_fk_OptionCode   VARCHAR2(300)           -- 선택품목 시퀀스
+,Fk_CarName         VARCHAR2(20)
+,OptionName         VARCHAR2(300)
+,OptionDESC         VARCHAR2(300)
+,OptionImg          VARCHAR2(100)
+,constraint  PK_tbl_option_detail primary key(Pk_fk_OptionCode)
+,constraint  tbl_option_detail_OptionCode foreign key(Pk_fk_OptionCode) references tbl_Option(Pk_OptionCode)
+,constraint  tbl_option_detail_Fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
+);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- 파워트레인 테이블 (생성 완료)
 create table tbl_power
 (Pk_PowerCode         VARCHAR2(300)    

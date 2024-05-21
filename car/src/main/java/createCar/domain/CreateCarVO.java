@@ -5,7 +5,8 @@ public class CreateCarVO {
 	private String carName;        // 차량 이름  
     private String powerTrainTitle;// 엔진 옵션 이름     
     private String DriveTrainTitle;// 구동 옵션 이름 
-    private String OutColorTitle;// 선택 색상 이름
+    private String OutColorTitle;// 선택 외장 색상 이름
+    private String InColorTitle;// 선택 내장 색상 이름
     private String TotalPrice;     // 총 가격
 	
     
@@ -39,6 +40,12 @@ public class CreateCarVO {
 	}
 	public void setOutColorTitle(String outColorTitle) {
 		OutColorTitle = outColorTitle;
+	}
+	public String getInColorTitle() {
+		return InColorTitle;
+	}
+	public void setInColorTitle(String inColorTitle) {
+		InColorTitle = inColorTitle;
 	}
     
 	

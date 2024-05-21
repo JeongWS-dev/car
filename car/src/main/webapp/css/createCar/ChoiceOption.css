@@ -70,15 +70,14 @@ div.body {
 }
 
 div.optionMain{
-    border:solid 0px red;
-    text-align: center;
+    border:solid 0px blue;
+    width:100%;
 }
 
 div.body > div.optionMain > img{
-    width:90%;
-    margin:auto;
-    margin-top: 50px;
-    border: solid 0px green;
+    border:solid 1px red;
+    width:60%;
+    margin-top: 100px;
 }
 
 div.option {
@@ -117,20 +116,15 @@ div.outColor{
     margin:100px 10% 0 10%;
 }
 
-div.choice_option{
+div.card-header{
     border: solid 0px red;
-    height:80px;
-    font-size:10pt;
-    color:white;
-    opacity: 30%;
-    margin:0 10%;
-    margin-bottom: 10px;
+    opacity:30%;
 }
 
-div.choice_option_inner{
-    border: solid 0px red;
-    margin:auto 0;
-    border-bottom: solid 1px #383838;
+div.card-header:hover{
+    cursor: pointer;
+    color:white;
+    opacity: 100%;
 }
 
 div.option_title{
@@ -147,14 +141,6 @@ div.option_title{
  .scrollbar::-webkit-scrollbar-track {
     background-color: rgba(0,0,0,0);
  }
-
-div.choice_option:hover{
-    cursor: pointer;
-    height:80px;
-    font-size:10pt;
-    color:white;
-    opacity: 100%;
-}
 
 div.price{
     padding: 3%;
@@ -210,4 +196,27 @@ button.after:hover {
 
 .choicePower > a {
     font-weight: bold;
+}
+
+.btn{
+    border-bottom: solid 1px #383838;
+    width:100%;
+    text-align: left;
+}
+
+.card-body {
+    color:white;
+}
+
+input.input_radio{
+    display:none;
+    text-align: center;
+}
+
+i.check_option{
+    border:solid 1px rgba(0,0,0,0);
+    border-radius: 50%;
+    opacity:100%;
+    background-color: white;
+    color:black;
 }

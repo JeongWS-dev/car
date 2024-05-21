@@ -174,7 +174,7 @@
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
-				<li class="nav-item choicePower"> 
+				<li class="nav-item"> 
 					<a class="nav-link">엔진 타입</a>
 				</li>
 				<span>〉</span>
@@ -216,6 +216,9 @@
 				<span>〉</span>
 				<li class="nav-item">
 					<a class="nav-link">견적완료</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"><i class="fa-solid fa-xmark"></i></a>
 				</li>
 			</ul>
 		</nav>

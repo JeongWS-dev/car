@@ -1,64 +1,73 @@
 
 $(document).ready(function(){
-
-    var swiper = null;
+  var swiper = null;
     // swiper 변수가 존재하고, 이전 Swiper 객체를 파괴합니다.
-    if (swiper != null) {
-        swiper.destroy();
-    }
+  if (swiper != null) {
+    swiper.destroy();
+  }
 
     // 새로운 Swiper 객체를 생성합니다.
-    swiper = new Swiper('.swiper-container', {
-        loop: false,
-        slidesPerView: 4, // 한 번에 표시할 슬라이드 수
-        navigation: {
-            nextEl: '.swiper-button-next', // 다음 버튼 요소 (선택 사항)
-            prevEl: '.swiper-button-prev', // 이전 버튼 요소 (선택 사항)
-        },
-        freeModeSticky: false,
-        autoHeight : true,  // 현재 활성 슬라이드높이 맞게 높이조정
-        slidesOffsetBefore: 30,
-    });
+  swiper = new Swiper('.swiper-container', {
+    loop: false,
+    slidesPerView: 4, // 한 번에 표시할 슬라이드 수
+    navigation: {
+      nextEl: '.swiper-button-next', // 다음 버튼 요소 (선택 사항)
+      prevEl: '.swiper-button-prev', // 이전 버튼 요소 (선택 사항)
+    },
+    freeModeSticky: false,
+    autoHeight : true,  // 현재 활성 슬라이드높이 맞게 높이조정
+    slidesOffsetBefore: 30,
+  });
 
-    if (swiper.activeIndex===0) {
-        $('.left-slide').hide()
-        $('.right-slide').show()
-      } else if (swiper.activeIndex === swiper.slides.length-1) {
-        $('.left-slide').show()
-        $('.right-slide').hide()
+  if (swiper.activeIndex===0) {
+    $('.left-slide').hide()
+    $('.right-slide').show()
+  } else if (swiper.activeIndex === swiper.slides.length-1) {
+    $('.left-slide').show()
+    $('.right-slide').hide()
+  }
+
+  $("a.tab-btn").click(function(e){
+      // 바에 있는 버튼 클릭 했을 때
+     //   e.preventDefault(); // 링크의 기본 동작을 막음
+
+    var carSearchType = $(e.target).text() // 차 종류를 가져옴
+
+    $.ajax({
+      url:"/car/estimate/carType.car",
+      type:"get",
+      data: {"carSearchType" : carSearchType},
+      dataType : "json",
+      
+      success:function(json){ 
+        let v_html = ``;
+        if(json.length == 0) { // json== null하면 오류 남. 넘겨 받을 때 new 선언해서 받아서 빈 껍데기 배열이기 때문에 null이 아니고 길이가 0임.
+          v_html = `현재 상품 준비중 입니다...`;
+          $("div.slider_outline").html(v_html);
+        }
+
+        else if(carSearchType == 'SEDAN'){
+          $("div#new_image").empty();
+          $("div#carTitle").html("G90<br><div>LONG WHEEL BASE</div>");
+          $("div#carTitle").removeAttr("style");
+          $("div#carTitle").css("background-color", "red");
+
+
+
+
+        }
+
       }
-
-    $("a.tab-btn").click(function(){
-        // 바에 있는 버튼 클릭 했을 때
-        e.preventDefault(); // 링크의 기본 동작을 막음
-
-        var cartype = $(this).text() // 차 종류를 가져옴
-        console.log("cartype =>", cartype);
-
-        $.ajax({
-            url:`estimate.car`,
-            type:"get",
-            data: {"cartype" : cartype},
-                 dataType:"json",
-                 success:function(json){ 
-                  console.log("json =>", json);
-                
-                  if(json.success_count == 1) {
-                  $("div#smsResult").html("<span style='color:red; font-weight:bold;'>문자전송이 성공되었습니다.^^</span>");
-                }
-                else if(json.error_count != 0) {
-                   $("div#smsResult").html("<span style='color:red; font-weight:bold;'>문자전송이 실패되었습니다.ㅜㅜ</span>");
-                }
-                
-                $("div#smsResult").show();
-                $("textarea#smsContent").val("")
-             },
-             error: function(request, status, error){
-                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-                }
-        });
-
+        
+       // console.log("~~~ 확인용 json => ", JSON.stringify(json));
+       // alert("확인용 carSearchType : " + carSearchType);
+       //  console.log("~~~~~~3"+carSearchType);
+             
+     
+        
     });
+
+  });
 });
 
 /*

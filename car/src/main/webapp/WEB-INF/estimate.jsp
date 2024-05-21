@@ -31,10 +31,10 @@
 		<div class="main_top">
 			<div class="category_main"> 
 				<div class="car_select">
-					<div id="new_image">
-						<img src="<%= ctxPath%>/images/Estimate/new_80x40.png" height="22px" width="46px"/> 
+					<div id="new_image" >
+						<img src="<%= ctxPath%>/images/Estimate/new_80x40.png" /> 
 					</div>
-					<div id="g90black" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">
+					<div id="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">
 						G90<br>BLACK
 					</div>
 					<br>

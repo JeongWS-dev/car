@@ -95,7 +95,7 @@
 							</div>
 							<div class="brand_title"></div>
 							<div id="g90new_barimg" class="bar_image">
-								<img src="<%= ctxPath%>/images/Estimate/G90_new.png" class="car_image" />
+								<img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png" class="car_image" />
 							</div>
 						</div>
 					</div>
@@ -106,7 +106,7 @@
 							</div>
 							<div class="brand_title">LONG WHEEL BASE</div>
 							<div id="g90long_barimg" class="bar_image">
-								<img src="<%= ctxPath%>/images/Estimate/G90_long.png"  class="car_image" />
+								<img src="<%= ctxPath%>/images/Estimate/G90_LONG_WHEEL_BASE.png"  class="car_image" />
 							</div>
 						</div>
 				  	</div>
@@ -142,7 +142,7 @@
 								</span>
 							</div>	
 							<div id="g80elect_barimg" class="bar_image">
-								<img src="<%= ctxPath%>/images/Estimate/G80_electric.png" class="car_image" />
+								<img src="<%= ctxPath%>/images/Estimate/G80_ELECTRIFIED.png" class="car_image" />
 							</div>
 						</div>
 				  	</div>
@@ -164,7 +164,7 @@
 							</div>
 							<div class="brand_title">SMOOTHING BREAK</div>
 							<div id="g70smoothing_barimg" class="bar_image">
-								<img src="<%= ctxPath%>/images/Estimate/G70_smoothing.png" class="car_image" />
+								<img src="<%= ctxPath%>/images/Estimate/G70_SHOOTING_BRAKE.png" class="car_image" />
 							</div>
 						</div>
 				  	</div>
@@ -186,7 +186,7 @@
 							</div>
 							<div class="brand_title"></div>
 							<div id="gv80coupe_barimg" class="bar_image">
-								<img src="<%= ctxPath%>/images/Estimate/GV80_coupe.png"  class="car_image"/>
+								<img src="<%= ctxPath%>/images/Estimate/GV80_COUPE.png"  class="car_image"/>
 							</div>
 						</div>
 				  	</div>
@@ -214,7 +214,7 @@
 								</span>
 							</div>
 							<div id="gv70electric_barimg" class="bar_image">
-								<img src="<%= ctxPath%>/images/Estimate/GV70_electric.png" class="car_image" />
+								<img src="<%= ctxPath%>/images/Estimate/GV70_ELECTRIFIED.png" class="car_image" />
 							</div>
 						</div>
 				  	</div>

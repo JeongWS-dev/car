@@ -33,7 +33,7 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	      try {
 	         Context initContext = new InitialContext();
 	         Context envContext  = (Context)initContext.lookup("java:/comp/env");
-	         ds = (DataSource)envContext.lookup("jdbc/myoracle");
+	         ds = (DataSource)envContext.lookup("jdbc/semioracle");
 	         
 	         aes = new AES256(SecretMyKey.KEY);
 	         // SecretMyKey.KEY 이것은 우리가 만든 암호화/복호화 키이다.
@@ -60,18 +60,28 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	// 차량 종류 선택에 따른 이미지 이름 가져오기
 	@Override
 	public List<Map<String, String>> carSearch_Image(String carSearchType) throws SQLException {
-		List<Map<String, String>> carImgList = new ArrayList<>();
+		
+		List<Map<String, String>> carImgList = new ArrayList<>(); // 새로 선언했기 때문에 null넘어갈 수 없음.
 	      
 		try {
 			conn = ds.getConnection();
+			String sql = "";
 	         
-	        String sql = " select PK_CARNAME "
+			if(carSearchType.equals("ALL") || carSearchType == null){
+				sql = " select PK_CARNAME "
+	                  + " from TBL_CAR ";
+
+				pstmt = conn.prepareStatement(sql);
+			}
+			else{
+				sql = " select PK_CARNAME "
 	                  + " from TBL_CAR "
 	                  + " where CARTYPE = ? ";
-	         
-	        pstmt = conn.prepareStatement(sql);
-	        pstmt.setString(1, carSearchType);
-				
+				pstmt = conn.prepareStatement(sql);
+	        	pstmt.setString(1, carSearchType);
+
+			}
+			
 	        rs = pstmt.executeQuery();
 	         
 	        while(rs.next()) {

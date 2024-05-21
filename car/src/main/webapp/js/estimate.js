@@ -28,36 +28,20 @@ $(document).ready(function(){
         $('.right-slide').hide()
       }
 
-    const btnShareTw = document.querySelector('.bar_share_tw');
-
-    btnShareTw.addEventListener('click', () => {
-    const sendText = '제네시스 견적내기';
-    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
-    window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
-    });
-
-
-    const btnShareFb = document.querySelector('.bar_share_fb');
-
-    btnShareFb.addEventListener('click', () => {
-    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
-    window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
-    });
-   
-
     $("a.tab-btn").click(function(){
         // 바에 있는 버튼 클릭 했을 때
         e.preventDefault(); // 링크의 기본 동작을 막음
 
         var cartype = $(this).text() // 차 종류를 가져옴
+        console.log("cartype =>", cartype);
 
         $.ajax({
-            url:`estimate_all.up`,
+            url:`estimate.car`,
             type:"get",
             data: {"cartype" : cartype},
                  dataType:"json",
                  success:function(json){ 
-                  // json 은 {"group_id":"R2GWPBT7UoW308sI","success_count":1,"error_count":0} 처럼 된다. 
+                  console.log("json =>", json);
                 
                   if(json.success_count == 1) {
                   $("div#smsResult").html("<span style='color:red; font-weight:bold;'>문자전송이 성공되었습니다.^^</span>");
@@ -77,6 +61,7 @@ $(document).ready(function(){
     });
 });
 
+/*
 const tabButtons = document.querySelectorAll('.tab-btn');
 var hide_car;
 
@@ -106,9 +91,25 @@ tabButtons.forEach(button => {
 });
 
 
+    const btnShareTw = document.querySelector('.bar_share_tw');
+
+    btnShareTw.addEventListener('click', () => {
+    const sendText = '제네시스 견적내기';
+    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
+    window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
+    });
 
 
-/*
+    const btnShareFb = document.querySelector('.bar_share_fb');
+
+    btnShareFb.addEventListener('click', () => {
+    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
+    window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+    });
+   
+
+
+
 
 var swiper = new Swiper('.swiper-container', {
     // 슬라이더 옵션 설정

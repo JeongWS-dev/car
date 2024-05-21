@@ -199,7 +199,3 @@ button.after:hover {
     margin:20px 0 0 0;
     transition:0.2s;
 }
-
-.choicePower > a {
-    font-weight: bold;
-}

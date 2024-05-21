@@ -16,6 +16,8 @@ public interface CarDAO_JeongWS {
 
 	List<Map<String, String>> selectInColor(String carName) throws SQLException;// 해당 차종에 해당하는 내장컬러 정보 가져오기
 
+	List<Map<String, String>> selectChoiceOption(String carName) throws SQLException;// 해당 차종에 해당하는 선택옵션 품목 가져오기
+
 	
 
 }

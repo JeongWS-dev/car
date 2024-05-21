@@ -188,12 +188,12 @@
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
-				<li class="nav-item choicePower"> 
+				<li class="nav-item"> 
 					<a class="nav-link" href="<%= ctxPath%>/createCar/powertrains.car">엔진 타입</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="<%= ctxPath%>/createCar/drivetrains.car" style="color:white;">구동 타입</a>
+					<a class="nav-link" href="<%= ctxPath%>/createCar/drivetrains.car" style="color:white; font-weight:bold;">구동 타입</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
@@ -230,6 +230,9 @@
 				<span>〉</span>
 				<li class="nav-item">
 					<a class="nav-link" href="#">견적완료</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"><i class="fa-solid fa-xmark"></i></a>
 				</li>
 			</ul>
 		</nav>

@@ -11,10 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class InsideColor extends AbstractController {
+public class ChoiceOption extends AbstractController {
 	private CarDAO_JeongWS cdao = null;
 	
-	public InsideColor() {
+	public ChoiceOption() {
 		cdao = new CarDAO_imple_JeongWS();
 	}
 	@Override
@@ -26,19 +26,20 @@ public class InsideColor extends AbstractController {
 			String option_title = request.getParameter("option_title");
 			
 			cvo.setTotalPrice(add_total_price);
-			cvo.setOutColorTitle(option_title);
+			cvo.setInColorTitle(option_title);
 			
 //			System.out.println(cvo.getCarName());
 //			System.out.println(cvo.getTotalPrice());
 //			System.out.println(cvo.getPowerTrainTitle());
 //			System.out.println(cvo.getOutColorTitle());
+//			System.out.println(cvo.getInColorTitle());
 			
-			List<Map<String,String>> mapList = cdao.selectInColor(cvo.getCarName());// 해당 차종에 해당하는 내장 디자인&컬러 정보 가져오기
+			List<Map<String,String>> mapList = cdao.selectChoiceOption(cvo.getCarName());// 해당 차종에 해당하는 선택옵션 품목 가져오기
 			
 			session.setAttribute("cvo", cvo);
 			request.setAttribute("Price", add_total_price);
 			request.setAttribute("mapList", mapList);
-			super.setViewPage("/WEB-INF/CreateCar/InsideColor.jsp");
+			super.setViewPage("/WEB-INF/CreateCar/ChoiceOption.jsp");
 			
 		}// end of if(request.getMethod().equalsIgnoreCase("POST")) {
 	}

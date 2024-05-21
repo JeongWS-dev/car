@@ -33,7 +33,7 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	      try {
 	         Context initContext = new InitialContext();
 	         Context envContext  = (Context)initContext.lookup("java:/comp/env");
-	         ds = (DataSource)envContext.lookup("jdbc/myoracle");
+	         ds = (DataSource)envContext.lookup("jdbc/semioracle");
 	         
 	         aes = new AES256(SecretMyKey.KEY);
 	         // SecretMyKey.KEY 이것은 우리가 만든 암호화/복호화 키이다.

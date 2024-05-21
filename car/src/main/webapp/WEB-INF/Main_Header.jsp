@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <%
     String ctxPath = request.getContextPath();
     //    /MyMVC
@@ -59,131 +62,76 @@
 									
 									</div>
 
+									
 									<div>
-
 										<div style="display: flex; width: 200%;">
-											<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G90 BLACK</h5>
-												<img src="images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-black-desktop-630x240-ko.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%; margin-top: 0.7%; width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="margin-bottom: 9%; font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G90</h5>
-												<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LONG WHEEL BASE</h5>
-												<img src="images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-lwb-desktop-630x240-ko.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 7%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_LONG_WHEEL_BASE">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G90</h5>
-												<img src="images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90">견적 내기  ></a>
-											</div>
+											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
+												<c:if test="${status.index < 3}">
+														
+																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
+																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																		<a href="#" class="custom-button">자세히 보기</a>
+																	</div>
+																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
+																</div>
+														
+												</c:if>
+											</c:forEach>
 										</div>
-
-
-
+										
 										<div style="display: flex; width: 200%;">
-											<div class="card" style="height: 100%; margin-left: 0%; width: 21rem; background-color:#141414; border: solid 0px white;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G80</h5>
-												<img src="images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g80-24fl-desktop-630x240-ko.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%; margin-top: 0.27%; width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="margin-bottom: 9%;  font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELECTRICFIED</h5>
-												<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G80</h5>
-												<img src="images/MainPage/our-models/electrified_g80_24my_gnb_thumbnail.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 7%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%;  width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G70</h5>
-												<img src="images/MainPage/our-models/g70_23my_gnb_thumbnail.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
+											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
+												<c:if test="${status.index >= 3 && status.index < 6}">
+														
+																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
+																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																		<a href="#" class="custom-button">자세히 보기</a>
+																	</div>
+																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
+																</div>
+														
+												</c:if>
+											</c:forEach>
 										</div>
-
-
+										
 										<div style="display: flex; width: 200%;">
-											<div class="card" style="height: 100%; margin-left: 0%; margin-top: 0.2%; width: 21rem; background-color:#141414; border: solid 0px white;">
-												<h5 class="card-title" style="margin-bottom: 9%; font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G70</h5>
-												<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOOTING BRAKE</h5>
-												<img src="images/MainPage/our-models/g70-sb-23my.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 7%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%; width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;GV80</h5>
-												<img src="images/MainPage/our-models/gv80_24fl_gnb_thumbnail.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%; width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;GV80 COUPE</h5>
-												<img src="images/MainPage/our-models/gv80-coupe-gnb-thumbnail.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
+											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
+												<c:if test="${status.index >= 6 && status.index < 9}">
+														
+																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
+																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																		<a href="#" class="custom-button">자세히 보기</a>
+																	</div>
+																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
+																</div>
+														
+												</c:if>
+											</c:forEach>
+										</div>
+										
+										<div style="display: flex; width: 200%;">
+											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
+												<c:if test="${status.index >= 9 && status.index < 12}">
+														
+																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
+																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																		<a href="#" class="custom-button">자세히 보기</a>
+																	</div>
+																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
+																</div>
+														
+												</c:if>
+											</c:forEach>
 										</div>
 
-
-										<div style="display: flex; width: 200%; padding-bottom: 0%;">
-											<div class="card" style="height: 100%; margin-left: 0%; width: 21rem; background-color:#141414; border: solid 0px white;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;GV70</h5>
-												<img src="images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-gv70-desktop-630x240-ko.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%; margin-top: 0.27%; width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="margin-bottom: 9%;  font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELECTRICFIED</h5>
-												<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G70</h5>
-												<img src="images/MainPage/our-models/egv70_GNB_Thumbnail.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 7%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
-
-											<div class="card" style="height: 100%; margin-left: 6%; width: 21rem; background-color:#141414; border: none;">
-												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;GV60</h5>
-												<img src="images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-gv60-desktop-630x240-ko.png" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
-												</div>
-												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g90-black/bto/powertrains?code=BBBBBBB&packages=5SE">견적 내기  ></a>
-											</div>
-										</div>
 									</div>
 									
 								</div>  

@@ -7,9 +7,11 @@ public class CreateCarVO {
     private String DriveTrainTitle;// 구동 옵션 이름 
     private String OutColorTitle;// 선택 색상 이름
     private String TotalPrice;     // 총 가격
+    private String carType;		   // 차종
 	
     
-    // == getter and setter start == //
+    
+	// == getter and setter start == //
     public String getCarName() {
 		return carName;
 	}
@@ -40,6 +42,13 @@ public class CreateCarVO {
 	public void setOutColorTitle(String outColorTitle) {
 		OutColorTitle = outColorTitle;
 	}
+	public String getCarType() {
+		return carType;
+	}
+	public void setCarType(String cartype) {
+		this.carType = cartype;
+	}
+	
     
 	
 } // end of public class CreateCarVO {

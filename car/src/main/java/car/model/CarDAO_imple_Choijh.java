@@ -57,7 +57,7 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 		try {
 			  conn = ds.getConnection();
 			  
-			  String sql = " select pk_carname, cartype "
+			  String sql = " select pk_carname, cartype, carpoint "
 			  			 + " from tbl_car ";
 			  
 			  pstmt = conn.prepareStatement(sql);
@@ -68,7 +68,8 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 				  
 				  CreateCarVO ccvo = new CreateCarVO();
 				  ccvo.setCarType(rs.getString("carType"));
-				  ccvo.setCarName(rs.getString("pk_carname")); 
+				  ccvo.setCarName(rs.getString("pk_carname"));
+				  ccvo.setCarpoint(rs.getString("carpoint"));
 				  
 				  carList.add(ccvo); 
 			  }// end of while--------------

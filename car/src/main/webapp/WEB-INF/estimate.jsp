@@ -54,28 +54,15 @@
 				<ul>
 					<li>
 						<div class="btn-wrap">
-							<span class="line">
-								<a href = "#" class="tab-btn" role="tab" id="ALL">ALL</a>
-							</span>
+							<div class="tab-btn" id="ALL">ALL</div>
 						</div>
 
 						<div class="btn-wrap">
-							<span class="line">
-								<a href = "#" role="tab-btn" id="BLACK">BLACK</a>
-							</span>
+							<div class="tab-btn" role="tab" id="SEDAN">SEDAN</div>							
 						</div>
+
 						<div class="btn-wrap">
-							<a href = "#" class="tab-btn" role="tab" id="SEDAN">SEDAN</a>
-							<span class="line">
-								<span class="line-inner" style="width:100%"></span>
-							</span>
-							
-						</div>
-						<div class="btn-wrap">
-							<span class="line">
-								<a href = "#" class="tab-btn" role="tab" id="SUV">SUV</a>
-							</span>
-							
+							<div class="tab-btn" role="tab" id="SUV">SUV</div>
 						</div>
 					</li>
 				</ul>
@@ -87,7 +74,7 @@
 				<div id="img_slider" class="swiper-wrapper">
 				  	<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="g90new_title" class="vehicle_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">G90 BLACK</div>
 								<span class=icon>
 									<img src="<%= ctxPath%>/images/Estimate/new_50x24.png" />
@@ -101,7 +88,7 @@
 					</div>
 				  	<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="g90long_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">G90</div>
 							</div>
 							<div class="brand_title">LONG WHEEL BASE</div>
@@ -112,7 +99,7 @@
 				  	</div>
 				  	<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="g90_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">G90</div>
 							</div>
 							<div class="brand_title"></div>
@@ -123,7 +110,7 @@
 				  	</div>
 					<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="g80_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">G80</div>
 							</div>
 							<div class="brand_title"></div>
@@ -135,7 +122,7 @@
 					<div class="swiper-slide">
 						<div class="slide_pieces">
 							<div class="brand_title">ELECTRIFIED</div>
-							<div id="g80elect_title" class="vehicle_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">G80</div>
 								<span class=icon>
 									<img src="<%= ctxPath%>/images/Estimate/ev_20x24.png" />
@@ -148,7 +135,7 @@
 				  	</div>
 					 <div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="g70_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">G70</div>
 							</div>
 							<div class="brand_title"></div>
@@ -159,7 +146,7 @@
 				  	</div>
 					<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="g70smooting_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">G70</div>
 							</div>
 							<div class="brand_title">SMOOTHING BREAK</div>
@@ -170,7 +157,7 @@
 				  	</div>
 					<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="gv80_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">GV80</div>
 							</div>
 							<div class="brand_title"></div>
@@ -181,7 +168,7 @@
 				  	</div>
 					<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="gv80coupe_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">GV80 COUPE</div>
 							</div>
 							<div class="brand_title"></div>
@@ -192,7 +179,7 @@
 				  	</div>
 					<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="gv70new_title" class="vehicle_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">GV70</div>
 								<span class=icon>
 									<img src="<%= ctxPath%>/images/Estimate/new_50x24.png" />
@@ -207,7 +194,7 @@
 					<div class="swiper-slide">
 						<div class="slide_pieces">
 							<div class="brand_title">ELECTRIFIED</div>
-							<div id="gv70electric_title" class="vehicle_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">GV70</div>
 								<span class=icon>
 									<img src="<%= ctxPath%>/images/Estimate/ev_20x24.png" />
@@ -220,7 +207,7 @@
 				  	</div>
 					<div class="swiper-slide">
 						<div class="slide_pieces">
-							<div id="gv60_title" class="vehicle_title">
+							<div class="vehicle_title">
 								<div class= "vehicle_name">GV60</div>
 								<span class=icon>
 									<img src="<%= ctxPath%>/images/Estimate/ev_20x24.png"  />
@@ -251,13 +238,13 @@
 		<div class = "col-md-10"  >
 			<ul class="util_list">
 				<li id="facebook">
-					<a class="bar_share_tw" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+					<a class="bar_share" id="bar_share_tw" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 				</li>
 				<li id="twitter">
-					<a class="bar_share_tw" href="#"><i class="fa-brands fa-x-twitter"></i></a>
+					<a class="bar_share" id="bar_share_tw" href="#"><i class="fa-brands fa-x-twitter"></i></a>
 				</li>
 				<li id="copy">
-					<a class="bar_share_copy" href="#"><i class="fa-solid fa-copy"></i></a>
+					<a class="bar_share" id="bar_share_copy" href="#"><i class="fa-solid fa-copy"></i></a>
 				</li>
 			</ul>
 		</div>

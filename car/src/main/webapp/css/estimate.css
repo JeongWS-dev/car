@@ -5,63 +5,6 @@ body{
 }
 
 
-body > nav {
-	height: 70px;
-	background-color: black;
-}
-
-body > nav.top{
-	border-bottom: solid 1px gray;
-}
-
-body > nav.top > img {
-	margin-left: 7%;
-}
-
-body > nav.top > ul {
-	border: solid 0px blue;
-	margin-left: 1%;
-	width:100%;
-}
-
-body > nav.top > ul > li:nth-child(1),
-body > nav.top > ul > li:nth-child(2),
-body > nav.top > ul > li:nth-child(3){
-	border:solid 0px red;
-	margin-left: 1%;
-}
-
-body > nav.top > ul > li:nth-child(4){
-	margin-left: 60%;
-}
-
-body > nav.top > ul > li:nth-child(5),
-body > nav.top > ul > li:nth-child(6){
-	margin-left: 1%;
-}
-
-body > nav.bottom > ul {
-	border: solid 0px red;
-	width:90%;
-	margin: auto;
-}
-
-body > nav.bottom > ul > li {
-	border: solid 0px green;
-	display: inline-block;
-	margin: 0 0.5%;
-}
-
-body > nav.bottom > ul > li:nth-child(7){
-	margin-left: 35%;
-}
-
-body > div#footer {
-	border-top: solid 1px gray;
-	background-color: black;
-	height: 200px;
-}
-
 
 body > div#container {
 	border: solid 0px green;
@@ -131,47 +74,41 @@ body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul {
 	border: solid 0px BLUE;
 }
 
-body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li div{
+body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li> div.btn-wrap{
     display: inline-block; /* 인라인 요소로 배치 */
-	border: solid 0px yellow;
+	border: solid 0px blue;
 	width: 15%;
 	padding: 10px;
 	font-size: medium;
-	border-bottom:2px solid white;
+	color : gray;
+	cursor: pointer;
+	
+}
+
+body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li> div.btn-wrap:hover{
+	color : white;
+	border-bottom: solid 1px white;
 }
 
 
 
-a:link {
-	color : gray;
+a.top_button:link,
+a.bar_share:link {
+	color : white;
 	text-decoration: none;
 }
-a:visited {
-	color : gray;
+a.top_button:visited,
+a.bar_share:visited {
+	color : white;
 	text-decoration: none;
 }
-a:hover {
+a.top_button:hover,
+a.bar_share:hover  {
  	color : white;
 	text-decoration: none;
 }
-a:active {
-	color : white;
-	text-decoration: none;
-}
-
-a.top_button:link {
-	color : white;
-	text-decoration: none;
-}
-a.top_button:visited {
-	color : white;
-	text-decoration: none;
-}
-a.top_button:hover {
- 	color : white;
-	text-decoration: none;
-}
-a.top_button:active {
+a.top_button:active,
+a.bar_share:active {
 	color : white;
 	text-decoration: none;
   }

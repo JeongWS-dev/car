@@ -55,3 +55,43 @@ ALTER TABLE TBL_OPTION ENABLE CONSTRAINT FK_TBL_OPTION_FK_CARNAME;
 COMMIT;
 
 -- 차량 이름 변경 완료 끝 --
+
+ROLLBACK;
+
+
+-- tbl_car(차량) 테이블에 CarPoint 컬럼 추가(초기값 GENERAL)
+ALTER TABLE tbl_car ADD CarPoint VARCHAR2(20) DEFAULT 'GENERAL';
+
+select *
+from TBL_CAR;
+
+update TBL_CAR set CarPoint = 'BLACK' where Pk_CarName='G90_BLACK';
+update TBL_CAR set CarPoint = 'LONG_WHEEL_BASE' where Pk_CarName='G90_LONG_WHEEL_BASE';
+update TBL_CAR set CarPoint = 'ELECTRIFIED' where Pk_CarName='G80_ELECTRIFIED';
+update TBL_CAR set CarPoint = 'SHOOTING_BRAKE' where Pk_CarName='G70_SHOOTING_BRAKE';
+update TBL_CAR set CarPoint = 'COUPE' where Pk_CarName='GV80_COUPE';
+update TBL_CAR set CarPoint = 'ELECTRIFIED' where Pk_CarName='GV70_ELECTRIFIED';
+
+COMMIT;
+
+select PK_CARNAME , CarPoint 
+from TBL_CAR
+
+-- tbl_car(차량) 테이블에 CarLogo 컬럼 추가
+ALTER TABLE tbl_car ADD CarLogo VARCHAR2(20);
+
+select *
+from TBL_CAR;
+
+update TBL_CAR set CarLogo = 'NEW' where Pk_CarName='G90_BLACK';
+update TBL_CAR set CarLogo = 'NEW' where Pk_CarName='GV70';
+update TBL_CAR set CarLogo = 'EV' where Pk_CarName='G80_ELECTRIFIED';
+update TBL_CAR set CarLogo = 'EV' where Pk_CarName='GV70_ELECTRIFIED';
+update TBL_CAR set CarLogo = 'EV' where Pk_CarName='GV60';
+
+select *
+from TBL_CAR;
+
+COMMIT;
+
+

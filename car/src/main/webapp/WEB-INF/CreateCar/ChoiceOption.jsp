@@ -392,31 +392,9 @@
 				dataType:"json",
 				success:function(json){
 					$.each(json,function(index,item){
-						$("div.option_main_detail_desc").html(item.optiondesc)
-						// 여기부터 봐야한다 여기!!!!!
-						$("div.main_img_div").html("<img name='MainImg' src='${pageContext.request.contextPath}/images/createCar/choiceoption/"+item.optionimg+"'/>");
+						$("div.option_main_detail_desc").html(item.optiondesc);
+						$("img[name='MainImg']").attr({src:`${pageContext.request.contextPath}/images/createCar/choiceoption/\${item.optionimg}`});
 					})
-					// if(json.length == 0) {
-					// 	// 데이터가 존재하는 경우
-					// 	v_html = `<ul>`;
-					// 	v_html += `<li style ="color:white;">\${option_title}</li>`;
-					// 	v_html += `</ul>`;
-					// 	// HIT상품 결과를 출력하기
-					// 	$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
-					// 	change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
-					// }
-					// else if(json.length > 0){
-					// 	// 데이터가 존재하는 경우
-					// 	v_html = `<ul>`;
-					// 	$.each(json, function(index, item){
-					// 		v_html += `<li style ="color:white;">\${item.optionname}</li>`;
-					// 	});// end of $.each(json, function(index, item){
-					// 	v_html += `</ul>`;
-					// 	// HIT상품 결과를 출력하기
-					// 	$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
-					// 	change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
-						
-					// }// end of else if(start == "1" && json.length > 0)
 				},
 				error: function(request, status, error){
 					alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
@@ -498,7 +476,7 @@
 						<ul id="MainInnerUl">
 							<li class = "inner_main_option_detail" style="color:white; opacity:1.0;">${paraMap.optiondesc}</li>
 						</ul>
-						<div class="main_img_div"><img name="MainImg" src="<%=ctxPath%>/images/createCar/choiceoption/${paraMap.get('option_img')}"/></div>
+						<img name="MainImg" src="<%=ctxPath%>/images/createCar/choiceoption/${paraMap.get('option_img')}"/>
 					</div>
 					<div class="option_main_detail_desc"><sapn>${paraMap.optiondetaildesc}</sapn></div>
 				</c:forEach>

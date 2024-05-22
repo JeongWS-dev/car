@@ -59,22 +59,22 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 
 	// 차량 종류 선택에 따른 이미지 이름 가져오기
 	@Override
-	public List<Map<String, String>> carSearch_Image(String carSearchType) throws SQLException {
+	public List<Map<String, String>> carSearch(String carSearchType) throws SQLException {
 		
-		List<Map<String, String>> carImgList = new ArrayList<>(); // 새로 선언했기 때문에 null넘어갈 수 없음.
+		List<Map<String, String>> carList = new ArrayList<>(); // 새로 선언했기 때문에 null넘어갈 수 없음.
 	      
 		try {
 			conn = ds.getConnection();
 			String sql = "";
 	         
 			if(carSearchType.equals("ALL") || carSearchType == null){
-				sql = " select PK_CARNAME "
+				sql = " select PK_CARNAME , CarPoint, CarLogo "
 	                  + " from TBL_CAR ";
 
 				pstmt = conn.prepareStatement(sql);
 			}
 			else{
-				sql = " select PK_CARNAME "
+				sql = " select PK_CARNAME, CarPoint, CarLogo "
 	                  + " from TBL_CAR "
 	                  + " where CARTYPE = ? ";
 				pstmt = conn.prepareStatement(sql);
@@ -87,9 +87,13 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	        while(rs.next()) {
 	        	Map<String, String> paraMap = new HashMap<>();
 	        	paraMap.put("Pk_CarName", rs.getString("Pk_CarName"));
-	        	carImgList.add(paraMap);
+	        	paraMap.put("CarPoint", rs.getString("CarPoint"));
+	        	paraMap.put("CarLogo", rs.getString("CarLogo"));
+	        	carList.add(paraMap);
 
 	        }// end of while(rs.next())---------------------
+	        
+	       // System.out.println(">> 확인용 carList => " + carList);
 	         
 		} catch (SQLException e) {
 	        e.printStackTrace();
@@ -97,7 +101,7 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	         close();
 	    }
 	      
-	    return carImgList;
+	    return carList;
 	      
 	}
 

@@ -9,9 +9,11 @@ public class CreateCarVO {
     private String InColorTitle;// 선택 내장 색상 이름
     private String TotalPrice;     // 총 가격
     private String carType;		   // 차종
+    private String carpoint;       // 차포인트
 	
     
     
+	
 	// == getter and setter start == //
     public String getCarName() {
 		return carName;
@@ -54,5 +56,11 @@ public class CreateCarVO {
 	}
 	public void setInColorTitle(String inColorTitle) {
 		InColorTitle = inColorTitle;
+	}
+	public String getCarpoint() {
+		return carpoint;
+	}
+	public void setCarpoint(String carpoint) {
+		this.carpoint = carpoint;
 	}
 } // end of public class CreateCarVO {

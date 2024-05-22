@@ -24,7 +24,8 @@
 <!-- Optional JavaScript -->
 <script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-
+<!-- 내가만든 js -->
+<script type="text/javascript" src="<%= ctxPath%>/js/main_header.js"></script>
 
 
 
@@ -32,7 +33,7 @@
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 		
 		<!-- Brand -->
-		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
+		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6.8%;"> 
 	
 		<!-- Links -->
 		<header id="header" class="p-3 bg-black text-white" style="position: relative;" >
@@ -50,10 +51,10 @@
 										<li class="sidebar-brand" style="margin-top: 50%; margin-bottom: 100%; ">
 											<span>모델</span>
 										</li>
-										<li><a href="#">ALL</a></li>
-										<li><a href="#">BLACK</a></li>
-										<li><a href="#">SEDAN</a></li>
-										<li><a href="#">SUV</a></li>
+										<li><a id="cartype" href="#">ALL</a></li>
+										<li><a id="cartype" href="#">BLACK</a></li>
+										<li><a id="cartype" href="#">SEDAN</a></li>
+										<li><a id="cartype" href="#">SUV</a></li>
 										</ul>
 									
 
@@ -66,18 +67,24 @@
 									<div>
 										<div style="display: flex; width: 200%;">
 											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
-												<c:if test="${status.index < 3}">
-														
-																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
-																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
-																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																		<a href="#" class="custom-button">자세히 보기</a>
-																	</div>
-																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
-																</div>
-														
-												</c:if>
+													<c:if test="${status.index < 3}">
+															
+														<div id="${ccvo.carType}" class="card" style="height: 100%; margin-left: 5%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+															<c:if test="${ccvo.carpoint=='ELECTRIFIED'}">
+																<h5 class="card-title" style="margin-bottom: 9%;  font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${requestScope.carNameList[status.index]}</h5>
+															<c:if test="${ccvo.carpoint=='LONG_WHEEL_BASE' || ccvo.carpoint=='SHOOTING_BRAKE'}">
+																<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																<a href="#" class="custom-button">자세히 보기</a>
+															</div>
+															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
+														</div>
+															
+													</c:if>
 											</c:forEach>
 										</div>
 										
@@ -85,14 +92,20 @@
 											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
 												<c:if test="${status.index >= 3 && status.index < 6}">
 														
-																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
-																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
-																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																		<a href="#" class="custom-button">자세히 보기</a>
-																	</div>
-																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
-																</div>
+													<div id="${ccvo.carType}" class="card" style="height: 100%; margin-left: 5%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+															<c:if test="${ccvo.carpoint=='ELECTRIFIED'}">
+																<h5 class="card-title" style="margin-bottom: 9%;  font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${requestScope.carNameList[status.index]}</h5>
+															<c:if test="${ccvo.carpoint=='LONG_WHEEL_BASE' || ccvo.carpoint=='SHOOTING_BRAKE'}">
+																<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																<a href="#" class="custom-button">자세히 보기</a>
+															</div>
+															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
+														</div>
 														
 												</c:if>
 											</c:forEach>
@@ -102,14 +115,20 @@
 											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
 												<c:if test="${status.index >= 6 && status.index < 9}">
 														
-																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
-																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
-																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																		<a href="#" class="custom-button">자세히 보기</a>
-																	</div>
-																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
-																</div>
+													<div id="${ccvo.carType}" class="card" style="height: 100%; margin-left: 5%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+															<c:if test="${ccvo.carpoint=='ELECTRIFIED'}">
+																<h5 class="card-title" style="margin-bottom: 9%;  font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${requestScope.carNameList[status.index]}</h5>
+															<c:if test="${ccvo.carpoint=='LONG_WHEEL_BASE' || ccvo.carpoint=='SHOOTING_BRAKE'}">
+																<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																<a href="#" class="custom-button">자세히 보기</a>
+															</div>
+															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
+														</div>
 														
 												</c:if>
 											</c:forEach>
@@ -119,14 +138,20 @@
 											<c:forEach var="ccvo" items="${requestScope.carList}" varStatus="status">
 												<c:if test="${status.index >= 9 && status.index < 12}">
 														
-																<div class="card" style="height: 100%; margin-left: 0%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
-																	<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${ccvo.carName}</h5>
-																	<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carType}" alt="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
-																	<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																		<a href="#" class="custom-button">자세히 보기</a>
-																	</div>
-																	<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
-																</div>
+													<div id="${ccvo.carType}" class="card" style="height: 100%; margin-left: 5%; margin-top: 1.5%; width: 21rem; background-color:#141414; border: solid 0px white;">
+															<c:if test="${ccvo.carpoint=='ELECTRIFIED'}">
+																<h5 class="card-title" style="margin-bottom: 9%;  font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;${requestScope.carNameList[status.index]}</h5>
+															<c:if test="${ccvo.carpoint=='LONG_WHEEL_BASE' || ccvo.carpoint=='SHOOTING_BRAKE'}">
+																<h5 class="card-title" style="margin-bottom: 7%; margin-top: -10%; font-size: 16px; font-weight: 400; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccvo.carpoint}</h5>
+															</c:if>
+															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
+															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
+																<a href="#" class="custom-button">자세히 보기</a>
+															</div>
+															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
+														</div>
 														
 												</c:if>
 											</c:forEach>

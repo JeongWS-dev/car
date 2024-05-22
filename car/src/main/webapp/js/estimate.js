@@ -27,16 +27,16 @@ $(document).ready(function(){
     $('.right-slide').hide()
   }
 
-  $("a.tab-btn").click(function(e){
+  $("div#ALL").click(function(){
       // 바에 있는 버튼 클릭 했을 때
      //   e.preventDefault(); // 링크의 기본 동작을 막음
-
-    var carSearchType = $(e.target).text() // 차 종류를 가져옴
+    // alert("ALL button clicked");
+    //var carSearchType = $(e.target).text() // 차 종류를 가져옴
 
     $.ajax({
-      url:"/car/estimate/carType.car",
+      url:"/car/estimate/carTypeJSON.car",
       type:"get",
-      data: {"carSearchType" : carSearchType},
+      data: {"carSearchType" : 'ALL'},
       dataType : "json",
       
       success:function(json){ 
@@ -45,19 +45,64 @@ $(document).ready(function(){
           v_html = `현재 상품 준비중 입니다...`;
           $("div.slider_outline").html(v_html);
         }
+       // console.log("~~~ 확인용 json 1=> ", JSON.stringify(json));
 
-        else if(carSearchType == 'SEDAN'){
-          $("div#new_image").empty();
-          $("div#carTitle").html("G90<br><div>LONG WHEEL BASE</div>");
-          $("div#carTitle").removeAttr("style");
-          $("div#carTitle").css("background-color", "red");
+        else{
+          $.each(json, function(index, item){
+            v_html +=  `<div class="swiper-slide">
+                          <div class="slide_pieces">
+                            <div class="vehicle_title">
+                              <div class= "vehicle_name">`
+            if( item.CarPoint == 'GENERAL' || item.CarPoint.length < 11){
+              v_html += item.Pk_CarName.split('_').join(' ');
+            }
+            else{
+              let newcarname = item.Pk_CarName.split('_', 1); // _을 기준으로 나눈 배열을 1개로 반환해라. (앞의 차 이름만 받아오기 위함)
+              //console.log("차량~~", car[0]);
+              v_html += newcarname[0];
+            }
+             
+           
+
+            /*
+
+            v_html +=         `</div>
+                            <span class=icon>`
+            
+            if(CarLogo != null && CarLogo == 'NEW' ){
+              v_html +=     `<img src="../images/Estimate/new_50x24.png" />`
+            }
+       /*     else if(CarLogo != null && CarLogo == 'EV'){
+
+            } 
+
+            html +=       `</span>	
+                        </div>
+                      <div class="brand_title">`;
+
+            if( )
+*/
+
+            /*
 
 
+              
+            <div class="brand_title"></div>
+            <div id="g90new_barimg" class="bar_image">
+              <img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png" class="car_image" />
+            </div>
+          </div>
+        </div>
+  */        
+ 
+
+            
+          });// end of each------------
+
+        }// end of else-----------
 
 
-        }
-
-      }
+      
         
        // console.log("~~~ 확인용 json => ", JSON.stringify(json));
        // alert("확인용 carSearchType : " + carSearchType);
@@ -65,11 +110,11 @@ $(document).ready(function(){
              
      
         
-    });
+    }// end of success---------
 
-  });
-});
-
+    });// end of ajax---------
+  });// end of  $("div#ALL").click(function(){
+});// end of $(document).ready(function(){---------
 /*
 const tabButtons = document.querySelectorAll('.tab-btn');
 var hide_car;

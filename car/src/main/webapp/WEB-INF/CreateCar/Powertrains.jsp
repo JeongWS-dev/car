@@ -169,7 +169,7 @@
 		const step = total_price / 2;
 
 		total_price -= step;
-		}, 50);
+		}, 30);
 
 		$("input[name='option_title']").val(option_title);
 	}// end of function change_Main(MainImg,ctxPath,total_price,option_price){

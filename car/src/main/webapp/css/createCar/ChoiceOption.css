@@ -69,17 +69,6 @@ div.body {
     display: flex;
 }
 
-div.optionMain{
-    border:solid 0px blue;
-    width:100%;
-}
-
-div.body > div.optionMain > img{
-    border:solid 1px red;
-    width:60%;
-    margin-top: 100px;
-}
-
 div.option {
     font-size: 10pt;
     color: rgb(167, 167, 167);
@@ -219,4 +208,43 @@ i.check_option{
     opacity:100%;
     background-color: white;
     color:black;
+}
+div.optionMain{
+    border:solid 0px blue;
+    width:100%;
+    padding-top: 100px;
+}
+
+div.option_main_flex{
+    display: flex;
+}
+
+div.body > div.optionMain > img{
+    border:solid 1px red;
+    width:60%;
+    height:500px;
+    margin-left: 5%;
+}
+
+ul#MainInnerUl{
+    display: inline-block;
+    width:20%;
+    margin-top: 100px;
+}
+
+li.inner_main_option_detail{
+    list-style: '| ';
+    opacity: 30%;
+}
+
+li.inner_main_option_detail:hover{
+    cursor: pointer;
+    opacity: 100%;
+}
+
+div.option_main_detail_desc{
+    margin-left: 25%;
+    opacity:100%;
+    color:rgb(124, 124, 124);
+    width:50%;
 }

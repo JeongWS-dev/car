@@ -39,7 +39,7 @@ public class ChoiceOptionJSON extends AbstractController {
 		}// end of if(productList.size() >0) {
 		
 		String json = jsonArr.toString();// 문자열로 변환
-		System.out.println(json);
+		// System.out.println(json);
 		/*
 		 [{"pnum":36,"discountPercent":17,"pname":"노트북30","pcompany":"삼성전자","cname":"전자제품","saleprice":1000000,"point":60,"pinputdate":"2024-05-14","pimage1":"59.jpg","pqty":100,"pimage2":"60.jpg","pcontent":"30번 노트북","price":1200000,"sname":"HIT"},
 		 {"pnum":35,"discountPercent":17,"pname":"노트북29","pcompany":"레노버","cname":"전자제품","saleprice":1000000,"point":60,"pinputdate":"2024-05-14","pimage1":"57.jpg","pqty":100,"pimage2":"58.jpg","pcontent":"29번 노트북","price":1200000,"sname":"HIT"},

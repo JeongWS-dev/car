@@ -20,6 +20,10 @@ public interface CarDAO_JeongWS {
 
 	List<Map<String, String>> select_choice_option_detail(String choice_option_title) throws SQLException;// 내가 선택한 옵션의 상세옵션 불러오기
 
+	Map<String, String> select_detail_option(String cilck_detail_option, String carname) throws SQLException;// 메인에서 선택한 세부옵션에 해당하는 값을 가져온다.
+
+	Map<String, String> select_option(String cilck_detail_option, String carname) throws SQLException;// 세부옵션에 해당하는 값이 없다면 옵션 테이블에서 가져와야한다.
+
 	
 
 }

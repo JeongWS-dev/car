@@ -115,8 +115,13 @@ insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optio
 insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','뒷좌석 자세 메모리 시스템','간단한 버튼 조작으로 좌석을 제어하여 설정된 위치까지 자동으로 조절하는 장치입니다.','G90_options_ims.jpg');
 commit;
 
+select pk_optioncode, option_img, optiondesc, optionprice, optiondetaildesc
+from tbl_option
+where fk_carname = 'G90';
+
 select *
-from tbl_option_detail;
+from tbl_option_detail
+where fk_optioncode like 'G90'||'%' and fk_carname = 'G90';
 
 select *
 from tbl_car;

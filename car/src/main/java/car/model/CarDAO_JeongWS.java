@@ -18,6 +18,8 @@ public interface CarDAO_JeongWS {
 
 	List<Map<String, String>> selectChoiceOption(String carName) throws SQLException;// 해당 차종에 해당하는 선택옵션 품목 가져오기
 
+	List<Map<String, String>> select_choice_option_detail(String choice_option_title) throws SQLException;// 내가 선택한 옵션의 상세옵션 불러오기
+
 	
 
 }

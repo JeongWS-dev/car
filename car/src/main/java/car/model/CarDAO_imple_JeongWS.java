@@ -242,5 +242,38 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		}
 		return ListMap;
 	}// end of public List<Map<String, String>> selectChoiceOption(String carName) throws SQLException {
+	
+	// 내가 선택한 옵션의 상세옵션 불러오기
+	@Override
+	public List<Map<String, String>> select_choice_option_detail(String choice_option_title) throws SQLException {
+		List<Map<String, String>> ListMap = new ArrayList<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select pk_optioncode, option_img, optiondesc, optionprice, optiondetaildesc "
+						+  " from tbl_option "
+						+  " where fk_carname = ? ";
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setString(1, carName);
+			rs = pstmt.executeQuery();
+			
+			DecimalFormat df = new DecimalFormat("#,###");
+			
+			while(rs.next()) {
+				
+				Map<String,String> paraMap = new HashMap<>();
+				paraMap.put("pk_optioncode",rs.getString("pk_optioncode"));
+				paraMap.put("option_img",rs.getString("option_img"));
+				paraMap.put("optiondesc",rs.getString("optiondesc"));
+				paraMap.put("optionprice",df.format(rs.getInt("optionprice")));
+				paraMap.put("optiondetaildesc", rs.getString("optiondetaildesc"));
+				
+				ListMap.add(paraMap);
+			}
+		}finally {
+			close();
+		}
+		return ListMap;
+	}// end of public List<Map<String, String>> select_choice_option_detail(String choice_option_title) throws SQLException {
     
 }

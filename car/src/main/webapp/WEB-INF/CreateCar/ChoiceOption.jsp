@@ -34,7 +34,7 @@
 
 		$("div.MainImg").hide();
 		$("div.ctxPath").hide();
-
+		$("div.option_code").hide();
 		let = total_price = $("div.total_price").text();
 		total_price = total_price.split(",").join("");
 		total_price = total_price.substring(0,total_price.indexOf("원"))
@@ -79,9 +79,21 @@
 
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
-				const option_title = $(e.target).text();
-				alert(option_title)
-				
+				const choice_option_code = $(e.target).parent().find("div.option_code").text();
+				//alert(choice_option_code) // 이게 왜 안뜰까
+				$.ajax({
+		                url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+		                type : "post",
+		                data : {"choice_option_title":choice_option_code},
+		                dataType:"json",
+		                success:function(json){
+							
+		                },
+		                error: function(request, status, error){
+		                   alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+		                }
+				})
+
 				change_Main(MainImg,ctxPath,option_title);
 			}
 			else if ($(e.target).is("div.option_price")){
@@ -90,51 +102,46 @@
 
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
-				const option_title = $(e.target).parent().find("div.option_title").text();
-				alert(option_title);
+				const choice_option_code = $(e.target).parent().find("div.option_code").text();
+				//alert(choice_option_code);
+
+				$.ajax({
+		                url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+		                type : "post",
+		                data : {"choice_option_title":choice_option_code},
+		                dataType:"json",
+		                success:function(json){
+
+		                },
+		                error: function(request, status, error){
+		                   alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+		                }
+				})
 
 				change_Main(MainImg,ctxPath,option_title);
 			}
 			else {
 				$("div.choice_option").css({"opacity":"0.3"});
 				$(e.target).css({"opacity":"1.0"});
-
 				const MainImg = $(e.target).find("div.MainImg").text();
 				const ctxPath = $(e.target).find("div.ctxPath").text();
 				let option_price = $(e.target).find("div.option_price").text();
-				const option_title = $(e.target).find("div.option_title").text();
-				alert(option_title);
+				const choice_option_code = $(e.target).find("div.option_code").text();
+				$.ajax({
+		                url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+		                type : "post",
+		                data : {"choice_option_title":choice_option_code},
+		                dataType:"json",
+		                success:function(json){
 
+		                },
+		                error: function(request, status, error){
+		                   alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+		                }
+				})
 				change_Main(MainImg,ctxPath,option_title);
 		    }
 		});
-
-		/*
-		$(".option_title").click(function(e){
-			//if($(e.target).is("div.option_title")){
-			//	$(".choice_option").css({"border":"solid 2px red"});
-				$(".choice_option").css({"opacity":"1.0", "border":""});
-
-				let idx = $(".option_title").index($(e.target));
-			//	alert(idx);
-			//  $(".choice_option").eq(idx).css({"border":"solid 2px red"});
-			    $(".choice_option").eq(idx).css({"opacity":"0.3", "border":"solid 2px red"});
-
-			//	$(e.target).parent().parent().css({"opacity":"1.0"});
-
-				console.log($(e.target).parent().parent().html());
-
-				const MainImg = $(e.target).parent().find("div.MainImg").text();
-				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
-
-				console.log(ctxPath);
-				console.log(MainImg);
-
-				change_Main(MainImg,ctxPath);
-			//}
-		});
-		*/
-		// <div class = "option_price" value="${paraMap.get('PowerPrice')}">+${paraMap.get('PowerPrice')}원</div>
 	})// end of $(document).ready(function(){
 	
 	function change_Main(MainImg,ctxPath,total_price,option_price,option_title){
@@ -251,12 +258,12 @@
 										<div class="card-header" id="headingOne">
 											<h2 class="mb-0">
 											  	<button class="btn" type="button" data-toggle="collapse" data-target="#${paraMap.pk_optioncode}" aria-expanded="true" aria-controls="collapseOne">
-												<i class="fa-solid fa-circle-check fa-2x check_option"></i>
-												<div class = "option_title" style="color:white;">${paraMap.optiondesc}</div>
-												<div class = "option_price" style="color:white;" value="${paraMap.get('optionprice')}">+${paraMap.optionprice}원</div>
-												<div class = "MainImg">${paraMap.option_img}</div>
-												<div class = "ctxPath"><%=ctxPath%></div>
-												
+													<i class="fa-solid fa-circle-check fa-2x check_option"></i>
+													<div class = "option_title" style="color:white;">${paraMap.optiondesc}</div>
+													<div class = "option_price" style="color:white;" value="${paraMap.get('optionprice')}">+${paraMap.optionprice}원</div>
+													<div class = "MainImg">${paraMap.option_img}</div>
+													<div class = "ctxPath"><%=ctxPath%></div>
+													<div class = "option_code" style="color:white">${paraMap.pk_optioncode}</div>
 												</button>
 											</h2>
 										</div>

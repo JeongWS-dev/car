@@ -28,11 +28,11 @@ public class ChoiceOption extends AbstractController {
 			cvo.setTotalPrice(add_total_price);
 			cvo.setInColorTitle(option_title);
 			
-//			System.out.println(cvo.getCarName());
-//			System.out.println(cvo.getTotalPrice());
-//			System.out.println(cvo.getPowerTrainTitle());
-//			System.out.println(cvo.getOutColorTitle());
-//			System.out.println(cvo.getInColorTitle());
+//				System.out.println(cvo.getCarName());
+//				System.out.println(cvo.getTotalPrice());
+//				System.out.println(cvo.getPowerTrainTitle());
+//				System.out.println(cvo.getOutColorTitle());
+//				System.out.println(cvo.getInColorTitle());
 			
 			List<Map<String,String>> mapList = cdao.selectChoiceOption(cvo.getCarName());// 해당 차종에 해당하는 선택옵션 품목 가져오기
 			
@@ -40,8 +40,6 @@ public class ChoiceOption extends AbstractController {
 			request.setAttribute("Price", add_total_price);
 			request.setAttribute("mapList", mapList);
 			super.setViewPage("/WEB-INF/CreateCar/ChoiceOption.jsp");
-			
 		}// end of if(request.getMethod().equalsIgnoreCase("POST")) {
 	}
-
 }

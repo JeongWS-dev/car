@@ -242,5 +242,85 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		}
 		return ListMap;
 	}// end of public List<Map<String, String>> selectChoiceOption(String carName) throws SQLException {
+	
+	// 내가 선택한 옵션의 상세옵션 불러오기
+	@Override
+	public List<Map<String, String>> select_choice_option_detail(String choice_option_title) throws SQLException {
+		List<Map<String, String>> ListMap = new ArrayList<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select fk_carname, optionname, optiondesc, optionimg "
+						+  " from tbl_option_detail "
+						+  " where fk_optioncode = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, choice_option_title);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Map<String,String> paraMap = new HashMap<>();
+				paraMap.put("fk_carname",rs.getString("fk_carname"));
+				paraMap.put("optionname",rs.getString("optionname"));
+				paraMap.put("optiondesc",rs.getString("optiondesc"));
+				paraMap.put("optionimg", rs.getString("optionimg"));
+				
+				ListMap.add(paraMap);
+			}
+		}finally {
+			close();
+		}
+		return ListMap;
+	}// end of public List<Map<String, String>> select_choice_option_detail(String choice_option_title) throws SQLException {
+	
+	// 메인에서 선택한 세부옵션에 해당하는 값을 가져온다.
+	@Override
+	public Map<String, String> select_detail_option(String cilck_detail_option,String carname) throws SQLException {
+		Map<String, String> paraMap = new HashMap<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select optiondesc, optionimg "
+						+ " from tbl_option_detail "
+						+ " where optionname = ? and fk_carname = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cilck_detail_option);
+			pstmt.setString(2, carname);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				paraMap.put("optiondesc",rs.getString("optiondesc"));
+				paraMap.put("optionimg",rs.getString("optionimg"));
+			}
+		}finally {
+			close();
+		}
+		return paraMap;
+	}// end of public Map<String, String> select_detail_option(String cilck_detail_option) throws SQLException {
+	
+	// 세부옵션에 해당하는 값이 없다면 옵션 테이블에서 가져와야한다.
+	@Override
+	public Map<String, String> select_option(String cilck_detail_option, String carname) throws SQLException {
+		Map<String, String> paraMap = new HashMap<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select optiondetaildesc, option_img "
+						+  " from tbl_option "
+						+  " where optiondesc = ? and fk_carname = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cilck_detail_option);
+			pstmt.setString(2, carname);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				paraMap.put("optiondesc",rs.getString("optiondetaildesc"));
+				paraMap.put("optionimg",rs.getString("option_img"));
+			}
+		}finally {
+			close();
+		}
+		return paraMap;
+	}// end of public Map<String, String> select_option(String cilck_detail_option, String carname) throws SQLException {
     
 }

@@ -115,8 +115,36 @@ insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optio
 insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1','G90','뒷좌석 자세 메모리 시스템','간단한 버튼 조작으로 좌석을 제어하여 설정된 위치까지 자동으로 조절하는 장치입니다.','G90_options_ims.jpg');
 commit;
 
-select *
-from tbl_option_detail;
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','뒷좌석 전동 시트 / 통풍 시트','전/후 방향 조절로 원하는 시트 각도를 설정할 수 있는 뒷좌석 전동 시트는 히터/통풍 기능을 통해 사계절 내내 쾌적한 승차감을 제공합니다.','G90_options_rear_seat.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','VIP 좌석 레그레스트','세단에 적용되는 레그레스트로, 2열 우측 좌석에만 적용되며 더욱 편안한 착좌감을 제공합니다.','G90_options_leg_foot_rest.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','어드밴스드 3존 공조 (B필러 에어벤트)','2열 센터콘솔에 뒷좌석의 온도를 조절할 수 있는 LCD 공조창을 적용하여 운전석, 조수석과는 별도로 개별 온도 제어가 가능하여 쾌적한 실내공간을 제공합니다.','G90_options_advanced_3zone.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','뒷좌석 목베개 / 윙아웃 헤드레스트','뒷좌석 목베개와 윙아웃 헤드레스트는 머리를 지지하여 편안한 릴렉스 자세를 취할 수 있도록 도와줍니다.','G90_options_rear_neck_head_rest.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','뒷좌석 스마트폰 무선 충전','뒷좌석에 무선 충전 패드가 마련되어 별도의 케이블 없이도 손쉽게 스마트폰을 충전할 수 있습니다.','G90_options_smart_phone_charger.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','뒷좌석 자세 메모리 시스템','간단한 버튼 조작으로 좌석을 제어하여 설정된 위치까지 자동으로 조절하는 장치입니다.','G90_options_ims.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','뒷좌석 에르고 릴렉싱 시트 (뒷좌석 마사지, VIP 좌석 발 마사지)','10개의 포켓을 내장한 시트백과 2셀 구조의 쿠션이 총 4가지 모드의 마사지 기능을 제공합니다. 에어셀 공기의 흡/배기를 승하차, 드라이브 모드와 차속, 뒷좌석 원스텝 특화 모드 등과 연동하여 최적의 착좌감을 제공합니다.','G90_options_rear_ergo_seat.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','VIP 좌석 풋레스트','세단에 적용되는 풋레스트로, 2열 우측 좌석에만 적용됩니다. 마시지 기능과 히팅 기능이 적용된 풋레스트는 사계절 내내 쾌적한 온도에서 발의 피로를 풀어줍니다.','G90_options_foot_rest.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','뒷좌석 프라이버시 글라스','차량 내부에서 밖을 볼 때 어두워지는 것은 최소화하고, 밖에서 차량 내부는 거의 보이지 않게 처리된 글라스로 편리함과 안락함을 제공합니다.','G90_options_privacy_glass.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_back_comport_package_1_2_front_comport','G90','운전석 / 동승석 에르고 릴렉싱 시트','시트백 10개 포켓과 쿠션 2셀 구조를 활용하여 전신 모드 외 3가지의 마사지 모드를 제공하며 최적의 착좌감을 제공합니다.','G90_options_driver_passanger_ergo_relaxing_seat.jpg');
+
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_hightech_package','G90','헤드업 디스플레이','내비게이션과의 콘텐츠 연동을 통해 속도나 내비게이션 정보 외에도 첨단 운전자 보조 시스템, 전화, 음성인식, 미디어 정보 등까지 표시합니다.','G90_options_head_up_display.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_hightech_package','G90','지능형 헤드램프','상시 상향등 주행으로 운전자의 전방 시야를 안전하게 확보하며 마주 오는 전방 차량 영역의 빛을 부분적으로 차단해 상대차 운전자의 눈부심을 막아줍니다. 별도로 헤드램프를 조작할 필요가 없어 야간 운전이 수월해집니다.','G90_options_head_lamp.jpg');
+
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_rws_airsuspension','G90','능동형 후륜 조향 (RWS)','차량의 주행 상황에 따라 전륜 조향과 연동하여 후륜의 조향각을 능동적으로 가변 제어합니다. 저속 선회 시에는 전륜과 반대 방향 으로 조향하여 회전 반경을 줄이고, 중고속 선회 시에는 전륜과 같은 방향 으로 조향해 차체 미끄러짐을 줄입니다.','G90_options_rws.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_rws_airsuspension','G90','멀티챔버 에어 서스펜션','차고 조절 기능 및 멀티 챔버 방식을 적용하여 부드러운 승차감과 함께 다이내믹한 핸들링 성능을 제공합니다. ','G90_options_air_suspension.jpg');
+
+commit;
+
+update tbl_option set pk_optioncode = 'G90_back_comport_package_1_2' where optiondesc = '뒷좌석 컴포트 패키지I+II';
+update tbl_option set pk_optioncode = 'G90_back_comport_package_1_2_front_comport' where optiondesc = '뒷좌석 컴포트 패키지I+II+운전석 / 동승석 에르고 릴렉싱 시트';
+
+
+select pk_optioncode, option_img, optiondesc, optionprice, optiondetaildesc
+from tbl_option
+where fk_carname = 'G90';
+
+select fk_carname, optionname, optiondesc, optionimg
+from tbl_option_detail
+where fk_optioncode = 'G90_bang_olufsen_sound_package' and fk_carname = 'G90';
 
 select *
 from tbl_car;

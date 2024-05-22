@@ -34,42 +34,119 @@
 
 		$("div.MainImg").hide();
 		$("div.ctxPath").hide();
-
-		let = total_price = $("div.total_price").text();
-		total_price = total_price.split(",").join("");
-		total_price = total_price.substring(0,total_price.indexOf("원"))
+		$("div.option_code").hide();
+		$("div.option_defualt_desc").hide();
 
 		$(".btn").click(function(e){
 			if($(e.target).is("i.check_option")){
-				if($("input[name='ischecked']").val() == 0){
-					$("input[name='ischecked']").val("1");
+				
+				if($(e.target).parent().find("input[name='ischecked']").val() == 0){
+					$(e.target).parent().find("input[name='ischecked']").val("1");
+					let ischecked = $(e.target).parent().find("input[name='ischecked']").val();
 					$(e.target).css({"background-color":"rgba(0,0,0,0)","color":"white"});
 
 					const MainImg = $(e.target).parent().find("div.MainImg").text();
 					const ctxPath = $(e.target).parent().find("div.ctxPath").text();
-					const option_title = $(e.target).text();
+					const option_title = $(e.target).parent().find("div.option_title").text();
 					// alert(option_title);
 					let option_price = $(e.target).parent().find("div.option_price").text();
 					option_price = option_price.split(",").join("");
 					option_price = option_price.substring(1,option_price.indexOf("원"))
-					console.log(option_price);
-
-					change_Main(MainImg,ctxPath,total_price,option_price,option_title);
+					// console.log(option_price);
+					let total_price = $("div.total_price").text().split(",").join("");
+					total_price = total_price.substring(0,total_price.indexOf("원"));
+					// alert(total_price);
+					const choice_option_code = $(e.target).parent().find("div.option_code").text();
+					// alert(choice_option_code);
+					const option_defualt_desc = $(e.target).parent().find("div.option_defualt_desc").text();
+					let v_html = ``;
+					$.ajax({
+							url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+							type : "post",
+							data : {"choice_option_title":choice_option_code},
+							dataType:"json",
+							success:function(json){
+								if(json.length == 0) {
+									// 데이터가 존재하는 경우
+									v_html = `<ul>`;
+									v_html += `<li style ="color:white;">\${option_title}</li>`;
+									v_html += `</ul>`;
+									// HIT상품 결과를 출력하기
+									$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+									change_Main_price(json,MainImg,ctxPath,total_price,option_price,option_title,option_defualt_desc,ischecked);
+								}
+								else if(json.length > 0){
+									// 데이터가 존재하는 경우
+									v_html = `<ul>`;
+									$.each(json, function(index, item){
+										v_html += `<li style ="color:white;">\${item.optionname}</li>`;
+									});// end of $.each(json, function(index, item){
+									v_html += `</ul>`;
+									// HIT상품 결과를 출력하기
+									$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+									change_Main_price(json,MainImg,ctxPath,total_price,option_price,option_title,option_defualt_desc,ischecked);
+									
+								}// end of else if(start == "1" && json.length > 0)
+							},
+							error: function(request, status, error){
+							alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+							}
+					})
+					
 				}
 				else{
-					$("input[name='ischecked']").val("0");
+					$(e.target).parent().find("input[name='ischecked']").val("0");
+					let ischecked = $(e.target).parent().find("input[name='ischecked']").val();
 					$(e.target).css({"background-color":"white","color":"black"});
 
 					const MainImg = $(e.target).parent().find("div.MainImg").text();
 					const ctxPath = $(e.target).parent().find("div.ctxPath").text();
-					const option_title = $(e.target).text();
+					const option_title = $(e.target).parent().find("div.option_title").text();
 					// alert(option_title);
 					let option_price = $(e.target).parent().find("div.option_price").text();
 					option_price = option_price.split(",").join("");
 					option_price = option_price.substring(1,option_price.indexOf("원"))
-					console.log(option_price);
+					//console.log(option_price);
 
-					change_Main(MainImg,ctxPath,total_price,option_price,option_title);
+					let total_price = $("div.total_price").text().split(",").join("");
+					total_price = total_price.substring(0,total_price.indexOf("원"));
+
+					const choice_option_code = $(e.target).parent().find("div.option_code").text();
+					// alert(choice_option_code);
+					const option_defualt_desc = $(e.target).parent().find("div.option_defualt_desc").text();
+					let v_html = ``;
+					$.ajax({
+							url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+							type : "post",
+							data : {"choice_option_title":choice_option_code},
+							dataType:"json",
+							success:function(json){
+								if(json.length == 0) {
+									// 데이터가 존재하는 경우
+									v_html = `<ul>`;
+									v_html += `<li style ="color:white;">\${option_title}</li>`;
+									v_html += `</ul>`;
+									// HIT상품 결과를 출력하기
+									$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+									change_Main_price(json,MainImg,ctxPath,total_price,option_price,option_title,option_defualt_desc,ischecked);
+								}
+								else if(json.length > 0){
+									// 데이터가 존재하는 경우
+									v_html = `<ul>`;
+									$.each(json, function(index, item){
+										v_html += `<li style ="color:white;">\${item.optionname}</li>`;
+									});// end of $.each(json, function(index, item){
+									v_html += `</ul>`;
+									// HIT상품 결과를 출력하기
+									$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+									change_Main_price(json,MainImg,ctxPath,total_price,option_price,option_title,option_defualt_desc,ischecked);
+									
+								}// end of else if(start == "1" && json.length > 0)
+							},
+							error: function(request, status, error){
+							alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+							}
+					})
 				}
 			}
 			else if($(e.target).is("div.option_title")){
@@ -79,10 +156,42 @@
 
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
-				const option_title = $(e.target).text();
-				alert(option_title)
-				
-				change_Main(MainImg,ctxPath,option_title);
+				const choice_option_code = $(e.target).parent().find("div.option_code").text();
+				const option_title = $(e.target).parent().find("div.option_title").text();
+				const option_defualt_desc = $(e.target).parent().find("div.option_defualt_desc").text();
+				let v_html = ``;
+				$.ajax({
+		                url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+		                type : "post",
+		                data : {"choice_option_title":choice_option_code},
+		                dataType:"json",
+		                success:function(json){
+							if(json.length == 0) {
+								// 데이터가 존재하는 경우
+								v_html = `<ul>`;
+								v_html += `<li style ="color:white;">\${option_title}</li>`;
+								v_html += `</ul>`;
+								// HIT상품 결과를 출력하기
+								$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+								change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+							}
+							else if(json.length > 0){
+								// 데이터가 존재하는 경우
+								v_html = `<ul>`;
+								$.each(json, function(index, item){
+									v_html += `<li style ="color:white;">\${item.optionname}</li>`;
+								});// end of $.each(json, function(index, item){
+								v_html += `</ul>`;
+								// HIT상품 결과를 출력하기
+								$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+								change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+							    
+							}// end of else if(start == "1" && json.length > 0)
+		                },
+		                error: function(request, status, error){
+		                   alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+		                }
+				})
 			}
 			else if ($(e.target).is("div.option_price")){
 				$(".choice_option").css({"opacity":"0.3", "border":""});
@@ -90,80 +199,230 @@
 
 				const MainImg = $(e.target).parent().find("div.MainImg").text();
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
+				const choice_option_code = $(e.target).parent().find("div.option_code").text();
 				const option_title = $(e.target).parent().find("div.option_title").text();
-				alert(option_title);
-
-				change_Main(MainImg,ctxPath,option_title);
+				const option_defualt_desc = $(e.target).parent().find("div.option_defualt_desc").text();
+				let v_html = ``;
+				$.ajax({
+		                url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+		                type : "post",
+		                data : {"choice_option_title":choice_option_code},
+		                dataType:"json",
+		                success:function(json){
+							if(json.length == 0) {
+								// 데이터가 존재하는 경우
+								v_html = `<ul>`;
+								v_html += `<li style ="color:white;">\${option_title}</li>`;
+								v_html += `</ul>`;
+								// HIT상품 결과를 출력하기
+								$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+								change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+							}
+							else if(json.length > 0){
+								// 데이터가 존재하는 경우
+								v_html = `<ul>`;
+								$.each(json, function(index, item){
+									v_html += `<li style ="color:white;">\${item.optionname}</li>`;
+								});// end of $.each(json, function(index, item){
+								v_html += `</ul>`;
+								// HIT상품 결과를 출력하기
+								$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+								change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+							    
+							}// end of else if(start == "1" && json.length > 0)
+		                },
+		                error: function(request, status, error){
+		                   alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+		                }
+				})
 			}
 			else {
 				$("div.choice_option").css({"opacity":"0.3"});
 				$(e.target).css({"opacity":"1.0"});
-
 				const MainImg = $(e.target).find("div.MainImg").text();
 				const ctxPath = $(e.target).find("div.ctxPath").text();
-				let option_price = $(e.target).find("div.option_price").text();
+				const choice_option_code = $(e.target).find("div.option_code").text();
 				const option_title = $(e.target).find("div.option_title").text();
-				alert(option_title);
-
-				change_Main(MainImg,ctxPath,option_title);
+				const option_defualt_desc = $(e.target).find("div.option_defualt_desc").text();
+				let v_html = ``;
+				$.ajax({
+		                url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
+		                type : "post",
+		                data : {"choice_option_title":choice_option_code},
+		                dataType:"json",
+		                success:function(json){
+							if(json.length == 0) {
+								// 데이터가 존재하는 경우
+								v_html = `<ul>`;
+								v_html += `<li style ="color:white;">\${option_title}</li>`;
+								v_html += `</ul>`;
+								// HIT상품 결과를 출력하기
+								$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+								change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+							}
+							else if(json.length > 0){
+								// 데이터가 존재하는 경우
+								v_html = `<ul>`;
+								$.each(json, function(index, item){
+									v_html += `<li style ="color:white;">\${item.optionname}</li>`;
+								});// end of $.each(json, function(index, item){
+								v_html += `</ul>`;
+								// HIT상품 결과를 출력하기
+								$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+								change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+							    
+							}// end of else if(start == "1" && json.length > 0)
+		                },
+		                error: function(request, status, error){
+		                   alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+		                }
+				})
 		    }
-		});
+		});// end of $(".btn").click(function(e){
 
-		/*
-		$(".option_title").click(function(e){
-			//if($(e.target).is("div.option_title")){
-			//	$(".choice_option").css({"border":"solid 2px red"});
-				$(".choice_option").css({"opacity":"1.0", "border":""});
-
-				let idx = $(".option_title").index($(e.target));
-			//	alert(idx);
-			//  $(".choice_option").eq(idx).css({"border":"solid 2px red"});
-			    $(".choice_option").eq(idx).css({"opacity":"0.3", "border":"solid 2px red"});
-
-			//	$(e.target).parent().parent().css({"opacity":"1.0"});
-
-				console.log($(e.target).parent().parent().html());
-
-				const MainImg = $(e.target).parent().find("div.MainImg").text();
-				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
-
-				console.log(ctxPath);
-				console.log(MainImg);
-
-				change_Main(MainImg,ctxPath);
-			//}
-		});
-		*/
-		// <div class = "option_price" value="${paraMap.get('PowerPrice')}">+${paraMap.get('PowerPrice')}원</div>
+		$("li.inner_main_option_detail").click(function(e){
+			const cilck_detail_option = $(e.target).text();
+			click_option_detail(cilck_detail_option);
+		})// end of $("li.inner_main_option_detail").click(function(e){
 	})// end of $(document).ready(function(){
-	
-	function change_Main(MainImg,ctxPath,total_price,option_price,option_title){
 		
-		let html = `<img name="MainImg" src="\${ctxPath}/images/createCar/choiceoption/\${MainImg}"/>`;
-
-		$("div.optionMain").html(html);
-
-		if(option_price!=null&&total_price!=null){
-			const add_total_price = Number(total_price) + Number(option_price)
-			$("input[name='add_total_price']").val(add_total_price.toLocaleString('en')+"원");
-
-			const handle = setInterval(() => {
-			$("div.total_price").html(Math.ceil(add_total_price - total_price).toLocaleString('en')+"원");
-
-			// 목표에 도달하면 정지
-			if (total_price < 1) {
-				clearInterval(handle);
+	function change_Main_price(json,MainImg,ctxPath,total_price,option_price,option_title,option_defualt_desc,ischecked){
+		if(json.length==0){
+			let html = `<ul id="MainInnerUl">`;
+			html += `<li class="inner_main_option_detail" style = "color:white;" onclick="click_option_detail('\${option_title}')">\${option_title}</li>`;
+			html += `</ul>`;
+			html += `<img name="MainImg" src="\${ctxPath}/images/createCar/choiceoption/\${MainImg}"/>`;
+			$("div.option_main_flex").html(html);
+			let span = "<span>"+option_defualt_desc+"</span>";
+			$("div.option_main_detail_desc").html(span);
+			let add_total_price = 0;
+			if(ischecked == "1"){
+				add_total_price = Number(total_price) + Number(option_price);
+				// alert(add_total_price);
 			}
+			else{
+				add_total_price = Number(total_price) - Number(option_price);
+				total_price = Number(total_price) - Number(option_price*2);
+				// alert(add_total_price)
+			}
+			$("input[name='add_total_price']").val(add_total_price.toLocaleString('en')+"원");
+			const handle = setInterval(() => {
+				$("div.total_price").html(Math.ceil(add_total_price-total_price).toLocaleString('en')+"원");
 
-			// 적용될 수치, 점점 줄어듬
-			const step = total_price / 2;
+				// 목표에 도달하면 정지
+				if (total_price < 1) {
+					clearInterval(handle);
+				}
 
-			total_price -= step;
-			}, 50);
+				// 적용될 수치, 점점 줄어듬
+				const step = total_price / 2;
+
+				total_price -= step;
+			}, 30);
 
 			$("input[name='option_title']").val(option_title);
 		}
+		else{
+			let html = `<ul id="MainInnerUl">`;
+			$.each(json,function(index,item){
+				html += `<li class="inner_main_option_detail" style = "color:white;" onclick="click_option_detail('\${item.optionname}')">\${item.optionname}</li>`;
+			})
+			html += `</ul>`;
+			html += `<img name="MainImg" src="\${ctxPath}/images/createCar/choiceoption/\${MainImg}"/>`;
+			$("div.option_main_flex").html(html);
+			let span = "<span>"+option_defualt_desc+"</span>";
+			$("div.option_main_detail_desc").html(span);
+			let add_total_price = 0;
+			if(ischecked == "1"){
+				add_total_price = Number(total_price) + Number(option_price);
+				// alert(add_total_price);
+			}
+			else{
+				add_total_price = Number(total_price) - Number(option_price);
+				total_price = Number(total_price) - Number(option_price*2);
+				// alert(add_total_price)
+			}
+			$("input[name='add_total_price']").val(add_total_price.toLocaleString('en')+"원");
+			const handle = setInterval(() => {
+				$("div.total_price").html(Math.ceil(add_total_price-total_price).toLocaleString('en')+"원");
+
+				// 목표에 도달하면 정지
+				if (total_price < 1) {
+					clearInterval(handle);
+				}
+
+				// 적용될 수치, 점점 줄어듬
+				const step = total_price / 2;
+
+				total_price -= step;
+			}, 30);
+
+			$("input[name='option_title']").val(option_title);
+		}
+	}
+
+	function change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc){
+		if(json.length==0){
+			let html = `<ul id="MainInnerUl">`;
+			html += `<li class="inner_main_option_detail" style = "color:white;" onclick="click_option_detail('\${option_title}')">\${option_title}</li>`;
+			html += `</ul>`;
+			html += `<img name="MainImg" src="\${ctxPath}/images/createCar/choiceoption/\${MainImg}"/>`;
+			$("div.option_main_flex").html(html);
+			let span = "<span>"+option_defualt_desc+"</span>";
+			$("div.option_main_detail_desc").html(span);
+		}
+		else{
+			let html = `<ul id="MainInnerUl">`;
+			$.each(json,function(index,item){
+				html += `<li class="inner_main_option_detail" style = "color:white;" onclick="click_option_detail('\${item.optionname}')">\${item.optionname}</li>`;
+			})
+			html += `</ul>`;
+			html += `<img name="MainImg" src="\${ctxPath}/images/createCar/choiceoption/\${MainImg}"/>`;
+			$("div.option_main_flex").html(html);
+			let span = "<span>"+option_defualt_desc+"</span>";
+			$("div.option_main_detail_desc").html(span);
+		}
 	}// end of function change_Main(MainImg,ctxPath,total_price,option_price){
+
+	function click_option_detail(cilck_detail_option){
+		$.ajax({
+				url : "${pageContext.request.contextPath}/createCar/choiceDetailOptionJSON.car",
+				type : "post",
+				data : {"cilck_detail_option":cilck_detail_option},
+				dataType:"json",
+				success:function(json){
+					$.each(json,function(index,item){
+						$("div.option_main_detail_desc").html(item.optiondesc)
+						// 여기부터 봐야한다 여기!!!!!
+						$("div.main_img_div").html("<img name='MainImg' src='${pageContext.request.contextPath}/images/createCar/choiceoption/"+item.optionimg+"'/>");
+					})
+					// if(json.length == 0) {
+					// 	// 데이터가 존재하는 경우
+					// 	v_html = `<ul>`;
+					// 	v_html += `<li style ="color:white;">\${option_title}</li>`;
+					// 	v_html += `</ul>`;
+					// 	// HIT상품 결과를 출력하기
+					// 	$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+					// 	change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+					// }
+					// else if(json.length > 0){
+					// 	// 데이터가 존재하는 경우
+					// 	v_html = `<ul>`;
+					// 	$.each(json, function(index, item){
+					// 		v_html += `<li style ="color:white;">\${item.optionname}</li>`;
+					// 	});// end of $.each(json, function(index, item){
+					// 	v_html += `</ul>`;
+					// 	// HIT상품 결과를 출력하기
+					// 	$(e.target).parent().parent().parent().parent().parent().find("div.detail_choice_option").html(v_html);
+					// 	change_Main(json,MainImg,ctxPath,option_title,option_defualt_desc);
+						
+					// }// end of else if(start == "1" && json.length > 0)
+				},
+				error: function(request, status, error){
+					alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+				}
+		})
+	}// end of function click_option_detail(cilck_detail_option){
 
 	function goNext(){
 		const frm = document.powertrainChoiceFrm;
@@ -235,7 +494,13 @@
 		<div class = "optionMain">
 			<c:if test="${not empty requestScope.mapList}">
 				<c:forEach var="paraMap" items="${requestScope.mapList}" begin="0" end="0">
-					<img name="MainImg" src="<%=ctxPath%>/images/createCar/choiceoption/${paraMap.get('option_img')}"/>
+					<div class="option_main_flex">
+						<ul id="MainInnerUl">
+							<li class = "inner_main_option_detail" style="color:white; opacity:1.0;">${paraMap.optiondesc}</li>
+						</ul>
+						<div class="main_img_div"><img name="MainImg" src="<%=ctxPath%>/images/createCar/choiceoption/${paraMap.get('option_img')}"/></div>
+					</div>
+					<div class="option_main_detail_desc"><sapn>${paraMap.optiondetaildesc}</sapn></div>
 				</c:forEach>
 			</c:if>
 		</div>
@@ -251,19 +516,21 @@
 										<div class="card-header" id="headingOne">
 											<h2 class="mb-0">
 											  	<button class="btn" type="button" data-toggle="collapse" data-target="#${paraMap.pk_optioncode}" aria-expanded="true" aria-controls="collapseOne">
-												<i class="fa-solid fa-circle-check fa-2x check_option"></i>
-												<div class = "option_title" style="color:white;">${paraMap.optiondesc}</div>
-												<div class = "option_price" style="color:white;" value="${paraMap.get('optionprice')}">+${paraMap.optionprice}원</div>
-												<div class = "MainImg">${paraMap.option_img}</div>
-												<div class = "ctxPath"><%=ctxPath%></div>
-												
+													<i class="fa-solid fa-circle-check fa-2x check_option"></i>
+													<div class = "option_title" style="color:white;">${paraMap.optiondesc}</div>
+													<div class = "option_price" style="color:white;" value="${paraMap.get('optionprice')}">+${paraMap.optionprice}원</div>
+													<div class = "MainImg">${paraMap.option_img}</div>
+													<div class = "ctxPath"><%=ctxPath%></div>
+													<div class = "option_code" style="color:white">${paraMap.pk_optioncode}</div>
+													<div class = "option_defualt_desc" style="color:white">${paraMap.optiondetaildesc}</div>
+													<input name="ischecked" type="hidden" value="0"/>
 												</button>
 											</h2>
 										</div>
 										<div id="${paraMap.pk_optioncode}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 											<!-- .collapse show 는 맨 처음에는  내용물을 보여주도록 하는 것임. -->
-											<div class="card-body">
-											  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											<div class="card-body detail_choice_option">
+											  
 											</div>
 										</div>
 									</div>
@@ -282,7 +549,6 @@
 		<form name="powertrainChoiceFrm">
 			<input name="option_title" type="hidden" value=""/>
 			<input name="add_total_price" type="hidden" value="${requestScope.Price}"/>
-			<input name="ischecked" type="hidden" value="0"/>
 		</form>
 	</div>
 </body>

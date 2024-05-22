@@ -27,31 +27,19 @@ public class ChoiceOptionJSON extends AbstractController {
 		JSONArray jsonArr = new JSONArray();
 		if(mapList.size() >0) {
 			// DB에서 조회해온 결과물이 있을 경우
-//			for(:) {
-//				JSONObject jsonObj = new JSONObject();
-//				jsonObj.put("pnum", pvo.getPnum());// {"pnum":36}
-//				jsonObj.put("pname", pvo.getPname());// {"pnum":36,"pname":"노트북30"}
-//				jsonObj.put("cname", pvo.getCategvo().getCname());// {"pnum":36,"pname":"노트북30","cname":"전자제품"}
-//				jsonObj.put("pcompany", pvo.getPcompany());
-//	            jsonObj.put("pimage1", pvo.getPimage1());
-//	            jsonObj.put("pimage2", pvo.getPimage2());
-//	            jsonObj.put("pqty", pvo.getPqty());
-//	            jsonObj.put("price", pvo.getPrice());
-//	            jsonObj.put("saleprice", pvo.getSaleprice());
-//	            jsonObj.put("sname", pvo.getSpvo().getSname());
-//	            jsonObj.put("pcontent", pvo.getPcontent());
-//	            jsonObj.put("point", pvo.getPoint());
-//	            jsonObj.put("pinputdate", pvo.getPinputdate());
-//	            jsonObj.put("discountPercent", pvo.getDiscountPercent());
-//	            // jsonObj ==> {"pnum":36,"pname":"노트북30","cname":"전자제품"...,"pinputdate":"2024-05-14","discountPercent":17}
-//	            
-//	            jsonArr.put(jsonObj);// jsonArr ==> [{"pnum":36,"pname":"노트북30","cname":"전자제품"...,"pinputdate":"2024-05-14","discountPercent":17},]
-//			}// end of for(ProductVO pvo :productList) {
-			
+			for(Map<String,String> map:mapList) {
+				JSONObject jsonObj = new JSONObject();
+				jsonObj.put("fk_carname", map.get("fk_carname"));
+				jsonObj.put("optionname", map.get("optionname"));
+				jsonObj.put("optiondesc", map.get("optiondesc"));
+				jsonObj.put("optionimg", map.get("optionimg"));
+	            
+	            jsonArr.put(jsonObj);
+			}// end of for(ProductVO pvo :productList) {
 		}// end of if(productList.size() >0) {
 		
 		String json = jsonArr.toString();// 문자열로 변환
-		// System.out.println(json);
+		System.out.println(json);
 		/*
 		 [{"pnum":36,"discountPercent":17,"pname":"노트북30","pcompany":"삼성전자","cname":"전자제품","saleprice":1000000,"point":60,"pinputdate":"2024-05-14","pimage1":"59.jpg","pqty":100,"pimage2":"60.jpg","pcontent":"30번 노트북","price":1200000,"sname":"HIT"},
 		 {"pnum":35,"discountPercent":17,"pname":"노트북29","pcompany":"레노버","cname":"전자제품","saleprice":1000000,"point":60,"pinputdate":"2024-05-14","pimage1":"57.jpg","pqty":100,"pimage2":"58.jpg","pcontent":"29번 노트북","price":1200000,"sname":"HIT"},

@@ -81,13 +81,27 @@
 				const ctxPath = $(e.target).parent().find("div.ctxPath").text();
 				const choice_option_code = $(e.target).parent().find("div.option_code").text();
 				//alert(choice_option_code) // 이게 왜 안뜰까
+				let v_html = ``;
 				$.ajax({
 		                url : "${pageContext.request.contextPath}/createCar/choiceOptionJSON.car",
 		                type : "post",
 		                data : {"choice_option_title":choice_option_code},
 		                dataType:"json",
 		                success:function(json){
-							
+							if(json.length == 0) {
+								v_html = `현재 상품 준비중 입니다...`;
+								$("div#displayHIT").html(v_html);
+							}
+							else if(json.length > 0){
+								// 데이터가 존재하는 경우
+								v_html += `<ul>`;
+								$.each(json, function(index, item){
+									v_html += `<li>${item.optionname}</li>`;
+								});// end of $.each(json, function(index, item){
+								v_html += `</ul>`;
+								// HIT상품 결과를 출력하기
+								$("div.detail_choice_option").html(v_html);
+							}// end of else if(start == "1" && json.length > 0)
 		                },
 		                error: function(request, status, error){
 		                   alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
@@ -269,8 +283,8 @@
 										</div>
 										<div id="${paraMap.pk_optioncode}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 											<!-- .collapse show 는 맨 처음에는  내용물을 보여주도록 하는 것임. -->
-											<div class="card-body">
-											  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											<div class="card-body detail_choice_option">
+											  
 											</div>
 										</div>
 									</div>

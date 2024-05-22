@@ -250,23 +250,20 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		try {
 			conn = ds.getConnection();
 			
-			String sql  =  " select pk_optioncode, option_img, optiondesc, optionprice, optiondetaildesc "
-						+  " from tbl_option "
-						+  " where fk_carname = ? ";
+			String sql  =  " select fk_carname, optionname, optiondesc, optionimg "
+						+  " from tbl_option_detail "
+						+  " where fk_optioncode = ? ";
 			pstmt = conn.prepareStatement(sql);
-			//pstmt.setString(1, carName);
+			pstmt.setString(1, choice_option_title);
 			rs = pstmt.executeQuery();
-			
-			DecimalFormat df = new DecimalFormat("#,###");
 			
 			while(rs.next()) {
 				
 				Map<String,String> paraMap = new HashMap<>();
-				paraMap.put("pk_optioncode",rs.getString("pk_optioncode"));
-				paraMap.put("option_img",rs.getString("option_img"));
+				paraMap.put("fk_carname",rs.getString("fk_carname"));
+				paraMap.put("optionname",rs.getString("optionname"));
 				paraMap.put("optiondesc",rs.getString("optiondesc"));
-				paraMap.put("optionprice",df.format(rs.getInt("optionprice")));
-				paraMap.put("optiondetaildesc", rs.getString("optiondetaildesc"));
+				paraMap.put("optionimg", rs.getString("optionimg"));
 				
 				ListMap.add(paraMap);
 			}

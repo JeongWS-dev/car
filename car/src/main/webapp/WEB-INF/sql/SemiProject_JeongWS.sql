@@ -121,7 +121,7 @@ where fk_carname = 'G90';
 
 select *
 from tbl_option_detail
-where fk_optioncode like 'G90'||'%' and fk_carname = 'G90';
+where fk_optioncode = 'G90_bang_olufsen_sound_package' and fk_carname = 'G90';
 
 select *
 from tbl_car;

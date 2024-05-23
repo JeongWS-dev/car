@@ -8,6 +8,7 @@ import car.model.CarDAO_imple_Choijh;
 import createCar.domain.CreateCarVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class IndexController extends AbstractController {
 	
@@ -19,14 +20,13 @@ public class IndexController extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		session.removeAttribute("cvo");
 		
 		// 카테고리 목록을 조회해오기 
 		List<CreateCarVO> carList = cdao.selectcarList(); 
 		List<String> carNameList = new ArrayList<>();
 		String carName = "";
-		
-		
-		
 		for(int i=0; i<carList.size(); i++) {
 			if(!(carList.get(i).getCarpoint().trim().equalsIgnoreCase("general")) && !(carList.get(i).getCarpoint().trim().equalsIgnoreCase("black")) && !(carList.get(i).getCarpoint().trim().equalsIgnoreCase("coupe"))) {
 				System.out.println(i+carList.get(i).getCarName());

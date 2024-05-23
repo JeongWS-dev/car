@@ -24,10 +24,13 @@ public class ChoiceOption extends AbstractController {
 			CreateCarVO cvo = (CreateCarVO) session.getAttribute("cvo");
 			String add_total_price = request.getParameter("add_total_price");
 			String option_title = request.getParameter("option_title");
+			String incolor_price = request.getParameter("incolor_price");
 			
 			cvo.setTotalPrice(add_total_price);
 			cvo.setInColorTitle(option_title);
+			cvo.setIncolor_price(incolor_price);
 			
+			System.out.println(cvo.getIncolor_price());
 //				System.out.println(cvo.getCarName());
 //				System.out.println(cvo.getTotalPrice());
 //				System.out.println(cvo.getPowerTrainTitle());

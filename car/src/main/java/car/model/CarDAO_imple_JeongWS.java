@@ -322,5 +322,75 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		}
 		return paraMap;
 	}// end of public Map<String, String> select_option(String cilck_detail_option, String carname) throws SQLException {
+	
+	// 내가 선택한 옵션들의 타이틀, 가격, 사진의 값을 가져온다.
+	@Override
+	public Map<String, String> selectMyOption(Map<String, String> paraMap) throws SQLException {
+		Map<String, String> Map = new HashMap<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select carprice, powericon_img, powerprice, powerdesc,outcolorcar_img, outcoloricon_img, outcolordesc, outcolorprice, incoloricon_img, incolordesc, incolorprice "
+						+  " from tbl_car T JOIN tbl_power P "
+						+  " on T.pk_carname = P.fk_carname "
+						+  " JOIN tbl_outcolor O "
+						+  " on T.pk_carname = O.fk_carname "
+						+  " JOIN tbl_Incolor I "
+						+  " on T.pk_carname = I.fk_carname "
+						+  " where T.pk_carname = ? and P.PowerDesc = ? and outcolordesc = ? and incolordesc = ? and incolorprice = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("carname"));
+			pstmt.setString(2, paraMap.get("powerTrainTitle"));
+			pstmt.setString(3, paraMap.get("OutColorTitle"));
+			pstmt.setString(4, paraMap.get("InColorTitle"));
+			pstmt.setString(5, paraMap.get("IncolorPrice"));
+			rs = pstmt.executeQuery();
+			DecimalFormat df = new DecimalFormat("#,###");
+			if(rs.next()) {
+				Map.put("carprice", df.format(rs.getInt("carprice"))+"원");
+				Map.put("powericon_img", rs.getString("powericon_img"));
+				Map.put("powerprice", df.format(rs.getInt("powerprice"))+"원");
+				Map.put("powerdesc", rs.getString("powerdesc"));
+				Map.put("outcolorcar_img", rs.getString("outcolorcar_img"));
+				Map.put("outcoloricon_img", rs.getString("outcoloricon_img"));
+				Map.put("outcolordesc", rs.getString("outcolordesc"));
+				Map.put("outcolorprice", df.format(rs.getInt("outcolorprice"))+"원");
+				Map.put("incoloricon_img", rs.getString("incoloricon_img"));
+				Map.put("incolordesc", rs.getString("incolordesc"));
+				Map.put("incolorprice", df.format(rs.getInt("incolorprice"))+"원");
+				
+				
+			}
+		}finally {
+			close();
+		}
+		return Map;
+	}// end of public Map<String, String> selectMyChoiceOption(Map<String, String> paraMap) throws SQLException {
+	
+	// 내가 선택한 상세옵션명에 일치하는 가격을 불러온다.
+	@Override
+	public Map<String, String> selectMyChoiceOption(String optionTitle, String carName) throws SQLException {
+		Map<String, String> Map = new HashMap<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select optiondesc, optionprice "
+						+  " from tbl_option "
+						+  " where fk_carname = ? and optiondesc = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, carName);
+			pstmt.setString(2, optionTitle);
+			
+			rs = pstmt.executeQuery();
+			DecimalFormat df = new DecimalFormat("#,###");
+			if(rs.next()) {
+				Map.put("optiondesc", rs.getString("optiondesc"));
+				Map.put("optionprice", "+"+df.format(rs.getInt("optionprice"))+"원");
+			}
+		}finally {
+			close();
+		}
+		return Map;
+	}// end of public Map<String, String> selectMyChoiceOption(String string, String carName) throws SQLException {
     
 }

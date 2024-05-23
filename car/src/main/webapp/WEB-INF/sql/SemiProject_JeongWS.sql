@@ -129,10 +129,18 @@ insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optio
 insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_hightech_package','G90','헤드업 디스플레이','내비게이션과의 콘텐츠 연동을 통해 속도나 내비게이션 정보 외에도 첨단 운전자 보조 시스템, 전화, 음성인식, 미디어 정보 등까지 표시합니다.','G90_options_head_up_display.jpg');
 insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_hightech_package','G90','지능형 헤드램프','상시 상향등 주행으로 운전자의 전방 시야를 안전하게 확보하며 마주 오는 전방 차량 영역의 빛을 부분적으로 차단해 상대차 운전자의 눈부심을 막아줍니다. 별도로 헤드램프를 조작할 필요가 없어 야간 운전이 수월해집니다.','G90_options_head_lamp.jpg');
 
-insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_rws_airsuspension','G90','능동형 후륜 조향 (RWS)','차량의 주행 상황에 따라 전륜 조향과 연동하여 후륜의 조향각을 능동적으로 가변 제어합니다. 저속 선회 시에는 전륜과 반대 방향 으로 조향하여 회전 반경을 줄이고, 중고속 선회 시에는 전륜과 같은 방향 으로 조향해 차체 미끄러짐을 줄입니다.','G90_options_rws.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_rws_airsuspension','G90','능동형 후륜 조향 (RWS)','차량의 주행 상황에 따라 전륜 조향과 연동하여 후륜의 조향각을 능동적으로 가변 제어합니다.','G90_options_rws.jpg');
 insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_rws_airsuspension','G90','멀티챔버 에어 서스펜션','차고 조절 기능 및 멀티 챔버 방식을 적용하여 부드러운 승차감과 함께 다이내믹한 핸들링 성능을 제공합니다. ','G90_options_air_suspension.jpg');
 
 commit;
+
+select optiondesc, optionimg
+from tbl_option_detail
+where optionname = '뒷좌석 전동 시트 / 통풍 시트' and fk_carname = 'G90';
+
+select optiondetaildesc, option_img
+from tbl_option
+where optiondesc = '파노라마 선루프' and fk_carname = 'G90';
 
 update tbl_option set pk_optioncode = 'G90_back_comport_package_1_2' where optiondesc = '뒷좌석 컴포트 패키지I+II';
 update tbl_option set pk_optioncode = 'G90_back_comport_package_1_2_front_comport' where optiondesc = '뒷좌석 컴포트 패키지I+II+운전석 / 동승석 에르고 릴렉싱 시트';
@@ -337,6 +345,17 @@ create sequence PK_LoginSeq;
  -- QnA 시퀀스 생성 (생성 완료)
  create sequence PK_QnASeq;
  
- 
- 
- 
+select P.powericon_img, powerprice, powerdesc, outcoloricon_img, outcolordesc, outcolorprice, incoloricon_img, incolordesc, incolorprice
+from tbl_car T JOIN tbl_power P
+on T.pk_carname = P.fk_carname
+JOIN tbl_outcolor O
+on T.pk_carname = O.fk_carname
+JOIN tbl_Incolor I
+on T.pk_carname = I.fk_carname
+where T.pk_carname = 'G90' and P.PowerDesc = '가솔린 3.5 터보 48V 일렉트릭 슈퍼차저' and outcolordesc = '마우이 블랙 [HBK]' and incolordesc = '어반 브라운 / 글레이셔 화이트 투톤' and incolorprice = '5500000'; 
+
+
+
+select *
+from tbl_outcolor
+where fk_carname = 'G90'

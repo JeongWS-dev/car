@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="main_car_image">
-					<img src="<%= ctxPath%>/images/Estimate/g90_black_main.png" />
+					<img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png"  />
 				</div>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 				<div id="img_slider" class="swiper-wrapper">
 					<%--
 				  	<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">G90 BLACK</div>
 								<span class=icon>
@@ -88,7 +88,7 @@
 						</div>
 					</div>
 				  	<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">G90</div>
 							</div>
@@ -99,7 +99,7 @@
 						</div>
 				  	</div>
 				  	<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">G90</div>
 							</div>
@@ -110,7 +110,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">G80</div>
 							</div>
@@ -121,7 +121,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="brand_title">ELECTRIFIED</div>
 							<div class="vehicle_title">
 								<div class= "vehicle_name">G80</div>
@@ -135,7 +135,7 @@
 						</div>
 				  	</div>
 					 <div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">G70</div>
 							</div>
@@ -146,7 +146,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">G70</div>
 							</div>
@@ -157,7 +157,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">GV80</div>
 							</div>
@@ -168,7 +168,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">GV80 COUPE</div>
 							</div>
@@ -179,7 +179,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">GV70</div>
 								<span class=icon>
@@ -193,7 +193,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="brand_title">ELECTRIFIED</div>
 							<div class="vehicle_title">
 								<div class= "vehicle_name">GV70</div>
@@ -207,7 +207,7 @@
 						</div>
 				  	</div>
 					<div class="swiper-slide">
-						<div class="slide_pieces">
+						<div class="card">
 							<div class="vehicle_title">
 								<div class= "vehicle_name">GV60</div>
 								<span class=icon>

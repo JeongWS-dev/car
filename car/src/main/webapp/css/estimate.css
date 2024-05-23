@@ -113,7 +113,10 @@ a.bar_share:active {
 	text-decoration: none;
   }
 
-
+div.main_car_image > img{
+	height:280px; 
+	width:775px;
+}
 
 div.bar_image{
 	height: 87px;
@@ -125,11 +128,17 @@ img.car_image{
 	border: solid 0px yellow;
 }
 
-div.swiper-slide,
-div.slide_pieces {
+div.swiper-slide{
 	width: 300px;
 	height: 310px;
 }
+div.card {
+	width: 300px;
+	height: 310px;
+	padding : 0;
+	cursor: pointer;
+}
+
 
 span.icon img{
 	width: auto;

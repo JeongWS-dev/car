@@ -345,6 +345,17 @@ create sequence PK_LoginSeq;
  -- QnA 시퀀스 생성 (생성 완료)
  create sequence PK_QnASeq;
  
- 
- 
- 
+select P.powericon_img, powerprice, powerdesc, outcoloricon_img, outcolordesc, outcolorprice, incoloricon_img, incolordesc, incolorprice
+from tbl_car T JOIN tbl_power P
+on T.pk_carname = P.fk_carname
+JOIN tbl_outcolor O
+on T.pk_carname = O.fk_carname
+JOIN tbl_Incolor I
+on T.pk_carname = I.fk_carname
+where T.pk_carname = 'G90' and P.PowerDesc = '가솔린 3.5 터보 48V 일렉트릭 슈퍼차저' and outcolordesc = '마우이 블랙 [HBK]' and incolordesc = '어반 브라운 / 글레이셔 화이트 투톤' and incolorprice = '5500000'; 
+
+
+
+select *
+from tbl_outcolor
+where fk_carname = 'G90'

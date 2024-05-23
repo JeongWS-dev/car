@@ -36,12 +36,15 @@
 		$("div.ctxPath").hide();
 		$("div.option_code").hide();
 		$("div.option_defualt_desc").hide();
+		$("div.ischoice").hide();
 
 		$(".btn").click(function(e){
 			if($(e.target).is("i.check_option")){
 				
 				if($(e.target).parent().find("input[name='ischecked']").val() == 0){
 					$(e.target).parent().find("input[name='ischecked']").val("1");
+					$(e.target).parent().find("div.ischoice").text("1");
+
 					let ischecked = $(e.target).parent().find("input[name='ischecked']").val();
 					$(e.target).css({"background-color":"rgba(0,0,0,0)","color":"white"});
 
@@ -96,6 +99,8 @@
 				}
 				else{
 					$(e.target).parent().find("input[name='ischecked']").val("0");
+					$(e.target).parent().find("div.ischoice").text("0");
+
 					let ischecked = $(e.target).parent().find("input[name='ischecked']").val();
 					$(e.target).css({"background-color":"white","color":"black"});
 
@@ -403,11 +408,24 @@
 	}// end of function click_option_detail(cilck_detail_option){
 
 	function goNext(){
+		
+		let option_title = "";
+		$("div.ischoice").each(function(index,item,elmt){
+			if(Number($(item).text())==1){
+				option_title += $(item).parent().find("div.option_title").text() + "!";
+			}
+		});
+
+		$("input[name='option_title']").val(option_title);
+
 		const frm = document.powertrainChoiceFrm;
-		frm.action = "choiceOption.car";
+		frm.action = "completeCreateCar.car";
 		frm.method = "post";
 		frm.submit();
 	}// end of function goNext(){
+	function exit(){
+		location.href="\<%= ctxPath%>/index.car";
+	}
 </script>
 
 <body>
@@ -462,7 +480,7 @@
 					<a class="nav-link">견적완료</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link"><i class="fa-solid fa-xmark"></i></a>
+					<a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#exit_modal" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></a>
 				</li>
 			</ul>
 		</nav>
@@ -502,6 +520,7 @@
 													<div class = "option_code" style="color:white">${paraMap.pk_optioncode}</div>
 													<div class = "option_defualt_desc" style="color:white">${paraMap.optiondetaildesc}</div>
 													<input name="ischecked" type="hidden" value="0"/>
+													<div class = "ischoice">0</div>
 												</button>
 											</h2>
 										</div>
@@ -529,4 +548,26 @@
 			<input name="add_total_price" type="hidden" value="${requestScope.Price}"/>
 		</form>
 	</div>
+
+	<div class="modal fade" id="exit_modal"> <%-- 만약에 모달이 안보이거나 뒤로 가버릴 경우에는 모달의 class 에서 fade 를 뺀 class="modal" 로 하고서 해당 모달의 css 에서 zindex 값을 1050; 으로 주면 된다. --%> 
+		<div class="modal-dialog modal-lg">
+		  <div class="modal-content">
+		  
+			<!-- Modal header -->
+			<div class="modal-header" style="background-color: black;">
+			  <h4 class="modal-title" style="color:white;">EXIT</h4>
+			  <button type="button" class="close idFindClose" data-dismiss="modal" style="color:white;">&times;</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body" id="add_image_modal-body" style="text-align: center; margin-top: 50px;">
+				<div style="margin:auto; font-size: 20pt;">내 차 만들기를 종료하시겠습니까?</div>
+
+				<input type="button" class="exit" onclick="exit()" value="예"/>
+				<input type="button" class="cancle" value="아니오" data-dismiss="modal"/>
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
 </body>

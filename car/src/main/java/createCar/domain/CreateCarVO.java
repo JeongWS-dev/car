@@ -10,7 +10,7 @@ public class CreateCarVO {
     private String TotalPrice;     // 총 가격
     private String carType;		   // 차종
     private String carpoint;       // 차포인트
-	
+	private String incolor_price; //내장색상 가격
     
     
 	
@@ -62,5 +62,11 @@ public class CreateCarVO {
 	}
 	public void setCarpoint(String carpoint) {
 		this.carpoint = carpoint;
+	}
+	public String getIncolor_price() {
+		return incolor_price;
+	}
+	public void setIncolor_price(String incolor_price) {
+		this.incolor_price = incolor_price;
 	}
 } // end of public class CreateCarVO {

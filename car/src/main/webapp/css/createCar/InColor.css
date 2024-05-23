@@ -211,3 +211,37 @@ button.after:hover {
 .choicePower > a {
     font-weight: bold;
 }
+
+input.exit{
+    margin-top: 100px;
+    background-color: white;
+    border:solid 1px black;
+    border-radius: 4px;
+    color:black;
+    width:150px;
+    height: 50px;
+}
+
+input.cancle{
+    margin-top: 100px;
+    border:solid 1px white;
+    background-color: black;
+    border-radius: 4px;
+    color:white;
+    width:150px;
+    height: 50px;
+}
+
+input.exit:hover{
+    border:solid 1px white;
+    background-color: black;
+    color:white;
+    transition:0.5s;
+}
+
+input.cancle:hover{
+    background-color: white;
+    border:solid 1px black;
+    color:black;
+    transition:0.5s;
+}

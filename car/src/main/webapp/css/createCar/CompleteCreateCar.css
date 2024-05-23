@@ -1,0 +1,206 @@
+@charset "UTF-8";
+body {
+    background-color: white;
+}
+
+
+body > nav > div {
+	border:solid 0px red;
+	width: 8%;
+}
+
+body > nav > div > span.model-name{
+	color:rgb(209, 209, 209);
+	font-size: 20pt;
+}
+
+body > nav.top > ul {
+	border:solid 0px blue;
+	margin: 0 auto;
+}
+
+body > nav.top > ul > li {
+	font-size: 15pt;
+	margin: 0 10px 0 10px;
+}
+
+body > nav > ul > span{
+	border:solid 0px red;
+	height:35px;
+	margin: auto;
+	color:rgb(197, 197, 197);
+	font-size: 17pt;
+}
+
+body > nav {
+	height: 70px;
+	background-color: black;
+}
+
+body > nav.top{
+	border-bottom: solid 1px gray;
+}
+
+div.top{
+    border:solid 0px red;
+    height:700px;
+    background-color: black;
+}
+
+div.DESC {
+    border:solid 0px blue;
+    height:500px;
+    width:35%;
+    margin:70px 0 0 10%;
+}
+
+div.IMG{
+    border:solid 0px green;
+    height: 600px;
+    width:40%;
+    margin:70px 0 0 0;
+}
+
+div.choice_car_name {
+    border:solid 0px red;
+    color:white;
+    font-weight:lighter;
+    font-size:40pt;
+}
+
+div.choice_defualt_option{
+    border-bottom: solid 1px rgb(117, 117, 117);
+    margin-top:17px;
+    padding-bottom: 20px;
+}
+
+div.choice_defualt_option > span{
+    border:solid 0px red;
+    color:white;
+    font-weight:lighter;
+    font-size:15pt;
+}
+
+div.total_price {
+    border:solid 0px red;
+    color:white;
+    font-weight:lighter;
+    font-size:40pt;
+}
+
+div.IMG{
+    overflow: hidden;
+}
+
+div.IMG > img{
+    border:solid 0px red;
+    width: 100%;
+}
+
+div.buttom{
+    width:70%;
+    margin:auto;
+    margin-top: 150px;
+    padding-bottom: 100px;
+}
+
+div.preview_choice_option{
+    width:70%;
+}
+
+div.preview_choice_option_title{
+    border-bottom:solid 1px rgb(0, 0, 0);
+    padding-bottom: 20px;
+    font-size: 25pt;
+}
+
+div.preview_choice_options{
+    border:solid 0px red;
+    border-bottom: solid 1px rgb(155, 155, 155);
+    padding:20px 0 20px 0;
+}
+
+div.preview_choice_options > div > img {
+    width:10%;
+}
+
+input.buy,
+input.try{
+    width:200px;
+    height:50px;
+}
+
+input.buy{
+    margin: 20px 40px 0 250px;
+    background-color: white;
+    border:solid 1px black;
+    border-radius: 4px;
+    color:black;
+}
+
+input.try{
+    margin-top: 20px;
+    border:solid 1px white;
+    background-color: black;
+    border-radius: 4px;
+    color:white;
+}
+
+input.buy:hover{
+    border:solid 1px white;
+    background-color: black;
+    color:white;
+    transition:0.5s;
+}
+
+input.try:hover{
+    background-color: white;
+    border:solid 1px black;
+    color:black;
+    transition:0.5s;
+}
+
+div.sideBar{
+    width:30%;
+    padding-top: 50px;
+}
+
+div.sideBar > ul > li{
+    list-style: circle;
+    color:rgb(94, 94, 94);
+    margin-top: 20px;
+}
+
+input.exit{
+    margin-top: 100px;
+    background-color: white;
+    border:solid 1px black;
+    border-radius: 4px;
+    color:black;
+    width:150px;
+    height: 50px;
+}
+
+input.cancle{
+    margin-top: 100px;
+    border:solid 1px white;
+    background-color: black;
+    border-radius: 4px;
+    color:white;
+    width:150px;
+    height: 50px;
+}
+
+input.exit:hover{
+    border:solid 1px white;
+    background-color: black;
+    color:white;
+    transition:0.5s;
+}
+
+input.cancle:hover{
+    background-color: white;
+    border:solid 1px black;
+    color:black;
+    transition:0.5s;
+}

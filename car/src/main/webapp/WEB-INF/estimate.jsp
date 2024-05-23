@@ -72,6 +72,7 @@
 		<div class="slider_outline">
 			<div id="bar_img" class="swiper-container">
 				<div id="img_slider" class="swiper-wrapper">
+					<%--
 				  	<div class="swiper-slide">
 						<div class="slide_pieces">
 							<div class="vehicle_title">
@@ -81,7 +82,7 @@
 								</span>	
 							</div>
 							<div class="brand_title"></div>
-							<div id="g90new_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png" class="car_image" />
 							</div>
 						</div>
@@ -92,7 +93,7 @@
 								<div class= "vehicle_name">G90</div>
 							</div>
 							<div class="brand_title">LONG WHEEL BASE</div>
-							<div id="g90long_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/G90_LONG_WHEEL_BASE.png"  class="car_image" />
 							</div>
 						</div>
@@ -103,7 +104,7 @@
 								<div class= "vehicle_name">G90</div>
 							</div>
 							<div class="brand_title"></div>
-							<div id="g90_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/G90.png" class="car_image"  />
 							</div>
 						</div>
@@ -114,7 +115,7 @@
 								<div class= "vehicle_name">G80</div>
 							</div>
 							<div class="brand_title"></div>
-							<div id="g80_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/G80.png" class="car_image"/>
 							</div>
 						</div>
@@ -128,7 +129,7 @@
 									<img src="<%= ctxPath%>/images/Estimate/ev_20x24.png" />
 								</span>
 							</div>	
-							<div id="g80elect_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/G80_ELECTRIFIED.png" class="car_image" />
 							</div>
 						</div>
@@ -139,7 +140,7 @@
 								<div class= "vehicle_name">G70</div>
 							</div>
 							<div class="brand_title"></div>
-							<div id="g70_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/G70.png" class="car_image" />
 							</div>
 						</div>
@@ -150,7 +151,7 @@
 								<div class= "vehicle_name">G70</div>
 							</div>
 							<div class="brand_title">SMOOTHING BREAK</div>
-							<div id="g70smoothing_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/G70_SHOOTING_BRAKE.png" class="car_image" />
 							</div>
 						</div>
@@ -161,7 +162,7 @@
 								<div class= "vehicle_name">GV80</div>
 							</div>
 							<div class="brand_title"></div>
-							<div id="gv80_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/GV80.png" class="car_image" />
 							</div>
 						</div>
@@ -172,7 +173,7 @@
 								<div class= "vehicle_name">GV80 COUPE</div>
 							</div>
 							<div class="brand_title"></div>
-							<div id="gv80coupe_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/GV80_COUPE.png"  class="car_image"/>
 							</div>
 						</div>
@@ -186,7 +187,7 @@
 								</span>
 							</div>
 							<div class="brand_title"></div>
-							<div id="gv70new_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/GV70.png" class="car_image" />
 							</div>
 						</div>
@@ -200,7 +201,7 @@
 									<img src="<%= ctxPath%>/images/Estimate/ev_20x24.png" />
 								</span>
 							</div>
-							<div id="gv70electric_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/GV70_ELECTRIFIED.png" class="car_image" />
 							</div>
 						</div>
@@ -214,11 +215,11 @@
 								</span>
 							</div>
 							<div class="brand_title"></div>
-							<div id="gv60_barimg" class="bar_image">
+							<div class="bar_image">
 								<img src="<%= ctxPath%>/images/Estimate/GV60.png" class="car_image" />
 							</div>
 						</div>
-				  	</div>
+				  	</div> --%>
 				</div>
 				
 				<div class="swiper-button-next"></div>

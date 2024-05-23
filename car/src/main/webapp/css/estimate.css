@@ -194,6 +194,11 @@ span.icon {
     
 }
 
+.swiper-button-disabled {
+	visibility: hidden;
+	opacity: 0;
+}
+
 
 :root {
     --swiper-theme-color: #ffffff!important;
@@ -208,11 +213,6 @@ div.slider_outline{
 .slider_outline .swiper-container {
 	position: unset;
     margin: 0 45px;
-}
-
-.swiper-button-disabled {
-      visibility: hidden;
-      opacity: 0;
 }
 
 ul.util_list{

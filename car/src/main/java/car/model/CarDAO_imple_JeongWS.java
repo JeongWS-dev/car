@@ -26,7 +26,7 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		try {
 		Context initContext = new InitialContext();
 	    Context envContext  = (Context)initContext.lookup("java:/comp/env");
-	    ds = (DataSource)envContext.lookup("jdbc/myoracle"); // web.xml에 있는 res-ref-name 과 동일해야한다.
+	    ds = (DataSource)envContext.lookup("jdbc/semioracle"); // web.xml에 있는 res-ref-name 과 동일해야한다.
 	    
 	    aes = new AES256(SecretMyKey.KEY);
 	    // SecretMyKey.KEY 는 우리가 만든 암호화/복호화 키이다.

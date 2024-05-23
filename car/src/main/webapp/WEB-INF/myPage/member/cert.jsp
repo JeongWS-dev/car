@@ -53,7 +53,9 @@
            text-decoration: underline;
        }
 
-       #verify-button {
+       #verify-button, 
+       #submitEmail, 
+       #btn-info {
            padding: 10px 20px;
            background-color: black;
            color: #fff;
@@ -62,7 +64,9 @@
            cursor: pointer;
        }
 
-       #verify-button:hover {
+       #verify-button:hover ,
+       #submitEmail:hover ,
+       #btn-info:hover {
            background-color: #555;
            color: white;
        }
@@ -119,7 +123,7 @@
 		 });
 		 
 		// === 인증하기 버튼 클릭시 이벤트 처리해주기 시작 === //
-		  $("button.btn-info").click(function(){
+		  $("button#btn-info").click(function(){
 			  
 			  const input_confirmCode = $("input:text[name='input_confirmCode']").val().trim(); 
 			  
@@ -213,8 +217,8 @@
 	   </span>
 	   <br>
 	   <input type="text" name="input_confirmCode" />
-	   <br>
-	   <button type="button" class="btn btn-info">인증하기</button>
+	   <br><br>
+	   <button type="button" id="btn-info">인증하기</button>
    </c:if>
    
    <c:if test="${requestScope.sendMailSuccess == false}">
@@ -228,7 +232,9 @@
 	<input type="hidden" name="email" />
 </form>
 
-
+    <div class="container">
+    	<a href="<%= ctxPath%>/myPage/login.car" style="color: black; text-decoration: underline; font-size:10pt;">로그인 페이지로 이동</a>
+    </div>
    	</div>
     <br><br>
     <hr>

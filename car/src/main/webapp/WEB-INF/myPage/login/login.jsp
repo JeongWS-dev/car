@@ -74,6 +74,67 @@
         }
     </style>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	    $("button#submit").click(function(){
+	        goLogin();  //  로그인 시도한다.
+	
+	    }); 
+	
+	    
+	
+	    $("input#loginPwd").bind("keydown", function(e){
+	        
+	        if(e.keyCode == 13){    //  암호 입력란에 엔터를 했을 경우   //  대문자 조심!
+	            goLogin();  //  로그인을 시도한다.
+	        }
+	    });
+    
+	}); //  end of $(document).ready(function(){------------
+
+//  Function Declaration
+
+//  ==  로그인 처리 함수
+function goLogin(){
+      alert("확인용 로그인 처리하러 간다.");
+
+    if($("input#userid").val().trim() == ""){
+        alert("아이디를  입력하세요.");
+
+        $("input#userid").val("").focus();
+        return; //  goLogin() 함수 종료
+    }
+    if($("input#passwd").val().trim() == ""){
+        alert("비밀번호를 입력하세요.");
+
+        $("input#passwd").val("").focus();
+        return; //  goLogin() 함수 종료
+    }
+	
+    if($("input:checkbox[id='saveid']").prop("checked") ){
+      //  alert("아이디 저장 체크를 하셨습니다.");
+
+        localStorage.setItem('saveid', $("input#loginUserid").val());
+    }
+    else{
+      //  alert("아이디 저장 체크를 해제하셨습니다.");
+        
+        localStorage.removeItem('saveid');
+    }
+
+		
+    const Frm = document.loginFrm;
+    Frm.submit();
+
+
+
+}   //  end of function goLogin(){-----------
+
+
+
+
+</script>
 
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 		
@@ -90,16 +151,22 @@
     <div class="container">
         <form action="#" method="POST">
         	<p style="font-color: grey;">*이메일 로그인</p>
-            <input type="text" name="username" placeholder="아이디">
+            <input type="text" name="userid" placeholder="아이디">
             <input type="password" name="password" placeholder="비밀번호">
+            <input type="checkbox" id="saveid" style="width:12px;height:12px;" />&nbsp;<label for="saveid" style="font-size: 10pt;">아이디저장</label>
             <input type="submit" value="로그인">
+            
         </form>
         <div class="links">
             <a href="#">아이디 찾기</a>
             <a href="#">비밀번호 찾기</a>
             <a href="#">회원가입</a>
         </div>
+    
+        
+        
     </div>
+  
     <footer>
         <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>
     </footer>

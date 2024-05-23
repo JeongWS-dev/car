@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -9,9 +10,13 @@
 
 <div id="container">
     <video id="g90Black_video" autoplay muted loop>
-        <source src="<%= ctxPath %>/video/detail_video/g90 BLACK.mp4" type="video/mp4">
+        <source src="<%= ctxPath %>/video/detail_video/g90_BLACK.mp4" type="video/mp4">
     </video>
-    
+	<div id="title">
+		<div id="carname" style="font-size: 50pt; font-weight: 300;">G90 BLACK<br><br></div>
+		<div id="goEstimate">견적 내기  ></div>						<!-- href태그 주어 경로 이동되게 해야함 -->
+		<div id="goDrivetry" style="padding-left: 2%;">시승 신청 ></div>
+	</div>
 	<div id="background-image-1">
 		<div id="text-1">
 			<h1 style="font-size: 50pt; font-weight: 300; ">완벽한 블랙의 탄생</h1>

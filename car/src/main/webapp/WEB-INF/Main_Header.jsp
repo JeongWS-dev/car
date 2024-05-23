@@ -80,7 +80,7 @@
 															</c:if>
 															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
 															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																<a href="#" class="custom-button">자세히 보기</a>
+																<a href="<%= ctxPath%>/carDetail/carDetail.car?carname=${ccvo.carName}" class="custom-button">자세히 보기</a>
 															</div>
 															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
 														</div>
@@ -103,7 +103,7 @@
 															</c:if>
 															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
 															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																<a href="#" class="custom-button">자세히 보기</a>
+																<a href="<%= ctxPath%>/carDetail/carDetail.car?carname=${ccvo.carName}" class="custom-button">자세히 보기</a>
 															</div>
 															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
 														</div>
@@ -126,7 +126,7 @@
 															</c:if>
 															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
 															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																<a href="#" class="custom-button">자세히 보기</a>
+																<a href="<%= ctxPath%>/carDetail/carDetail.car?carname=${ccvo.carName}" class="custom-button">자세히 보기</a>
 															</div>
 															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
 														</div>
@@ -149,7 +149,7 @@
 															</c:if>
 															<img src="<%= ctxPath%>/images/MainPage/our-models/${ccvo.carName}.png" class="card-img-top" id="${ccvo.carName}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
 															<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-																<a href="#" class="custom-button">자세히 보기</a>
+																<a href="<%= ctxPath%>/carDetail/carDetail.car?carname=${ccvo.carName}" class="custom-button">자세히 보기</a>
 															</div>
 															<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=${ccvo.carName}">견적 내기  ></a>
 														</div>

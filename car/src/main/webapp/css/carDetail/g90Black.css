@@ -1,0 +1,107 @@
+@charset "UTF-8";
+#container{
+	background-color: #00000d;
+	color: white;
+	width: 100%;
+}
+#text-1{
+	/* border: solid 1px red; */
+	position: relative;
+	background-image: url("../../images/carDetail/g90Black/1.jpg");
+	height: 600px;
+	background-position: center;
+	padding-top: 16%;
+	padding-left: 2%;
+	margin: 2% 0;
+}
+
+#text-2{
+	/* border: solid 1px red; */
+	position: relative;
+	background-image: url("../../images/carDetail/g90Black/2.jpg");
+	height: 600px;
+	background-position: center;
+	padding-top: 18%;
+	padding-left: 2%;
+	margin: 2% 0;
+}
+
+#text-3{
+	/* border: solid 1px red; */
+	position: relative;
+	background-image: url("../../images/carDetail/g90Black/3.jpg");
+	height: 600px;
+	background-position: center;
+	padding-top: 18%;
+	padding-left: 2%;
+	margin: 2% 0;
+}
+
+#text-4{
+	/* border: solid 1px red; */
+	position: relative;
+	background-image: url("../../images/carDetail/g90Black/4.jpg");
+	height: 600px;
+	background-position: center;
+	padding-top: 23%;
+	padding-left: 2%;
+	margin: 2% 0;
+}
+
+#text-5{
+	/* border: solid 1px red; */
+	position: relative;
+	background-image: url("../../images/carDetail/g90Black/5.jpg");
+	height: 600px;
+	background-position: center;
+	padding-top: 21%;
+	padding-left: 2%;
+}
+#g90Black_video{
+	position: blocked; /* 혹은 absolute, 요소의 위치를 고정 */
+	width: 100%;
+	overflow: hidden; /* 화면 밖으로 나가는 부분 숨기기 */
+}
+#text-1 > h1{
+	/* border: solid 1px red;  */
+	position: relative;
+	bottom: 275px;
+}
+#spec{
+	/* border: solid 1px red; */
+	text-align: center;
+	padding-top: 5%;
+}
+#carsize{
+	/* border: solid 1px red; */
+	text-align: center;
+}
+#carsize img{
+	/* border: solid 1px red; */
+	display: inline-block;
+	margin-right: 2%;
+	margin-left: 2%;
+}
+
+/* 표 */
+.tg {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 5%;
+}
+.tg th,
+.tg td{
+	border-bottom: 1px solid #ccc;
+	text-align: left;
+	padding: 40px 0;
+	width: 100%; /* 전체 셀 너비를 100%로 설정 */
+	box-sizing: border-box; /* 패딩과 보더를 포함하여 너비를 계산 */
+	text-align: center;
+	font-size: 25pt;
+}
+
+.tg em{
+	color:black;
+	font-size: 10pt;
+	font-style: normal !important; 
+}

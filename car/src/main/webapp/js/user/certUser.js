@@ -439,8 +439,8 @@ $(document).ready(function(){
 
     ///////////////////////////////////////////////////////
     // "아이디중복확인" 을 클릭했을 때 이벤트 처리하기 시작 //
-    $("img#idcheck").click(function(){
-
+    $("#idcheck").click(function(){
+		
         b_idcheck_click = true;
         // "아이디중복확인" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
 
@@ -507,7 +507,7 @@ $(document).ready(function(){
 
         // === 두번째 방법 === //
         $.ajax({
-            url : "idDuplicateCheck.up",
+            url : "idDuplicateCheck.car",
             data : {"userid" : $("input#userid").val()}, // data 속성은 http://localhost:9090/MyMVC/member/idDuplicateCheck.up 로 전송해야할 데이터를 말한다.
             type : "post",  // type 을 생략하면 type : "get" 이다.
 
@@ -554,7 +554,7 @@ $(document).ready(function(){
 
     // "이메일중복확인" 을 클릭했을 때 이벤트 처리하기 시작 //
     $("span#emailcheck").click(function(){
-
+		console.log("asd")
         b_emailcheck_click = true;
         // "이메일중복확인" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
 
@@ -734,19 +734,8 @@ function goRegister() {
     }
     // *** 생년월일 값을 입력했는지 검사하기 끝 *** //
 
-
-    // *** 약관에 동의를 했는지 검사하기 시작 *** //
-    const checkbox_checked_length = $("input:checkbox[id='agree']:checked").length; 
-
-    if(checkbox_checked_length == 0) {
-        alert("이용약관에 동의하셔야 합니다.");
-		return; // goRegister() 함수를 종료한다.
-    }
-    // *** 약관에 동의를 했는지 검사하기 끝 *** //
-
-    
     const frm = document.registerFrm;
-    frm.action = "memberRegister.up";
+    frm.action = "memberRegister.car";
     frm.method = "post";
     frm.submit();
 

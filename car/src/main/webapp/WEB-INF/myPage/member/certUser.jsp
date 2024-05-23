@@ -7,17 +7,27 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- bootstrap -->
-<link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 
-<!-- Font Awesome 6 Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+<%-- Required meta tags --%>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Optional JavaScript -->
-<script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
-<script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<%= ctxPath%>/js/user/memberRegister.js"></script>
+
+<%-- Bootstrap CSS --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" > 
+
+<%-- Font Awesome 6 Icons --%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<%-- Optional JavaScript --%>
+<script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" ></script> 
+
+<%-- jQueryUI CSS 및 JS --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
+<script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script> 
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/js/user/certUser.js"></script>
 
 <style type="text/css">
 	body > nav {
@@ -32,7 +42,7 @@
        body {
            font-family: Arial, sans-serif;
            margin-top: 7%;
-           padding: 0 30%;
+           padding: 0 35%;
            background-color: #f2f2f2;
        }
 
@@ -52,7 +62,7 @@
 		}
 		
 		table#tblMemberRegister {
-		 	border: solid 1px red;  
+		 	  
 			width: 93%;
 			margin: 0% auto;
 			font-size: 12px;
@@ -95,7 +105,8 @@
 			cursor: pointer;
 		}
 		
-		span#emailcheck {
+		span#emailcheck ,
+		span#idcheck  {
 			border: solid 1px gray;
 			border-radius: 5px;
 			font-size: 8pt;
@@ -107,7 +118,11 @@
 			cursor: pointer;
 		}
 
-	
+		#tblMemberRegister > tbody > tr:nth-child(12) > td > input[type=button]:nth-child(1){
+ 			background-color: #333;
+            color: #fff;
+            cursor: pointer;
+		}
 </style>
 
 <script type="text/javascript">
@@ -158,9 +173,10 @@
                     <td>
                        <input type="text" name="userid" id="userid" maxlength="40" class="requiredInfo" />&nbsp;&nbsp;  
                        <%-- 아이디중복체크 --%>
-                       <img src="<%= ctxPath%>/images/b_id_check.gif" id="idcheck" />
                        <span id="idcheckResult"></span>
                        <span class="error">아이디는 필수입력 사항입니다.</span>
+                       <span id="idcheck">아이디중복확인</span>
+                       <span id="idCheckResult"></span>
                     </td>
                 </tr>
                 
@@ -206,7 +222,7 @@
                     <td>
                        <input type="text" name="postcode" id="postcode" size="6" maxlength="5" />&nbsp;&nbsp;
                        <%-- 우편번호 찾기 --%>
-                       <img src="<%= ctxPath%>/images/b_zipcode.gif" id="zipcodeSearch" />
+                       <img src="<%= ctxPath%>/images/myPage/b_zipcode.gif" id="zipcodeSearch" />
                        <span class="error">우편번호 형식에 맞지 않습니다.</span>
                     </td>
                 </tr>
@@ -238,14 +254,17 @@
                 
      		   <tr>
                     <td colspan="2" class="text-center">
-                       <input type="button" class="btn btn-success btn-lg mr-5" value="가입하기" onclick="goRegister()" />
-                       <input type="reset"  class="btn btn-danger btn-lg" value="취소하기" onclick="goReset()" />
+                       <input type="button" value="가입하기" onclick="goRegister()" />
+                       <input type="reset"  value="취소하기" onclick="goReset()" />
                     </td>
                 </tr>
                 </tbody>
               </table>
       </form>
    </div>
+       <div class="container">
+    	<a href="<%= ctxPath%>/myPage/login.car" style="color: black; text-decoration: underline; font-size:10pt;">로그인 페이지로 이동</a>
+    </div>
 </div>
 	
 

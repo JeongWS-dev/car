@@ -66,7 +66,7 @@
 												<h5 class="card-title" style="font-size: 28px; font-weight: 300; color: #bfbfbf; text-align: left;">&nbsp;&nbsp;&nbsp;G90 BLACK</h5>
 												<img src="images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-black-desktop-630x240-ko.png" class="card-img-top" alt="G90 BLACK" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
 												<div class="card-body" style="text-align: center; padding-bottom: 6%;">
-													<a href="#" class="custom-button">자세히 보기</a>
+													<a href="<%= ctxPath%>/carDetail/carDetail.car" class="custom-button">자세히 보기</a>
 												</div>
 												<a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK">견적 내기  ></a>
 											</div>

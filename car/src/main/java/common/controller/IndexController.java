@@ -28,8 +28,8 @@ public class IndexController extends AbstractController {
 		
 		
 		for(int i=0; i<carList.size(); i++) {
-			if(!(carList.get(i).getCarpoint().trim().equalsIgnoreCase("general")) && !(carList.get(i).getCarpoint().trim().equalsIgnoreCase("black")) && !(carList.get(i).getCarpoint().trim().equalsIgnoreCase("coupe"))) {
-				System.out.println(i+carList.get(i).getCarName());
+			if(!(carList.get(i).getCarpoint().trim().equalsIgnoreCase("general")) && !(carList.get(i).getCarpoint().trim().equalsIgnoreCase("black")) ) {
+				//System.out.println(i+carList.get(i).getCarName());
 				String[] parts = carList.get(i).getCarName().split("_");
 				carName = parts[0];
 				carNameList.add(carName);

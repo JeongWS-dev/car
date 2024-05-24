@@ -355,6 +355,8 @@ on T.pk_carname = I.fk_carname
 where T.pk_carname = 'G90' and P.PowerDesc = '가솔린 3.5 터보 48V 일렉트릭 슈퍼차저' and outcolordesc = '마우이 블랙 [HBK]' and incolordesc = '어반 브라운 / 글레이셔 화이트 투톤' and incolorprice = '5500000'; 
 
 
+select *
+from tbl_car;
 
 select *
 from tbl_outcolor

@@ -264,7 +264,7 @@
 			<div class="price">
 				<div style="color:rgb(150, 150, 150)">예상 가격</div>
 				<div class="total_price">${requestScope.Price}</div> <%-- 금액 변경하는거 어쩌면 for문으로 가능할지도? --%>
-				<button class="before">이전</button>
+				<button class="before" onclick="history.back()">이전</button>
 				<button class="after"  onclick="goNext()">다음</button>
 			</div>
 		</div>

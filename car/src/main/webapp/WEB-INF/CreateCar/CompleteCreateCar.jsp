@@ -33,6 +33,61 @@
 	function exit(){
 		location.href="\<%= ctxPath%>/index.car";
 	}
+
+	function func_is_login(){
+		if( sessionStorage.getItem("userid") == null ) {
+			$("div#login_modal").fadeIn();
+		}
+		else {
+			location.href="<%=ctxPath%>/createCar/saveCreateCar.car";
+		}
+
+	}
+
+	$(document).ready(function(){
+		$("button.LoginClose").click(function(){
+			$("div#login_modal").fadeOut();
+		})
+	})
+
+	function login(){
+		let ID = $("input[name='ID']").val().trim();
+		let PWD = $("input[name='PWD']").val().trim();
+		
+		if(ID.length == 0){
+			alert("아이디를 입력하세요.");
+			$("input[name='ID']").val("").focus();
+			return;
+		}
+		else if(PWD.length == 0){
+			alert("비밀번호를 입력하세요.");
+			$("input[name='PWD']").val("").focus();
+			return;
+		}
+		else{
+			$.ajax({
+				url : "${pageContext.request.contextPath}/createCar/loginJSON.car",
+				type : "post",
+				data : {"ID":ID,"PWD":PWD},
+				dataType:"json",
+				success:function(json){
+					if(json.userid.length > 0){
+						$("div#login_modal").fadeOut();
+
+						sessionStorage.setItem("userid",json.userid);
+					}
+					else{
+						alert("아이디 혹은 비밀번호가 일치하지 않습니다.")
+						$("input[name='PWD']").val("");
+						$("input[name='ID']").val("").focus();
+					}
+				},
+				error: function(request, status, error){
+					alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+				}
+			})
+		}
+	}
 </script>
 
 <body>
@@ -161,10 +216,13 @@
 							</div>
 						</c:forEach>
 					</div>
-					<input type="button" class="buy" value="구매 상담 신청">
-					<input type="button" class="try" value="시승 신청">
+					<input type="button" class="save" onclick='func_is_login()' value="견적서 저장"/>
 				</div>
 				<div class="sideBar">
+					<div style="display: flex; margin-top: 20px;">
+						<input type="button" class="buy" value="구매 상담 신청">
+						<input type="button" class="try" value="시승 신청">
+					</div>
 					<ul>
 						<li>상기 견적금액은 개별 소비세 5.0% 적용 견적입니다.(단, 차종 및 면세구분에 따라 세제 혜택이 적용됩니다.)</li>
 						<li>상기 이미지는 실제 차량과 사양 및 컬러가 다를 수 있으므로 전시장 방문 및 실차 확인을 권장합니다.</li>
@@ -200,5 +258,32 @@
 			  </div>
 			  
 			</div>
-		  </div>
+		</div>
+
+		<div class="modal" id="login_modal"> <%-- 만약에 모달이 안보이거나 뒤로 가버릴 경우에는 모달의 class 에서 fade 를 뺀 class="modal" 로 하고서 해당 모달의 css 에서 zindex 값을 1050; 으로 주면 된다. --%> 
+			<div class="modal-dialog modal-lg">
+			  <div class="modal-content">
+			  
+				<!-- Modal header -->
+				<div class="modal-header" style="background-color: black;">
+				  <h4 class="modal-title" style="color:white;">LOGIN</h4>
+				  <button type="button" class="close LoginClose" style="color:white;">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body" id="Login-modal-body" style="text-align: center; margin-top: 50px;">
+					<form name="Login" style="display: flex; width:50%; margin: auto;">
+						<ul>
+							<li><input name="ID" type="text" placeholder="ID"/></li>
+							<li><input name="PWD" type="password" placeholder="PASSWORD"/></li>
+						</ul>
+						<input class="goLogin" type="button" onclick='login()' value="로그인">
+					</form>
+					<input class="enterUser" type="button" value="회원가입">
+					<input class="findIdPwd" type="button" value="아이디/비밀번호 찾기">
+				</div>
+			  </div>
+			  
+			</div>
+		</div>
 </body>

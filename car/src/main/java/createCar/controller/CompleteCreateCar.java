@@ -39,10 +39,7 @@ public class CompleteCreateCar extends AbstractController {
 			String OutColorTitle = cvo.getOutColorTitle();
 			String InColorTitle = cvo.getInColorTitle();
 			String IncolorPrice = cvo.getIncolor_price();
-			
-			System.out.println(powerTrainTitle);
-			System.out.println(OutColorTitle);
-			System.out.println(InColorTitle);
+			cvo.setChoice_option_arr(option_title_arr);
 			
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("carname", carname);
@@ -52,6 +49,7 @@ public class CompleteCreateCar extends AbstractController {
 			paraMap.put("IncolorPrice", IncolorPrice);
 			
 			Map<String,String> Map = cdao.selectMyOption(paraMap);// 내가 선택한 옵션들의 타이틀, 가격, 사진의 값을 가져온다.
+			//session.setAttribute("loginuser", "loginuser");
 			
 			request.setAttribute("mapList", mapList);
 			request.setAttribute("Map", Map);

@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 
 import util.security.AES256;
 import util.security.SecretMyKey;
+import util.security.Sha256;
 
 public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
@@ -392,5 +393,88 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		}
 		return Map;
 	}// end of public Map<String, String> selectMyChoiceOption(String string, String carName) throws SQLException {
+	
+	// 저장되어질 내 견적서 시퀀스 번호 채번해오기
+	@Override
+	public int getPk_PaperSeqOfTbl_Paper() throws SQLException {
+		int pk_paperSeq = 0;
+	      
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select Pk_PaperSeq.nextval AS Pk_PaperSeq "
+	         			+ " from dual ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         
+            if(rs.next()) {
+            	pk_paperSeq = rs.getInt(1);
+            }
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return pk_paperSeq;
+	}// end of public int getPk_PaperSeqOfTbl_Paper() throws SQLException {
+	
+	// 입력한 아이디, 비밀번호를 가지고 유저정보 가져오기
+	@Override
+	public String goLogin(String id, String pwd) throws SQLException {
+		String userid = "";
+	      
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select pk_userid "
+	         			+ " from tbl_user "
+	         			+ " where pk_userid = ? and userpwd = ?";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         pstmt.setString(2, Sha256.encrypt(pwd));
+	         rs = pstmt.executeQuery();
+	         
+          if(rs.next()) {
+          	userid = rs.getString("pk_userid");
+          }
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return userid;
+	}// end of public String goLogin(String iD, String pWD) throws SQLException {
+	
+	//내 견적서의 기본 사항들을 DB에 insert한다.
+	@Override
+	public int insertTblMyOption(Map<String, String> map) throws SQLException {
+		int result = 0;
+		map.get("carName");
+		map.get("Power");
+		map.get("OutColor");
+		map.get("InColor");
+		map.get("userid");
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select pk_userid "
+	         			+ " from tbl_user "
+	         			+ " where pk_userid = ? and userpwd = ?";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         
+        if(rs.next()) {
+        }
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return result;
+	}// end of public int insertTblMyOption(Map<String, String> map) throws SQLException {
+
     
 }

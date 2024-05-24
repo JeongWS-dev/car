@@ -11,7 +11,7 @@ public class CreateCarVO {
     private String carType;		   // 차종
     private String carpoint;       // 차포인트
 	private String incolor_price; //내장색상 가격
-    
+    private String[] choice_option_arr;
     
 	
 	// == getter and setter start == //
@@ -68,5 +68,11 @@ public class CreateCarVO {
 	}
 	public void setIncolor_price(String incolor_price) {
 		this.incolor_price = incolor_price;
+	}
+	public String[] getChoice_option_arr() {
+		return choice_option_arr;
+	}
+	public void setChoice_option_arr(String[] choice_option_arr) {
+		this.choice_option_arr = choice_option_arr;
 	}
 } // end of public class CreateCarVO {

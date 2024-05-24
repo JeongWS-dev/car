@@ -126,12 +126,12 @@ div.preview_choice_options > div > img {
 
 input.buy,
 input.try{
-    width:200px;
+    width:170px;
     height:50px;
 }
 
 input.buy{
-    margin: 20px 40px 0 250px;
+    margin-left: 30px;
     background-color: white;
     border:solid 1px black;
     border-radius: 4px;
@@ -139,7 +139,7 @@ input.buy{
 }
 
 input.try{
-    margin-top: 20px;
+    margin-left: 20px;
     border:solid 1px white;
     background-color: black;
     border-radius: 4px;
@@ -203,4 +203,47 @@ input.cancle:hover{
     border:solid 1px black;
     color:black;
     transition:0.5s;
+}
+
+input.save{
+    border:solid 1px black;
+    width:200px;
+    height: 50px;
+    background-color: black;
+    color:white;
+    border-radius: 4px;
+    margin-top: 30px;
+    float:right;
+}
+
+input.save:hover{
+    background-color: white;
+    border:solid 1px black;
+    color:black;
+    transition:0.5s;
+}
+
+div#Login-modal-body{
+    display: block;
+}
+
+input.goLogin{
+    width:80px;
+    height:60px;
+    background-color: black;
+    border:solid 1px black;
+    color:white;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+
+div#Login-modal-body > form > ul > li {
+    list-style: none;
+}
+
+input.enterUser,
+input.findIdPwd{
+    border:none;
+    background-color: rgba(0,0,0,0);
+    color:rgb(104, 104, 104);
 }

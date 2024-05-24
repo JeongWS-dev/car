@@ -17,7 +17,8 @@ public interface CarDAO_JeongWS {
 	Map<String, String> select_option(String cilck_detail_option, String carname) throws SQLException;// 세부옵션에 해당하는 값이 없다면 옵션 테이블에서 가져와야한다
 	Map<String, String> selectMyOption(Map<String, String> paraMap) throws SQLException;// 내가 선택한 옵션들의 타이틀, 가격, 사진의 값을 가져온다.
 	Map<String, String> selectMyChoiceOption(String string, String carName) throws SQLException;// 내가 선택한 상세옵션명에 일치하는 가격을 불러온다.
-
-	
+	int getPk_PaperSeqOfTbl_Paper() throws SQLException;// 저장되어질 내 견적서 시퀀스 번호 채번해오기
+	String goLogin(String iD, String pWD) throws SQLException;// 입력한 아이디, 비밀번호를 가지고 유저정보 가져오기
+	int insertTblMyOption(Map<String, String> map) throws SQLException;//내 견적서의 기본 사항들을 DB에 insert한다.
 
 }

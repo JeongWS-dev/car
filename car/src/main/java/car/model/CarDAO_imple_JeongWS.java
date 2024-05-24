@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 
 import util.security.AES256;
 import util.security.SecretMyKey;
+import util.security.Sha256;
 
 public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	private DataSource ds; // DataSource ds 는 아파치톰캣이 제공하는 DBCP(DB Connection Pool)이다.
@@ -322,5 +323,158 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		}
 		return paraMap;
 	}// end of public Map<String, String> select_option(String cilck_detail_option, String carname) throws SQLException {
+	
+	// 내가 선택한 옵션들의 타이틀, 가격, 사진의 값을 가져온다.
+	@Override
+	public Map<String, String> selectMyOption(Map<String, String> paraMap) throws SQLException {
+		Map<String, String> Map = new HashMap<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select carprice, powericon_img, powerprice, powerdesc,outcolorcar_img, outcoloricon_img, outcolordesc, outcolorprice, incoloricon_img, incolordesc, incolorprice "
+						+  " from tbl_car T JOIN tbl_power P "
+						+  " on T.pk_carname = P.fk_carname "
+						+  " JOIN tbl_outcolor O "
+						+  " on T.pk_carname = O.fk_carname "
+						+  " JOIN tbl_Incolor I "
+						+  " on T.pk_carname = I.fk_carname "
+						+  " where T.pk_carname = ? and P.PowerDesc = ? and outcolordesc = ? and incolordesc = ? and incolorprice = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("carname"));
+			pstmt.setString(2, paraMap.get("powerTrainTitle"));
+			pstmt.setString(3, paraMap.get("OutColorTitle"));
+			pstmt.setString(4, paraMap.get("InColorTitle"));
+			pstmt.setString(5, paraMap.get("IncolorPrice"));
+			rs = pstmt.executeQuery();
+			DecimalFormat df = new DecimalFormat("#,###");
+			if(rs.next()) {
+				Map.put("carprice", df.format(rs.getInt("carprice"))+"원");
+				Map.put("powericon_img", rs.getString("powericon_img"));
+				Map.put("powerprice", df.format(rs.getInt("powerprice"))+"원");
+				Map.put("powerdesc", rs.getString("powerdesc"));
+				Map.put("outcolorcar_img", rs.getString("outcolorcar_img"));
+				Map.put("outcoloricon_img", rs.getString("outcoloricon_img"));
+				Map.put("outcolordesc", rs.getString("outcolordesc"));
+				Map.put("outcolorprice", df.format(rs.getInt("outcolorprice"))+"원");
+				Map.put("incoloricon_img", rs.getString("incoloricon_img"));
+				Map.put("incolordesc", rs.getString("incolordesc"));
+				Map.put("incolorprice", df.format(rs.getInt("incolorprice"))+"원");
+				
+				
+			}
+		}finally {
+			close();
+		}
+		return Map;
+	}// end of public Map<String, String> selectMyChoiceOption(Map<String, String> paraMap) throws SQLException {
+	
+	// 내가 선택한 상세옵션명에 일치하는 가격을 불러온다.
+	@Override
+	public Map<String, String> selectMyChoiceOption(String optionTitle, String carName) throws SQLException {
+		Map<String, String> Map = new HashMap<>();
+		try {
+			conn = ds.getConnection();
+			
+			String sql  =  " select optiondesc, optionprice "
+						+  " from tbl_option "
+						+  " where fk_carname = ? and optiondesc = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, carName);
+			pstmt.setString(2, optionTitle);
+			
+			rs = pstmt.executeQuery();
+			DecimalFormat df = new DecimalFormat("#,###");
+			if(rs.next()) {
+				Map.put("optiondesc", rs.getString("optiondesc"));
+				Map.put("optionprice", "+"+df.format(rs.getInt("optionprice"))+"원");
+			}
+		}finally {
+			close();
+		}
+		return Map;
+	}// end of public Map<String, String> selectMyChoiceOption(String string, String carName) throws SQLException {
+	
+	// 저장되어질 내 견적서 시퀀스 번호 채번해오기
+	@Override
+	public int getPk_PaperSeqOfTbl_Paper() throws SQLException {
+		int pk_paperSeq = 0;
+	      
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select Pk_PaperSeq.nextval AS Pk_PaperSeq "
+	         			+ " from dual ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         
+            if(rs.next()) {
+            	pk_paperSeq = rs.getInt(1);
+            }
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return pk_paperSeq;
+	}// end of public int getPk_PaperSeqOfTbl_Paper() throws SQLException {
+	
+	// 입력한 아이디, 비밀번호를 가지고 유저정보 가져오기
+	@Override
+	public String goLogin(String id, String pwd) throws SQLException {
+		String userid = "";
+	      
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select pk_userid "
+	         			+ " from tbl_user "
+	         			+ " where pk_userid = ? and userpwd = ?";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         pstmt.setString(2, Sha256.encrypt(pwd));
+	         rs = pstmt.executeQuery();
+	         
+          if(rs.next()) {
+          	userid = rs.getString("pk_userid");
+          }
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return userid;
+	}// end of public String goLogin(String iD, String pWD) throws SQLException {
+	
+	//내 견적서의 기본 사항들을 DB에 insert한다.
+	@Override
+	public int insertTblMyOption(Map<String, String> map) throws SQLException {
+		int result = 0;
+		map.get("carName");
+		map.get("Power");
+		map.get("OutColor");
+		map.get("InColor");
+		map.get("userid");
+	      try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select pk_userid "
+	         			+ " from tbl_user "
+	         			+ " where pk_userid = ? and userpwd = ?";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         
+        if(rs.next()) {
+        }
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return result;
+	}// end of public int insertTblMyOption(Map<String, String> map) throws SQLException {
+
     
 }

@@ -74,7 +74,7 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 				pstmt = conn.prepareStatement(sql);
 			}
 			else{
-				sql = " select PK_CARNAME, CarPoint, CarLogo "
+				sql = " select Pk_CarName, CarPoint, CarLogo "
 	                  + " from TBL_CAR "
 	                  + " where CARTYPE = ? ";
 				pstmt = conn.prepareStatement(sql);
@@ -95,8 +95,6 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	        
 	       // System.out.println(">> 확인용 carList => " + carList);
 	         
-		} catch (SQLException e) {
-	        e.printStackTrace();
 		} finally {
 	         close();
 	    }
@@ -105,4 +103,33 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	      
 	}
 
+	@Override
+	public Map<String, String> mainCarInfo(String mainCar) throws SQLException {
+		
+		Map<String, String> paraMap = new HashMap<>();
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select PK_CARNAME , CarPoint, CarLogo "
+	                  + " from TBL_CAR"
+	                  + " where PK_CARNAME = ? ";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mainCar);
+			
+	        rs = pstmt.executeQuery();
+	         
+	        if(rs.next()) {
+	        	paraMap.put("Pk_CarName", rs.getString("Pk_CarName"));
+	        	paraMap.put("CarPoint", rs.getString("CarPoint"));
+	        	paraMap.put("CarLogo", rs.getString("CarLogo"));        	
+	        }
+		
+		} finally {
+	         close();
+	    }
+		
+		return paraMap;		
+	}// end of public Map<String, String> mainCarInfo(String mainCar) throws SQLException {}--------------
 }

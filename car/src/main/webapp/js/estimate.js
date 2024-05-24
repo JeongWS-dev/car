@@ -1,19 +1,24 @@
 
 $(document).ready(function(){
 
-
+  let carSearchType = 'ALL';
+  let mainCar = "";
   // 홈페이지가 시작될 때 차 목록을 보여주는 함수 사용
-  
-  showCarList();
-  swiperset();
+  showCarList(carSearchType); // 가로 슬라이드 차 목록 보여주는 함수
+  swiperset(); // swiper 설정 함수
 
-  $("div#ALL").click(function(){
+
+  showMain(mainCar); // 메인 화면 보여주는 함수
+
+  $("div.btn-wrap").click(function(){
     
-    carSearchType = $(this).text();
-    showCarList();
-    swiperset();
+    carSearchType = $(this).find(".tab-btn").text();;
+    showCarList(carSearchType);
+    swiperset(mainCar);
+
   });
   
+  /*
   $("div#SEDAN").click(function(){
     
     carSearchType = $(this).text();
@@ -28,85 +33,39 @@ $(document).ready(function(){
     showCarList();
     swiperset();
   });
+*/
+  console.log("mainCar", mainCar);
 
-  console.log("시작타이머5");
+  // 슬라이드 안의 카드를 클릭 했을 때 위의 메인 화면이 바뀌는 함수
 
   $(document).on('click', '.card', function() {
-    let mainCar = $(this).find('.vehicle_name').text() + ( $(this).find('.brand_title').text() ? "_"+ $(this).find('.brand_title').text() : "");
+    mainCar = $(this).find('.vehicle_name').text() + ( $(this).find('.brand_title').text() ? "_"+ $(this).find('.brand_title').text() : "");
     mainCar = mainCar.split(' ').join('_');
-   // console.log("카이름 : ", mainCar);
-    let m_html = ``;
+    const ctxPath = $("input[name='ctxPath']").val();
 
-    $.ajax({
-      url:"/car/estimate/imgCardJSON.car",
-      type:"get",
-      data: {"mainCar" : mainCar },
-      dataType : "json",
-      
-      success:function(json){ 
+    showMain();
 
-        
-      },// end of success---------
-      error: function(request, status, error){
-      alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-    }
-
-  });// end of ajax---------
-
-
-    m_html += `<div class="car_select">`;
-
-
-
-   /*
-   <div id="new_image" >
-     <img src="<%= ctxPath%>/images/Estimate/new_80x40.png" /> 
-   </div>
-   <div id="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">
-     G90<br>BLACK
-   </div>
-   <br>
-   <br>
-   <div id="select_car">
-     <button type="button" class="btn btn-carselect">차량선택</button>
-   </div>
- </div>
- <div class="main_car_image">
-   <img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png"  />
- </div>
-*/
-  });
-
-});// end of $(document).ready(function(){---------
+  });// end of $(document).on('click', '.card', function() {
 
 /*
-const tabButtons = document.querySelectorAll('.tab-btn');
-var hide_car;
+  $(document).on('click', '.btn-carselect', function() {
 
-tabButtons.forEach(button => {
-    button.addEventListener('click', function(event) {
-        // 기본 이벤트 동작을 막습니다. (페이지 새로고침 방지)
-        event.preventDefault();
+    const frm = document.;
+		frm.action = "memberEditEnd.up";
+		frm.method = "post";
+		frm.submit();
+  });
+*/
+});// end of $(document).ready(function(){---------
 
-        // 클릭된 버튼의 아이디 값
-        const buttonId = this.getAttribute('id');
 
-        if(id='BLACK'){
-            hide_car = document.querySelectorAll('.swiper-slide:not(#g90new_title)');
-            element.style.display = 'none';
-        }
-        else if(id='SEDAN'){
-            window.location.href = 'estimate_sedan.jsp'; 
-        }
-        else if(id='SUV'){
-            window.location.href = 'estimate_suv.jsp'; 
-        }
+// 차량 선택 페이지로 이동하는 함수
+function goCreateCar(ctxPath,Pk_CarName){ 
+  location.href=`${ctxPath}/createCar/powertrains.car?pk_carname=${Pk_CarName}`;
+}
 
-        // 여기서 원하는 로직을 수행하면 됩니다.
-        // 예를 들어, 해당 아이디 값을 변수에 저장하거나 다른 함수를 호출할 수 있습니다.
 
-    });
-});
+/*
 
 
     const btnShareTw = document.querySelector('.bar_share_tw');
@@ -128,36 +87,19 @@ tabButtons.forEach(button => {
 
 
 
-
-var swiper = new Swiper('.swiper-container', {
-    // 슬라이더 옵션 설정
-  });
-
-  // 슬라이더 슬라이드 변경 시 이벤트 처리
-  swiper.on('slideChange', function () {
-    if (swiper.activeIndex === 0) {
-      $('.left-slide').hide();
-      $('.right-slide').show();
-    } else if (swiper.activeIndex === swiper.slides.length - 3) {
-      $('.left-slide').show();
-      $('.right-slide').hide();
-    } else {
-      $('.left-slide').show();
-      $('.right-slide').show();
-    }
-  });
 */
 
-let carSearchType = 'ALL';
-let v_html = ``;
-let carNameNew = "";
 
-function showCarList(){
-        // 바에 있는 버튼 클릭 했을 때
+let v_html = ``;
+
+
+// 차종 별로 리스트 보여주는 함수
+function showCarList(carSearchType){
+
      //   e.preventDefault(); // 링크의 기본 동작을 막음
     // alert("ALL button clicked");
     //var carSearchType = $(e.target).text() // 차 종류를 가져옴
-
+    
     $.ajax({
       url:"/car/estimate/carTypeJSON.car",
       type:"get",
@@ -174,13 +116,15 @@ function showCarList(){
      
         else{
           v_html ="";
+          
           $.each(json, function(index, item){
+
             v_html +=  `<div class="swiper-slide">
                           <div class="card"  style="height: 310px; width: 300px; padding : 0; margin : 3%;">
                             <div class="vehicle_title">
                               <div class= "vehicle_name">`
-            if( item.CarPoint == 'GENERAL' || item.CarPoint.length < 11){
-              carNameNew = item.Pk_CarName.split('_').join(' ');
+            if( item.Pk_CarName.length < 11){
+              let carNameNew = item.Pk_CarName.split('_').join(' ');
               v_html += carNameNew; // 차량 이름의 _대신 공백.
             }
             else{
@@ -220,7 +164,6 @@ function showCarList(){
         }// end of else-----------
         $("div#img_slider").empty();
         $("div#img_slider").append(v_html);
-        console.log(v_html);    
         
        // console.log("~~~ 확인용 json => ", JSON.stringify(json));
        // alert("확인용 carSearchType : " + carSearchType);
@@ -236,6 +179,8 @@ function showCarList(){
     });// end of ajax---------
 }
 
+
+// swiper 세팅
 var swiper = null;
 
 function swiperset(){
@@ -257,7 +202,78 @@ function swiperset(){
     slidesOffsetBefore: 30,
     variableWidth: true,
   });
+}// end of function swiperset(){}------------------
+
+
+// 차메인 보여주기
+function showMain(mainCar){
+  
+  $.ajax({
+      
+    url:"/car/estimate/imgCardJSON.car",
+    type:"get",
+    data: {"mainCar" : mainCar },
+    dataType : "json",
+    success:function(json){ 
+      let m_html = ``;
+      if(json.length == 0) { // json== null하면 오류 남. 넘겨 받을 때 new 선언해서 받아서 빈 껍데기 배열이기 때문에 null이 아니고 길이가 0임.
+        m_html = `현재 상품 준비중 입니다...`;
+        
+      }
+      else{
+        m_html ="";
+        m_html += `<div class="car_select">
+                    <div id="logo_image" > `;
+        
+        if(json.CarLogo != null){
+          if(json.CarLogo == 'NEW'){
+            m_html +=`<img src="../images/Estimate/new_50x24.png" />`
+          }
+          else if(json.CarLogo == 'EV'){
+            m_html +=`<img src="../images/Estimate/ev_20x24.png" />`
+          }
+        }
+        m_html += `</div> <div id="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">`;
+        
+        if( json.Pk_CarName.length < 11){
+          let carNameNew = json.Pk_CarName.split('_').join('<br>');
+          m_html += `${carNameNew}`; // 차량 이름의 _대신 공백.
+        }
+        else{
+          let carname_arr = json.Pk_CarName.split('_', 1); // _을 기준으로 나눈 배열을 1개로 반환해라. (앞의 차 이름만 받아오기 위함)
+          //console.log("차량~~", car[0]);
+          let carNameNew = carname_arr[0];
+          m_html += `${carNameNew}`; // 차 이름
+        }
+
+        m_html += `</div><br><div class="main_carPoint"> `;
+
+        if(json.CarPoint.length > 8){
+          m_html += `${json.CarPoint.split('_').join(' ')}`; // CarPoint의 _대신 공백
+        }
+
+        m_html += `</div><br><div id="select_car">
+        <button type="button" class="btn btn-carselect" onclick="goCreateCar('${ctxPath}','${json.Pk_CarName}')">차량선택</button>
+      </div>
+      </div>
+      <div class="main_car_image">
+      <img src="../images/Estimate/${json.Pk_CarName}.png" /></div>`;
+
+
+      }// end of else ----------------------
+
+      $("div.category_main").html(m_html);
+      
+    },// end of success---------
+    error: function(request, status, error){
+    alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+    }
+  });// end of ajax---------
+
+
 }
+
+
 /*
 
     if (swiper.activeIndex==0) {

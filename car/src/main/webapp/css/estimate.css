@@ -28,9 +28,11 @@ body > div#container > div#main_top{
 	margin: 0 auto;
 }
 
-div#new_image{
+div#logo_image{
 	height : 22px;
 	width : 46px;
+	margin-bottom: 8%;
+	border: solid 0px blueviolet;
 }
 
 div.empty{
@@ -76,9 +78,10 @@ body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul {
 
 body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li> div.btn-wrap{
     display: inline-block; /* 인라인 요소로 배치 */
-	border: solid 0px blue;
+	border: solid 0px yellow;
 	width: 15%;
 	padding: 10px;
+	height: 50px;
 	font-size: medium;
 	color : gray;
 	cursor: pointer;
@@ -90,6 +93,10 @@ body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li> div.btn
 	border-bottom: solid 1px white;
 }
 
+div.main_carPoint{
+	font-size : 20px; font-weight: lighter; font-stretch: condensed;
+
+}
 
 
 a.top_button:link,

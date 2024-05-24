@@ -29,7 +29,7 @@ public class CarTypeJSON extends AbstractController {
 //		Map<String, String> paraMap = new HashMap<>();
 //		paraMap.put("carSearchType", carSearchType);
 		
-		List<Map<String, String>> carList = cdao.carSearch(carSearchType);
+		List<Map<String, String>> carList = cdao.carSearch(carSearchType);	
 		
 		JSONArray jsonArr = new JSONArray();
 		
@@ -37,11 +37,11 @@ public class CarTypeJSON extends AbstractController {
 		for(Map<String, String> carImg : carList) {
 			JSONObject jsonObj = new JSONObject(); // {}
 			String carImgName = carImg.get("Pk_CarName");   
-			carImgName += ".png";   // ".png"를 추가
+			//carImgName += ".png";   // ".png"를 추가
 			
 			jsonObj.put("CarLogo", carImg.get("CarLogo"));// {"Pk_CarName":"G90", "carImgname":"G90.png", "CarPoint":"GENERAL"}
 			jsonObj.put("CarPoint", carImg.get("CarPoint"));// {"Pk_CarName":"G90", "carImgname":"G90.png", "CarPoint":"GENERAL"}
-			jsonObj.put("carImgname", carImgName);// {"Pk_CarName":"G90", "carImgname":"G90.png"}
+			//jsonObj.put("carImgname", carImgName);// {"Pk_CarName":"G90", "carImgname":"G90.png"}
 			jsonObj.put("Pk_CarName", carImg.get("Pk_CarName"));//{"Pk_CarName":"G90"}	    
 			
 			jsonArr.put(jsonObj);// [{"Pk_CarName":"G90", "carImgname":"G90.png", "CarPoint":"GENERAL"}

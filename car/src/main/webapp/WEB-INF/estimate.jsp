@@ -20,6 +20,8 @@
 <script type="text/javascript" src="<%= ctxPath%>/js/estimate.js"></script>
 
 <jsp:include page="Main_Header.jsp"></jsp:include>
+
+<input name="ctxPath" type="hidden" value="<%=ctxPath%>"/>
 	
 	<div id="container">
 		<div id="top_context">
@@ -30,8 +32,22 @@
 		</div>
 		<div class="main_top">
 			<div class="category_main"> 
-				<div class="car_select">
-					<div id="new_image" >
+				
+				<c:if test="${empty requestScope.carList}">
+					<div>현재 상품 준비중 입니다..!!.</div>
+				</c:if>
+				<c:if test="${not empty requestScope.carList}">
+					<c:forEach items="${requestScope.carList}" var="car" begin="0" end="0">
+						<c:set var="firstCarName" value="${car['Pk_CarName']}" />
+						<div>하하하</div>
+					</c:forEach>
+				</c:if>
+
+				<input type="text" value="${firstCarName}"/>
+				
+
+			<%--<div class="car_select">
+					<div id="logo_image" >
 						<img src="<%= ctxPath%>/images/Estimate/new_80x40.png" /> 
 					</div>
 					<div id="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">
@@ -40,12 +56,13 @@
 					<br>
 					<br>
 					<div id="select_car">
-						<button type="button" class="btn btn-carselect">차량선택</button>
+						<button type="button" class="btn btn-carselect" onclick="location.href='<%= ctxPath%>/createCar/powertrains.car?pk_carname=G90_BLACK'">차량선택</button>
 					</div>
 				</div>
 				<div class="main_car_image">
 					<img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png"  />
-				</div>
+				</div> --%>
+				
 			</div>
 		</div>
 		<div class="empty"></div>

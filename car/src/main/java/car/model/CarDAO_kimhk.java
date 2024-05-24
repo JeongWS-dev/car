@@ -6,7 +6,10 @@ import java.util.Map;
 
 public interface CarDAO_kimhk {
 
-	// 차량 종류 선택에 따른 이미지 이름 가져오기
-	List<Map<String, String>> carSearch(String carSearchType) throws SQLException; 
+	// 차량 종류 선택에 따른 차량 정보 가져오기
+	List<Map<String, String>> carSearch(String carSearchType) throws SQLException;
 
+	// 견적내기에서 차량 카드 눌렀을 때 차량 정보 가져오기
+	Map<String, String> mainCarInfo(String mainCar) throws SQLException;
+	
 }

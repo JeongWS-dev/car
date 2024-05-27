@@ -90,6 +90,7 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 	public List<CreateCarVO> selectCarTypeList(Map<String, String> paraMap) throws SQLException {
 		
 		if( "SEDAN".equalsIgnoreCase(paraMap.get("cartype")) || "SUV".equalsIgnoreCase(paraMap.get("cartype")) ) {
+			
 			List<CreateCarVO> cartypeList = new ArrayList<>();
 	
 			try {
@@ -136,7 +137,6 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 				pstmt = conn.prepareStatement(sql);
 	
 				rs = pstmt.executeQuery();
-	
 				while (rs.next()) {
 	
 					CreateCarVO ccvo = new CreateCarVO();

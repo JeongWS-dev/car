@@ -38,8 +38,7 @@ public class IndexControllerJSON extends AbstractController {
 	      paraMap.put("cartype", cartype); // "SUV"  "SEDAN"
 	      
 	      List<CreateCarVO> cartypeList = cdao.selectCarTypeList(paraMap); // spec name 별로 상품을 가져온다.
-	      String carName = "";
-			
+	      String carName = "";	
 	      
 	      JSONArray jsonArr = new JSONArray(); // [{}, {}, {}, ...] => 결과물이 복수개이기 때문에 배열로 생성한다.
 	      
@@ -62,8 +61,8 @@ public class IndexControllerJSON extends AbstractController {
 		            jsonObj.put("cartype", ccvo.getCarType());
 		            jsonObj.put("carpoint", ccvo.getCarpoint());
 		            
-		            jsonArr.put(jsonObj); // [{"pnum":36, "pname":"노트북30", "cname":"전자제품", ... , "pinputdate":"2024-05-14", "discountPercent":17}] 이 반복되어 출력된다.
-		               
+		            jsonArr.put(jsonObj); // 
+		            
 		     } // end of for ----------
 	         
 	      } // end of if(productList.size() > 0) ----------

@@ -46,7 +46,7 @@
 					
 					<ul class="nav col-6 col-lg-auto me-lg-auto mb-4 mb-md-0">
 						<li class="nav-item" id="nav-item1"> 
-							<a href="#" class="nav-link px-2 text-white">모델</a>
+							<a id="model" href="#" class="nav-link px-2 text-white">모델</a>
 							<ul id="sub-menu1" class="nav-item sub-menu" >
 								
 								<div style="display: flex; margin-left: 3.5%;">	
@@ -69,6 +69,7 @@
 
 									
 									<div id="carList">
+									
 										
 										
 										

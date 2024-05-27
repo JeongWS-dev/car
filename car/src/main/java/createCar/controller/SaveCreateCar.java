@@ -1,6 +1,7 @@
 package createCar.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import car.model.CarDAO_JeongWS;
@@ -25,33 +26,50 @@ public class SaveCreateCar extends AbstractController {
 		CreateCarVO cvo = (CreateCarVO)session.getAttribute("cvo");
 		String userid = (String)session.getAttribute("loginuser");
 		
-		System.out.println("============================================================");
-		System.out.println(cvo.getCarName());
-		System.out.println(cvo.getPowerTrainTitle());
-		System.out.println(cvo.getOutColorTitle());
-		System.out.println(cvo.getInColorTitle());
-		System.out.println(userid);
-		
-		Map<String,String> map = new HashMap<>();
-		map.put("carName", cvo.getCarName());
-		map.put("Power", cvo.getPowerTrainTitle());
-		map.put("OutColor", cvo.getOutColorTitle());
-		map.put("InColor", cvo.getInColorTitle());
-		map.put("userid", userid);
-		
-		int n = cdao.insertTblMyOption(map);//내 견적서의 기본 사항들을 DB에 insert한다.
-		
-		
-//		int paperSeq = cdao.getPk_PaperSeqOfTbl_Paper();// 저장되어질 내 견적서 시퀀스 번호 채번해오기
-//		
-//		System.out.println("채번해온 시퀀스 번호 : " + paperSeq);
-		
-		/*
-		 	선택 옵션 저장에 사용할 배열
-			for(int i=0;i<cvo.getChoice_option_arr().length;i++) {
-				System.out.println(cvo.getChoice_option_arr()[i]);
+		if(cvo!=null) {
+			int paperSeq = cdao.getPk_PaperSeqOfTbl_Paper();// 저장되어질 내 견적서 시퀀스 번호 채번해오기
+			
+			// System.out.println("채번해온 시퀀스 번호 : " + paperSeq);
+			
+			Map<String,String> map = new HashMap<>();
+			map.put("carName", cvo.getCarName());
+			map.put("Power", cvo.getPowerTrainTitle());
+			map.put("OutColor", cvo.getOutColorTitle());
+			map.put("InColor", cvo.getInColorTitle());
+			map.put("InColorPrice", cvo.getIncolor_price());
+			map.put("userid", userid);
+			map.put("paperSeq",String.valueOf(paperSeq));
+			
+			int n = cdao.insertTblMyOption(map);//내 견적서의 기본 사항들을 DB에 insert한다.
+			if(n==1) {
+				System.out.println("insert를 성공했습니다.");
+				// 선택 옵션 저장에 사용할 배열
+				if(cvo.getChoice_option_arr().length !=0) {
+					for(int i=0;i<cvo.getChoice_option_arr().length;i++) {
+						n = cdao.insertTblChoiceOption(cvo.getChoice_option_arr()[i],cvo.getCarName(),String.valueOf(paperSeq));// 선택사항이 있는 경우에 선택사항을 DB 에 insert한다.
+						if(n!=1) {
+							System.out.println("뭔가 문제가 생겼다 코드 다시 보자");
+						}
+					}
+				}
 			}
-		*/
+			
+			List<Map<String,String>> mapList = cdao.selectPaper(userid);// 내 견적서 페이지에 있는 모든 견적서 가져오기
+			
+			if(mapList.size()==0) {
+				mapList = null;
+			}
+			session.removeAttribute("cvo");
+			
+			request.setAttribute("mapList", mapList);
+			super.setViewPage("/WEB-INF/CreateCar/Paper.jsp");
+		}
+		else {
+			List<Map<String,String>> mapList = cdao.selectPaper(userid);// 내 견적서 페이지에 있는 모든 견적서 가져오기
+			request.setAttribute("mapList", mapList);
+			super.setViewPage("/WEB-INF/CreateCar/Paper.jsp");
+		}
+		
 		
 	}// end of public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 }

@@ -39,6 +39,7 @@
 			$("div#login_modal").fadeIn();
 		}
 		else {
+			sessionStorage.removeItem("userid");
 			location.href="<%=ctxPath%>/createCar/saveCreateCar.car";
 		}
 

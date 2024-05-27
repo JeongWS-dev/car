@@ -83,9 +83,9 @@ insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPric
 
 commit;
 
-select *
+select pk_optioncode
 from tbl_option
-where fk_carname = 'G90';
+where fk_carname = 'G90' and optiondesc = '파노라마 선루프' ;
 
 -- 선택품목 상세 테이블(생성 완료)
 create table tbl_option_detail
@@ -168,6 +168,48 @@ create table tbl_MyOption
 ,constraint  FK_tbl_MyOption_Fk_OptionCode foreign key(Fk_OptionCode) references tbl_Option(Pk_OptionCode)
 );
 
+select P.fk_carname,C.CarPrice ,I.incolordesc, I.incolorPrice, O.outcolordesc, O.outcolorprice, PO.powerdesc, PO.powerprice
+from tbl_paper P JOIN tbl_incolor I
+ON P.fk_incolorcode = I.pk_incolorCode
+JOIN tbl_outcolor O
+ON P.fk_outcolorcode = O.pk_outcolorcode
+JOIN tbl_power PO
+ON P.fk_powercode = PO.pk_powercode
+JOIN tbl_car C
+ON P.fk_carname = C.pk_carname
+where fk_userid = 'qwer';
+
+select P.fk_carname,C.CarPrice ,I.incolordesc, I.incolorPrice, O.outcolordesc, O.outcolorprice, PO.powerdesc, PO.powerprice 
+from tbl_paper P JOIN tbl_incolor I 
+ON P.fk_incolorcode = I.pk_incolorCode 
+JOIN tbl_outcolor O 
+ON P.fk_outcolorcode = O.pk_outcolorcode 
+JOIN tbl_power PO 
+ON P.fk_powercode = PO.pk_powercode 
+JOIN tbl_car C 
+ON P.fk_carname = C.pk_carname 
+where fk_userid = 'qwer';
+
+select *
+from tbl_user;
+
+select *
+from tbl_paper;
+
+select *
+from tbl_incolor;
+
+select *
+from tbl_outcolor;
+
+select *
+from tbl_power;
+
+select *
+from tbl_myoption;
+
+commit;
+
 -- 내 선택품목 시퀀스(생성 완료)
 create sequence Pk_MyOptionSeq;
 
@@ -222,6 +264,13 @@ create table tbl_InColor
 ,constraint FK_tbl_InColor_fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName) 
 );
 
+select *
+from tbl_Incolor
+
+select pk_InColorCode
+from tbl_InColor
+where fk_carname = 'G90' and InColorDesc = '어반 브라운 / 글레이셔 화이트 투톤' and incolorprice = 0;
+
 insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_beige_two_tone_Icon','G90','G90_inside_sds_beige_two_tone_Icon.jpg','',,'');
 insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_black_mono_tone_Icon','G90','G90_inside_sds_black_mono_tone_Icon.jpg','',,'');
 insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_brown_two_tone_Icon','G90','G90_inside_sds_brown_two_tone_Icon.jpg','',,'');
@@ -251,6 +300,10 @@ create table tbl_OutColor
 ,constraint PK_tbl_OutColor_OutColorCode primary key(Pk_OutColorCode)
 ,constraint FK_tbl_OutColor_fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
+
+select pk_OutColorCode
+from tbl_OutColor
+where Fk_CarName = 'G90' and OutColorDesc = '마칼루 그레이 [NCM]';
 
 alter table tbl_OutColor add OutColorDesc VARCHAR2(300);
 commit;
@@ -304,6 +357,9 @@ create table tbl_Paper
 ,constraint FK_tbl_Paper_fk_PowerCode foreign key(Fk_PowerCode) references tbl_power(Pk_PowerCode) 
 ,constraint FK_tbl_Paper_fk_OutColorCode foreign key(Fk_OutColorCode) references tbl_OutColor(Pk_OutColorCode) 
 );
+
+select *
+from tbl_Paper;
 
 -- 내 견적서 시퀀스 (생성 완료)
 create sequence Pk_PaperSeq

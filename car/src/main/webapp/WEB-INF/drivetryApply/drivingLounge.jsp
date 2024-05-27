@@ -18,67 +18,39 @@
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 
-<jsp:include page="../Main_Header.jsp"></jsp:include>
+<jsp:include page="../drivingApply_header.jsp"></jsp:include>
 
-<div id="container">
 
-<!-- 견적내기에서 가져와야함. 시작-->
-<div class="cp-headline__text">
-<br>
-    <h1 class="el-head">
-        <span class="display-pc">시승 신청</span>
-    </h1>
-    <hr style="border: 0; height: 1px; background-color: #333333;"/>
-    <nav class="navbar navbar-expand-sm navbar-dark">
-        <ul class="navbar-nav" style="font-size: 16pt;">
-            <li class="nav-item "> 
-                <a class="nav-link" href="#" style="color:white;">차량 선택</a>
-            </li>
-            <span>〉</span>
-            <li class="nav-item">
-                <a class="nav-link" href="#">드라이빙 라운지 선택</a>
-            </li>
-            <span>〉</span>
-            <li class="nav-item">
-                <a class="nav-link" href="#">시승 일정</a>
-            </li>
-            <span>〉</span>
-            <li class="nav-item">
-                <a class="nav-link" href="#">유의사항</a>
-            </li>
-            <span>〉</span>
-            <li class="nav-item">
-                <a class="nav-link" href="#">신청내역 확인</a>
-            </li>
-            <span>〉</span>
-            <li class="nav-item">
-                <a class="nav-link" href="#">신청완료</a>
-            </li>
-           
-        </ul>
-    </nav>
-</div>
 <!-- 견적내기에서 가져와야함. 끝-->
 
     <div id="go-event">
         <img src="<%= ctxPath%>/images/drivetry_ApplyPage/genesis-kr-test-drive-event-banner-all-day-pc_4.jpg" id="event-img"/>
     </div>
-    <h2 class="el-title">
-        전기차 All Day <br>Driving <br>eXperience
+    <h2 class="el-title" style="font-weight: 300; font-size: 25pt;">
+        전기차 All Day <br>Driving <br>EXPERIENCE
     </h2>
-    <h2 id="caution">※ 유의사항</h2>
-    <div id = "caution-detail">
-        <span>・만 21세 이상, 운전면허 소지자라면 누구나 이용 가능합니다. (보험 적용 기준에 따라 만 21세 미만 이용 불가) <br></span>
-        <span>・고객 한 분 당 한 번에 1건만 신청 가능합니다. (2대 이상 비교시승은 드라이빙라운지나 EV스테이션으로 전화 문의) <br></span> 
-        <span>・연 최대 6회 시승 이용 가능합니다. (단, EV스테이션 이용건수는 합산에서 제외) <br></span>
-        <span>・마이페이지 > 로그인 > 시승/상담 > 시승 신청 조회에서도 시승 신청 내역을 확인 하실 수 있습니다.<br></span>
-    </div>
+	<table id="cautionTable" style="color: white;">
+		<tr>
+			<td><h2 id="caution">※ 유의사항</h2></td>
+			<td><div id = "caution-detail">
+					<span>・만 21세 이상, 운전면허 소지자라면 누구나 이용 가능합니다. (보험 적용 기준에 따라 만 21세 미만 이용 불가) <br></span>
+					<span>・고객 한 분 당 한 번에 1건만 신청 가능합니다. (2대 이상 비교시승은 드라이빙라운지나 EV스테이션으로 전화 문의) <br></span> 
+					<span>・연 최대 6회 시승 이용 가능합니다. (단, EV스테이션 이용건수는 합산에서 제외) <br></span>
+					<span>・마이페이지 > 로그인 > 시승/상담 > 시승 신청 조회에서도 시승 신청 내역을 확인 하실 수 있습니다.<br></span>
+				</div>
+			</td>
+		</tr>
+	</table>
+
 	 <div class="cp-table__item">
-		<h2 class="table-title">제네시스 스페이스</h2>
-        <span> 제네시스 스페이스 체험은 제네시스 스페이스 페이지에서 신청이 가능합니다.</span>
-        <a class="nav-link" href="<%= ctxPath%>/drivetryApply/space.car"  class="btn">
-                <span class="go-space" title="스페이스 바로가기">제네시스 스페이스 바로가기</span>
-         </a>
+		<div id="genesis-space">
+			<h2 class="table-title" style="font-size: 25pt;">제네시스 스페이스<br><br></h2>
+			<span style="font-size: 15pt;"> 제네시스 스페이스 체험은 제네시스 스페이스 페이지에서 신청이 가능합니다.</span>
+			<a class="nav-link" href="<%= ctxPath%>/drivetryApply/space.car"  class="btn">
+				<span class="go-space" title="스페이스 바로가기">제네시스 스페이스 바로가기&nbsp;&nbsp;></span>
+			</a>
+		</div>
+
 		<div class="cm-table type-row left-align-2 left-align-3 display-pc">
 			<table id = driveTry_Table>
 				<colgroup>

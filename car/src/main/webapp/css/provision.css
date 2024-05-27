@@ -1,0 +1,37 @@
+@charset "UTF-8";
+#container2{
+    /* border: solid 1px red; */
+    width: 70%;
+    margin: 2% auto;
+}
+/* 이전 다음 버튼 시작 */
+#input-button{
+    /* border: solid 1px red; */
+    position: relative;
+    left: 420px;
+}
+.cta-button{
+    width: 230px;
+    height: 50px;
+    margin-right:2%;
+}
+
+/* 이전 다음 버튼 끝 */
+#go-event{
+	height: 330px; /* 원하는 높이 */
+	overflow: hidden; /* 넘치는 부분 숨기기 */
+	position: relative;
+    top: 40pt;
+} 
+#go-event>img{
+	height: auto; /* 이미지 높이는 자동 조절 */
+	position: absolute;
+	top: -330px; /* 이미지를 위로 이동하여 자르기 (필요에 따라 조정) */
+}
+.el-title{
+	/* border: solid 1px red; */
+	position: relative;
+	left: 65%;
+}
+
+

@@ -83,7 +83,7 @@ function carMenu(ctx){
                     
                     v_html += `<img src="${ctx}/images/MainPage/our-models/${item.carfullname}.png" class="card-img-top" id="${item.carfullname}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
                                     <div class="card-body" style="text-align: center; padding-bottom: 6%;">
-                                        <a href="#" class="custom-button">자세히 보기</a>
+                                        <a href="${ctx}/carDetail/carDetail.car?carname=${item.carfullname}" class="custom-button">자세히 보기</a>
                                     </div>
                                     <a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="${ctx}/createCar/powertrains.car?pk_carname=${item.carfullname}">견적 내기 ></a>
                                 </div>
@@ -178,7 +178,7 @@ function displayHIT(cartype1, ctx){
                             
                             v_html += `<img src="${ctx}/images/MainPage/our-models/${item.carfullname}.png" class="card-img-top" id="${item.carfullname}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
                                             <div class="card-body" style="text-align: center; padding-bottom: 6%;">
-                                                <a href="#" class="custom-button">자세히 보기</a>
+                                                <a href="${ctx}/carDetail/carDetail.car?carname=${item.carfullname}" class="custom-button">자세히 보기</a>
                                             </div>
                                             <a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="${ctx}/createCar/powertrains.car?pk_carname=${item.carfullname}">견적 내기 ></a>
                                         </div>
@@ -222,7 +222,7 @@ function displayHIT(cartype1, ctx){
                             
                             v_html += `<img src="${ctx}/images/MainPage/our-models/${item.carfullname}.png" class="card-img-top" id="${item.carfullname}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
                                             <div class="card-body" style="text-align: center; padding-bottom: 6%;">
-                                                <a href="#" class="custom-button">자세히 보기</a>
+                                                <a href="${ctx}/carDetail/carDetail.car?carname=${item.carfullname}" class="custom-button">자세히 보기</a>
                                             </div>
                                             <a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="${ctx}/createCar/powertrains.car?pk_carname=${item.carfullname}">견적 내기 ></a>
                                         </div>
@@ -315,7 +315,7 @@ function displayHIT(cartype1, ctx){
                             
                             v_html += `<img src="${ctx}/images/MainPage/our-models/${item.carfullname}.png" class="card-img-top" id="${item.carfullname}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
                                             <div class="card-body" style="text-align: center; padding-bottom: 6%;">
-                                                <a href="#" class="custom-button">자세히 보기</a>
+                                                <a href="${ctx}/carDetail/carDetail.car?carname=${item.carfullname}" class="custom-button">자세히 보기</a>
                                             </div>
                                             <a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="${ctx}/createCar/powertrains.car?pk_carname=${item.carfullname}">견적 내기 ></a>
                                         </div>
@@ -361,7 +361,7 @@ function displayHIT(cartype1, ctx){
                                 
                                 v_html += `<img src="${ctx}/images/MainPage/our-models/${item.carfullname}.png" class="card-img-top" id="${item.carfullname}" style="width: 90%; margin-left: 5%; margin-top: 10%;" />
                                                 <div class="card-body" style="text-align: center; padding-bottom: 6%;">
-                                                    <a href="#" class="custom-button">자세히 보기</a>
+                                                    <a href="${ctx}/carDetail/carDetail.car?carname=${item.carfullname}" class="custom-button">자세히 보기</a>
                                                 </div>
                                                 <a id="geon" style="font-size: 15px; font-weight: 500; margin-left: 7.5%;" href="${ctx}/createCar/powertrains.car?pk_carname=${item.carfullname}">견적 내기 ></a>
                                             </div>

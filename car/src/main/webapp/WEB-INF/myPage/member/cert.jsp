@@ -80,12 +80,6 @@
 		
 		 const method = "${requestScope.method}";
 		  
-		   // console.log("~~~확인용 method : " + method);
-			  /*
-			     ~~~확인용 method : GET
-			     ~~~확인용 method : POST
-			  */
-			  
 			  if(method == "GET") {
 				  $("div#div_findResult").hide();
 			  }
@@ -97,56 +91,28 @@
 					  $("button.btn-success").hide();  
 				  }
 			  }
-	
+
 		document.getElementById('email-form').style.display = 'none';	
 
 		$("button#verify-button").click(function(){
-			
+	        
 	        document.getElementById('email-form').style.display = 'block';	
 	        
 		});	//	end of $("button#verify-button").click(function(){-----------
 		
-		if(${requestScope.sendMailSuccess == true} ){
-			
-			document.getElementById('email-form').style.display = 'block';	
-		}
-		
+        
 		$("button#submitEmail").click(function(){
 			goemail();
 		});
 		
-		 $("input:text[name='email']").bind("keyup", function(e){
-
-			  if(e.keyCode == 13) {
-				  goemail();
-			  }
-		 });
-		 
-		// === 인증하기 버튼 클릭시 이벤트 처리해주기 시작 === //
-		  $("button#btn-info").click(function(){
-			  
-			  const input_confirmCode = $("input:text[name='input_confirmCode']").val().trim(); 
-			  
-			  if(input_confirmCode == "") {
-				  alert("인증코드를 입력하세요!!");
-				  return; // 종료
-			  }
-			  
-			  const frm = document.verifyCertificationFrm;
-			  frm.userCertificationCode.value = input_confirmCode;
-			  
-			  frm.action = "<%= ctxPath%>/myPage/memberRegister/verifyCertification.car"; 
-			  frm.method = "post";
-			  frm.submit();
-		  });
-		  // === 인증하기 버튼 클릭시 이벤트 처리해주기 끝 === //
-		 
+         
 	 });	//	end of $(document).ready(function(){---------
 	
 
 	function goemail(){
+	 
 		 const email = $("input:text[name='email']").val();
-		 console.log(email)
+		 
          const regExp_email = new RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);
          const bool = regExp_email.test(email);
 
@@ -156,15 +122,35 @@
          }
 
          // 이메일 전송 폼 제출
-         console.log(email)
+         
          const frm = document.emailSendFrm;
          frm.action = "<%= ctxPath%>/myPage/memberRegister/emailsend.car";
          frm.method = "post";
 
          frm.submit();
+         
+		  
 	  }// end of function goFind(){}-----------------------
 	  
-	  
+	// === 인증하기 버튼 클릭시 이벤트 처리해주기 시작 === //
+	  function gocertUser(){
+
+		  const input_confirmCode = $("input:text[name='input_confirmCode']").val().trim(); 
+		  
+		  if(input_confirmCode == "") {
+			  alert("인증코드를 입력하세요!!");
+			  return; // 종료
+		  }
+		  
+		  const frm = document.verifyCertificationFrm;
+		  frm.userCertificationCode.value = input_confirmCode;
+		  
+		  frm.action = "<%= ctxPath%>/myPage/memberRegister/verifyCertification.car"; 
+		  frm.method = "post";
+		  frm.submit();
+	  };
+	  // === 인증하기 버튼 클릭시 이벤트 처리해주기 끝 === //
+	
 		
 
 </script>
@@ -192,7 +178,7 @@
        <br><br>
        <button id="verify-button">이메일 인증</button>
     	<br>
-    <form name="emailSendFrm">
+    <form id="myForm" name="emailSendFrm" action='#' onSubmit='event.preventDefault(); goemail();' >
     	<div id="email-form">
     		<br>
 	    	<div>▽</div>
@@ -207,18 +193,23 @@
 	
     <div class="container" id="div_findResult">
 	
+	
    <c:if test="${requestScope.sendMailSuccess == true}">
    		<br>
    		<div>▽</div>
     	<br>
+    	<form action='#' onSubmit='event.preventDefault(); gocertUser();'>
 	   <span style="font-size: 10pt;">
 	       인증코드가 ${requestScope.email}로 발송되었습니다.<br>
 	       인증코드를 입력해주세요
 	   </span>
+	   
 	   <br>
 	   <input type="text" name="input_confirmCode" />
 	   <br><br>
-	   <button type="button" id="btn-info">인증하기</button>
+	   </form>
+	   		<button type="button" id="btn-info">인증하기</button>
+	   	
    </c:if>
    
    <c:if test="${requestScope.sendMailSuccess == false}">

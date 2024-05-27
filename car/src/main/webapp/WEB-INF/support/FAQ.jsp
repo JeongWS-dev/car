@@ -41,25 +41,22 @@
 	    background-color: #f9f9f9;
 	    text-align: center;
 		}
-		.accordion {
-		  max-width: 600px;
-		  margin: 0 auto;
-		}
 		
 		.accordion-item {
 		  border-bottom: 1px solid #ccc;
 		}
 		
-		.accordion-item .accordion-title {
+		.accordion-title {
 		  background-color: #f4f4f4;
 		  padding: 10px;
 		  cursor: pointer;
 		}
 		
-		.accordion-item .accordion-content {
+		.accordion-content {
 		  display: none;
 		  padding: 10px;
 		}
+
 
  </style>
 
@@ -67,32 +64,19 @@
 <script type="text/javascript">
  $(document).ready(function(){
 	 
- 
-	  const accordionItems = document.querySelectorAll(".accordion-item");
+	 const accordionTitles = document.querySelectorAll(".accordion-title");
 
-	  accordionItems.forEach(item => {
-	    const title = item.querySelector(".accordion-title");
-	    const content = item.querySelector(".accordion-content");
-
+	  accordionTitles.forEach(title => {
 	    title.addEventListener("click", function() {
-	      // 현재 아코디언 아이템이 열려있는지 체크
-	      const isOpen = item.classList.contains("open");
-
-	      // 모든 아코디언 아이템의 클래스 제거
-	      accordionItems.forEach(item => {
-	        item.classList.remove("open");
-	        item.querySelector(".accordion-content").style.display = "none";
-	      });
-
-	      // 현재 아이템이 닫혀있으면 열고, 열려있으면 닫기
-	      if (!isOpen) {
-	        item.classList.add("open");
+	      const content = this.nextElementSibling;
+	      if (content.style.display === "block") {
+	        content.style.display = "none";
+	      } else {
 	        content.style.display = "block";
 	      }
 	    });
 	  });
 	});
- 
 </script>
 
 <head>
@@ -111,10 +95,30 @@
     <div class="faq-form">
 	<h2>자주 묻는 질문</h2>
     <input type="text" id="faq-search" placeholder="검색">
-    <div class="accordion">
-  <!-- 여기에 FAQ 카테고리, 제목, 내용이 동적으로 들어갈 것입니다. -->
-	</div>
-    <!-- 추가 질문 및 답변은 위의 형식을 따라 계속해서 추가하세요 -->
+   
+   <div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-title">질문 1</div>
+    <div class="accordion-content">
+      답변 1의 내용이 여기에 들어갑니다.
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion-title">질문 2</div>
+    <div class="accordion-content">
+      답변 2의 내용이 여기에 들어갑니다.
+    </div>
+  </div>
+  <!-- 필요한 만큼 항목을 추가하세요 -->
+</div>
+   
+</div>
+
+<script>
+    const faqs = document.querySelectorAll('.js-faq_block');
+    faqs.forEach(faq => { new FAQ(faq); });
+</script>
+
 </div>
     
 </body>

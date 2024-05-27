@@ -10,12 +10,25 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<!-- bootstrap -->
-<link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<%-- Required meta tags --%>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<%-- Bootstrap CSS --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" > 
+
+
+<%-- jQueryUI CSS 및 JS --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
+<script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script> 
+
+<%-- Optional JavaScript --%>
+<script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" ></script> 
 
 <style>
     body > nav {
@@ -149,7 +162,7 @@ function goLogin(){
 <body>
     
     <div class="container">
-        <form action="#" method="POST">
+        <form name="loginFrm" action="<%= ctxPath%>/car/login/login.car" method="post">
         	<p style="font-color: grey;">*이메일 로그인</p>
             <input type="text" name="userid" placeholder="아이디">
             <input type="password" name="password" placeholder="비밀번호">
@@ -164,9 +177,9 @@ function goLogin(){
         </div>
     
         
-        
+    	</form>    
     </div>
-  
+  	
     <footer>
         <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>
     </footer>

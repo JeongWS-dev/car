@@ -65,7 +65,7 @@ public class GoogleMail {
     	msg.addRecipient(Message.RecipientType.TO, toAddr);
     	        
     	// 메시지 본문의 내용과 형식, 캐릭터 셋 설정
-    	msg.setContent("발송된 인증코드 : <span style='font-size:14pt; color:red;'>"+certification_code+"</span>", "text/html;charset=UTF-8"); 
+    	msg.setContent("회원가입에 필요한 인증번호를 발송드립니다\n 아래의 인증번호를 입력하여 회원가입을 진행해주세요.\n\n발송된 인증코드 : <span style='font-size:14pt; color:red;'>"+certification_code+"</span>", "text/html;charset=UTF-8"); 
     	        
     	// 메일 발송하기
     	Transport.send(msg);

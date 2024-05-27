@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
 
+  const ctxPath = $("input[name='ctxPath']").val();
+  //console.log("ctxPath", ctxPath);
   let carSearchType = 'ALL';
   let mainCar = "";
   // 홈페이지가 시작될 때 차 목록을 보여주는 함수 사용
@@ -8,13 +10,13 @@ $(document).ready(function(){
   swiperset(); // swiper 설정 함수
 
 
-  showMain(mainCar); // 메인 화면 보여주는 함수
+ // showMain(mainCar); // 메인 화면 보여주는 함수
 
   $("div.btn-wrap").click(function(){
     
     carSearchType = $(this).find(".tab-btn").text();;
     showCarList(carSearchType);
-    swiperset(mainCar);
+    swiperset();
 
   });
   
@@ -34,16 +36,12 @@ $(document).ready(function(){
     swiperset();
   });
 */
-  console.log("mainCar", mainCar);
 
   // 슬라이드 안의 카드를 클릭 했을 때 위의 메인 화면이 바뀌는 함수
-
   $(document).on('click', '.card', function() {
     mainCar = $(this).find('.vehicle_name').text() + ( $(this).find('.brand_title').text() ? "_"+ $(this).find('.brand_title').text() : "");
     mainCar = mainCar.split(' ').join('_');
-    const ctxPath = $("input[name='ctxPath']").val();
-
-    showMain();
+    showMain(mainCar, ctxPath);
 
   });// end of $(document).on('click', '.card', function() {
 
@@ -58,39 +56,13 @@ $(document).ready(function(){
 */
 });// end of $(document).ready(function(){---------
 
+let v_html = ``;
+
 
 // 차량 선택 페이지로 이동하는 함수
 function goCreateCar(ctxPath,Pk_CarName){ 
   location.href=`${ctxPath}/createCar/powertrains.car?pk_carname=${Pk_CarName}`;
 }
-
-
-/*
-
-
-    const btnShareTw = document.querySelector('.bar_share_tw');
-
-    btnShareTw.addEventListener('click', () => {
-    const sendText = '제네시스 견적내기';
-    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
-    window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
-    });
-
-
-    const btnShareFb = document.querySelector('.bar_share_fb');
-
-    btnShareFb.addEventListener('click', () => {
-    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
-    window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
-    });
-   
-
-
-
-*/
-
-
-let v_html = ``;
 
 
 // 차종 별로 리스트 보여주는 함수
@@ -205,9 +177,12 @@ function swiperset(){
 }// end of function swiperset(){}------------------
 
 
-// 차메인 보여주기
-function showMain(mainCar){
-  
+
+
+
+// 메인의 차 보여주기
+function showMain(mainCar, ctxPath){
+//  console.log("category_main", mainCar)
   $.ajax({
       
     url:"/car/estimate/imgCardJSON.car",
@@ -218,7 +193,6 @@ function showMain(mainCar){
       let m_html = ``;
       if(json.length == 0) { // json== null하면 오류 남. 넘겨 받을 때 new 선언해서 받아서 빈 껍데기 배열이기 때문에 null이 아니고 길이가 0임.
         m_html = `현재 상품 준비중 입니다...`;
-        
       }
       else{
         m_html ="";
@@ -274,6 +248,7 @@ function showMain(mainCar){
 }
 
 
+
 /*
 
     if (swiper.activeIndex==0) {
@@ -299,6 +274,31 @@ function showMain(mainCar){
  
 
   
+/*
+
+
+    const btnShareTw = document.querySelector('.bar_share_tw');
+
+    btnShareTw.addEventListener('click', () => {
+    const sendText = '제네시스 견적내기';
+    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
+    window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
+    });
+
+
+    const btnShareFb = document.querySelector('.bar_share_fb');
+
+    btnShareFb.addEventListener('click', () => {
+    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
+    window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+    });
+   
+
+
+
+*/
+
+
 
 
 

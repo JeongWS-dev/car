@@ -52,7 +52,7 @@ public class CarTypeJSON extends AbstractController {
 		
 		String json = jsonArr.toString(); // 문자열로 변환
 		
-		System.out.println(">> 확인용 json => " + json);
+	//	System.out.println(">> 확인용 json => " + json);
 		//>> 확인용 json => [{"CarPoint":"BLACK","carImgname":"G90_BLACK.png","Pk_CarName":"G90_BLACK"},{"CarPoint":"GENERAL","carImgname":"G90.png","Pk_CarName":"G90"},{"CarPoint":"LONG_WHEEL_BASE","carImgname":"G90_LONG_WHEEL_BASE.png","Pk_CarName":"G90_LONG_WHEEL_BASE"},{"CarPoint":"GENERAL","carImgname":"G80.png","Pk_CarName":"G80"},{"CarPoint":"ELECTRIFIED","carImgname":"G80_ELECTRIFIED.png","Pk_CarName":"G80_ELECTRIFIED"},{"CarPoint":"GENERAL","carImgname":"G70.png","Pk_CarName":"G70"},{"CarPoint":"SHOOTING_BRAKE","carImgname":"G70_SHOOTING_BRAKE.png","Pk_CarName":"G70_SHOOTING_BRAKE"},{"CarPoint":"GENERAL","carImgname":"GV80.png","Pk_CarName":"GV80"},{"CarPoint":"COUPE","carImgname":"GV80_COUPE.png","Pk_CarName":"GV80_COUPE"},{"CarPoint":"GENERAL","carImgname":"GV70.png","Pk_CarName":"GV70"},{"CarPoint":"ELECTRIFIED","carImgname":"GV70_ELECTRIFIED.png","Pk_CarName":"GV70_ELECTRIFIED"},{"CarPoint":"GENERAL","carImgname":"GV60.png","Pk_CarName":"GV60"}]
 		request.setAttribute("json", json);
 		

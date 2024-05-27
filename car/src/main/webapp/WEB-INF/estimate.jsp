@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String ctxPath = request.getContextPath();
     //    /MyMVC
@@ -31,22 +32,20 @@
 			<div class="empty"></div>
 		</div>
 		<div class="main_top">
-			<div class="category_main"> 
-				
-				<c:if test="${empty requestScope.carList}">
+			
+			<%--	<c:if test= "${empty requestScope.carNameList}">
 					<div>현재 상품 준비중 입니다..!!.</div>
 				</c:if>
-				<c:if test="${not empty requestScope.carList}">
-					<c:forEach items="${requestScope.carList}" var="car" begin="0" end="0">
-						<c:set var="firstCarName" value="${car['Pk_CarName']}" />
-						<div>하하하</div>
-					</c:forEach>
-				</c:if>
-
-				<input type="text" value="${firstCarName}"/>
-				
-
-			<%--<div class="car_select">
+				<c:if test="${not empty requestScope.carNameList}">
+					<c:set var="firstCarName" value="${requestScope.carNameList[0]}" />
+					<c:set var="firstCarImg" value="fn:replace(firstCarName,' ','_') " />
+					<div>첫번째 : ${firstCarName}</div>
+					<div>두번째 : ${requestScope.carNameList[0]}</div>
+					<div>세번째 : ${firstCarImg} </div>
+				</c:if>				
+			--%>
+			<div class="category_main"> 
+				<div class="car_select">
 					<div id="logo_image" >
 						<img src="<%= ctxPath%>/images/Estimate/new_80x40.png" /> 
 					</div>
@@ -61,9 +60,8 @@
 				</div>
 				<div class="main_car_image">
 					<img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png"  />
-				</div> --%>
-				
-			</div>
+				</div> 
+			</div>	
 		</div>
 		<div class="empty"></div>
 		<div class="bar_title" style="bottom : 240px;">

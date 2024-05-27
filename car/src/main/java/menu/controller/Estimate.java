@@ -34,6 +34,9 @@ public class Estimate extends AbstractController {
 		request.setAttribute("carList", carList);
 		request.setAttribute("carNameList", carNameList);
 		
+		String first_carname = String.join("_", carNameList.get(0).toString().split(" "));
+		request.setAttribute("first_carname", first_carname);
+		
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/estimate.jsp");
 		

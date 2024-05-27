@@ -3,6 +3,7 @@
 #container {
 	background-color: black;
 	color: white;
+	overflow: hidden;
 }
 
 #container > div > h1 > span{
@@ -25,9 +26,19 @@
 	position: absolute;
 	top: -330px; /* 이미지를 위로 이동하여 자르기 (필요에 따라 조정) */
 }
-
-#container > h2.el-title{
-	
+.el-title{
+	/* border: solid 1px red; */
+	position: relative;
+	left: 65%;
+	bottom: 230px;
+}
+#cautionTable{
+	margin: 0 auto;
+	width: 83%;
+}
+#cautionTable td{
+	/* border: solid 1px red; */
+	width: 45%;
 }
 /* 표 */
 #driveTry_Table{
@@ -54,15 +65,10 @@
 	text-align: center;
 	background-color: #121212;
 	color: white;
+	font-weight: 300;
+	font-size: 15pt;
   }
-  
-  #container > div > div.cp-table__item > h2{
-	  text-align: left;
-	  margin-left: 8%;
-	  margin-top: 7%;
-	  margin-bottom: 2%;
-	  font-weight: 300;
-  }
+
   #addressTable > tr:nth-child(1) > td:nth-child(2),
   #addressTable > tr:nth-child(2) > td:nth-child(2),
   #addressTable > tr:nth-child(3) > td:nth-child(2),
@@ -78,9 +84,39 @@
 	  text-align: left;
 	  padding-left: 2%;
 	  color: white;
+	  font-weight: 300;
+	  font-size: 15pt;
+	  padding-top: 1%;
+	  padding-bottom: 1%;
   }
   div.cp-table__item{
 	  padding-bottom: 10%;
   }
 
   /* 표끝 */
+
+#genesis-space{
+	/* border: solid 1px red; */
+	padding: 4% 8%;
+	font-weight: 300;
+}
+.go-space{
+	/* border: solid 1px red; */
+	position: relative;
+	right: 18px;
+	color: white;
+	border-bottom: solid 1px white;
+}
+
+/* nav-bar 시작 */
+#next{
+	/* border: solid 1px red;  */
+	position: relative;
+	top:6px;
+}
+#drivingapply_navbar{
+	/* border: solid 1px red; */
+	width: 70%;
+}
+
+/* nav-bar 끝 */

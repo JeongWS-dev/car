@@ -1,0 +1,19 @@
+@charset "UTF-8";
+#container{
+    width: 100%;
+    /* display: inline-block; */
+    background-color: white;
+    color: black;
+}
+#in-container{
+    border: solid 1px red;
+    background-color: white;
+    color: black;
+}
+#place{
+    /* border: solid 1px red; */
+    /* display: inline-block; */
+    width: 30%;
+    background-color: white;
+    color: black;
+}

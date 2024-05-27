@@ -34,7 +34,7 @@ public class LoginJSON extends AbstractController {
 			
 			/////////////////////////////////////////////////
 			
-			System.out.println("~~~~~~ 확인용 헤헤헤  loginuser : " + (String) session.getAttribute("loginuser"));
+			// System.out.println("~~~~~~ 확인용 헤헤헤  loginuser : " + (String) session.getAttribute("loginuser"));
 			
 			/////////////////////////////////////////////////
 			

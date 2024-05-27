@@ -451,23 +451,61 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	@Override
 	public int insertTblMyOption(Map<String, String> map) throws SQLException {
 		int result = 0;
-		map.get("carName");
-		map.get("Power");
-		map.get("OutColor");
-		map.get("InColor");
-		map.get("userid");
+		
+		String powerCode;
+		String OutColorCode;
+		String InColorCode;
+		
 	      try {
 	         conn = ds.getConnection();
 	         
-	         String sql = " select pk_userid "
-	         			+ " from tbl_user "
-	         			+ " where pk_userid = ? and userpwd = ?";
+	         String sql = " select pk_powercode "
+	         			+ " from tbl_power "
+	         			+ " where fk_carname = ? and powerdesc = ? ";
 	         
 	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, map.get("carName"));
+	         pstmt.setString(2, map.get("Power"));
 	         rs = pstmt.executeQuery();
 	         
-        if(rs.next()) {
-        }
+	         if(rs.next()) {
+	        	 // 입력한 엔진에 대한 코드값을 가지고 오는걸 성공했다면
+	        	 powerCode = rs.getString("pk_powerCode");
+	        	 
+	        	 sql = " select pk_InColorCode "
+        	 		 + " from tbl_InColor "
+        	 		 + " where fk_carname = ? and InColorDesc = ? and incolorprice = ? ";
+	        	 pstmt = conn.prepareStatement(sql);
+	        	 pstmt.setString(1, map.get("carName"));
+	        	 pstmt.setString(2, map.get("InColor"));
+	        	 pstmt.setString(3, map.get("InColorPrice"));
+	        	 rs = pstmt.executeQuery();
+	        	 
+	        	 if(rs.next()) {
+	        		 InColorCode = rs.getString("pk_InColorCode");
+	        		 
+	        		 sql = " select pk_OutColorCode "
+	        		 	 + " from tbl_OutColor "
+	        		 	 + " where Fk_CarName = ? and OutColorDesc = ? ";
+	        		 pstmt = conn.prepareStatement(sql);
+	        		 pstmt.setString(1, map.get("carName"));
+		        	 pstmt.setString(2, map.get("OutColor"));
+		        	 rs = pstmt.executeQuery();
+		        	 if(rs.next()) {
+		        		 OutColorCode = rs.getString("pk_OutColorCode");
+		        		 sql = " insert into tbl_Paper(pk_paperSeq,fk_userid, fk_carname, fk_incolorcode, fk_powercode, fk_outcolorcode) values (?,?,?,?,?,?) ";
+		        		 pstmt = conn.prepareStatement(sql);
+		        		 pstmt.setString(1, map.get("paperSeq"));
+		        		 pstmt.setString(2, map.get("userid"));
+		        		 pstmt.setString(3, map.get("carName"));
+		        		 pstmt.setString(4, InColorCode);
+		        		 pstmt.setString(5, powerCode);
+		        		 pstmt.setString(6, OutColorCode);
+		        		 
+		        		 result = pstmt.executeUpdate();
+		        	 }
+	        	 }
+	         }
 	         
 	      } finally {
 	         close();
@@ -475,6 +513,86 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	      
 	      return result;
 	}// end of public int insertTblMyOption(Map<String, String> map) throws SQLException {
+	
+	// 선택사항이 있는 경우에 선택사항을 DB 에 insert한다.
+	@Override
+	public int insertTblChoiceOption(String option,String carname,String seq) throws SQLException {
+		int result = 0;
+		try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select pk_optioncode "
+	         			+ " from tbl_option "
+	         			+ " where fk_carname = ? and optiondesc = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, carname);
+	         pstmt.setString(2, option);
+	         rs = pstmt.executeQuery();
+	         
+	         if(rs.next()) {
+	        	 String pk_optioncode = rs.getString("pk_optioncode");
+	        	 
+	        	 sql = " insert into tbl_myoption (Pk_MyOptionSeq,Fk_PaperSeq,Fk_OptionCode) values (Pk_MyOptionSeq.nextval,?,?) ";
+	        	 pstmt = conn.prepareStatement(sql);
+	        	 pstmt.setString(1, seq);
+	        	 pstmt.setString(2, pk_optioncode);
+	        	 
+	        	 result = pstmt.executeUpdate();
+	         } 
+	         
+	      } finally {
+	         close();
+	      }
+		return result;
+	}// end of public int insertTblChoiceOption(String string) throws SQLException {
+	
+	// 내 견적서 페이지에 있는 모든 견적서 가져오기
+	@Override
+	public List<Map<String, String>> selectPaper(String userid) throws SQLException {
+		List<Map<String,String>> mapList = new ArrayList<>();
+		try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select P.pk_paperseq, P.fk_carname,C.CarPrice ,I.incolordesc, I.incolorPrice, O.outcolordesc, O.outcolorprice, PO.powerdesc, PO.powerprice, I.incoloricon_img, O.outcoloricon_img, O.outcolorcar_img, PO.powericon_img "
+	         			+ " from tbl_paper P JOIN tbl_incolor I "
+	         			+ " ON P.fk_incolorcode = I.pk_incolorCode "
+	         			+ " JOIN tbl_outcolor O "
+	         			+ " ON P.fk_outcolorcode = O.pk_outcolorcode "
+	         			+ " JOIN tbl_power PO "
+	         			+ " ON P.fk_powercode = PO.pk_powercode "
+	         			+ " JOIN tbl_car C "
+	         			+ " ON P.fk_carname = C.pk_carname "
+	         			+ " where fk_userid = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, userid);
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	        	 Map<String,String> map = new HashMap<>();
+	        	 map.put("incoloricon_img", rs.getString("incoloricon_img"));
+	        	 map.put("outcoloricon_img", rs.getString("outcoloricon_img"));
+	        	 map.put("outcolorcar_img", rs.getString("outcolorcar_img"));
+	        	 map.put("powericon_img", rs.getString("powericon_img"));
+	        	 map.put("pk_paperseq", rs.getString("pk_paperseq"));
+	        	 map.put("fk_carname", rs.getString("fk_carname"));
+	        	 map.put("CarPrice", rs.getString("CarPrice"));
+	        	 map.put("incolordesc", rs.getString("incolordesc"));
+	        	 map.put("incolorPrice", rs.getString("incolorPrice"));
+	        	 map.put("outcolordesc", rs.getString("outcolordesc"));
+	        	 map.put("outcolorprice", rs.getString("outcolorprice"));
+	        	 map.put("powerdesc", rs.getString("powerdesc"));
+	        	 map.put("powerprice", rs.getString("powerprice"));
+	        	 
+	        	 mapList.add(map);
+	         }
+	         
+	      } finally {
+	         close();
+	      }
+		return mapList;
+	}// end of public List<Map<String, String>> selectPaper(String carName, String userid) throws SQLException {
 
     
 }

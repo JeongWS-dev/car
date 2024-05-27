@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -80,6 +81,81 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 		
 		return carList;
 	}// public List<CreateCarVO> selectcarList()---------------
+
+
+	
+	
+	// 차량 정보 json
+	@Override
+	public List<CreateCarVO> selectCarTypeList(Map<String, String> paraMap) throws SQLException {
+		
+		if( "SEDAN".equalsIgnoreCase(paraMap.get("cartype")) || "SUV".equalsIgnoreCase(paraMap.get("cartype")) ) {
+			
+			List<CreateCarVO> cartypeList = new ArrayList<>();
+	
+			try {
+				
+				conn = ds.getConnection();
+	
+				String sql = " select pk_carname, carpoint, cartype "
+						   + " from tbl_car "
+						   + " where cartype=? ";
+	
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, paraMap.get("cartype"));
+	
+				rs = pstmt.executeQuery();
+	
+				while (rs.next()) {
+	
+					CreateCarVO ccvo = new CreateCarVO();
+	
+					ccvo.setCarName(rs.getString(1));  // 제품번호
+					ccvo.setCarpoint(rs.getString(2)); // 제품명
+					ccvo.setCarType(rs.getString(3)); // 제품명
+	
+					cartypeList.add(ccvo);
+	
+				} // end of while(rs.next())-------------------------
+	
+			} finally {
+				close();
+			}
+	
+			return cartypeList;
+		}
+		else {
+			List<CreateCarVO> cartypeList = new ArrayList<>();
+			
+			try {
+				
+				conn = ds.getConnection();
+	
+				String sql = " select pk_carname, carpoint, cartype "
+						   + " from tbl_car ";
+	
+				pstmt = conn.prepareStatement(sql);
+	
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+	
+					CreateCarVO ccvo = new CreateCarVO();
+	
+					ccvo.setCarName(rs.getString(1));  // 제품번호
+					ccvo.setCarpoint(rs.getString(2)); // 제품명
+					ccvo.setCarType(rs.getString(3)); // 제품명
+	
+					cartypeList.add(ccvo);
+	
+				} // end of while(rs.next())-------------------------
+	
+			} finally {
+				close();
+			}
+	
+			return cartypeList;
+		}
+	}
 	
 	
 

@@ -35,23 +35,31 @@
 	background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
 }
 #detail_cut {
-	width: 50%;
-	margin: 50px auto;
+	width: 90%;
+	margin: 200px auto;
 	border-collapse: collapse;
 }
-th, td {
-	border: 1px solid #000;
+#detail_cut td img{
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 10px;
-	text-align: center;
+	max-width: 95%;
+	margin:0 auto;
+	height: auto;
 }
-th {
-	background-color: #f2f2f2;
+#text{
+	/* border: 1px solid red; */
+	color: #ccc;
+	font-size: 15pt;
+	padding-left: 2% ;
 }
 #background-image-4{
 	margin: 2% 0;
 	padding: 0;
 	height: 100vh;
-	background-image: url('../../images/carDetail/g90/2.jpg');
+	background-image: url('../../images/carDetail/g90_LONG_WHEEL_BASE/10.jpg');
 	background-size: cover; /* 이미지가 전체 화면을 채우도록 설정 */
 	background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
 	background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
@@ -60,10 +68,14 @@ th {
 	margin: 2% 0;
 	padding: 0;
 	height: 100vh;
-	background-image: url('../../images/carDetail/g90/3.jpg');
+	background-image: url('../../images/carDetail/g90_LONG_WHEEL_BASE/7.jpg');
 	background-size: cover; /* 이미지가 전체 화면을 채우도록 설정 */
 	background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
 	background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+}
+#exp-1 > table > tbody td{
+	border: solid 1px red;
+	
 }
 #background-image-6{
 	margin: 2% 0;

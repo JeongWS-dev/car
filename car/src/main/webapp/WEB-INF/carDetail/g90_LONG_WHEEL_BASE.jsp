@@ -33,47 +33,68 @@
 	 </div>
    	</div>
 	<table id="detail_cut">
-		<thead>
-			<tr>
-				<th>Header 1</th>
-				<th>Header 2</th>
-				<th>Header 3</th>
-			</tr>
-		</thead>
 		<tbody>
 			<tr>
-				<td>Row 1, Cell 1</td>
-				<td>Row 1, Cell 2</td>
-				<td>Row 1, Cell 3</td>
+				<td><img src="<%= ctxPath%>/images/carDetail/g90_LONG_WHEEL_BASE/4.jpg"></td>
+				<td><img src="<%= ctxPath%>/images/carDetail/g90_LONG_WHEEL_BASE/5.jpg"></td>
+				<td><img src="<%= ctxPath%>/images/carDetail/g90_LONG_WHEEL_BASE/6.jpg"></td>
 			</tr>
 			<tr>
-				<td>Row 2, Cell 1</td>
-				<td>Row 2, Cell 2</td>
-				<td>Row 2, Cell 3</td>
+				<td id="text"><span style="color: white; font-weight: bold;">크레스트 그릴 & 클램쉘 후드</span> 시그니처 지-매트릭스1<br>
+					패턴을 정교하게 쌓아올린 크레스트 그릴이 시선을<br>
+					압도하고 우아한 곡선의 클램쉘 후드와 매끄럽게 이어져<br>
+					화려하고 웅장한 첫인상을 만듭니다.</td>
+				<td id="text"><span style="color: white; font-weight: bold;">두 줄 헤드램프</span> 혁신적인 MLA2 렌즈 기술로 완성한 두 줄<br>
+					헤드램프는 슬림하게 구현되며 제네시스의 브랜드<br>
+					아이덴티티를 담고 있습니다. 또한 운전자가 스마트키를<br>
+					지니고 다가오면 자동으로 다이내믹 웰컴 라이트3가<br>
+					작동되어 헤드램프에 불이 들어오며 마치 환대받는 듯한<br>
+					인상을 줍니다.</td>
+				<td id="text"><span style="color: white; font-weight: bold;">세련된 비율</span> 압도적인 길이에도 전체적인 균형감이<br>
+					흐트러지지 않도록 3박스의 비율을 유지하고 실루엣을<br>
+					날렵하게 다듬었습니다. 측면의 넓은 DLO4와 두툼한<br>
+					C필러, 쿼터 글라스 구성은 고급감을 더하고 뒷좌석에<br>
+					탑승한 VIP 고객의 프라이버시를 보호합니다.</td>
 			</tr>
 		</tbody>
-		
 	</table>
+
+	
    	<div id="background-image-4">
 	   	<div id="text-4">
-			<span style="font-weight: 300; font-size: 20pt;">측면 디자인&nbsp;&nbsp;</span>
-			전용 휠부터 DLO 몰딩까지 보이는 모든 곳부터,<br>
-	   		브레이크 캘리퍼와 같이 운전자의 취향을 드러낼 수 있는 섬세한<br>
-	   		부분까지도 빠짐없이 블랙을 적용했습니다. 가장 어울리는 질감과<br>
-	   		빛의 농도를 고려해 설계된 서로 다른 블랙들이 조화를 이뤄<br>
-	   		차별화된 감성을 느낄 수 있습니다.
+			<span style="font-weight: bold; color:#737373;">편의 사항<br><br></span>
+			<h1 style="font-weight: 300;">편안함 이상의 감동</h1>
+			운전자를 위한 편의는 물론 2열 승객의 건강과 감성까지 세심하게<br>
+			배려한 G90 롱휠베이스의 최첨단 기능으로 특별함을 만듭니다.
 	   	</div>
 	 </div>
    	<div id="background-image-5" style="margin-bottom: 0%;">
    		<div id="text-5">
-	   		<span style="font-weight: 300; font-size: 20pt;">후면 디자인&nbsp;&nbsp;</span>
-			가장 깨끗하면서도 순수한 블랙을 구현하기 위해<br>
-			차종 후면 엠블럼을 덜어내고, 한국 특유의 미적 요소인 '여백의<br>
-			미'를 강조했습니다. GENESIS 로고만을 남겨 G90 Black만의<br>
-			존재감을 완성합니다.
+			<span style="font-weight: bold; color:#737373;">퍼포먼스</span>
+			<h1 style="font-weight: 300;">여유로운 성능과 승차감의 조화</h1>
    		</div>
    	</div>
-
+	<div id="exp-1">
+		<span style="font-weight: 300; font-size: 18pt;">고성능 엔진과 8단 자동변속기가 플래그십 모델에 걸맞은 여유로운 성능과<br>
+			정숙성을 완성합니다. 멀티 챔버 에어 서스펜션이 노면 상태에 따라 능동적으로<br>
+			반응해 외부 자극을 최소화하고, 전자식 변속 다이얼이 부드러운 변속감을 구현해<br>
+			매끄러운 승차감을 만듭니다.
+		</span>
+		<table id="best">
+			<tr>
+				<td>최고 출력</td>
+				<td>최대 토큰</td>
+			</tr>
+			<tr>
+				<td>415ps</td>
+				<td>56 kgf·m</td>
+			</tr>
+			<tr>
+				<td>5,800 rpm</td>
+				<td>1,300~4,500 rpm</td>
+			</tr>
+		</table>
+	</div>
 
 
 

@@ -23,21 +23,169 @@ body > nav.top > ul {
 	width:100%;
 }
 
-body > nav.top > ul > li:nth-child(1),
-body > nav.top > ul > li:nth-child(2),
-body > nav.top > ul > li:nth-child(3){
-	border:solid 0px red;
-	margin-left: 1%;
+
+
+
+
+.nav-item > a{
+	border: solid 0px pink;
 }
 
-body > nav.top > ul > li:nth-child(4){
-	margin-left: 60%;
+#nav-item2 > a{
+	border: solid 0px red;
 }
 
-body > nav.top > ul > li:nth-child(5),
-body > nav.top > ul > li:nth-child(6){
-	margin-left: 1%;
+#nav-item3 > a{
+	border: solid 0px pink;
 }
+
+
+header#header{
+	border: solid 0px pink;
+	width: 100%;
+}
+
+
+#\31  > ul{
+	width: 1500px;
+}
+
+
+#sub-menu1{
+	display: none;
+	position: absolute;
+	background-color: #141414;
+	width: 700%;    
+	height: 2300%;    
+	left:-70%;
+	top: 135%;
+	z-index: 1;
+	overflow-y: auto; /* 세로 스크롤이 필요한 경우 스크롤이 표시됩니다. */
+}
+
+#sub-menu2{
+	display: none;
+	position: absolute;
+	background-color: #141414;
+	width: 550%;    
+	height: 590%;    
+	left:-61%;
+	top: 135%;
+	z-index: 1;
+	overflow-y: auto; /* 세로 스크롤이 필요한 경우 스크롤이 표시됩니다. */
+    max-height: 590%; /* 최대 높이를 지정합니다. */
+}
+
+
+
+
+#sidebar-wrapper {
+	border: solid 0px pink;
+	width: 3%;
+	margin-left: 3.7%;
+	margin-top: 0.6%;
+}
+
+#sidebar-wrapper > ul{
+	border: solid 0px white;
+	width: 30%;
+	margin-left: 7%;
+	margin-top: 3%;
+	list-style: none;
+}
+
+#sidebar-wrapper > ul > li{
+	margin-bottom: 25%;
+	font-weight: 500;
+	color: white;
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+#sidebar-wrapper > ul > li > a {
+	text-decoration: none; /* 밑줄 제거 */
+	color: #cccccc; /* 텍스트 색상 변경 */
+	font-size: large;
+	font-weight: 475;
+	font-family: "Arial", sans-serif;
+}
+
+a#geon {
+	text-decoration: none; /* 밑줄 제거 */
+	color: #cccccc; /* 텍스트 색상 변경 */
+	font-size: large;
+	font-weight: 475;
+	font-family: "Arial", sans-serif;
+}
+
+a#purchase {
+	color: white; /* 텍스트 색상 변경 */
+
+	font-weight: 400;
+	font-family: "Arial", sans-serif;
+}
+
+#sidebar-wrapper > li a:hover {
+	text-decoration: none; /* 밑줄 제거 */
+	color: white; /* 텍스트 색상 변경 (원하는 색상으로 수정 가능) */
+}
+
+.vertical-line {
+    border-left: 0.2px solid #404040; /* 세로 선 스타일 */
+    height: 120%; /* 세로 선의 높이, 화면 전체 높이로 설정 */
+    margin-left: 50%; /* 사이드바 너비 + 오른쪽 여백만큼 세로 선을 오른쪽으로 옮김 */
+    opacity: 0.3;
+}
+
+
+.custom-button {
+	border: solid 1px white;
+    display: inline-block;
+    background-color: #0d0d0d;
+	width: 102%;
+    color: white;
+    font-size: 14px; 
+    padding: 5.5% 5.5%; /* 위아래 0.5rem, 좌우 1rem */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    margin-top: 9%;
+	text-align: center;
+}
+
+.custom-button:hover {
+    background-color: white; /* 마우스 호버 시 배경색 변경 */
+	color: #404040;
+	text-decoration: none; /* 밑줄 제거 */
+}
+
+body > nav.navbar.navbar-expand-sm.navbar-dark.fixed-top.top > header > div > div > ul > li:nth-child(1) > ul > div > div:nth-child(2) > div{
+	font-size: 15px;
+	font-weight: 500;
+	margin-left: 0%;
+	border: solid 0px white;
+	width: 100%;
+	size: 10%;
+	padding-left: -15%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 body > nav.bottom > ul {
 	border: solid 0px red;
@@ -60,6 +208,17 @@ body > div#footer {
 	background-color: black;
 	height: 200px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ main silde start ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 body > div.main-page > div.carousel > div.carousel-inner p {

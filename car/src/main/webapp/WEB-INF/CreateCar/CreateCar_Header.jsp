@@ -29,16 +29,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		// **** 특정 회원을 클릭하면 그 회원의 상세정보를 보여주도록 한다. **** //
-		$("a[name='Powertrains']").click(e=>{
-			alert("엔진타입을 클릭했습니다.")
-			const frm = document.memberOneDetail_frm;
-			frm.userid.value = userid;
-			<%-- frm.action = <%=ctxPath%>/member/memberOneDetail.up  --%>
-			frm.action = "${pageContext.request.contextPath}/member/memberOneDetail.up"
-			frm.method = "post";
-			//frm.submit();
-		})// end of $("table#memberTbl tr.memberInfo").click(e=>{
+		
 	})//$(document).ready(function(){
 </script>
 

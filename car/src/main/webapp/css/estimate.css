@@ -5,66 +5,9 @@ body{
 }
 
 
-body > nav {
-	height: 70px;
-	background-color: black;
-}
-
-body > nav.top{
-	border-bottom: solid 1px gray;
-}
-
-body > nav.top > img {
-	margin-left: 7%;
-}
-
-body > nav.top > ul {
-	border: solid 0px blue;
-	margin-left: 1%;
-	width:100%;
-}
-
-body > nav.top > ul > li:nth-child(1),
-body > nav.top > ul > li:nth-child(2),
-body > nav.top > ul > li:nth-child(3){
-	border:solid 0px red;
-	margin-left: 1%;
-}
-
-body > nav.top > ul > li:nth-child(4){
-	margin-left: 60%;
-}
-
-body > nav.top > ul > li:nth-child(5),
-body > nav.top > ul > li:nth-child(6){
-	margin-left: 1%;
-}
-
-body > nav.bottom > ul {
-	border: solid 0px red;
-	width:90%;
-	margin: auto;
-}
-
-body > nav.bottom > ul > li {
-	border: solid 0px green;
-	display: inline-block;
-	margin: 0 0.5%;
-}
-
-body > nav.bottom > ul > li:nth-child(7){
-	margin-left: 35%;
-}
-
-body > div#footer {
-	border-top: solid 1px gray;
-	background-color: black;
-	height: 200px;
-}
-
 
 body > div#container {
-	border: solid 1px green;
+	border: solid 0px green;
 	background-color: rgb(21, 21, 21);
 	color:white;
 	font-stretch: condensed;
@@ -74,32 +17,37 @@ body > div#container {
 }
 
 body > div#container > div#top_context{
-	border: solid 1px yellow;
+	border: solid 0px yellow;
 	width : 60%;
 	margin: 0 auto;
 }
 
 body > div#container > div#main_top{
-	border: solid 5px red;
+	border: solid 0px red;
 	width : 60%;
 	margin: 0 auto;
 }
 
-
+div#logo_image{
+	height : 22px;
+	width : 46px;
+	margin-bottom: 8%;
+	border: solid 0px blueviolet;
+}
 
 div.empty{
 	height : 90px;
 	border: solid 0px blueviolet;
 }
 
-.btn-carselect {
+button.btn-carselect {
 	width : 100%;
 	height: 55px;
-	border-color: #ffffff; /* 테두리 색상 설정 */
+	border : solid 1px #ffffff;/* 테두리 색상 설정 */
 	color: #ffffff; /* 글자색 설정 */
 }
 
-.btn-carselect:hover {
+button.btn-carselect:hover {
 	background-color: #ffffff; /* 배경색 설정 */
 	color: #000000; /* 호버 시 글자색 변경 */
 }
@@ -107,7 +55,7 @@ div.empty{
 body > div#container > div.main_top{
 	width : 60%;
 	margin : auto;
-	border: solid 1px rgb(97, 228, 21);
+	border: solid 0px rgb(97, 228, 21);
 }
 
 body > div#container > div.main_top > div.category_main{
@@ -115,7 +63,7 @@ body > div#container > div.main_top > div.category_main{
 }
 
 body > div#container > div.main_top > div.category_main > div.car_select{
-	border: solid 1px white;
+	border: solid 0px white;
 	width : 20%;
 	height: 260px;
 	margin-right:7%;
@@ -125,37 +73,57 @@ body > div#container > div.main_top > div.category_main > div.car_select{
 body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul {
     list-style: none; /* 목록 기호 제거 */
     text-align: center; /* 가로 가운데 정렬 */
-	border: solid 1px BLUE;
+	border: solid 0px BLUE;
 }
 
-body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li div{
+body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li> div.btn-wrap{
     display: inline-block; /* 인라인 요소로 배치 */
 	border: solid 0px yellow;
 	width: 15%;
 	padding: 10px;
+	height: 50px;
 	font-size: medium;
-	border-bottom:2px solid white;
+	color : gray;
+	cursor: pointer;
+	
+}
+
+body > div#container > div.bar_title > div.cm-vehicle-tab-btn > ul > li> div.btn-wrap:hover{
+	color : white;
+	border-bottom: solid 1px white;
+}
+
+div.main_carPoint{
+	font-size : 20px; font-weight: lighter; font-stretch: condensed;
+
 }
 
 
-
-a:link {
-	color : gray;
+a.top_button:link,
+a.bar_share:link {
+	color : white;
 	text-decoration: none;
 }
-  a:visited {
-	color : gray;
+a.top_button:visited,
+a.bar_share:visited {
+	color : white;
 	text-decoration: none;
 }
-a:hover {
+a.top_button:hover,
+a.bar_share:hover  {
  	color : white;
 	text-decoration: none;
 }
-a:active {
+a.top_button:active,
+a.bar_share:active {
 	color : white;
 	text-decoration: none;
   }
 
+div.main_car_image > img{
+	height:280px; 
+	width:775px;
+}
 
 div.bar_image{
 	height: 87px;
@@ -164,14 +132,20 @@ div.bar_image{
 
 img.car_image{
 	width: 100%;
-	border: solid 1px yellow;
+	border: solid 0px yellow;
 }
 
-div.swiper-slide,
-div.slide_pieces {
+div.swiper-slide{
 	width: 300px;
 	height: 310px;
 }
+div.card {
+	width: 300px;
+	height: 310px;
+	padding : 0;
+	cursor: pointer;
+}
+
 
 span.icon img{
 	width: auto;
@@ -212,7 +186,7 @@ span.icon {
     
 }
 .swiper-wrapper{
-	border: solid 2px green;
+	border: solid 0px green;
 	margin-left: 18px;
 	padding : 0;
 	margin-right:0;
@@ -224,7 +198,7 @@ span.icon {
     left: 10px; /* 원하는 위치로 이동 */
     top: 50%; /* 세로 중앙 정렬 */
     transform: translateY(-50%); /* 수직 정렬 */
-    border: solid 1px red;
+    border: solid 0px red;
 }
 
 .swiper-button-next {
@@ -234,6 +208,11 @@ span.icon {
     top: 50%; /* 세로 중앙 정렬 */
     transform: translateY(-50%); /* 수직 정렬 */
     
+}
+
+.swiper-button-disabled {
+	visibility: hidden;
+	opacity: 0;
 }
 
 
@@ -250,4 +229,24 @@ div.slider_outline{
 .slider_outline .swiper-container {
 	position: unset;
     margin: 0 45px;
+}
+
+ul.util_list{
+	list-style:none;
+	width : 200px;
+	border: solid 0px red;
+	padding: 0;
+	margin :0;
+}
+
+ul.util_list > li{
+	display: inline;
+	margin-right: 10%;
+	padding :0;
+}
+
+div.share_bar{
+	display: flex;
+	margin-left: 5%;
+	margin-right: 3%;
 }

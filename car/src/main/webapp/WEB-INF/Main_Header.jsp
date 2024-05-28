@@ -37,17 +37,18 @@
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 		
 		<!-- Brand -->
-		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6.8%;"> 
-	
+		<a href="<%= ctxPath%>/index.car" style = "margin-left: 7%;">
+		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:86%;"> 
+		</a>
 		<!-- Links -->
 		<header id="header" class="p-3 bg-black text-white" style="position: relative;" >
-			<div class="container"  style="margin-left: 2%;">
+			<div class="container"  style="margin-left: 0.3%;">
 			<input class="ctx" type="hidden" value="<%= ctxPath%>" />
 				<div id="1"  class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					
 					<ul class="nav col-6 col-lg-auto me-lg-auto mb-4 mb-md-0">
 						<li class="nav-item" id="nav-item1"> 
-							<a id="model" href="#" class="nav-link px-2 text-white">모델</a>
+							<a id="model" href="#" class="nav-link text-white">모델</a>
 							<ul id="sub-menu1" class="nav-item sub-menu" >
 								
 								<div style="display: flex; margin-left: 3.5%;">	
@@ -84,7 +85,7 @@
 							
 						</li>
 						<li class="nav-item" id="nav-item2">
-							<a href="#" class="nav-link px-2 text-white">구매</a>
+							<a href="#" class="nav-link text-white" style="margin-left: 25%; width: 100%;">구매</a>
 							<ul id="sub-menu2" class="nav-item sub-menu" >
 								
 								<div style="display: flex; margin-left: 5%;">	
@@ -123,21 +124,56 @@
 						</li>
 						
 						
-						<li class="nav-item" id="nav-item3">
-							<a href="#" class="nav-link px-2 text-white">체험</a>
+						<li class="nav-item" id="nav-item2">
+							<a href="#" class="nav-link text-white" style="margin-left: 50%; width: 100%;">체험</a>
+							<ul id="sub-menu3" class="nav-item sub-menu" >
+								
+								<div style="display: flex; margin-left: 5%;">	
+									<div id="sidebar-wrapper" style="display: flex;  font-weight: 475;">
+										<div style="display: inline; margin-top: 5%;">
+											<div style="font-size: x-large; width: 100%; margin-bottom: 11%;">체험</div>
+											<div style="font-size: small; width: 155%; color:#b3b3b3;">제네시스가 담아 낸 브랜드의 이상과 가치를 미리 경험할 수 있습니다.</div> 
+										</div>
+
+										<div style="margin-top: 7.5%; height: 103%; opacity: 0.3;" class="vertical-line"></div>
+
+									
+									</div>
+
+									<div style="width:30%; display: flex; margin-top: 0.7%; margin-left: 0.5%;">
+										<div>
+											<a id="purchase" href="<%= ctxPath %>/drivetryApply/space.car">스페이스</a> 
+										</div>
+										<div style="margin-left: 9%;">
+											<a id="purchase" href="#">시승신청</a>
+										</div>
+									</div>
+									
+								</div>  
+								
+								<div style="margin-top: 0.25%; border-bottom: solid 1px #404040; opacity: 0.3;"></div>
+
+								<div style="margin-top: 0.28%; margin-left: 11.825%; font-size: 14px; font-weight: normal;">
+									<a id="purchase" href="#">시승신청 ></a>
+									<a style="margin-left: 0.75%;" id="purchase" href="#">전시장 찾기 ></a>
+								</div>
+								
+							</ul>
 							<ul class="nav-item sub-menu">
 							</ul>
 						</li>
 						<li class="nav-item" id="nav-item4" style="margin-left: 60%;">
-							<a style="margin-left: 10%; width: 100%;" href="#" class="nav-link px-2 text-white">고객센터</a>
+							<a style="margin-left: 90%; width: 100%;" href="#" class="nav-link px-2 text-white">고객센터</a>
 							<ul class="nav-item sub-menu">
 							</ul>
 						</li>
 						<li class="nav-item" id="nav-item5" >
+
 							<a style="margin-left: 10%; width: 100%;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage.car">마이페이지</a>
+
 						</li>
 						<li class="nav-item" id="nav-item6" >
-							<a style="margin-left: 70%;" class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+							<a style="margin-left: 270%;" class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
 						</li>
 					</ul>
 				</div>

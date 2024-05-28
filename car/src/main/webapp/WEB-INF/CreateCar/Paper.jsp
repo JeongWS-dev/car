@@ -13,11 +13,11 @@
 
 <div class="body">
 	<div class="Title">내 견적서</div>
-	<c:if test="${empty requestScope.mapList}">
+	<c:if test="${empty requestScope.paper_mapList}">
 		저장된 견적이 없습니다.
 	</c:if>
-	<c:if test="${not empty requestScope.mapList}">
-		<c:forEach var="map" items="${requestScope.mapList}" varStatus="status" >
+	<c:if test="${not empty requestScope.paper_mapList}">
+		<c:forEach var="map" items="${requestScope.paper_mapList}" varStatus="status" >
 			<div class= "myPaper accordion" id="accordionExample">
 				<div class="accordion" id="accordionExample">
 					<div class="card" style = "background-color: rgba(0,0,0,0);">

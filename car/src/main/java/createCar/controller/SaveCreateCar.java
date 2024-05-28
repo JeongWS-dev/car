@@ -1,5 +1,6 @@
 package createCar.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,14 +55,20 @@ public class SaveCreateCar extends AbstractController {
 				}
 			}
 			
-			List<Map<String,String>> mapList = cdao.selectPaper(userid);// 내 견적서 페이지에 있는 모든 견적서 가져오기
+			List<Map<String,String>> paper_mapList = cdao.selectPaper(userid);// 내 견적서 페이지에 있는 모든 견적서 가져오기
 			
-			if(mapList.size()==0) {
-				mapList = null;
+			if(paper_mapList.size()==0) {
+				paper_mapList = null;
 			}
+			
+			List<Map<String,String>> Option_mapList = new ArrayList<>();
+			for(Map<String,String> paper_map:paper_mapList) {
+				Option_mapList = cdao.selectOption(paper_map.get("pk_paperseq"));// 내 견적서의 번호에 존재하는 모든 상세견적 출력
+			}
+			
 			session.removeAttribute("cvo");
 			
-			request.setAttribute("mapList", mapList);
+			request.setAttribute("paper_mapList", paper_mapList);
 			super.setViewPage("/WEB-INF/CreateCar/Paper.jsp");
 		}
 		else {

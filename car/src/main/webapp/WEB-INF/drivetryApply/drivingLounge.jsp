@@ -28,7 +28,7 @@
 <!-- script 페이지에 들어오자마자 로그인유무를 확인 후 로그인 안한 경우에는 로그인페이지로 이동 로그인 하지 않을 경우 백 -->
 <script type="text/javascript">
 	$(document).ready(function(){
-
+		
 	})
 </script>
 

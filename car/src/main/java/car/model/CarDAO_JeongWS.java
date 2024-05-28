@@ -22,5 +22,6 @@ public interface CarDAO_JeongWS {
 	int insertTblMyOption(Map<String, String> map) throws SQLException;//내 견적서의 기본 사항들을 DB에 insert한다.
 	int insertTblChoiceOption(String option,String carname,String seq) throws SQLException;// 선택사항이 있는 경우에 선택사항을 DB 에 insert한다.
 	List<Map<String, String>> selectPaper(String userid) throws SQLException;// 내 견적서 페이지에 있는 모든 견적서 가져오기
+	List<Map<String, String>> selectOption(String string) throws SQLException;// 내 견적서의 번호에 존재하는 모든 상세견적 출력
 
 }

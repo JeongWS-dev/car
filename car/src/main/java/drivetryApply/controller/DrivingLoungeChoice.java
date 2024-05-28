@@ -1,15 +1,10 @@
 package drivetryApply.controller;
 
 
-import java.util.List;
-import java.util.Map;
-
-import car.model.CarDAO_Choijh;
-import car.model.CarDAO_imple_Choijh;
 import car.model.CarDAO_imple_kimdh;
 import car.model.CarDAO_kimdh;
 import common.controller.AbstractController;
-import drivietryApply.domain.DriveLoungeVO;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -26,10 +21,10 @@ public class DrivingLoungeChoice extends AbstractController {
       // 해당 페이지에서는 무조건 modal창이 뜨도록 --> 차량 선택을 해라
 		String method = request.getMethod();
 	    
-	// 모달에 띄울 메세지
+	  // 모달에 띄울 메세지
 		  String message = "현재 진행중인 시승 신청 단계를 완료해야\r\n"
   		  		+ "다음 단계로 이동이 가능합니다.";  
-
+		  
       
       
       super.setRedirect(false);

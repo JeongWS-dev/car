@@ -1,5 +1,8 @@
 package common.controller;
 
+import createCar.domain.CreateCarVO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 public abstract class AbstractController implements InterCommand{
 	/*
@@ -43,5 +46,16 @@ public abstract class AbstractController implements InterCommand{
 	}
 	// == getter and setter end == // 
 	
+	
+	public boolean checkCvo(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		CreateCarVO cvo = (CreateCarVO)session.getAttribute("cvo");
+		if(cvo!= null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}// end of public boolean checkCvo(HttpServletRequest request) {
 	
 }

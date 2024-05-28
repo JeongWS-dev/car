@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
 
     $("a#cartype").click(function(){
@@ -40,5 +41,5 @@ function goCarType(text){
             $("#G90_BLACK").parent("div").show(); // 이미지 태그가 속한 부모 div를 보여줌
         }
     }
-
-}
+    }
+    

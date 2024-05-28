@@ -5,11 +5,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-public class login extends AbstractController {
+public class MyPage extends AbstractController {
 	
 	@Override
 	   public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		super.setViewPage("/WEB-INF/myPage/login/login.jsp");
+		super.setViewPage("/WEB-INF/myPage/myPage.jsp");
 	         
 	      
 	}

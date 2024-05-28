@@ -1,89 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
-                                            
-    
-    
-    
-    
-    
-=======
-                        
->>>>>>> refs/heads/kimmr
-    
-    
-    
     
     <wb-module deploy-name="car">
-<<<<<<< HEAD
-                                                                                        
-        
-        
-        
-        
-        
-=======
-                                                
->>>>>>> refs/heads/kimmr
-        
-        
-        
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-<<<<<<< HEAD
-                                                                                        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-=======
->>>>>>> refs/heads/kimmr
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-<<<<<<< HEAD
-                                                                                
-        
-        
-        
-        
-        
-=======
-                                        
->>>>>>> refs/heads/kimmr
-        
-        
         
         <property name="context-root" value="car"/>
                 
         <property name="java-output-path" value="/car/build/classes"/>
-<<<<<<< HEAD
-                                                                                    
-    
-    
-    
-    
-    
-=======
-                                            
->>>>>>> refs/heads/kimmr
-    
-    
     
     
     </wb-module>
-<<<<<<< HEAD
-                                        
-
-
-
-
-=======
-                    
->>>>>>> refs/heads/kimmr
-
 
 
 

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @charset "UTF-8";
 
 div.body {
@@ -52,59 +52,4 @@ div.incolorTitle{
 div.card{
 	border:solid 0px red;
 	height:auto;
-=======
-@charset "UTF-8";
-
-div.body {
-	border:solid 1px blue;
-	background-color: white;	
-}
-
-div.Title {
-	border-bottom:solid 1px rgb(48, 47, 47);
-	font-size: 30pt;
-	font-weight: lighter;
-	margin-top: 100px;
-	margin-left: 200px;
-}
-
-div.myPaper{
-	width:80%;
-	margin: auto;
-}
-
-button.btn{
-	border:solid 0px green;
-	width:100%;
-}
-
-div.carname {
-	border:solid 0px red;
-	width:10%;
-	font-size: 15pt;
-	font-weight: bord;
-}
-
-div.powerTitle{
-	border:solid 0px red;
-	font-size: 15pt;
-	width:35%;
-}
-
-div.outcolorTitle{
-	border:solid 0px red;
-	font-size: 15pt;
-	width:15%;
-}
-
-div.incolorTitle{
-	border:solid 0px red;
-	font-size: 15pt;
-	width:35%;
-}
-
-div.card{
-	border:solid 0px red;
-	height:auto;
->>>>>>> refs/heads/kimmr
 }

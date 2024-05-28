@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 @charset "UTF-8";
 
 #container{
@@ -54,64 +52,4 @@
 #space-dropdown{
 	width:24%;
 	border-bottom: solid 1px white; 
-=======
-
-@charset "UTF-8";
-
-#container{
-	background-color: black;
-	color: white;
->>>>>>> refs/heads/kimmr
 }
-<<<<<<< HEAD
-=======
-#spaceVideo {
-	position: blocked; /* 혹은 absolute, 요소의 위치를 고정 */
-	width: 100%;
-	overflow: hidden; /* 화면 밖으로 나가는 부분 숨기기 */
-  }
-#head-text{
-	text-align: center;
-}
-#head-text > p.display-pc{
-	font-size: 36pt;
-	font-weight: 300;
-}
-#head-text > p.el-desc{
-	color:#D5D5D5;
-	
-}
-
-#space-dropdown{
-/* 	border: solid 1px red; */
-	width: 25%;
-	margin-left: auto;
-	margin-right: auto;
-}
-#space-name{
-	/* border: solid 1px red; */
-	font-size: 80px;
-	font-weight: 100;
-}
-#space-hanam > div,
-#space-gangnam,
-#space-suji > div,
-#space-anseong > div{
-	/* border: solid 1px red; */
-	text-align: left;
-	padding-bottom: 470px;
-}
-
-#space-info > a.carousel-control-prev > span.carousel-control-prev-icon,
-#space-info > a.carousel-control-next > span.carousel-control-next-icon{
-	/* border: solid 1px red; */
-	width: 100px;
-	height: 100px;
-	transform: scaleX(0.7); /* 가로 비율을 0.5로 축소 */
-	background-size: 100px 100px; 
-}
-#space-dropdown{
-	width:24%;
-	border-bottom: solid 1px white; 
-}
->>>>>>> refs/heads/kimmr

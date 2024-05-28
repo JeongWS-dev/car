@@ -20,16 +20,10 @@
 <%-- 직접만든 js --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/estimate.js"></script>
 
-<<<<<<< HEAD
+
 <jsp:include page="Main_Header.jsp"></jsp:include>
 
 <input name="ctxPath" type="hidden" value="<%=ctxPath%>"/>
-=======
-<<<<<<< HEAD
-<jsp:include page="Main_Header.jsp"></jsp:include>
-
-<input name="ctxPath" type="hidden" value="<%=ctxPath%>"/>
-=======
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
@@ -59,9 +53,7 @@
 			</li>
 		</ul>
 	</nav>
->>>>>>> refs/heads/kimmr
->>>>>>> refs/heads/kimmr
-	
+
 	<div id="container">
 		<div id="top_context">
 			<h1>

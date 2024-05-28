@@ -5,6 +5,187 @@
     //    /MyMVC
 %>
 <jsp:include page="Main_Header.jsp"></jsp:include>
+<%-- CSS --%>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<%--js --%>
+<script type="text/javascript" src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<style type="text/css">
+
+.swiper-slide{
+	width: 600px;
+	border: solid 0px red;
+}
+
+
+.mySwiper {
+    position: relative; /* 슬라이드 컨테이너를 상대적으로 위치시킵니다. */
+	width: 75%;    
+}
+
+.swiper-wrapper{
+	margin: 0 auto;
+	padding : 0;
+	width: 100%;
+}
+
+
+.swiper-button-prev {
+    position: fixed; /* 다음 버튼을 화면에 고정 */
+ /*   z-index: 1;  다른 요소보다 위에 위치하도록 설정합니다. */
+    left: 100px; /* 원하는 위치로 이동 */
+    top: 50%; /* 세로 중앙 정렬 */
+    transform: translateY(-50%); /* 수직 정렬 */
+    border: solid 3px red;
+}
+
+.swiper-button-next {
+	position: absolute; /* 이전 버튼을 절대적으로 위치시킵니다. */
+  /*   z-index: 1; 다른 요소보다 위에 위치하도록 설정합니다. */
+   	right: 100px;   /*원하는 위치로 이동 */
+    top: 50%; /* 세로 중앙 정렬 */
+    transform: translateY(-50%); /* 수직 정렬 */
+	border: solid 3px green;
+}
+
+.swiper-button-disabled {
+	visibility: hidden;
+	opacity: 0;
+}
+
+:root {
+    --swiper-theme-color: #ffffff!important;
+}
+
+</style>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	let carSearchType = 'ALL';
+	showCarList(carSearchType);
+	swiperset(); // swiper 설정 함수
+	console.log("carSearchType1111 : " , carSearchType);
+
+});
+
+
+function goCarList(obj){
+    
+	let carSearchType = $(obj).text();
+	console.log("carSearchType2222 : " , carSearchType);
+	showCarList(carSearchType);
+	swiperset(); // swiper 설정 함수
+	
+}
+
+
+
+// 차종 별로 리스트 보여주는 함수
+function showCarList(carSearchType){
+
+//   e.preventDefault(); // 링크의 기본 동작을 막음
+// alert("ALL button clicked");
+//var carSearchType = $(e.target).text() // 차 종류를 가져옴
+	let v_html="";
+	$.ajax({
+	url:"/car/estimate/carTypeJSON.car",
+	type:"get",
+	data: {"carSearchType" : carSearchType },
+	dataType : "json",
+	
+	success:function(json){ 
+	//  console.log("~~carSearchType 확인", carSearchType);
+	if(json.length == 0) { // json== null하면 오류 남. 넘겨 받을 때 new 선언해서 받아서 빈 껍데기 배열이기 때문에 null이 아니고 길이가 0임.
+		v_html = `현재 상품 준비중 입니다...`;
+		
+	}
+	// console.log("~~~ 확인용 json 1=> ", JSON.stringify(json));
+
+	else{
+		v_html ="";
+		
+		$.each(json, function(index, item){
+
+		v_html +=  `<div class="swiper-slide">
+						<div class="card"  style="width:100%; height: 250px; padding : 0; margin-right : 5%; border: solid 0px yellow;">
+						<div class="vehicle_title">
+							<div class= "vehicle_name" style="font-size: medium;">
+								\${item.Pk_CarName.length < 11 ? item.Pk_CarName.split('_').join(' ') : item.Pk_CarName.split('_', 1)[0]}`
+		
+
+		v_html += `</div>
+					<span class=icon>`
+		
+		if(item.CarLogo != null){
+			if(item.CarLogo == 'NEW'){
+			v_html +=`<img src="<%= ctxPath%>/images/Estimate/new_50x24.png" style="text-align: right;" />`
+			}
+			else if(item.CarLogo == 'EV'){
+			v_html +=`<img src="<%= ctxPath%>/images/Estimate/ev_20x24.png" style="text-align: right;" />`
+			}
+		}
+
+		v_html += `</span> </div> <div class="brand_title">`
+
+		if(item.CarPoint.length > 8){
+			v_html += item.CarPoint.split('_').join(' '); // CarPoint의 _대신 공백
+		}
+
+		v_html += `</div> <div class="bar_image">
+					<img src="<%= ctxPath%>/images/Estimate/\${item.Pk_CarName}.png" class="car_image" style="width : 100%; border: solid 0px red; "/> 
+					</div>
+					</div>
+					</div>`;
+		
+		});// end of each------------
+
+		
+	}// end of else-----------
+	$("div#img_slider").html(v_html);
+
+	// console.log("~~~ 확인용 json => ", JSON.stringify(json));
+	// alert("확인용 carSearchType : " + carSearchType);
+	//  console.log("~~~~~~3"+carSearchType);
+			
+
+	
+	},// end of success---------
+	error: function(request, status, error){
+	alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	}
+
+	});// end of ajax---------
+}
+
+
+// swiper 세팅
+var swiper = null;
+
+function swiperset(){
+
+  if (swiper != null) {
+    swiper.destroy();
+  }
+
+  // 새로운 Swiper 객체를 생성합니다.
+  	swiper = new Swiper('.mySwiper', {
+    loop: false,
+    slidesPerView: 3, // 한 번에 표시할 슬라이드 수
+    navigation: {
+      nextEl: '.swiper-button-next', // 다음 버튼 요소 (선택 사항)
+      prevEl: '.swiper-button-prev', // 이전 버튼 요소 (선택 사항)
+    },
+    freeModeSticky: false,
+	observer: true,
+	observeParents: true
+
+  });
+}// end of function swiperset(){}------------------
+
+
+
+</script>
 
 	<div class = "main-page">
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -102,7 +283,7 @@
 			</a>
 		</div>
 
-		<div class = "our-models">
+		<div class = "our-models" >
 			<div class = "our-models-inner">
 				<p style="font-size: 40px; font-weight: lighter;">OUR MODELS</p>
 				<p style="color: rgb(206, 206, 206);">역동적이면서도 우아한 디자인과 최첨단 기술을 탑재한 제네시스 브랜드의 라인업을 살펴보세요.</p>
@@ -110,84 +291,37 @@
 					All
 				</a>
 				<div class="dropdown-menu our-model-Dropdown" aria-labelledby="our-model-Dropdown" style="background-color: black;">
-					<a class="dropdown-item" href="#" value = "BLACK">ALL</a>
-					<a class="dropdown-item" href="#" value = "BLACK">BLACK</a>
-					<a class="dropdown-item" href="#" value = "SEDAN">SEDAN</a>
-					<a class="dropdown-item" href="#" value = "SUV">SUV</a>
-				</div>
-				<div class="row mx-auto my-auto">
-					<div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-						<div class="carousel-inner w-100" role="listbox">
-							<div class="carousel-item active">
-								<div class="col-md-4">
-									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-										<h5 class="card-title">G90 Black</h5>
-										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-black-desktop-630x240-ko.png">
-										<div class="card-body">
-											<button class="our-models-button">자세히보기</button>
-									  	</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-										<h5 class="card-title">G90</h5>
-										<p class="card-text">LONG WHEEL BASE</p>
-										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-lwb-desktop-630x240-ko.png">
-										<div class="card-body">
-											<button class="our-models-button">자세히보기</button>
-									  	</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-										<h5 class="card-title">G90</h5>
-										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
-										<div class="card-body">
-											<button class="our-models-button">자세히보기</button>
-									  	</div>
-									</div>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<div class="col-md-4">
-									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-										<h5 class="card-title">G90</h5>
-										<p class="card-text">LONG WHEEL BASE</p>
-										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-lwb-desktop-630x240-ko.png">
-										<div class="card-body">
-											<button class="our-models-button">자세히보기</button>
-									  	</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-										<h5 class="card-title">G90</h5>
-										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
-										<div class="card-body">
-											<button class="our-models-button">자세히보기</button>
-									  	</div>
-									</div>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<div class="col-md-4">
-									<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  
-										<h5 class="card-title">G90</h5>
-										<p class="card-text"></p>
-										<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/our-models/genesis-kr-admin-model-list-thumbnail-g90-desktop-630x240-ko.png">
-										<div class="card-body">
-											<button class="our-models-button">자세히보기</button>
-									  	</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<a class="dropdown-item" onclick="goCarList(this)" >ALL</a>
+					<a class="dropdown-item" onclick="goCarList(this)" >SEDAN</a>
+					<a class="dropdown-item" onclick="goCarList(this)" >SUV</a>
 				</div>
 			</div>
+			<div class="slider_outline" style="border: solid 1px yellow; ">
+				<div id="bar_img" class="swiper mySwiper" style="border: solid 1px white;">
+					<div id="img_slider" class="swiper-wrapper" style="border: solid 1px blueviolet;">
+
+						<%-- 여기에 carList 카드가 들어감--%>
+					</div>
+			
+					
+				</div>	
+				<button type="button" class="swiper-button-next">Next</button>
+				<button type="button" class="swiper-button-prev">Prev</button>
+			</div>		
+
+	<%--	<div class="row mx-auto my-auto">
+				<div class="carousel slide w-100" data-bs-ride="carousel" id="recipeCarousel">
+					<ul class="carousel-indicators">
+						<li data-target="#recipeCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#recipeCarousel" data-slide-to="1"></li>
+						<li data-target="#recipeCarousel" data-slide-to="2"></li>
+					</ul>		
+					<div class="carousel-inner w-100 carList" role="listbox" id="carList1">
+							여기에 carList 카드가 들어감
+					</div>
+				</div>
+			</div>--%>
+			
 		</div>
 		<div class="row main-middle-icon">
 			<div class="col-md-2"></div>
@@ -215,7 +349,7 @@
 			<div class="row mx-auto my-auto">
 				<div id="recipeCarousel" class="carousel slide mt-5" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
-						<div class="carousel-item active">
+						<div class="carousel-item active carList">
 							<div class="col-md-3 inner-award" style="opacity: 50%;">
 								<img class="img-fluid card-img-top" src="<%= ctxPath%>/images/MainPage/the-Award/genesis-main-the-awards-2024-best-of-awards-mauna-red-electrified-gv70-660x396.jpg">
 								<div class="card"> <!-- 18rem 은 font size의 18배 크기임. 즉, 상대적 크기임. 만약에 width: 280px; 으로 하면 px 이므로 고정 크기임. -->  									

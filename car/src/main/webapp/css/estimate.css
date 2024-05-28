@@ -22,13 +22,13 @@ body > div#container > div#top_context{
 	margin: 0 auto;
 }
 
-body > div#container > div#main_top{
+body > div#container > div.main_top{
 	border: solid 0px red;
 	width : 60%;
 	margin: 0 auto;
 }
 
-div#logo_image{
+div.logo_image{
 	height : 22px;
 	width : 46px;
 	margin-bottom: 8%;

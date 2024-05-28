@@ -236,12 +236,13 @@ body > div.main-page > div.our-models {
 	border:solid 0px blue;
 	color: white;
 	margin: 10% 0;
+	width : 100%;
 }
 
 body > div.main-page > div.our-models > div.our-models-inner {
 	border: solid 0px green;
 	width: 75%;
-	margin: 0 auto;
+	margin: 0 auto; 
 }
 
 body > div.main-page > div.our-models > div.dropdown {

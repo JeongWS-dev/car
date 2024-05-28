@@ -197,7 +197,7 @@ function showMain(mainCar, ctxPath){
       else{
         m_html ="";
         m_html += `<div class="car_select">
-                    <div id="logo_image" > `;
+                    <div class="logo_image" > `;
         
         if(json.CarLogo != null){
           if(json.CarLogo == 'NEW'){
@@ -207,7 +207,7 @@ function showMain(mainCar, ctxPath){
             m_html +=`<img src="../images/Estimate/ev_20x24.png" />`
           }
         }
-        m_html += `</div> <div id="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">`;
+        m_html += `</div> <div class="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">`;
         
         if( json.Pk_CarName.length < 11){
           let carNameNew = json.Pk_CarName.split('_').join('<br>');

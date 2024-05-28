@@ -1,9 +1,5 @@
 package member.domain;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class MemberVO {
 
 	private String pk_userid;             // 회원아이디

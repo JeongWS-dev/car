@@ -26,7 +26,6 @@ public class FAQDAO_imple implements FAQDAO {
 	
 	// 생성자
 	public FAQDAO_imple() {
-		
 		try {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
@@ -35,8 +34,7 @@ public class FAQDAO_imple implements FAQDAO {
 
 		} catch (NamingException e) {
 			e.printStackTrace();
-		
-
+		} 
 	}
 
 	// 사용한 자원을 반납하는 close() 메소드 생성하기

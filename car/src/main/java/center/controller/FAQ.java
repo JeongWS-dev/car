@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class FAQ extends AbstractController {
-
+	
 	private FAQDAO fdao = null;
 		
 		public FAQ() {
@@ -19,7 +19,7 @@ public class FAQ extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		System.out.println("asdas");
 		List<FAQVO> FAQList = fdao.selectFAQ();
 		request.setAttribute("FAQList", FAQList);
 		

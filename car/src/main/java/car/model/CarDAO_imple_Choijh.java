@@ -1,6 +1,8 @@
 
 package car.model;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,8 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import createCar.domain.CreateCarVO;
+import util.security.AES256;
+import util.security.SecretMyKey;
 
 public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 
@@ -23,18 +27,27 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	private AES256 aes;
+	
 	// 생성자
 	public CarDAO_imple_Choijh() {
 		
 		try {
 			Context initContext = new InitialContext();
 		    Context envContext  = (Context)initContext.lookup("java:/comp/env");
-		    ds = (DataSource)envContext.lookup("jdbc/semioracle");// web.xml에 있는 res-ref-name 과 동일해야한다.
+		    ds = (DataSource)envContext.lookup("jdbc/semioracle");
+		    
+		    aes = new AES256(SecretMyKey.KEY);
+		    // SecretMyKey.KEY 은 우리가 만든 암호화/복호화 키이다.
+		    
 		} catch(NamingException e) {
+			e.printStackTrace();
+		} catch(UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		
 	}
+	
 	
 	
 	// 사용한 자원을 반납하는 close() 메소드 생성하기 
@@ -156,6 +169,41 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 	
 			return cartypeList;
 		}
+	}
+
+
+	
+	
+	// 아이디 찾기
+	@Override
+	public String findUserid(Map<String, String> paraMap) throws SQLException {
+
+		String userid = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select Pk_UserId "
+					   + " from tbl_User "
+					   + " where UserStatus = 1 and UserName = ? and UserEmail = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("name") );
+			pstmt.setString(2, aes.encrypt(paraMap.get("email")) );
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userid = rs.getString("Pk_UserId");
+			}
+			
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return userid;	
 	}
 	
 	

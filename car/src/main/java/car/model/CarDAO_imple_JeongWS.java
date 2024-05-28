@@ -594,6 +594,37 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	      }
 		return mapList;
 	}// end of public List<Map<String, String>> selectPaper(String carName, String userid) throws SQLException {
+	
+	// 내 견적서의 번호에 존재하는 모든 상세견적 출력
+	@Override
+	public List<Map<String, String>> selectOption(String string) throws SQLException {
+		
+		List<Map<String,String>> mapList = new ArrayList<>();
+		try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " select fk_paperseq, O.optiondesc, O.optionprice "
+	         			+ " from tbl_MyOption M JOIN tbl_option O "
+	         			+ " ON M.fk_optioncode = o.pk_optioncode "
+	         			+ " where fk_paperseq = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, string);
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	        	 Map<String,String> optionMap = new HashMap<>();
+	        	 optionMap.put("fk_paperseq", rs.getString("fk_paperseq"));
+	        	 optionMap.put("optiondesc", rs.getString("optiondesc"));
+	        	 optionMap.put("optionprice", rs.getString("optionprice"));
+	        	 mapList.add(optionMap);
+	         } 
+	         
+	      } finally {
+	         close();
+	      }
+		return mapList;
+	}// end of public Map<String, String> selectOption(String string) throws SQLException {
 
     
 }

@@ -163,13 +163,13 @@
 							</ul>
 						</li>
 						<li class="nav-item" id="nav-item4" style="margin-left: 60%;">
-							<a style="margin-left: 90%; width: 100%;" href="#" class="nav-link px-2 text-white">고객센터</a>
+							<a style="margin-left: 90%; width: 100%; position: sticky; z-index: 1000;" href="#" class="nav-link px-2 text-white">고객센터</a>
 							<ul class="nav-item sub-menu">
 							</ul>
 						</li>
 						<li class="nav-item" id="nav-item5" >
 
-							<a style="margin-left: 10%; width: 100%;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage.car">마이페이지</a>
+							<a style="margin-left: 80%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage.car">마이페이지</a>
 
 						</li>
 						<li class="nav-item" id="nav-item6" >

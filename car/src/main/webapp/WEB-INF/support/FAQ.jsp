@@ -77,6 +77,14 @@
 	    });
 	  });
 	});
+ 
+ 
+ 
+ System.out.println("FAQList: " + request.getAttribute("FAQList"));
+ System.out.println("FAQList class: " + request.getAttribute("FAQList").getClass().getName());
+ if (request.getAttribute("FAQList") instanceof Collection) {
+     System.out.println("FAQList size: " + ((Collection) request.getAttribute("FAQList")).size());
+ }
 </script>
 
 <head>
@@ -87,50 +95,44 @@
 </head>
 <body>
 
-    <c:if test="${empty requestScope.FAQList}">
-    	<tr>
-            <td colspan="6" align="center">
-              <span style="color: red; font-weight: bold;">
-                 등록된 내용이 없습니다.
-              </span>
-            </td>   
-       </tr>
-    </c:if>
-
-	    <div class="container">
-	        <div class="faq">
-	            <h1>자주 묻는 질문</h1>
-	            <!-- 여기에 자주 묻는 질문 목록 및 내용을 추가하세요 -->
-	        </div>
-	    </div>
+   <div class="container">
+       <div class="faq">
+           <h1>자주 묻는 질문</h1>
+           <!-- 여기에 자주 묻는 질문 목록 및 내용을 추가하세요 -->
+       </div>
+   </div>
+   
 	    <div class="faq-form">
 		<h2>자주 묻는 질문</h2>
-	    <input type="text" id="faq-search" placeholder="검색">
+	    <input type="text" id="faq-search" placeholder="검색"/>
+	    
+		<br><br>
+	
 
+	
+ 	<c:if test="${empty requestScope.FAQList}">
+	
+       <span style="color: red; font-weight: bold;">
+          등록된 내용이 없습니다.
+          
+       </span>
 
+    </c:if>
+    
    <c:if test="${not empty requestScope.FAQList}">
    		<c:forEach var="faqvo" items="${requestScope.FAQList}" varStatus="status">
    		   
-	   <div class="accordion">
-	  <div class="accordion-item">
-	    <div class="accordion-title">${requestScope.FAQTitle}</div>
-	    <div class="accordion-content">
-	      ${requestScope.FAQContent}
-	    </div>
-	  </div>
-	  
-	</div>
-   
-	</div>
+		  <div class="accordion-item">
+		    <div class="accordion-title">${faqvo.faqtitle}</div>
+		    <div class="accordion-content">
+		      ${faqvo.faqtitle}
+		    </div>
+		  </div>
+	
 		</c:forEach>
 	</c:if>
-<script>
-    const faqs = document.querySelectorAll('.js-faq_block');
-    faqs.forEach(faq => { new FAQ(faq); });
-</script>
-
 </div>
-    
+
 </body>
 
 <jsp:include page="support_Footer.jsp"></jsp:include>

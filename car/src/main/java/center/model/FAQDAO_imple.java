@@ -76,10 +76,11 @@ public class FAQDAO_imple implements FAQDAO {
 			  
 			  while(rs.next()) {
 				  
-				  FAQVO faqvo = new FAQVO();
-				  System.out.println(faqvo);
-				  System.out.println(FAQList);
-				  FAQList.add(faqvo); 
+			  FAQVO faqvo = new FAQVO();
+	            faqvo.setFaqtitle(rs.getString("faqtitle")); // faqtitle 컬럼의 값을 설정
+	            faqvo.setFaqcontent(rs.getString("faqcontent")); // faqcontent 컬럼의 값을 설정
+	            FAQList.add(faqvo); 
+		            
 			  }// end of while--------------
 			  
 		} finally {

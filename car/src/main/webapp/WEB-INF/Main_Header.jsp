@@ -134,7 +134,7 @@
 							</ul>
 						</li>
 						<li class="nav-item" id="nav-item5" >
-							<a style="margin-left: 10%; width: 100%;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage/myPage.car">마이페이지</a>
+							<a style="margin-left: 10%; width: 100%;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage.car">마이페이지</a>
 						</li>
 						<li class="nav-item" id="nav-item6" >
 							<a style="margin-left: 70%;" class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>

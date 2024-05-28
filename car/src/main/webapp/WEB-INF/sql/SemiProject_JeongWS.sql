@@ -179,7 +179,7 @@ JOIN tbl_car C
 ON P.fk_carname = C.pk_carname
 where fk_userid = 'qwer';
 
-select P.fk_carname,C.CarPrice ,I.incolordesc, I.incolorPrice, O.outcolordesc, O.outcolorprice, PO.powerdesc, PO.powerprice 
+select P.fk_carname,C.CarPrice ,I.incolordesc, I.incolorPrice, O.outcolordesc, O.outcolorprice, PO.powerdesc, PO.powerprice, I.incoloricon_img, O.outcoloricon_img, O.outcolorcar_img, PO.powericon_img
 from tbl_paper P JOIN tbl_incolor I 
 ON P.fk_incolorcode = I.pk_incolorCode 
 JOIN tbl_outcolor O 

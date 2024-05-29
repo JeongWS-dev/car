@@ -10,6 +10,7 @@ import common.controller.AbstractController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import member.domain.MemberVO;
 
 public class LoginJSON extends AbstractController {
 	private CarDAO_JeongWS cdao = null;
@@ -23,14 +24,14 @@ public class LoginJSON extends AbstractController {
 			String ID = request.getParameter("ID");
 			String PWD = request.getParameter("PWD");
 			
-			String userid = cdao.goLogin(ID,PWD);// 입력한 아이디, 비밀번호를 가지고 유저정보 가져오기
+			MemberVO mvo = cdao.goLogin(ID,PWD);// 입력한 아이디, 비밀번호를 가지고 유저정보 가져오기
 			
 			HttpSession session = request.getSession();
 			
-			if(userid.length() > 0) {
+			if(mvo.getPk_userid().length() > 0) {
 				System.out.println("로그인에 성공했습니다");
 				
-				session.setAttribute("loginuser", userid);
+				session.setAttribute("loginuser", mvo);
 			}
 			
 			/////////////////////////////////////////////////
@@ -41,7 +42,7 @@ public class LoginJSON extends AbstractController {
 			
 			JSONObject jsonObj = new JSONObject();
 			
-			jsonObj.put("userid", userid);
+			jsonObj.put("loginuser", mvo.getPk_userid());
 			
 			String json = jsonObj.toString();// 문자열로 변환
 			// System.out.println(json);

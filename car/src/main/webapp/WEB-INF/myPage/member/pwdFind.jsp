@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
     String ctxPath = request.getContextPath();
     //    /MyMVC
@@ -9,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>비밀번호 찾기</title>
 
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -88,11 +91,11 @@
 </style>
 
 <script type="text/javascript">
-  $(document).ready(function(){
+$(document).ready(function(){
 	  
 	  const method = "${requestScope.method}";
 	  
-   // console.log("~~~확인용 method : " + method);
+ // console.log("~~~확인용 method : " + method);
 	  /*
 	     ~~~확인용 method : GET
 	     ~~~확인용 method : POST
@@ -103,8 +106,12 @@
 	  }
 	  
 	  if(method == "POST") {
-		  $("input:text[name='name']").val("${requestScope.name}"); 
-		  $("input:text[name='email']").val("${requestScope.email}");
+		  $("input:text[name='userid']").val("${requestScope.userid}"); 
+		  $("input:text[name='email']").val("${requestScope.email}"); 
+		  
+		  if(${requestScope.isUserExist == true && requestScope.sendMailSuccess == true}) {
+			  $("button.btn-success").hide();  
+		  }
 	  }
 	  
 	  
@@ -118,47 +125,61 @@
 		  }
 	  });// end of $("input:text[name='email']").bind("keyup", function(e){})-------
 	  
-  }); // end of $(document).ready(function(){})-----------------
-  
-  
-  // Function Declaration
-  function goFind() {
-	 
-	  const name = $("input:text[name='name']").val().trim();
 	  
-	  if(name == "") {
-		  alert("성명을 입력하세요!!");
+	  // === 인증하기 버튼 클릭시 이벤트 처리해주기 시작 === //
+	  $("button.btn-info").click(function(){
+		  
+		  const input_confirmCode = $("input:text[name='input_confirmCode']").val().trim(); 
+		  
+		  if(input_confirmCode == "") {
+			  alert("인증코드를 입력하세요!!");
+			  return; // 종료
+		  }
+		  
+		  const frm = document.verifyCertificationFrm;
+		  frm.userCertificationCode.value = input_confirmCode;
+		  frm.userid.value = $("input:text[name='userid']").val(); 
+		  
+		  frm.action = "<%= ctxPath%>/myPage/member/verifyCertification_pwdfind.car"; 
+		  frm.method = "post";
+		  frm.submit();
+	  });
+	  // === 인증하기 버튼 클릭시 이벤트 처리해주기 끝 === //
+	  
+}); // end of $(document).ready(function(){})-----------------
+
+
+// Function Declaration
+function goFind() {
+	 
+	  const userid = $("input:text[name='userid']").val().trim();
+	  
+	  if(userid == "") {
+		  alert("아이디를 입력하세요!!");
 		  return; // 종료
 	  }
 	  
 	  const email = $("input:text[name='email']").val();
 	  
-   // const regExp_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;  
-   // 또는
-      const regExp_email = new RegExp(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);  
+ // const regExp_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;  
+ // 또는
+    const regExp_email = new RegExp(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);  
 	  // 이메일 정규표현식 객체 생성 
-         
-      const bool = regExp_email.test(email);
- 
-      if(!bool) {
-         // 이메일이 정규표현식에 위배된 경우
-         alert("e메일을 올바르게 입력하세요!!");
-		 return; // 종료
-      }    
        
-      const frm = document.idFindFrm;
-	  frm.action = "<%= ctxPath%>/myPage/member/idFind.car";
+    const bool = regExp_email.test(email);
+
+    if(!bool) {
+       // 이메일이 정규표현식에 위배된 경우
+       alert("e메일을 올바르게 입력하세요!!");
+	   return; // 종료
+    }    
+     
+    const frm = document.pwdFindFrm;
+	  frm.action = "<%= ctxPath%>/myPage/member/pwdFind.car";
 	  frm.method = "post";
-      frm.submit();
+    frm.submit();
 	  
-  }// end of function goFind(){}-----------------------
-  
-  
-  // 아이디 찾기 모달창에 입력한 input 태그 value 값 초기화 시키기
-  function func_form_reset_empty() {
-	  document.querySelector("form[name='idFindFrm']").reset();
-	  $("div#div_findResult").empty();
-  }// end of function func_form_reset_empty()----------
+}// end of function goFind(){}-----------------------
   
   
 </script>
@@ -174,12 +195,12 @@
 
 </head>
 <body>
-	<form name="idFindFrm">
+	<form name="pwdFindFrm">
 	
 	   <ul style="list-style-type: none; margin-top: 10%; margin-left: 37.5%;">
 	      <li>
-	          <label style="display: inline-block; width: 75px;">성명</label>
-	          <input type="text" name="name" size="25" autocomplete="off" /> 
+	          <label style="display: inline-block; width: 75px;">아이디</label>
+	          <input type="text" name="userid" size="25" autocomplete="off" /> 
 	      </li>
 	      <li>
 	          <label style="display: inline-block; width: 75px;">이메일</label>
@@ -195,8 +216,31 @@
 	</form>
 	
 	<div class="my-3 text-center" id="div_findResult">
-	   ID : <span style="color: red; font-size: 16pt; font-weight: bold; margin-top: 1.5%;">${requestScope.userid}</span>
+	   <c:if test="${requestScope.isUserExist == false}">
+	      <span style="color: red;">사용자 정보가 없습니다</span>
+	   </c:if>
+	   
+	   <c:if test="${requestScope.isUserExist == true && requestScope.sendMailSuccess == true}">
+		   <span style="font-size: 10pt;">
+		       인증코드가 ${requestScope.email}로 발송되었습니다.<br>
+		       인증코드를 입력해주세요
+		   </span>
+		   <br>
+		   <input type="text" name="input_confirmCode" />
+		   <br><br> 
+		   <button type="button" class="btn btn-info">인증하기</button>
+	   </c:if>
+	   
+	   <c:if test="${requestScope.isUserExist == true && requestScope.sendMailSuccess == false}">
+	   	   <span style="color: red;">메일발송이 실패했습니다</span>
+	   </c:if>
 	</div>
+	
+	<%-- 인증하기 form --%>
+	<form name="verifyCertificationFrm">
+		<input type="text" name="userCertificationCode" />
+		<input type="text" name="userid" />
+	</form>
 	
 	<footer>
         <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>

@@ -52,7 +52,7 @@ public class IdFind extends AbstractController {
 		
 		
 		super.setRedirect(false);
-		super.setViewPage("/WEB-INF//myPage/member/idFind.jsp");
+		super.setViewPage("/WEB-INF/myPage/member/idFind.jsp");
 
 	}
 

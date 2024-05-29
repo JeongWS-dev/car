@@ -2,6 +2,7 @@
 package car.model;
 
 import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import member.domain.MemberVO;
 import util.security.AES256;
 import util.security.SecretMyKey;
 import util.security.Sha256;
@@ -422,15 +424,14 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	
 	// 입력한 아이디, 비밀번호를 가지고 유저정보 가져오기
 	@Override
-	public String goLogin(String id, String pwd) throws SQLException {
-		String userid = "";
-	      
+	public MemberVO goLogin(String id, String pwd) throws SQLException {
+		MemberVO mvo = new MemberVO();
 	      try {
 	         conn = ds.getConnection();
 	         
-	         String sql = " select pk_userid "
+	         String sql = " select pk_userid, username, useremail, usermobile, userjubun, userpostcode, useraddress, userdetailaddress, userextraaddress, usergender, userregisterday, userlastchangepwd, userstatus, useridle\n"
 	         			+ " from tbl_user "
-	         			+ " where pk_userid = ? and userpwd = ?";
+	         			+ " where pk_userid = ? and userpwd = ? ";
 	         
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, id);
@@ -438,14 +439,32 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	         rs = pstmt.executeQuery();
 	         
           if(rs.next()) {
-          	userid = rs.getString("pk_userid");
+          	mvo.setPk_userid(rs.getString("pk_userid"));
+          	mvo.setUsername(rs.getString("username"));
+          	mvo.setUseremail(aes.decrypt(rs.getString("useremail")));
+        	mvo.setUsermobile(aes.decrypt(rs.getString("usermobile")));
+        	mvo.setUserpostcode(rs.getString("userpostcode"));
+        	mvo.setUseraddress(rs.getString("useraddress"));
+        	mvo.setUserdetailaddress(rs.getString("userdetailaddress"));
+        	mvo.setUserextraaddress(rs.getString("userextraaddress"));
+        	mvo.setUsergender(rs.getString("usergender"));
+        	mvo.setUserbirthday(rs.getString("userjubun"));
+        	mvo.setUserregisterday(rs.getString("userregisterday"));
+        	mvo.setUserlastpwdchangedate(rs.getString("userlastchangepwd"));
           }
 	         
-	      } finally {
+	      } catch (UnsupportedEncodingException e) {
+	    	  e.printStackTrace();
+	      } catch (SQLException e){
+	    	  e.printStackTrace();
+		  } catch(GeneralSecurityException e ) {
+			  e.printStackTrace();
+		  }
+	      finally {
 	         close();
 	      }
 	      
-	      return userid;
+	      return mvo;
 	}// end of public String goLogin(String iD, String pWD) throws SQLException {
 	
 	//내 견적서의 기본 사항들을 DB에 insert한다.
@@ -564,7 +583,8 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	         			+ " ON P.fk_powercode = PO.pk_powercode "
 	         			+ " JOIN tbl_car C "
 	         			+ " ON P.fk_carname = C.pk_carname "
-	         			+ " where fk_userid = ? ";
+	         			+ " where fk_userid = ? "
+	         			+ " order by P.pk_paperseq desc ";
 	         
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, userid);
@@ -585,7 +605,8 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	        	 map.put("outcolorprice", rs.getString("outcolorprice"));
 	        	 map.put("powerdesc", rs.getString("powerdesc"));
 	        	 map.put("powerprice", rs.getString("powerprice"));
-	        	 
+	        	 int detaultPrice = rs.getInt("CarPrice")+rs.getInt("powerprice")+rs.getInt("outcolorprice")+rs.getInt("incolorPrice");
+	        	 map.put("detaultPrice",String.valueOf(detaultPrice));
 	        	 mapList.add(map);
 	         }
 	         
@@ -602,7 +623,6 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		List<Map<String,String>> mapList = new ArrayList<>();
 		try {
 	         conn = ds.getConnection();
-	         
 	         String sql = " select fk_paperseq, O.optiondesc, O.optionprice "
 	         			+ " from tbl_MyOption M JOIN tbl_option O "
 	         			+ " ON M.fk_optioncode = o.pk_optioncode "
@@ -611,12 +631,12 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setString(1, string);
 	         rs = pstmt.executeQuery();
-	         
+	         DecimalFormat df = new DecimalFormat("#,###");
 	         while(rs.next()) {
 	        	 Map<String,String> optionMap = new HashMap<>();
 	        	 optionMap.put("fk_paperseq", rs.getString("fk_paperseq"));
 	        	 optionMap.put("optiondesc", rs.getString("optiondesc"));
-	        	 optionMap.put("optionprice", rs.getString("optionprice"));
+	        	 optionMap.put("optionprice", df.format(rs.getInt("optionprice"))+"원");
 	        	 mapList.add(optionMap);
 	         } 
 	         

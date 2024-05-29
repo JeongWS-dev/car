@@ -36,7 +36,11 @@
 	}
 
 	function func_is_login(){
-		if( sessionStorage.getItem("userid") == null ) {
+		
+		if ( ${not empty sessionScope.loginuser} ){
+			location.href="<%=ctxPath%>/createCar/saveCreateCar.car";
+		}
+		else if( sessionStorage.getItem("userid") == null ) {
 			$("div#login_modal").fadeIn();
 		}
 		else {
@@ -73,10 +77,10 @@
 				data : {"ID":ID,"PWD":PWD},
 				dataType:"json",
 				success:function(json){
-					if(json.userid.length > 0){
+					if(json.loginuser.length > 0){
 						$("div#login_modal").fadeOut();
 
-						sessionStorage.setItem("userid",json.userid);
+						sessionStorage.setItem("userid",json.loginuser);
 					}
 					else{
 						alert("아이디 혹은 비밀번호가 일치하지 않습니다.")

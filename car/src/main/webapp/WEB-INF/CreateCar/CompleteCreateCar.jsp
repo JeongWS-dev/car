@@ -59,6 +59,7 @@
 			$("div#login_modal").fadeIn();
 		}
 		else {
+			sessionStorage.removeItem("userid");
 			$("div#send_paper").fadeIn();
 		}
 

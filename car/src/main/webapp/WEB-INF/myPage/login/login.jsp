@@ -85,7 +85,7 @@
             bottom: 0;
             width: 100%;
         }
-    </style>
+</style>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -172,7 +172,7 @@ function goLogin(){
         </form>
         <div class="links">
             <a href="<%= ctxPath%>/myPage/member/idFind.car">아이디 찾기</a>
-            <a href="#">비밀번호 찾기</a>
+            <a href="<%= ctxPath%>/myPage/member/pwdFind.car">비밀번호 찾기</a>
             <a href="#">회원가입</a>
         </div>
     

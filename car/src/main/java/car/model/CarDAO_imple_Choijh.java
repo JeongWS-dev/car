@@ -19,6 +19,7 @@ import javax.sql.DataSource;
 import createCar.domain.CreateCarVO;
 import util.security.AES256;
 import util.security.SecretMyKey;
+import util.security.Sha256;
 
 public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 
@@ -204,6 +205,63 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 		}
 		
 		return userid;	
+	}
+
+
+	// 비밀번호 찾기(아이디, 이메일을 입력받아서 해당 사용자가 존재하는지 유무를 알려준다) 
+	@Override
+	public boolean isUserExist(Map<String, String> paraMap) throws SQLException {
+		
+		boolean isUserExist = false;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " select Pk_UserId "
+			           + " from tbl_User "
+			           + " where UserStatus = 1 and Pk_UserId = ? and UserEmail = ? ";
+			
+			pstmt = conn.prepareStatement(sql); 
+			pstmt.setString(1, paraMap.get("userid"));
+			pstmt.setString(2, aes.encrypt(paraMap.get("email")) );
+			
+			rs = pstmt.executeQuery();
+			
+			isUserExist = rs.next();
+			
+		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return isUserExist;
+	}
+
+
+	// 비밀번호 변경하기 
+	@Override
+	public int pwdUpdate(Map<String, String> paraMap) throws SQLException {
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = " update tbl_User set userpwd = ?, userlastchangepwd = sysdate " 
+					   + " where pk_userid = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, Sha256.encrypt(paraMap.get("new_pwd")) ); // 암호를 SHA256 알고리즘으로 단방향 암호화 시킨다.
+			pstmt.setString(2, paraMap.get("userid") );  
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return result;
 	}
 	
 	

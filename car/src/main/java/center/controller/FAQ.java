@@ -22,7 +22,9 @@ public class FAQ extends AbstractController {
 		
 		List<FAQVO> FAQList = fdao.selectFAQ();
 		request.setAttribute("FAQList", FAQList);
-
+		
+		
+		
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/support/FAQ.jsp");
 

@@ -55,7 +55,7 @@
 
        #verify-button, 
        #submitEmail, 
-       #btn-info {
+       #submitCode {
            padding: 10px 20px;
            background-color: black;
            color: #fff;
@@ -105,6 +105,9 @@
 			goemail();
 		});
 		
+		$("button#submitCode").click(function(){
+			gocertUser();
+		});
          
 	 });	//	end of $(document).ready(function(){---------
 	
@@ -208,7 +211,7 @@
 	   <input type="text" name="input_confirmCode" />
 	   <br><br>
 	   </form>
-	   		<button type="button" id="btn-info">인증하기</button>
+	   		<button type="button" id="submitCode">인증하기</button>
 	   	
    </c:if>
    

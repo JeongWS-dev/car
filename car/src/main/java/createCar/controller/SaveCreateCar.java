@@ -1,6 +1,5 @@
 package createCar.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +11,7 @@ import createCar.domain.CreateCarVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import member.domain.MemberVO;
 
 public class SaveCreateCar extends AbstractController {
 	
@@ -27,7 +27,7 @@ public class SaveCreateCar extends AbstractController {
 		CreateCarVO cvo = (CreateCarVO)session.getAttribute("cvo");
 		
 		if(cvo!=null) {
-			String userid = (String)session.getAttribute("loginuser");
+			MemberVO loginuser = (MemberVO)session.getAttribute("loginuser");
 			int paperSeq = cdao.getPk_PaperSeqOfTbl_Paper();// 저장되어질 내 견적서 시퀀스 번호 채번해오기
 			
 			// System.out.println("채번해온 시퀀스 번호 : " + paperSeq);
@@ -38,7 +38,7 @@ public class SaveCreateCar extends AbstractController {
 			map.put("OutColor", cvo.getOutColorTitle());
 			map.put("InColor", cvo.getInColorTitle());
 			map.put("InColorPrice", cvo.getIncolor_price());
-			map.put("userid", userid);
+			map.put("userid", loginuser.getPk_userid());
 			map.put("paperSeq",String.valueOf(paperSeq));
 			
 			int n = cdao.insertTblMyOption(map);//내 견적서의 기본 사항들을 DB에 insert한다.
@@ -55,32 +55,16 @@ public class SaveCreateCar extends AbstractController {
 				}
 			}
 			
-			List<Map<String,String>> paper_mapList = cdao.selectPaper(userid);// 내 견적서 페이지에 있는 모든 견적서 가져오기
-			
-			if(paper_mapList.size()==0) {
-				paper_mapList = null;
-			}
-			
-			List<List<Map<String,String>>> Option_mapList = new ArrayList<>();
-			for(Map<String,String> paper_map:paper_mapList) {
-				List<Map<String,String>> option_map_list = cdao.selectOption(paper_map.get("pk_paperseq"));// 내 견적서의 번호에 존재하는 모든 상세견적 출력
-				Option_mapList.add(option_map_list);
-			}
+			List<Map<String,String>> paper_mapList = cdao.selectPaper(loginuser.getPk_userid());// 내 견적서 페이지에 있는 모든 견적서 가져오기
 			
 			session.removeAttribute("cvo");
-			request.setAttribute("Option_mapList", Option_mapList);
 			request.setAttribute("paper_mapList", paper_mapList);
 			super.setViewPage("/WEB-INF/CreateCar/Paper.jsp");
 		}
 		else {
-			String userid = (String)session.getAttribute("loginuser");
-			List<Map<String,String>> paper_mapList = cdao.selectPaper(userid);// 내 견적서 페이지에 있는 모든 견적서 가져오기
-			List<List<Map<String,String>>> Option_mapList = new ArrayList<>();
-			for(Map<String,String> paper_map:paper_mapList) {
-				List<Map<String,String>> option_map_list = cdao.selectOption(paper_map.get("pk_paperseq"));// 내 견적서의 번호에 존재하는 모든 상세견적 출력
-				Option_mapList.add(option_map_list);
-			}
-			request.setAttribute("Option_mapList", Option_mapList);
+			MemberVO loginuser = (MemberVO)session.getAttribute("loginuser");
+			List<Map<String,String>> paper_mapList = cdao.selectPaper(loginuser.getPk_userid());// 내 견적서 페이지에 있는 모든 견적서 가져오기
+			
 			request.setAttribute("paper_mapList", paper_mapList);
 			super.setViewPage("/WEB-INF/CreateCar/Paper.jsp");
 		}

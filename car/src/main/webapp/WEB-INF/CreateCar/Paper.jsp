@@ -11,7 +11,51 @@
 
 <!-- 내가만든 css -->
 <link rel="stylesheet" href="<%= ctxPath%>/css/createCar/Paper.css">
+<script type ="text/javascript">
+	$(document).ready(function(){
+		$("button.btn").click(function(e){
+			const paperseq = $(e.target).parent().find("input[name='paperseq']").val();
+			let detaultPrice = $(e.target).parent().find("input[name='detaultPrice']").val();
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/createCar/paperJSON.car",
+				type : "post",
+				data : {"paperseq":paperseq},
+				dataType:"json",
+				success:function(json){
+					if(json.length == 0) {
+						// 데이터가 존재하지 않는 경우
+						detaultPrice = Number(detaultPrice)
+						$(e.target).parent().parent().parent().parent().find("div.Final_price").text("+" + detaultPrice.toLocaleString('en')+"원");
+					}
+					else if(json.length > 0){
+						// 데이터가 존재하는 경우
+						v_html = `<div class="choice_option">선택 옵션</div>`;
+						
+						$.each(json, function(index, item){
+							v_html += `<div class="choice_option_flex">`
+							v_html += `<div class="choice_option_title">\${item.optiondesc}</div>`;
+							v_html += `<div class="choice_option_price">+\${item.optionprice}</div>`;
+							v_html += `</div>`
+						});// end of $.each(json, function(index, item){
+						
+						$(e.target).parent().parent().parent().parent().find("div.choice_option_div").html(v_html);
 
+						$(e.target).parent().parent().parent().parent().parent().find("div.choice_option_price").each(function(index,elmt){
+							let price = Number($(elmt).text().substring(1,$(elmt).text().indexOf("원")).split(",").join(""));
+							detaultPrice = Number(detaultPrice) + price;
+						})
+						$(e.target).parent().parent().parent().parent().find("div.Final_price").text("+" + detaultPrice.toLocaleString('en')+"원");
+					}// end of else if(start == "1" && json.length > 0)
+				},
+				error: function(request, status, error){
+				alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+				}
+			})
+			
+		})
+	})// end of $(document).ready(function(){
+</script>
 <div class="body">
 	<div class="Title">내 견적서</div>
 	<c:if test="${not empty requestScope.paper_mapList}">
@@ -26,6 +70,8 @@
 									<div class="powerTitle">${map.powerdesc}</div>
 									<div class="outcolorTitle">${map.outcolordesc}</div>
 									<div class="incolorTitle">${map.incolordesc}</div>
+									<input name = "paperseq" type="hidden" value="${map.pk_paperseq}"/>
+									<input name = "detaultPrice" type="hidden" value="${map.detaultPrice}"/>
 								</div>
 							</button>
 						</div>
@@ -52,17 +98,13 @@
 									<div class="detail_paper_title">${map.incolordesc}</div>
 									<div class="detail_paper_price">+<fmt:formatNumber value="${map.incolorPrice}" pattern="###,###" />원</div>
 								</div>
-								<c:forEach var="option_map" items="${requestScope.Option_mapList}">
-									<c:forEach var="detail_map" items="${option_map}">
-										<c:if test="${detail_map.fk_paperseq == map.pk_paperseq}">
-											<div class="choice_option">선택 옵션</div>
-											<div class="choice_option_flex">
-												<div class="choice_option_title">${option_map.optiondesc}</div>
-												<div class="choice_option_price">+<fmt:formatNumber value="${option_map.optionprice}" pattern="###,###" />원</div>
-											</div>
-										</c:if>
-									</c:forEach>
-								</c:forEach>
+								<div class="choice_option_div">
+
+								</div>
+								<div class="total_price">
+									<div class="total_price_title">총 가격</div>
+									<div class="Final_price"></div>
+								</div>
 							</div>
 						</div>
 					</div>

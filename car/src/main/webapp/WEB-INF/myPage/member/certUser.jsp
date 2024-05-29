@@ -173,10 +173,9 @@
                     <td>
                        <input type="text" name="userid" id="userid" maxlength="40" class="requiredInfo" />&nbsp;&nbsp;  
                        <%-- 아이디중복체크 --%>
-                       <span id="idcheckResult"></span>
-                       <span class="error">아이디는 필수입력 사항입니다.</span>
                        <span id="idcheck">아이디중복확인</span>
-                       <span id="idCheckResult"></span>
+                       <span class="error">아이디는 필수입력 사항입니다.</span>
+                       <span id="idcheckResult"></span>
                     </td>
                 </tr>
                 

@@ -75,14 +75,15 @@ $(document).ready(function(){
 
 
     $("input#pwd").blur( (e) => { 
-
+		
      // const regExp_pwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g; 
      // 또는
         const regExp_pwd = new RegExp(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g); 
         // 숫자/문자/특수문자 포함 형태의 8~15자리 이내의 암호 정규표현식 객체 생성
         
         const bool = regExp_pwd.test($(e.target).val());
-
+		
+		
         if(!bool) {
             // 암호가 정규표현식에 위배된 경우 
             
@@ -440,43 +441,61 @@ $(document).ready(function(){
     ///////////////////////////////////////////////////////
     // "아이디중복확인" 을 클릭했을 때 이벤트 처리하기 시작 //
     $("#idcheck").click(function(){
-        b_idcheck_click = true;
-        // "아이디중복확인" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
-
-        $.ajax({
-            url : "idDuplicateCheck.car",
-            data : {"userid" : $("input#userid").val()}, // data 속성은 http://localhost:9090/MyMVC/member/idDuplicateCheck.up 로 전송해야할 데이터를 말한다.
-            type : "post",  // type 을 생략하면 type : "get" 이다.
-
-            async : true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
-         		            // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.
-            
-            dataType : "json",   // Javascript Standard Object Notation.  dataType은 /MyMVC/member/idDuplicateCheck.up 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
-            // 만약에 dataType:"xml" 으로 해주면 /MyMVC/member/idDuplicateCheck.up 로 부터 받아오는 결과물은 xml 형식이어야 한다. 
-            // 만약에 dataType:"json" 으로 해주면 /MyMVC/member/idDuplicateCheck.up 로 부터 받아오는 결과물은 json 형식이어야 한다.
+		const name = $("#name").val().trim();
+		if(name == ""){
+			return;
+		}
+		
+		const userid = $("#userid").val().trim();
+		if(userid == ""){
+			 $("table#tblMemberRegister :input").prop("disabled", true);
+            $("#userid").prop("disabled", false);
+            $("#userid").val("").focus();
+        	
+        //  $(e.target).next().show();
+        //  또는
+        		
+            $("#userid").parent().find("span.error").show();
+		}
+		else{
 			
-			
-			
-            success : function(json){
+	        b_idcheck_click = true;
+	        // "아이디중복확인" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
+	
+	        $.ajax({
+	            url : "idDuplicateCheck.car",
+	            data : {"userid" : $("input#userid").val()}, // data 속성은 http://localhost:9090/MyMVC/member/idDuplicateCheck.up 로 전송해야할 데이터를 말한다.
+	            type : "post",  // type 을 생략하면 type : "get" 이다.
+	
+	            async : true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
+	         		            // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.
+	            
+	            dataType : "json",   // Javascript Standard Object Notation.  dataType은 /MyMVC/member/idDuplicateCheck.up 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
+	            // 만약에 dataType:"xml" 으로 해주면 /MyMVC/member/idDuplicateCheck.up 로 부터 받아오는 결과물은 xml 형식이어야 한다. 
+	            // 만약에 dataType:"json" 으로 해주면 /MyMVC/member/idDuplicateCheck.up 로 부터 받아오는 결과물은 json 형식이어야 한다.
+				
+	            success : function(json){
+					
+	                if(json.isExists) {
+	                    // 입력한 userid 가 이미 사용중이라면
+	                    
+	                    $("span#idcheckResult").html( $("input#userid").val() + " 은 이미 사용중 이므로 다른 아이디를 입력하세요").css({"color":"red"});
+	                    $("input#userid").val("");
+	                    
+	                } 
+	                else {
+	                    // 입력한 userid 가 존재하지 않는 경우라면 
+	                    $("span#idcheckResult").html( $("input#userid").val() + " 은 사용가능 합니다.").css({"color":"navy"});
+	                }
+	            },
+	            
+	            error: function(request, status, error){
+	                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	            }
+	
+	        });
 
-                if(json.isExists) {
-                    // 입력한 userid 가 이미 사용중이라면 
-                    $("span#idcheckResult").html( $("input#userid").val() + " 은 이미 사용중 이므로 다른 아이디를 입력하세요").css({"color":"red"});
-                    $("input#userid").val("");
-                } 
-                else {
-                    // 입력한 userid 가 존재하지 않는 경우라면 
-                    $("span#idcheckResult").html( $("input#userid").val() + " 은 사용가능 합니다.").css({"color":"navy"});
-                }
-            },
-            
-            error: function(request, status, error){
-                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-            }
-
-        });
-
-
+		}
     });
     // "아이디중복확인" 을 클릭했을 때 이벤트 처리하기 끝 //
 
@@ -484,46 +503,20 @@ $(document).ready(function(){
     // "이메일중복확인" 을 클릭했을 때 이벤트 처리하기 시작 //
     $("span#emailcheck").click(function(){
 		
+		const userid = $("#userid").val().trim();
+		const pwdcheck = $("#pwdcheck").val().trim();
+		if(userid == ""){
+			$("userid").parent().find("span.error").show();
+		}
+		else if(pwdcheck == ""){
+			return;
+		}
+		
         b_emailcheck_click = true;
         // "이메일중복확인" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
 
-        // === 첫번째 방법 === //
-        // $.ajax({
-        //     url : "emailDuplicateCheck.up",
-        //     data : {"email" : $("input#email").val()}, // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다.
-        //     type : "post",  // type 을 생략하면 type : "get" 이다.
-
-        //     async : true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
-        //  		            // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.
-            
-        //     success : function(text){
-                
-        //         const json = JSON.parse(text);
-        //         // JSON.parse(text); 은 JSON.parse("{"isExists":true}"); 또는 JSON.parse("{"isExists":false}"); 와 같은 것인데
-        // 	    // 그 결과물은 {"isExists":true} 또는 {"isExists":false} 와 같은 문자열을 자바스크립트 객체로 변환해주는 것이다. 
-        // 	    // 조심할 것은 text 는 반드시 JSON 형식으로 되어진 문자열이어야 한다.
-
-        //         if(json.isExists) {
-        //             // 입력한 email 이 이미 사용중이라면 
-        //             $("span#emailCheckResult").html( $("input#email").val() + " 은 이미 사용중 이므로 다른 이메일을 입력하세요").css({"color":"red"});
-        //             $("input#email").val("");
-        //         } 
-        //         else {
-        //             // 입력한 email 이 존재하지 않는 경우라면 
-        //             $("span#emailCheckResult").html( $("input#email").val() + " 은 사용가능 합니다.").css({"color":"navy"});
-        //         }
-        //     },
-            
-        //     error: function(request, status, error){
-        //         alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-        //     }
-
-        // });
-
-        // === 두번째 방법 === //
-
         $.ajax({
-            url : "emailDuplicateCheck.up",
+            url : "emailDuplicateCheck.car",
             data : {"email" : $("input#email").val()}, // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다.
             type : "post",  // type 을 생략하면 type : "get" 이다.
 
@@ -558,12 +551,14 @@ $(document).ready(function(){
 
     // 아이디값이 변경되면 가입하기 버튼을 클릭시 "아이디중복확인" 을 클릭했는지 클릭안했는지를 알아보기위한 용도 초기화 시키기
     $("input#userid").bind("change", function(){
+       $("span#idcheckResult").html("");
         b_idcheck_click = false;
     });
 
 
     // 이메일값이 변경되면 가입하기 버튼을 클릭시 "이메일중복확인" 을 클릭했는지 클릭안했는지를 알아보기위한 용도 초기화 시키기
     $("input#email").bind("change", function(){
+		$("span#emailcheckResult").html("");
         b_emailcheck_click = false;
     });
 

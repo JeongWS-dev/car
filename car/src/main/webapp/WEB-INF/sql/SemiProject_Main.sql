@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- 회원 테이블 (생성 완료)
 create table tbl_User    
 (Pk_UserId             VARCHAR2(30)   not null  -- 회원아이디
@@ -552,5 +551,3 @@ create sequence PK_LoginSeq;
 
  -- QnA 시퀀스 생성 (생성 완료)
  create sequence PK_QnASeq;
->>>>>>> refs/heads/kimmr
->>>>>>> refs/heads/kimmr

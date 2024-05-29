@@ -200,22 +200,12 @@ ON P.fk_carname = C.pk_carname
 where fk_userid = 'qwer';
 
 select *
-from tbl_user;
+from user_tables;
 
 select *
-from tbl_paper;
+from TBL_DRIVINGLOUNGE;
 
-select *
-from tbl_incolor;
-
-select *
-from tbl_outcolor;
-
-select *
-from tbl_power;
-
-select *
-from tbl_myoption;
+alter table TBL_DRIVINGLOUNGE add email varchar2(300);
 
 commit;
 

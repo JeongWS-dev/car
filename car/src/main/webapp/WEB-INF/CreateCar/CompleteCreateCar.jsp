@@ -35,7 +35,7 @@
 		location.href="\<%= ctxPath%>/index.car";
 	}
 
-	function func_is_login(){
+	function func_is_login_save(){
 		
 		if ( ${not empty sessionScope.loginuser} ){
 			location.href="<%=ctxPath%>/createCar/saveCreateCar.car";
@@ -50,9 +50,27 @@
 
 	}
 
+	function func_is_login(){
+		
+		if ( ${not empty sessionScope.loginuser} ){
+			$("div#send_paper").fadeIn();
+		}
+		else if( sessionStorage.getItem("userid") == null ) {
+			$("div#login_modal").fadeIn();
+		}
+		else {
+			$("div#send_paper").fadeIn();
+		}
+
+	}
+
 	$(document).ready(function(){
 		$("button.LoginClose").click(function(){
 			$("div#login_modal").fadeOut();
+		})
+
+		$("button.send_paperClose").click(function(){
+			$("div#send_paper").fadeOut();
 		})
 	})
 
@@ -222,11 +240,11 @@
 							</div>
 						</c:forEach>
 					</div>
-					<input type="button" class="save" onclick='func_is_login()' value="견적서 저장"/>
+					<input type="button" class="save" onclick='func_is_login_save()' value="견적서 저장"/>
 				</div>
 				<div class="sideBar">
 					<div style="display: flex; margin-top: 20px;">
-						<input type="button" class="buy" value="구매 상담 신청">
+						<input type="button" class="buy" onclick="func_is_login()" value="구매 상담 신청">
 						<input type="button" class="try" value="시승 신청">
 					</div>
 					<ul>
@@ -287,6 +305,42 @@
 					</form>
 					<input class="enterUser" type="button" value="회원가입">
 					<input class="findIdPwd" type="button" value="아이디/비밀번호 찾기">
+				</div>
+			  </div>
+			  
+			</div>
+		</div>
+
+		<div class="modal" id="send_paper"> <%-- 만약에 모달이 안보이거나 뒤로 가버릴 경우에는 모달의 class 에서 fade 를 뺀 class="modal" 로 하고서 해당 모달의 css 에서 zindex 값을 1050; 으로 주면 된다. --%> 
+			<div class="modal-dialog modal-lg">
+			  <div class="modal-content">
+			  
+				<!-- Modal header -->
+				<div class="modal-header" style="background-color: black;">
+				  <h4 class="modal-title" style="color:white;">구매 상담 신청</h4>
+				  <button type="button" class="close send_paperClose" style="color:white;">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body" id="Login-modal-body" style="text-align: center; margin-top: 50px;">
+					<ul>
+						<li>
+							<label class="send_label"for="username">성함 : </label>
+							<input class="send_input" id="username" value="${sessionScope.loginuser.username}"/>
+						</li>
+						<li>
+							<label class="send_label"for="username">연락처 : </label>
+							<input class="send_input" id="username" value="${sessionScope.loginuser.usermobile}"/>
+						</li>
+						<li>
+							<label class="send_label"for="username">성함 : </label>
+							<input class="send_input" id="username" value="${sessionScope.loginuser.username}"/>
+						</li>
+						<li>
+							<label class="send_label"for="username">성함 : </label>
+							<input class="send_input" id="username" value="${sessionScope.loginuser.username}"/>
+						</li>
+					</ul>
 				</div>
 			  </div>
 			  

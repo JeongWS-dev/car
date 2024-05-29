@@ -247,3 +247,20 @@ input.findIdPwd{
     background-color: rgba(0,0,0,0);
     color:rgb(104, 104, 104);
 }
+
+label.send_label{
+    display: inline-block;
+    text-align: left;
+    border:solid 1px red;
+    font-size: 17pt;
+    width:20%;
+}
+
+input.send_input{
+    font-size: 15pt;
+    border:solid 1px gray;
+}
+
+li{
+    list-style: none;
+}

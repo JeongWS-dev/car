@@ -33,7 +33,7 @@ public class LoginJSON extends AbstractController {
 				
 				session.setAttribute("loginuser", mvo);
 			}
-			
+			 
 			/////////////////////////////////////////////////
 			
 			// System.out.println("~~~~~~ 확인용 헤헤헤  loginuser : " + (String) session.getAttribute("loginuser"));

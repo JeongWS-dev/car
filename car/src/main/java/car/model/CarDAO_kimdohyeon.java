@@ -6,9 +6,13 @@ import java.util.Map;
 
 import drivietryApply.domain.DriveLoungeVO;
 
-public interface CarDAO_kimdh {
+public interface CarDAO_kimdohyeon {
 
 	//드라이빙 라운지 조회하기
-	Map<String, String> dlSearch(String drivingLounge) throws Exception; 
+	List<Map<String, String>> areaSearch() throws SQLException;
 
+	List<Map<String, String>> area2Search(String area) throws SQLException;
+	
+
+	
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String ctxPath = request.getContextPath();
     //    /MyMVC
@@ -26,14 +27,27 @@
 
 <div id="container">
     <div id="in-container">
-        <div id="place">
-            지역검색
+        <div id="place" style="text-align: center;">
             
-        </div>
-        <div id="map">
-            지도
+            <c:if test="${not empty requestScope.areaList}">
+                <div id="table">
+                    <table id="areatable">
+                        <tr id="title">
+                            <td>지역 선택</td>
+                        </tr>
+                        <c:forEach var = "area_map" items="${requestScope.areaList}">
+                            <tr>
+                                <td><button id="areachoicebtn">${area_map.Area}</button></td>
+                            </tr>
+                        </c:forEach>
+                        
+                    </table>
+                </div>
+            </c:if>
+
         </div>
     </div>
 
 </div>
 
+<jsp:include page="../Main_Footer.jsp"></jsp:include>

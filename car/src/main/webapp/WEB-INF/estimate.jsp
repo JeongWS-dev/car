@@ -23,7 +23,9 @@
 <jsp:include page="Main_Header.jsp"></jsp:include>
 
 <input name="ctxPath" type="hidden" value="<%=ctxPath%>"/>
-	
+
+</head>
+<body>
 	<div id="container">
 		<div id="top_context">
 			<h1>

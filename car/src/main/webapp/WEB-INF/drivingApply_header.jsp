@@ -38,24 +38,48 @@
     <nav class="navbar navbar-expand-sm navbar-dark" id="drivingapply_navbar">
         <ul class="navbar-nav" style="font-size: 16pt;">
             <li class="nav-item "> 
-                <a class="nav-link" href="#">차량 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" href="<%= ctxPath%>/drivetryApply/drivingLounge.car">차량 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <span id="next">〉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <li class="nav-item">
-                <a class="nav-link" href="<%= ctxPath%>/drivetryApply/drivingLoungeChoice.car">드라이빙 라운지 및 일정 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#ApplynoAccept" data-dismiss="modal">드라이빙 라운지 및 일정 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <span id="next">〉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <li class="nav-item">
-                <a class="nav-link" href="<%= ctxPath%>/drivetryApply/provision.car">유의사항&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#ApplynoAccept" data-dismiss="modal">유의사항&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <span id="next">〉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <li class="nav-item">
-                <a class="nav-link" href="<%= ctxPath%>/drivetryApply/applyCheck.car">신청내역 확인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#ApplynoAccept" data-dismiss="modal">신청내역 확인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <span id="next">〉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <li class="nav-item">
-                <a class="nav-link" href="#">신청완료</a>
+                <a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#ApplynoAccept" data-dismiss="modal">신청완료</a>
             </li>
         </ul>
     </nav>
 </div>
+
+    <div class="modal fade" id="ApplynoAccept" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          
+            <!-- Modal header -->
+            <div class="modal-header">
+              <button type="button" class="close noAccept" data-dismiss="modal">&times;</button>   <!-- 이 버튼이 x -->
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">    
+                    현재 진행중인 시승 신청 단계를 완료해야
+                    다음 단계로 이동이 가능합니다.
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger idFindClose" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+

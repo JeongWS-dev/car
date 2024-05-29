@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-public class myPage extends AbstractController {
+public class MyPage extends AbstractController {
 	
 	@Override
 	   public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

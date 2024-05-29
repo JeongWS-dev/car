@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -18,10 +19,78 @@
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 
+<script type="text/javascript" src="<%= ctxPath%>/js/drivingLounge.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script type="text/javascript" src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <jsp:include page="../drivingApply_header.jsp"></jsp:include>
 
+<!-- script 페이지에 들어오자마자 로그인유무를 확인 후 로그인 안한 경우에는 로그인페이지로 이동 로그인 하지 않을 경우 백 -->
+<script type="text/javascript">
+	$(document).ready(function(){
 
-<!-- 견적내기에서 가져와야함. 끝-->
+	})
+</script>
+
+<div id="container">
+
+	<div class="main_top">
+		
+		<div class="category_main"> 
+			<div class="car_select">
+				<div id="logo_image" >
+					<img src="<%= ctxPath%>/images/Estimate/new_80x40.png" /> 
+				</div>
+				<div id="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">
+					G90<br>BLACK
+				</div>
+				<br>
+				<br>
+				<div id="select_car">
+					<button type="button" class="btn btn-carselect" onclick="location.href='<%= ctxPath%>/drivetryApply/drivingLoungeChoice.car?pk_carname=G90_BLACK'">차량선택</button>
+				</div>
+			</div>
+			<div class="main_car_image">
+				<img src="<%= ctxPath%>/images/Estimate/G90_BLACK.png"  />
+			</div> 
+		</div>	
+	</div>
+	<div class="empty"></div>
+	<div class="bar_title" style="bottom : 240px;">
+		<div class="cm-vehicle-tab-btn">
+			<ul>
+				<li>
+					<div class="btn-wrap">
+						<div class="tab-btn" id="ALL">ALL</div>
+					</div>
+
+					<div class="btn-wrap">
+						<div class="tab-btn" role="tab" id="SEDAN">SEDAN</div>							
+					</div>
+
+					<div class="btn-wrap">
+						<div class="tab-btn" role="tab" id="SUV">SUV</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="slider_outline">
+		<div id="bar_img" class="swiper-container">
+			<div id="img_slider" class="swiper-wrapper">
+				
+			</div>
+			
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>		
+	</div>
+
+
+
+</div>
+
 
     <div id="go-event">
         <img src="<%= ctxPath%>/images/drivetry_ApplyPage/genesis-kr-test-drive-event-banner-all-day-pc_4.jpg" id="event-img"/>
@@ -95,6 +164,34 @@
 		
 	</div>
 </div>
+<input type = "hidden" name="ctxPath" value="<%= ctxPath%>">
+<!-- ctxPath를 넘겨줄때는 위와 같이 input태그를 사용하여 값을 태그에 넣어준다음에 불러와주어야만 한다. -->
+
+
+<div class="modal fade" id="LoginnoAccept" data-backdrop="static">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	  
+		<!-- Modal header -->
+		<div class="modal-header">
+		  <button type="button" class="close noAccept" data-dismiss="modal">&times;</button>   <!-- 이 버튼이 x -->
+		</div>
+		
+		<!-- Modal body -->
+		<div class="modal-body">
+			로그인 후 시승신청이 가능합니다.
+		</div>
+		
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger idFindClose" data-dismiss="modal">Login</button>
+		  <button type="button" class="btn btn-danger idFindClose" data-dismiss="modal">Back</button>
+		</div>
+	  </div>
+	  
+	</div>
+</div>
+
 
 
 <jsp:include page="../Main_Footer.jsp"></jsp:include>

@@ -1,3 +1,4 @@
+
 package car.model;
 
 import java.sql.SQLException;
@@ -13,5 +14,8 @@ public interface CarDAO_Choijh {
 
 	// 차량 json
 	List<CreateCarVO> selectCarTypeList(Map<String, String> paraMap) throws SQLException;
+
+	// 아이디 찾기
+	String findUserid(Map<String, String> paraMap) throws SQLException;
 
 }

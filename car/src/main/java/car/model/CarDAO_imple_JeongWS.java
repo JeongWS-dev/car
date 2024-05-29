@@ -442,7 +442,7 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
           	mvo.setPk_userid(rs.getString("pk_userid"));
           	mvo.setUsername(rs.getString("username"));
           	mvo.setUseremail(aes.decrypt(rs.getString("useremail")));
-        	mvo.setUsermobile(aes.decrypt(rs.getString("usermobile")));
+        	mvo.setUsermobile(rs.getString("usermobile"));
         	mvo.setUserpostcode(rs.getString("userpostcode"));
         	mvo.setUseraddress(rs.getString("useraddress"));
         	mvo.setUserdetailaddress(rs.getString("userdetailaddress"));

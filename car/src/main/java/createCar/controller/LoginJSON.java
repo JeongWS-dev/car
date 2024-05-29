@@ -23,7 +23,6 @@ public class LoginJSON extends AbstractController {
 		if(request.getMethod().equalsIgnoreCase("POST")) {
 			String ID = request.getParameter("ID");
 			String PWD = request.getParameter("PWD");
-			
 			MemberVO mvo = cdao.goLogin(ID,PWD);// 입력한 아이디, 비밀번호를 가지고 유저정보 가져오기
 			
 			HttpSession session = request.getSession();

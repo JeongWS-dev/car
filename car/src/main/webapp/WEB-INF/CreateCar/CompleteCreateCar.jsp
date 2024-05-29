@@ -332,14 +332,7 @@
 							<label class="send_label"for="username">연락처 : </label>
 							<input class="send_input" id="username" value="${sessionScope.loginuser.usermobile}"/>
 						</li>
-						<li>
-							<label class="send_label"for="username">성함 : </label>
-							<input class="send_input" id="username" value="${sessionScope.loginuser.username}"/>
-						</li>
-						<li>
-							<label class="send_label"for="username">성함 : </label>
-							<input class="send_input" id="username" value="${sessionScope.loginuser.username}"/>
-						</li>
+						
 					</ul>
 				</div>
 			  </div>

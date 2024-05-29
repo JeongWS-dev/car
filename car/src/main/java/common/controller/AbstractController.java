@@ -3,6 +3,7 @@ package common.controller;
 import createCar.domain.CreateCarVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import member.domain.MemberVO;
 
 public abstract class AbstractController implements InterCommand{
 	/*
@@ -57,5 +58,22 @@ public abstract class AbstractController implements InterCommand{
 			return false;
 		}
 	}// end of public boolean checkCvo(HttpServletRequest request) {
+	
+	// 로그인 유무를 검사해서 로그인 했으면 true 를 리턴해주고
+	// 로그인 안했으면 false 를 리턴해주도록 한다.
+	public boolean checkLogin(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		MemberVO loginuser = (MemberVO) session.getAttribute("loginuser");
+		
+		if(loginuser != null) {
+			//로그인 한 경우
+			return true;
+		}
+		else {
+			//로그아웃을 한 경우
+			return false;
+		}
+	}// end of public boolean checkLogin(HttpServletRequest request) {}---------------------
 	
 }

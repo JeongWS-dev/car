@@ -54,15 +54,81 @@ $(document).ready(function(){
 		frm.submit();
   });
 */
+
+  ////////////////////////////////////////////////////////////////////////
+
+  // 차량선택하기 버튼 클릭시 로그인 유무 알아오기
+  // $("img#zipcodeSearch").click(function(){ }
+  
+  $('#checkLoginButton').on('click', function(e) {
+    
+    $.ajax({
+      url:"/car/drivetryApply/drivingLounge.car",
+      type:"get",
+      success: function(response) {
+        carNameOrigin = $("input#carName").val();
+          if (!response.isLoggedIn) {
+              // 로그인이 되어 있지 않으면 모달 창을 띄움
+              e.preventDefault();
+              $('#loginModal').modal('show');
+          } else {
+              // 로그인이 되어 있으면 원래 버튼의 기능을 수행
+              goDrivingLounge(ctxPath,carNameOrigin);
+          }
+      },
+      error: function() {
+          console.error('Error checking login status');
+      }
+    });
+
+    const isLoggedIn = getLoginStatus();
+
+    if (!isLoggedIn) {
+      // 로그인 안 한 경우
+      e.preventDefault(); // 기존 동작 막기
+      $('#LoginnoAccept').modal('show');
+    }
+    else{
+      goDrivingLounge(ctxPath,carNameOrigin);
+    }
+
+  });// end of function checkLoginStatus()----------------------------
+
+
 });// end of $(document).ready(function(){---------
 
 let v_html = ``;
 
+  // 실제 로그인 상태를 알아오는 함수
+  //로그인을 안한 경우에만 모달 창을 띄우고,
+  //로그인을 한 경우에는 버튼의 원래 기능을 유지하려면,
+  //버튼의 클릭 이벤트 핸들러에서 로그인 상태를 확인하고,
+  //로그인 상태에 따라 동작을 다르게 처리하면 됩니다.
+  function getLoginStatus() {
+    // if(userid == null){     // userid를 받아오는 방법 구현하기
+    //   // 로그인 하지 않은 경우
 
-// 드라이빙라운지로 이동하는 함수
-function goDrivingLounge(ctxPath,Pk_CarName){ 
-  location.href=`${ctxPath}/drivetryApply/drivingLoungeChoice.car?pk_carname=${Pk_CarName}`;
-}
+    // }
+    // else{
+    //   // 로그인 한 경우
+
+    // }
+  }// end of function getLoginStatus()------------------------
+
+  // 로그인이 되어있는 경우 드라이빙라운지로 이동하는 함수
+  function goDrivingLounge(ctxPath,carNameOrigin){ 
+    carNameOrigin = $("input#carName").val();
+    // var carName = document.getElementById('carTitle').text;
+    console.log("carName: " + carNameOrigin);
+
+    location.href=`${ctxPath}/drivetryApply/drivingLoungeChoice.car?pk_carname=${carNameOrigin}`;
+  }
+////////////////////////////////////////////////////
+
+
+
+
+
 
 
 // 차종 별로 리스트 보여주는 함수
@@ -209,14 +275,20 @@ function showMain(mainCar, ctxPath){
         }
         m_html += `</div> <div id="carTitle" style="font-size : 70px; line-height : 0.9; font-weight: lighter; font-stretch: condensed;">`;
         
+
         if( json.Pk_CarName.length < 11){
+          const carNameOrigin = json.Pk_CarName
           let carNameNew = json.Pk_CarName.split('_').join('<br>');
+          $("input#carName").val(carNameOrigin);
+        
           m_html += `${carNameNew}`; // 차량 이름의 _대신 공백.
         }
         else{
+          const carNameOrigin = json.Pk_CarName;
           let carname_arr = json.Pk_CarName.split('_', 1); // _을 기준으로 나눈 배열을 1개로 반환해라. (앞의 차 이름만 받아오기 위함)
           //console.log("차량~~", car[0]);
           let carNameNew = carname_arr[0];
+          $("input#carName").val(carNameOrigin);
           m_html += `${carNameNew}`; // 차 이름
         }
 
@@ -246,59 +318,4 @@ function showMain(mainCar, ctxPath){
 
 
 }
-
-
-
-/*
-
-    if (swiper.activeIndex==0) {
-      $('.swiper-button-prev').hide();
-      $('.swiper-button-next').show();
-    } else if (swiper.realIndex == swiper.slides.length-4) { // swiper.realIndex는 현재 활성 슬라이드이고 swiper.slides.length는 슬라이드의 길이이다. 길이보다 -4 적을 땐 오른쪽 화살표 안보이게.
-      $('.swiper-button-prev').show();
-      $('.swiper-button-next').hide();
-    }
-    else{
-      $('.swiper-button-prev').show();
-      $('.swiper-button-next').show();
-    }
-    // 현재 활성 슬라이드의 인덱스 확인
-    var currentIndex = swiper.realIndex; // 또는 swiper.activeIndex
-    console.log("현재 활성 슬라이드의 인덱스:", currentIndex);
-      console.log("swiper.activeIndex???", swiper.activeIndex);
-      console.log("swiper.slides.length!!!", swiper.slides.length);
-      console.log("swiper.realIndex~~~", swiper.realIndex);
-*/
-
-  
- 
-
-  
-/*
-
-
-    const btnShareTw = document.querySelector('.bar_share_tw');
-
-    btnShareTw.addEventListener('click', () => {
-    const sendText = '제네시스 견적내기';
-    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
-    window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
-    });
-
-
-    const btnShareFb = document.querySelector('.bar_share_fb');
-
-    btnShareFb.addEventListener('click', () => {
-    const pageUrl = `${pageContext.request.contextPath}/estimate/estimate.car`;
-    window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
-    });
-   
-
-
-
-*/
-
-
-
-
 

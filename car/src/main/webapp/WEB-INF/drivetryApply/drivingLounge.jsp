@@ -25,12 +25,6 @@
 
 <jsp:include page="../drivingApply_header.jsp"></jsp:include>
 
-<!-- script 페이지에 들어오자마자 로그인유무를 확인 후 로그인 안한 경우에는 로그인페이지로 이동 로그인 하지 않을 경우 백 -->
-<script type="text/javascript">
-	$(document).ready(function(){
-
-	})
-</script>
 
 <div id="container">
 
@@ -47,7 +41,7 @@
 				<br>
 				<br>
 				<div id="select_car">
-					<button type="button" class="btn btn-carselect" onclick="location.href='<%= ctxPath%>/drivetryApply/drivingLoungeChoice.car?pk_carname=G90_BLACK'">차량선택</button>
+					<button type="button" class="btn btn-carselect" id="checkLoginButton">차량선택</button>
 				</div>
 			</div>
 			<div class="main_car_image">
@@ -164,8 +158,13 @@
 		
 	</div>
 </div>
-<input type = "hidden" name="ctxPath" value="<%= ctxPath%>">
+
+<input type = "hidden" name="ctxPath" value="<%= ctxPath%>"/>
 <!-- ctxPath를 넘겨줄때는 위와 같이 input태그를 사용하여 값을 태그에 넣어준다음에 불러와주어야만 한다. -->
+<div style="display: none;">
+	<input id="carName" type = "hidden" name="carTitle" value="G90_BLACK"/>
+</div>
+<!-- 차 이름을 넘겨줄 태그 -->
 
 
 <div class="modal fade" id="LoginnoAccept" data-backdrop="static">
@@ -178,7 +177,7 @@
 		</div>
 		
 		<!-- Modal body -->
-		<div class="modal-body">
+		<div class="modal-body" id="afterLogin">
 			로그인 후 시승신청이 가능합니다.
 		</div>
 		

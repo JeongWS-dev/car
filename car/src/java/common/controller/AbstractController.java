@@ -3,6 +3,7 @@ package common.controller;
 import createCar.domain.CreateCarVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import member.domain.MemberVO;
 
 public abstract class AbstractController implements InterCommand{
 	/*
@@ -58,4 +59,5 @@ public abstract class AbstractController implements InterCommand{
 		}
 	}// end of public boolean checkCvo(HttpServletRequest request) {
 	
+
 }

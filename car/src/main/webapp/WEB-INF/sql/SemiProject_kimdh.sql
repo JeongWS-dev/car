@@ -80,6 +80,17 @@ insert into tbl_DrivingLounge(Pk_DLSeq, Area, City, Place_Name, D_address, phone
 
 commit;
 
-select area
+select pk_dlseq, area, city, place_name, d_address, phone
 from tbl_DrivingLounge
+;
+
+select area
+from tbl_drivingLounge
+group by area
+order by area;
+
+select city
+from tbl_drivingLounge
+where area = '서울'
+group by city
 ;

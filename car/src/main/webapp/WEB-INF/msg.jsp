@@ -7,7 +7,7 @@
 	alert("${requestScope.message}");      // 메시지 출력해주기
 	location.href = "${requestScope.loc}"; // 페이지 이동
 	
-	 
+	 //
 /*	
 	location.href="javascript:history.go(-2);";  // 이전이전 페이지로 이동 
  	location.href="javascript:history.go(-1);";  // 이전 페이지로 이동

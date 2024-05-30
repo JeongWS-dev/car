@@ -171,9 +171,15 @@ function goLogin(){
             
         </form>
         <div class="links">
+<<<<<<< HEAD
             <a href="<%= ctxPath%>/myPage/member/idFind.car">아이디 찾기</a>
             <a href="<%= ctxPath%>/myPage/member/pwdFind.car">비밀번호 찾기</a>
             <a href="#">회원가입</a>
+=======
+            <a href="#">아이디 찾기</a>
+            <a href="#">비밀번호 찾기</a>
+            <a href="<%= ctxPath%>/myPage/memberRegister.car">회원가입</a>
+>>>>>>> refs/remotes/origin/kimmr
         </div>
     
         

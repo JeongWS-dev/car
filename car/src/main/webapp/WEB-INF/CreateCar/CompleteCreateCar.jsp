@@ -65,7 +65,28 @@
 
 	}
 
+	function try_car_login(){
+		
+		if ( ${not empty sessionScope.loginuser} ){
+			const carname = $("span.model-name").text();
+			location.href = "<%=ctxPath%>/drivetryApply/drivingLoungeChoice.car?pk_carname="+carname;
+		}
+		else if( sessionStorage.getItem("userid") == null ) {
+			$("div#login_modal").fadeIn();
+		}
+		else {
+			sessionStorage.removeItem("userid");
+			const carname = $("span.model-name").text();
+			location.href = "<%=ctxPath%>/drivetryApply/drivingLoungeChoice.car?pk_carname="+carname;
+		}
+
+	}
+	
 	$(document).ready(function(){
+		$("div.loader").hide();
+		let carname = $("input[name='sessionCarName']").val();
+		$("span.model-name").text(carname.split("_").join(" "));
+		$("div.choice_car_name").text(carname.split("_").join(" "));
 		$("button.LoginClose").click(function(){
 			$("div#login_modal").fadeOut();
 		})
@@ -113,13 +134,57 @@
 			})
 		}
 	}
+
+	function selectPlace(place) {
+		let drivePlace = $(place).text();
+		$("span.place").text(drivePlace);
+	}
+
+	function sendPaper(){
+		const is_checked = $("input.send_input").is(":checked");
+		const place = $("span.place").text();
+		let optionNameJoin = "";
+		$("div.optionName").each(function(index,item){
+			optionNameJoin += $(item).text() + ",";
+		})
+		
+		if(is_checked && place!=""){
+			
+			$("div#send_paper").fadeOut();
+			$("div.loader").show();
+			$.ajax({
+				url : "${pageContext.request.contextPath}/createCar/sendPaperJSON.car",
+				type : "post",
+				data : {"place":place,"optionNameJoin":optionNameJoin},
+				dataType:"json",
+				success:function(json){
+					$("div.loader").hide();
+					if(confirm("정상적으로 전송되었습니다. 메인페이지로 이동하시겠습니까?")){
+						location.href = "<%=ctxPath%>/index.car";
+					}
+				},
+				error: function(request, status, error){
+					alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+				}
+			})
+		}
+		else{
+			if(!is_checked){
+				alert("개인정보 전송에 동의하셔야합니다.")
+			}
+			else{
+				alert("대리점을 선택하셔야 합니다.")
+			}
+		}
+	}
 </script>
 
 <body>
 		<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
-			<div>
+			<div style="width:auto; margin-right: 20px;">
 				<div style="color:rgb(151, 151, 151);">GENESIS</div>
-				<span class="model-name">${sessionScope.cvo.carName}</span>
+				<span class="model-name"></span>
+				<input name="sessionCarName" type="hidden" value="${sessionScope.cvo.carName}"/>
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
@@ -128,19 +193,7 @@
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link">구동 타입</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">스포츠 패키지</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
 					<a class="nav-link">외장 컬러</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">휠&타이어</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
@@ -148,19 +201,7 @@
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link">내장 가니쉬</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">파퓰러 패키지</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
 					<a class="nav-link">선택 품목</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">미리보기</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
@@ -235,7 +276,7 @@
 						<div style="color:rgb(163, 113, 38); margin-bottom: 10px;">선택 품목</div>
 						<c:forEach var="mapList" items="${requestScope.mapList}">
 							<div style="display: flex;">
-								<div style = "margin-top: 5px;">${mapList.optiondesc}</div>
+								<div class="optionName" style = "margin-top: 5px;">${mapList.optiondesc}</div>
 								<div style="margin:auto;"></div>
 								<div>${mapList.optionprice}</div>
 							</div>
@@ -246,7 +287,7 @@
 				<div class="sideBar">
 					<div style="display: flex; margin-top: 20px;">
 						<input type="button" class="buy" onclick="func_is_login()" value="구매 상담 신청">
-						<input type="button" class="try" value="시승 신청">
+						<input type="button" class="try" onclick="try_car_login()" value="시승 신청">
 					</div>
 					<ul>
 						<li>상기 견적금액은 개별 소비세 5.0% 적용 견적입니다.(단, 차종 및 면세구분에 따라 세제 혜택이 적용됩니다.)</li>
@@ -262,7 +303,10 @@
 				</div>
 			</div>
 		</div>
-
+		<%-- CSS 로딩화면 구현한것--%>
+		<div style="display: flex; position: absolute; top: 30%; left: 37%; border: solid 0px blue;">
+			<div class="loader" style="margin: auto"></div>
+		</div>
 		<div class="modal fade" id="exit_modal"> <%-- 만약에 모달이 안보이거나 뒤로 가버릴 경우에는 모달의 class 에서 fade 를 뺀 class="modal" 로 하고서 해당 모달의 css 에서 zindex 값을 1050; 으로 주면 된다. --%> 
 			<div class="modal-dialog modal-lg">
 			  <div class="modal-content">
@@ -325,19 +369,32 @@
 				<!-- Modal body -->
 				<div class="modal-body" id="Login-modal-body" style="text-align: center; margin-top: 50px;">
 					<ul>
-						<li>
-							<label class="send_label"for="username">성함 : </label>
-							<input class="send_input" id="username" value="${sessionScope.loginuser.username}"/>
+						<li style="text-align: center;">
+							<div style="font-size: 15pt; font-weight: bold;">대리점 선택</div>
+							<a class="nav-link dropdown-toggle h5" href="#" id="place-Dropdown" data-toggle="dropdown">
+								All
+							</a>
+							<div class="dropdown-menu" aria-labelledby="place-Dropdown">
+								<c:forEach var="place" items="${requestScope.list}">
+									<a class="dropdown-item" onclick="selectPlace(this)" >${place}</a>
+								</c:forEach>
+							</div>
 						</li>
 						<li>
-							<label class="send_label"for="username">연락처 : </label>
-							<input class="send_input" id="username" value="${sessionScope.loginuser.usermobile}"/>
+							<span class="place"></span>
 						</li>
-						
+						<li style="margin-top: 40px; display:flex;">
+							<div style="color:red; margin-right: 20px;">해당 대리점으로 견적서 및 성명, 전화번호를 전송합니다 이에 동의하시겠습니까?</div>
+							<input class="send_input" id="send_checkbox" type="checkbox"/>
+						</li>
 					</ul>
+
+					<input class="send" type="button" onclick="sendPaper()" value="전송">
 				</div>
 			  </div>
 			  
 			</div>
 		</div>
+
+	
 </body>

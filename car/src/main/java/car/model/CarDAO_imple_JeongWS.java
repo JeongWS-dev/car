@@ -429,7 +429,7 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	      try {
 	         conn = ds.getConnection();
 	         
-	         String sql = " select pk_userid, username, useremail, usermobile, userjubun, userpostcode, useraddress, userdetailaddress, userextraaddress, usergender, userregisterday, userlastchangepwd, userstatus, useridle\n"
+	         String sql = " select pk_userid, username, useremail, usermobile, UserBirthday, userpostcode, useraddress, userdetailaddress, userextraaddress, usergender, userregisterday, userlastchangepwd, userstatus, useridle\n"
 	         			+ " from tbl_user "
 	         			+ " where pk_userid = ? and userpwd = ? ";
 	         
@@ -448,7 +448,7 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
         	mvo.setUserdetailaddress(rs.getString("userdetailaddress"));
         	mvo.setUserextraaddress(rs.getString("userextraaddress"));
         	mvo.setUsergender(rs.getString("usergender"));
-        	mvo.setUserbirthday(rs.getString("userjubun"));
+        	mvo.setUserbirthday(rs.getString("UserBirthday"));
         	mvo.setUserregisterday(rs.getString("userregisterday"));
         	mvo.setUserlastpwdchangedate(rs.getString("userlastchangepwd"));
           }
@@ -645,6 +645,50 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 	      }
 		return mapList;
 	}// end of public Map<String, String> selectOption(String string) throws SQLException {
+	
+	// 드라이빙 라운지 이름을 가져온다.
+	@Override
+	public List<String> selectDrivingLounge() throws SQLException {
+		List<String> List = new ArrayList<>();
+		try {
+	         conn = ds.getConnection();
+	         String sql = " select place_name "
+	         			+ " from tbl_drivinglounge ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 
+	        	 List.add(rs.getString("place_name"));
+	         } 
+	         
+	      } finally {
+	         close();
+	      }
+		return List;
+	}// end of public List<String> selectDrivingLounge() throws SQLException {
+	
+	// 선택한 대리점의 이메일을 가져온다.
+	@Override
+	public String selectPlaceEmail(String place) throws SQLException {
+		String email = "";
+		try {
+			conn = ds.getConnection();
+	         String sql = " select email "
+	         			+ " from tbl_drivinglounge "
+	         			+ " where place_name = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, place);
+	         rs = pstmt.executeQuery();
+	         if(rs.next()) {
+	        	 email = rs.getString("email");
+	         }
+		}finally {
+			close();
+		}
+		return email;
+	}// end of public String selectPlaceEmail(String place) throws SQLException {
 
     
 }

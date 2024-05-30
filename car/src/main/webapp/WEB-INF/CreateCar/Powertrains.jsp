@@ -32,6 +32,8 @@
 <!-- 내가만든 js -->
 <script type = "text/javascript">
 	$(document).ready(function(){
+		let carname = $("input[name='sessionCarName']").val();
+		$("span.model-name").text(carname.split("_").join(" "));
 
 		$("div.option_title").each(function(index,item){
 			if(index==0){
@@ -168,54 +170,31 @@
 
 <body>
 		<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
-			<div>
+			<div style="width:auto; margin-right: 20px;">
 				<div style="color:rgb(151, 151, 151);">GENESIS</div>
-				<span class="model-name">${sessionScope.cvo.carName}</span>
+				<span class="model-name"></span>
+				<input name="sessionCarName" type="hidden" value="${sessionScope.cvo.carName}"/>
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
 				<li class="nav-item"> 
-					<a class="nav-link" href="<%= ctxPath%>/createCar/powertrains.car" style="color:white; font-weight:bold;">엔진 타입</a>
+					<a class="nav-link" style="color:white; font-weight:bold;">엔진 타입</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="<%= ctxPath%>/createCar/drivetrains.car">구동 타입</a>
+					<a class="nav-link">외장 컬러</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">스포츠 패키지</a>
+					<a class="nav-link">내장 디자인&컬러</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">외장 컬러</a>
+					<a class="nav-link">선택 품목</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link" href="#">휠&타이어</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link" href="#">내장 디자인&컬러</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link" href="#">내장 가니쉬</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link" href="#">파퓰러 패키지</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link" href="#">선택 품목</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link" href="#">미리보기</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link" href="#">견적완료</a>
+					<a class="nav-link">견적완료</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#exit_modal" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></a>

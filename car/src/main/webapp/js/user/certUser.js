@@ -504,46 +504,84 @@ $(document).ready(function(){
     $("span#emailcheck").click(function(){
 		
 		const userid = $("#userid").val().trim();
+		const pwd = $("#pwd").val().trim();
 		const pwdcheck = $("#pwdcheck").val().trim();
-		if(userid == ""){
-			$("userid").parent().find("span.error").show();
-		}
-		else if(pwdcheck == ""){
+		const email = $("#email").val().trim();
+		
+		const name = $("#name").val().trim();
+		if(name == ""){
 			return;
 		}
 		
-        b_emailcheck_click = true;
-        // "이메일중복확인" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
-
-        $.ajax({
-            url : "emailDuplicateCheck.car",
-            data : {"email" : $("input#email").val()}, // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다.
-            type : "post",  // type 을 생략하면 type : "get" 이다.
-
-            async : true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
-         		            // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.
-             dataType : "json",
-            
-            success : function(json){
-                
-
-                if(json.isExists) {
-                    // 입력한 email 이 이미 사용중이라면 
-                    $("span#emailCheckResult").html( $("input#email").val() + " 은 이미 사용중 이므로 다른 이메일을 입력하세요").css({"color":"red"});
-                    $("input#email").val("");
-                } 
-                else {
-                    // 입력한 email 이 존재하지 않는 경우라면 
-                    $("span#emailCheckResult").html( $("input#email").val() + " 은 사용가능 합니다.").css({"color":"navy"});
-                }
-            },
-            
-            error: function(request, status, error){
-                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-            }
-
-        });
-
+		if(userid == ""){
+			$("table#tblMemberRegister :input").prop("disabled", true);
+            $("#userid").prop("disabled", false);
+            $("#userid").val("").focus();
+        	
+			$("#userid").parent().find("span.error").show();
+		}
+		else if(pwd == ""){
+			$("table#tblMemberRegister :input").prop("disabled", true);
+            $("#pwd").prop("disabled", false);
+            $("#pwd").val("").focus();
+        	
+			$("#pwd").parent().find("span.error").show();
+		}
+		else if(pwdcheck == ""){
+			$("table#tblMemberRegister :input").prop("disabled", true);
+            $("#pwdcheck").prop("disabled", false);
+            $("#pwdcheck").val("").focus();
+        	
+			$("#pwdcheck").parent().find("span.error").show();
+		}
+		
+		
+		
+		else if(email == ""){
+			
+			 $("table#tblMemberRegister :input").prop("disabled", true);
+            $("#email").prop("disabled", false);
+            $("#email").val("").focus();
+        	
+        //  $(e.target).next().show();
+        //  또는
+        		
+            $("#email").parent().find("span.error").show();
+		}
+		else{
+			
+	        b_emailcheck_click = true;
+	        // "이메일중복확인" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도
+	
+	        $.ajax({
+	            url : "emailDuplicateCheck.car",
+	            data : {"email" : $("input#email").val()}, // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다.
+	            type : "post",  // type 을 생략하면 type : "get" 이다.
+	
+	            async : true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
+	         		            // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.
+	             dataType : "json",
+	            
+	            success : function(json){
+	                
+	
+	                if(json.isExists) {
+	                    // 입력한 email 이 이미 사용중이라면 
+	                    $("span#emailCheckResult").html( $("input#email").val() + " 은 이미 사용중 이므로 다른 이메일을 입력하세요").css({"color":"red"});
+	                    $("input#email").val("");
+	                } 
+	                else {
+	                    // 입력한 email 이 존재하지 않는 경우라면 
+	                    $("span#emailCheckResult").html( $("input#email").val() + " 은 사용가능 합니다.").css({"color":"navy"});
+	                }
+	            },
+	            
+	            error: function(request, status, error){
+	                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	            }
+	
+	        });
+		}
 
     });
     // "이메일중복확인" 을 클릭했을 때 이벤트 처리하기 끝 //

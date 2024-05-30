@@ -173,7 +173,7 @@ function goLogin(){
         <div class="links">
             <a href="#">아이디 찾기</a>
             <a href="#">비밀번호 찾기</a>
-            <a href="#">회원가입</a>
+            <a href="<%= ctxPath%>/myPage/memberRegister.car">회원가입</a>
         </div>
     
         

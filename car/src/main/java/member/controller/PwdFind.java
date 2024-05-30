@@ -27,14 +27,19 @@ public class PwdFind extends AbstractController {
 			// 비밀번호 찾기 모달창에서 "찾기" 버튼을 클릭했을 경우
 			
 			String userid = request.getParameter("userid");
-			String email = request.getParameter("email");
+			String hp1 = request.getParameter("hp1");
+			String hp2 = request.getParameter("hp2");
+			String hp3 = request.getParameter("hp3");
 			
+			System.out.println("컨트롤러"+userid);
+			String mobile = hp1+hp2+hp3;
+			System.out.println(mobile);
 			Map<String, String> paraMap = new HashMap<>();
 			paraMap.put("userid", userid);
-			paraMap.put("email", email);
+			paraMap.put("mobile", mobile);
 			
 			boolean isUserExist = cdao.isUserExist(paraMap);
-			
+			System.out.println(isUserExist);
 			//////////////////////////////////////////////////////
 			boolean sendMailSuccess = false; // 메일이 정상적으로 전송되었는지 유무를 알아오기 위한 용도
 						
@@ -73,22 +78,12 @@ public class PwdFind extends AbstractController {
 				// ~~~~ 확인용 certification_code : alwms8286207	
 				
 				// 랜덤하게 생성한 인증코드(certification_code)를 비밀번호 찾기를 하고자 하는 사용자의 email 로 전송시킨다. 
-				GoogleMail mail = new GoogleMail();
 				
-				try {
-					mail.send_certification_code(email, certification_code);
-					sendMailSuccess = true; // 메일 전송 성공했음을 기록함.
-					
 					// 세션불러오기
 					HttpSession session = request.getSession();
 					session.setAttribute("certification_code", certification_code);
 					// 발급한 인증코드를 세션에 저장시킴.
 				
-				} catch(Exception e) {
-					// 메일 전송이 실패한 경우 
-					e.printStackTrace();
-					sendMailSuccess = false; // 메일 전송 실패했음을 기록함.
-				}
 				
 				
 			}// end of if(isUserExist)-----------------------
@@ -97,7 +92,7 @@ public class PwdFind extends AbstractController {
 			request.setAttribute("isUserExist", isUserExist);
 			request.setAttribute("sendMailSuccess", sendMailSuccess);
 			request.setAttribute("userid", userid);
-			request.setAttribute("email", email);
+			request.setAttribute("mobile", mobile);
 			
 		}// end of if("POST".equalsIgnoreCase(method))--------
 		

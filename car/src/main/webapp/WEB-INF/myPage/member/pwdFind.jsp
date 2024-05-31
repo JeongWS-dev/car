@@ -121,23 +121,6 @@ $(document).ready(function(){
 			const hp2 = $("input:text[name='hp2']").val().trim();
 			const hp3 = $("input:text[name='hp3']").val().trim();
 			
-		    $.ajax({
-				  url:"<%= ctxPath%>/myPage/member/pwdFindJSON.car",
-				  type:"post",
-				  data:{"userid":userid,
-					  	"hp1":hp1,
-					  	"hp2":hp2,
-					  	"hp3":hp3},
-				  dataType:"json",
-				  success:function(json){ 
-					  $("input#ajax").val(json.certification_code);
-				  },
-				  error: function(request, status, error){
-					  alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-				  }
-			  });
-		    
-		    
 		    // hp2 검사
 		    const regExp_hp2 = /^[1-9][0-9]{3}$/;
 		    bool2 = regExp_hp2.test($("input#hp2").val());
@@ -166,6 +149,28 @@ $(document).ready(function(){
 		  		  }
 		  	  });// end of $("input:text[name='email']").bind("keyup", function(e){})-------
 		    }
+		    
+		    
+		    $.ajax({
+				  url:"<%= ctxPath%>/myPage/member/pwdFindJSON.car",
+				  type:"post",
+				  data:{"userid":userid,
+					  	"hp1":hp1,
+					  	"hp2":hp2,
+					  	"hp3":hp3},
+				  dataType:"json",
+				  success:function(json){ 
+					  $("input#ajax").val(json.certification_code);
+					  
+					  if(json.isUserExist == false){
+						  alert("사용자 정보가 없습니다");
+					  }
+				  },
+				  error: function(request, status, error){
+					  alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				  }
+			  });
+		    
 		});
 	  
 	  
@@ -225,12 +230,9 @@ function goFind() {
 	            
 	            
 	            if ($("#ajax").val() !== "") {
-	  			  $("div#div_findResult").html("<input type='text' name='input_confirmCode' /><button type='button' class='btn btn-info'>인증하기</button>");
+	  			  	$("div#div_findResult").html("<input type='text' name='input_confirmCode' /><button type='button' class='btn btn-info'>인증하기</button>");
 	  			    
 		  	    }
-		  		else{
-		  			$("div#div_findResult").html("<span style='color: red;'>사용자 정보가 없습니다</span>");
-		  		}
 	            
 	            
 	            

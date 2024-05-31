@@ -103,7 +103,7 @@ group by city
 order by city
 ;
 
-select place_name
+select place_name,d_address,phone,lat,lng
 from tbl_drivingLounge
 where area = '서울' and city ='성동구'
 order by place_name

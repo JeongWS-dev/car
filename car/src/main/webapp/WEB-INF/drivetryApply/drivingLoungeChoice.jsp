@@ -29,7 +29,7 @@
 
 <div id="container">
     <div id="map" style="width:100%; height:900px;"></div>
-    <div id="latlngResult"></div>
+    <div id="latlngResult" style="display: none;"></div>
     
  
     <div id="in-container">
@@ -51,6 +51,7 @@
             </c:if>
 
         </div>
+        
     </div>
 
 </div>

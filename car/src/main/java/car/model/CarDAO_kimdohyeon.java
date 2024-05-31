@@ -14,6 +14,8 @@ public interface CarDAO_kimdohyeon {
 	List<Map<String, String>> getcityList(String area)throws SQLException;
 	//place_name 조회하기
 	List<Map<String, String>> getplace_nameList(String area, String city) throws SQLException;
+	//extend_map
+	List<Map<String, String>> getExtend_map(String area, String city, String place_name) throws SQLException;
 
 		
 	

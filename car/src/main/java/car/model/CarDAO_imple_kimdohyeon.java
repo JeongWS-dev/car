@@ -102,12 +102,13 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 	}// end of public List<DriveLoungeVO> areaSearch() throws SQLException
 
 
-	// 라운지 목록을 조회해오기
+	// 시,구 목록을 조회해오기
 	@Override
 	public List<Map<String, String>> getcityList(String area) throws SQLException {
 
 		List<Map<String, String>> cityList = new ArrayList<>();
 
+		System.out.println(" 확인용 area : " + area);
 		try {
 			  conn = ds.getConnection();
 			  
@@ -148,7 +149,7 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 		try {
 			  conn = ds.getConnection();
 			  
-			  String sql = " select place_name "
+			  String sql = " select pk_dlseq,place_name,d_address,phone,lat,lng "
 			  		+ " from tbl_drivingLounge "
 			  		+ " where area = ? and city = ? "
 			  		+ " order by place_name ";
@@ -163,6 +164,12 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 			  while(rs.next()) {
 				  Map<String,String> paraMap = new HashMap<>();
 				  paraMap.put("place_name", rs.getString("place_name"));
+				  paraMap.put("d_address", rs.getString("d_address"));
+				  paraMap.put("phone", rs.getString("phone"));
+				  paraMap.put("lat", rs.getString("lat"));
+				  paraMap.put("lng", rs.getString("lng"));
+				  paraMap.put("pk_dlseq", rs.getString("pk_dlseq"));
+				  
 				  place_nameList.add(paraMap); 
 			  }// end of while--------------
 			  
@@ -175,6 +182,49 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 		}
 		
 		return place_nameList;
+	}
+
+	
+	@Override
+	public List<Map<String, String>> getExtend_map(String area, String city, String place_name)throws SQLException {
+		List<Map<String, String>> Extend_map = new ArrayList<>();
+
+		try {
+			  conn = ds.getConnection();
+			  
+			  String sql = " select pk_dlseq,place_name,d_address,phone,lat,lng "
+			  		+ " from tbl_drivingLounge "
+			  		+ " where area = ? and city = ? and place_name = ? ";
+			  
+
+			  pstmt = conn.prepareStatement(sql);
+			  pstmt.setString(1, area);
+			  pstmt.setString(2, city);
+			  pstmt.setString(3, place_name);
+			  
+			  rs = pstmt.executeQuery();
+			  
+			  while(rs.next()) {
+				  Map<String,String> paraMap = new HashMap<>();
+				  paraMap.put("place_name", rs.getString("place_name"));
+				  paraMap.put("d_address", rs.getString("d_address"));
+				  paraMap.put("phone", rs.getString("phone"));
+				  paraMap.put("lat", rs.getString("lat"));
+				  paraMap.put("lng", rs.getString("lng"));
+				  paraMap.put("pk_dlseq", rs.getString("pk_dlseq"));
+				  
+				  Extend_map.add(paraMap); 
+			  }// end of while--------------
+			  
+			  for(int i=0;i<Extend_map.size();i++) {
+				  System.out.println("확인용 place_nameList " + i + "번째 : "+ Extend_map.get(i)); 
+			  }
+			  
+		} finally {
+			close();
+		}
+		
+		return Extend_map;
 	}
 
 

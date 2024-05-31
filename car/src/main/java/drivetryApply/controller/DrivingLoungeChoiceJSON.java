@@ -22,7 +22,7 @@ public class DrivingLoungeChoiceJSON extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String area = request.getParameter("Area");
-		
+//		System.out.println("DrivingLoungeChoiceJSON execute result : " + area);
 		// 내가 선택한 지역의 시,구 불러오기
 		List<Map<String, String>> cityList = cdao.getcityList(area);
 

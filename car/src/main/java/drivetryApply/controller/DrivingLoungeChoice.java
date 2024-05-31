@@ -45,7 +45,7 @@ public class DrivingLoungeChoice extends AbstractController {
 		for(Map<String,String> map:AreaList) {
 			Area += map.get("Area")+",";
 		}
-		System.out.println(Area);
+//		System.out.println("execute result: " + Area);
 		String[]area_arr = Area.split(",");
 
         request.setAttribute("areaList", AreaList);

@@ -12,25 +12,27 @@ import common.controller.AbstractController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class DrivingLoungeChoiceJSON2 extends AbstractController {
+public class DrivingLoungeChoiceJSON3 extends AbstractController {
+
 	private CarDAO_kimdohyeon cdao = null;
 	
-	public DrivingLoungeChoiceJSON2() {
+	public DrivingLoungeChoiceJSON3() {
 		cdao = new CarDAO_imple_kimdohyeon();
 	}
-	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		String area = request.getParameter("Area");
 		String city = request.getParameter("City");
+		String place_name = request.getParameter("Place_name");
 		System.out.println("DrivingLoungeChoiceJSON2 execute Result : "+ area);
 		System.out.println("DrivingLoungeChoiceJSON2 execute Result : "+ city);
 		// 내가 선택한 지역의 시,구 불러오기
-		List<Map<String, String>> place_nameList = cdao.getplace_nameList(area,city);
+		List<Map<String, String>> Extend_map = cdao.getExtend_map(area,city,place_name);
 
 		JSONArray jsonArr = new JSONArray(); // []
-		if(place_nameList.size()>0) {
-			for(Map<String, String> map : place_nameList) {
+		if(Extend_map.size()>0) {
+			for(Map<String, String> map : Extend_map) {
 				JSONObject jsonObj = new JSONObject(); // {}
 				jsonObj.put("area", map.get("Area"));
 				jsonObj.put("city", map.get("city"));
@@ -45,7 +47,7 @@ public class DrivingLoungeChoiceJSON2 extends AbstractController {
 			}
 		}
 		else {
-			System.out.println("areaList가 없습니다.");
+			System.out.println("Extend_map가 없습니다.");
 		}
 		String json = jsonArr.toString();
 		
@@ -55,6 +57,7 @@ public class DrivingLoungeChoiceJSON2 extends AbstractController {
 		
         super.setViewPage("/WEB-INF/jsonview.jsp");
 	}
+
 
 
 }

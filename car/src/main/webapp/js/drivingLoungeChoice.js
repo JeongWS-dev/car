@@ -4,6 +4,7 @@
 
 $(document).ready(function(){
 
+  /* 지도 시작 */
 
     // 지도를 담을 영역의 DOM 레퍼런스
     var mapContainer = document.getElementById("map");
@@ -47,7 +48,7 @@ $(document).ready(function(){
         var locPosition = new kakao.maps.LatLng(latitude, longitude);
                   
         // 마커이미지를 기본이미지를 사용하지 않고 다른 이미지로 사용할 경우의 이미지 주소 
-            var imageSrc = 'http://localhost:9090/MyMVC/images/pointerPink.png';
+            var imageSrc = 'http://localhost:9090/car/images/caricon.png';
         
             // 마커이미지의 크기 
           var imageSize = new kakao.maps.Size(34, 39);
@@ -120,7 +121,7 @@ $(document).ready(function(){
       dataType:"json",
       success:function(json){
         
-          // console.log(JSON.stringify(json));
+        console.log("확인용 위치 json " + JSON.stringify(json));
         // JSON.stringify(json) 은 자바스크립트의 객체(배열)인 json 을 string 타입으로 변경시켜주는 것이다.
 	
         // [{"storeurl":"https://place.map.kakao.com/7858517","lng":126.98187860455485,"storename":"롯데백화점 본점","storeimg":"lotte02.png","storeaddress":"서울 중구 을지로 30 (T)02-771-2500","lat":37.56511284953554,"zIndex":1}
@@ -246,6 +247,8 @@ $(document).ready(function(){
     // ================== 지도에 클릭 이벤트를 등록하기 끝 ======================= //
 
 
+   /* 지도 끝 */
+
 
     b_area_click = true;
     // "지역" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도 
@@ -272,13 +275,13 @@ function makeOverListener(mapobj, marker, infowindow, infowindowArr) {
 
 
 
-function choiceArea(area){
+function choiceArea(Area){
   // alert(area)
-  $("input[name='areachoicebtn']").val(area);
-  
+  $("input[name='areachoicebtn']").val(Area);
+  alert("Area" + Area);
   $.ajax({
-    url:"/drivetryApply/drivingLoungeChoiceJSON.car",
-    data:{"area":area},
+    url:"/car/drivetryApply/drivingLoungeChoiceJSON.car",
+    data:{"Area":Area},
     //  ,"userid":$("input:hidden[name='userid']").val() // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다. 
     // type:"get",  //  type 을 생략하면 type:"get" 이다.
     
@@ -290,16 +293,108 @@ function choiceArea(area){
                     // 만약에 dataType:"json" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 json 형식이어야 한다. 
 
     success:function(json){
-      let m_html = ``;
-      console.log("확인용 area: " + area);
+      let v_html = ``;
+      console.log("확인용 Area: " + Area);
+      if(json.length == 0) { // json== null하면 오류 남. 넘겨 받을 때 new 선언해서 받아서 빈 껍데기 배열이기 때문에 null이 아니고 길이가 0임.
+        v_html = `드라이빙 라운지가 준비중입니다.`;
+      }
+      else{
+        v_html ="";
+        // alert(json);
+        v_html = `<div id="place" style="text-align: center; background-color: lightgray; ">
+                    <span style="color: gray; padding: 2% 0">지역 선택</span>
+                      <div id="table">
+                          <table id="areatable"> <tr>`;
+        $.each(json, function(index, item){
+          // alert(item.city);
+          v_html += `<td><button id="areachoicebtn" onclick="choiceCity('${Area}','${item.city}')">${item.city}</button></td>`;
+        });//end of each ----------------------
+        v_html += `</tr> </table></div></div></div>`;
+      
+      }
+      // alert(v_html);
+      $("div#in-container").html(v_html);
     },
-    
+
     
     error: function(request, status, error){
       alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
     }
-  });
+  })
+
+}; // end of function choiceArea(Area){} ---------------------------------
 
 
-}
+  function choiceCity(Area,city){
+    // alert(Area);      // 서울,강남구
+    // alert(city);      // undefined
+    var positionArr = [];
+    $.ajax({
+      url:"/car/drivetryApply/drivingLoungeChoiceJSON2.car",
+      data:{"Area":Area, "City":city},
+      //  ,"userid":$("input:hidden[name='userid']").val() // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다. 
+      // type:"get",  //  type 을 생략하면 type:"get" 이다.
+      
+      // async:true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
+      //                  // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.   
+      
+      dataType:"json", // Javascript Standard Object Notation.  dataType은 /MyMVC/member/emailDuplicateCheck.up 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
+                      // 만약에 dataType:"xml" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 xml 형식이어야 한다. 
+                      // 만약에 dataType:"json" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 json 형식이어야 한다. 
+  
+      success:function(json){
+        let v_html = ``;
+        // console.log("확인용 Area: " + Area);
+        if(json.length == 0) { // json== null하면 오류 남. 넘겨 받을 때 new 선언해서 받아서 빈 껍데기 배열이기 때문에 null이 아니고 길이가 0임.
+          v_html = `드라이빙 라운지가 준비중입니다.`;
+        }
+        else{
+          v_html ="";
+          alert(json);
+          v_html = `<div id="placeName">`;
+          $.each(json, function(index, item){
+            // alert(item.city);
+            v_html += `<h1>${item.place_name}<br></h1>
+                       <span>${item.d_address}</span>
+                       <span>${item.phone}</span>
+                       <button onclick ="extendmap('${Area}','${city}')">시승&nbsp;신청하기</button>`;
+            //지도의 변화
+          });//end of each ----------------------
+          v_html += `</div>`;
+        
+          $.each(json, function(index, item){
+            var position = {};
+            
+            position.content = "<div class='mycontent'>"+
+                               "  <div class='title'>"+
+                               "    <a href='"+item.place_name+"' target='_blank'><strong>"+item.phone+"</strong></a>"+
+                               "  </div>"+
+                               "  <div class='desc'>"+
+                               "    <span class='address'>"+item.d_address+"</span>"+
+                               "  </div>"+
+                               "</div>";
+                               
+            position.latlng = new kakao.maps.LatLng(item.lat, item.lng);
+            position.pk_dlseq = item.pk_dlseq;
+            
+            positionArr.push(position);
+          });// end of $.each(json, function(index, item){})---------------        
+        }
+        alert(v_html);
+        $("div#in-container").html(v_html);
+      },
+  
+      
+      error: function(request, status, error){
+        alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+      }
+    });
+  
+  } // end of   function choiceCity(Area,city){}- ------------------------------------
+
+
+
+  function extendmap(Area,city,place_name){
+
+  };
 

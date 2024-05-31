@@ -71,6 +71,7 @@ public class sendPaperJSON extends AbstractController {
 				total_price += Integer.parseInt(optionPrice.substring(1,optionPrice.indexOf("원")));
 				mapList.add(option_map);
 			}
+			
 			DecimalFormat df = new DecimalFormat("#,###");
 			String final_price = "+"+df.format(total_price)+"원";
 			
@@ -144,6 +145,7 @@ public class sendPaperJSON extends AbstractController {
 		else {
 			String place = request.getParameter("place");
 			String optionNameJoin = request.getParameter("optionNameJoin");
+			
 			String[]optionNameArr = optionNameJoin.split(",");
 //			System.out.println(loginuser.getUsername());
 //			System.out.println(cvo.getCarName());
@@ -173,12 +175,13 @@ public class sendPaperJSON extends AbstractController {
 			int n_incolorprice = Integer.parseInt(incolorprice.substring(0,incolorprice.indexOf("원")));
 			
 			int total_price = n_carprice + n_powerprice + n_outcolorprice + n_incolorprice;
-			
-			for(int i=0;i<optionNameArr.length;i++) {
-				Map<String,String> option_map = cdao.selectMyChoiceOption(optionNameArr[i],request.getParameter("carname"));
-				String optionPrice = String.join("", option_map.get("optionprice").split(","));
-				total_price += Integer.parseInt(optionPrice.substring(1,optionPrice.indexOf("원")));
-				mapList.add(option_map);
+			if(optionNameJoin!=null) {
+				for(int i=0;i<optionNameArr.length;i++) {
+					Map<String,String> option_map = cdao.selectMyChoiceOption(optionNameArr[i],request.getParameter("carname"));
+					String optionPrice = String.join("", option_map.get("optionprice").split(","));
+					total_price += Integer.parseInt(optionPrice.substring(1,optionPrice.indexOf("원")));
+					mapList.add(option_map);
+				}
 			}
 			DecimalFormat df = new DecimalFormat("#,###");
 			String final_price = "+"+df.format(total_price)+"원";

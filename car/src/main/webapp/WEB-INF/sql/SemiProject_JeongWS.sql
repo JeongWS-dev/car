@@ -66,20 +66,14 @@ create table tbl_Option
 ,constraint Fk_tbl_Option_Fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
 
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_panoramic_sunroof','G90','G90_options_panoramic_sunroof.jpg','파노라마 선루프',2000000,'탁 트인 개방감을 선사하여 채광과 환기 효과를 더하며, 선루프 무드조명을 추가하여 고급감 및 편의성을 향상시켰습니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_rear_dual_monitor','G90','G90_options_rear_dual_monitor.jpg','전동식 뒷좌석 듀얼 모니터',2900000,'터치 방식의 10.2인치 대화면 모니터는 뒷좌석 좌우 승객이 독립적으로 사용가능하며, 시트 모드에 따라 각도가 연동됩니다. 목적지까지의 경로와 남은 시간 등도 확인할 수 있습니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_bang_olufsen_sound_package','G90','G90_options_bang_olufsen_sound_system.jpg','뱅앤올룹슨 사운드 패키지',3900000);
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_built_in_cam','G90','G90_options_built_in_cam.jpg','빌트인 캠 (보조배터리 포함)',800000,'차량의 트림을 제거할 필요 없이 빌트인 적용된 주행 중 영상기록장치로, AVN 화면을 통해 영상을 바로 확인할 수 있을 뿐만 아니라 스마트폰 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다. 주행뿐만 아니라 주차 상황에서도 최대 12시간까지 녹화가 가능합니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_driver_passanger_ergo_relaxing_seat','G90','G90_options_driver_passanger_ergo_relaxing_seat.jpg','운전석 / 동승석 에르고 릴렉싱 시트',2000000,'시트백 10개 포켓과 쿠션 2셀 구조를 활용하여 전신 모드 외 3가지의 마사지 모드를 제공하며 최적의 착좌감을 제공합니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_easy_close_system','G90','G90_options_easy_close_system.jpg','이지 클로즈 시스템',1500000,'승차 후 손을 뻗어 도어를 당길 필요 없이 편안하게 앉은 상태에서 콘솔의 버튼을 누르면 도어가 부드럽게 닫힙니다. 하차할 때는 도어 트림의 버튼을 누르고 가볍게 미는 동작으로 도어가 손쉽게 열립니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_back_comport_package_1','G90','G90_options_rear_seat.jpg','뒷좌석 컴포트 패키지I',3500000);
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_back_comport_package_1+2','G90','G90_options_rear_seat.jpg','뒷좌석 컴포트 패키지I+II',6400000);
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('back_comport_package_1+2+front_comport','G90','G90_options_rear_seat.jpg','뒷좌석 컴포트 패키지I+II+운전석 / 동승석 에르고 릴렉싱 시트',7900000);
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_hightech_package','G90','G90_options_head_up_display.jpg','하이테크 패키지',2000000);
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('G90_rws_airsuspension','G90','G90_options_rws.jpg','능동형 후륜 조향 (RWS) + 멀티챔버 에어 서스펜션',5000000);
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_air_suspension','G90','G90_options_air_suspension.jpg','멀티챔버 에어 서스펜션',3500000,'차고 조절 기능 및 멀티 챔버 방식을 적용하여 부드러운 승차감과 함께 다이내믹한 핸들링 성능을 제공합니다. 방지턱 진입 전에는 차고 및 서스펜션 감쇠력을 조절해 승차감을 향상시키고, 경사로 주행 시에는 차고를 상향해 차체 하부 손상을 막아줍니다. 험로 인지 시에는 차고 상향으로 주행 안정감을 확보하고 고속도로에서는 고속주행 안정성을 향상시킵니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_protection_film','G90','G90_options_protection_film.jpg','차량 보호 필름',540000,'카라이프 중 손상되기 쉬운 프론트 / 리어 범퍼등 8부위에 우레탄 계열의 투명한 보호필름을 부착하여 스톤칩으로 인한 페인트 손상 및 생활 스크래치를 예방하여 깨끗한 바디를 유지할 수 있도록 합니다. 또한 3년동안 6만km의 보증을 제공해드립니다.');
-insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_options_wheel_cap','G90','G90_options_wheel_cap.jpg','플로팅 휠 캡 / 메탈 페달','200000','주행 시 엠블럼을 수평 상태로 유지 시켜주는 휠 캡과 메탈 소재 커버가 적용된 브레이크/엑셀 페달이 적용됩니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_lwb_options_built_in_cam','G90_LONG_WHEEL_BASE','G90_lwb_options_built_in_cam.jpg','빌트인 캠 패키지',800000,'차량의 트림을 제거할 필요 없이 빌트인 적용된 주행 중 영상기록장치로, AVN 화면을 통해 영상을 바로 확인할 수 있을 뿐만 아니라 스마트폰 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다. 주행뿐만 아니라 주차 상황에서도 최대 12시간까지 녹화가 가능합니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_lwb_options_panoramic_sunroof','G90_LONG_WHEEL_BASE','G90_lwb_options_panoramic_sunroof.jpg','파노라마 선루프',2500000,'탁 트인 개방감을 선사하여 채광과 환기 효과를 더하며, 선루프 무드조명을 추가하여 고급감 및 편의성을 향상시켰습니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_lwb_options_protection_film','G90_LONG_WHEEL_BASE','G90_lwb_options_protection_film.jpg','차량 보호 필름',540000,'카라이프 중 손상되기 쉬운 프론트 / 리어 범퍼등 8부위에 우레탄 계열의 투명한 보호필름을 부착하여 스톤칩으로 인한 페인트 손상 및 생활 스크래치를 예방하여 깨끗한 바디를 유지할 수 있도록 합니다. 또한 3년/6만km의 보증을 제공해드립니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_lwb_options_rear_dual_monitor','G90_LONG_WHEEL_BASE','G90_lwb_options_rear_dual_monitor.jpg','전동식 뒷좌석 듀얼 모니터',2900000,'터치 방식의 10.2인치 대화면 모니터는 뒷좌석 좌우 승객이 독립적으로 사용가능하며, 시트 모드에 따라 각도가 연동됩니다. 목적지까지의 경로와 남은 시간 등도 확인할 수 있습니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice,OptionDetailDesc) values('G90_lwb_options_wheel_cap','G90_LONG_WHEEL_BASE','G90_lwb_options_wheel_cap.jpg','플로팅 휠 캡 / 메탈 페달',200000,'주행 시 엠블럼을 수평 상태로 유지 시켜주는 휠 캡과 커버가 적용된 브레이크/엑셀 페달이 적용됩니다.');
+insert into tbl_Option(Pk_OptionCode,Fk_CarName,Option_Img,OptionDesc,OptionPrice) values('back_comport_package','G90_LONG_WHEEL_BASE','G90_lwb_options_privacy_glass.jpg','뒷좌석 컴포트 패키지',5000000);
+
+
 
 commit;
 
@@ -102,6 +96,13 @@ create table tbl_option_detail
 
 create sequence tbl_option_detail_seq;
 commit;
+
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'back_comport_package','G90_LONG_WHEEL_BASE','뒷좌석 에르고 릴렉싱 시트 (뒷좌석 마사지, VIP 좌석 발 마사지)','10개의 포켓을 내장한 시트백과 2셀 구조의 쿠션이 총 4가지 모드의 마사지 기능을 제공합니다.','G90_lwb_options_rear_ergo_realxing_seat.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'back_comport_package','G90_LONG_WHEEL_BASE','뒷좌석 레그레스트 / VIP 좌석 풋레스트 / 뒷좌석 윙아웃 헤드레스트','연결형 구조의 레그레스트와 풋레스트가 더욱 편안한 착좌감을 제공합니다. 마시지 기능과 히팅 기능이 적용된 풋레스트는 사계절 내내 쾌적한 온도에서 발의 피로를 풀어줍니다.','G90_lwb_options_leg_vip_foot_rest.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'back_comport_package','G90_LONG_WHEEL_BASE','뒷좌석 스마트폰 무선 충전','뒷좌석에 무선 충전 패드가 마련되어 별도의 케이블 없이도 손쉽게 스마트폰을 충전할 수 있습니다.','G90_lwb_options_smart_phone_charger.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'back_comport_package','G90_LONG_WHEEL_BASE','뒷좌석 자세 메모리 시스템','간단한 버튼 조작으로 좌석을 제어하여 설정된 위치까지 자동으로 조절하는 장치입니다.','G90_lwb_options_ims.jpg');
+insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'back_comport_package','G90_LONG_WHEEL_BASE','뒷좌석 프라이버시 글라스','차량 내부에서 밖을 볼 때 어두워지는 것은 최소화하고, 밖에서 차량 내부는 거의 보이지 않게 처리된 글라스로 편리함과 안락함을 제공합니다.','G90_lwb_options_privacy_glass.jpg');
+
 
 insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_bang_olufsen_sound_package','G90','뱅앤올룹슨 프리미어 3D 사운드 시스템','헤드레스트와 헤드라이닝, 전동 팝업 트위터 등을 포함한 총 23개의 스피커가 섬세하고 풍부한 사운드를 제공합니다.','G90_options_bang_olufsen_sound_system.jpg');
 insert into tbl_option_detail(option_detail_code,fk_optioncode,fk_carname, optionname,optiondesc, optionImg) VALUES (tbl_option_detail_seq.nextval,'G90_bang_olufsen_sound_package','G90','버츄얼 베뉴','버추얼 베뉴는 가상의 3D 서라운드 음향으로 유명 공연장과 홈사운드의 음장 특성을 재현해 현장감 넘치는 사운드 공간을 완성합니다.','G90_options_virtual_venue.jpg');
@@ -168,6 +169,9 @@ create table tbl_MyOption
 ,constraint  FK_tbl_MyOption_Fk_OptionCode foreign key(Fk_OptionCode) references tbl_Option(Pk_OptionCode)
 );
 
+select *
+from tbl_myoption;
+
 select P.fk_carname,C.CarPrice ,I.incolordesc, I.incolorPrice, O.outcolordesc, O.outcolorprice, PO.powerdesc, PO.powerprice
 from tbl_paper P JOIN tbl_incolor I
 ON P.fk_incolorcode = I.pk_incolorCode
@@ -194,8 +198,11 @@ select *
 from user_tables;
 
 select *
+from tbl_user;
+
+select email
 from tbl_drivinglounge
-where place_name = '드라이빙 라운지 오산'
+where place_name = '드라이빙 라운지 오산';
 
 -- 내 선택품목 시퀀스(생성 완료)
 create sequence Pk_MyOptionSeq;
@@ -218,6 +225,13 @@ insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,Power
 
 insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc,PowerPrice) values ('G90_PowerTrain_3.5t_48V_ET','G90','G90_PowerTrain_3.5t_48V_ET_Main.png','G90_PowerTrain_3.5t_48V_ET_Icon.png','가솔린 3.5 터보 48V 일렉트릭 슈퍼차저',6000000);
 insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc) values ('G90_PowerTrain_3.5T','G90','G90_PowerTrain_3.5T_main.png','G90_PowerTrain_3.5T_Icon.png','가솔린 3.5 터보');
+
+insert into tbl_power(Pk_PowerCode, Fk_CarName,PowerMain_Img,PowerIcon_Img,PowerDesc,PowerPrice) values ('G90_lwb_PowerTrain_3.5t_48V_ET','G90_LONG_WHEEL_BASE','G90_lwb_PowerTrain_3.5t_48V_ET_Main.png','G90_lwb_PowerTrain_3.5t_48V_ET_Icon.png','가솔린 3.5 터보 48V 일렉트릭 슈퍼차저',0);
+
+commit;
+
+select *
+from tbl_car;
 
 select pk_powercode
 from tbl_power
@@ -258,17 +272,17 @@ select pk_InColorCode
 from tbl_InColor
 where fk_carname = 'G90' and InColorDesc = '어반 브라운 / 글레이셔 화이트 투톤' and incolorprice = 0;
 
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_beige_two_tone_Icon','G90','G90_inside_sds_beige_two_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_black_mono_tone_Icon','G90','G90_inside_sds_black_mono_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_brown_two_tone_Icon','G90','G90_inside_sds_brown_two_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_gray_two_tone_Icon','G90','G90_inside_sds_gray_two_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_sds_white_two_tone_Icon','G90','G90_inside_sds_white_two_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_std_beige_two_tone_Icon','G90','G90_inside_std_beige_two_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_Inside_std_black_Icon','G90','G90_Inside_std_black_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_Inside_std_brown_two_tone_Icon','G90','G90_Inside_std_brown_two_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_inside_std_gray_two_tone_Icon','G90','G90_inside_std_gray_two_tone_Icon.jpg','',,'');
-insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_Inside_std_white_two_tone_Icon','G90','G90_Inside_std_white_two_tone_Icon.jpg','',,'');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_lwb_inside_sds_black_mono_tone','G90_LONG_WHEEL_BASE','G90_lwb_inside_sds_black_mono_tone_Icon.jpg','G90_lwb_inside_sds_black_mono_tone_car.jpg',0,'옵시디언 블랙 모노톤');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_lwb_inside_sds_blackbrown_two_tone','G90_LONG_WHEEL_BASE','G90_lwb_inside_sds_blackbrown_two_tone_Icon.jpg','G90_lwb_inside_sds_blackbrown_two_tone_car.jpg',0,'옵시디언 블랙 / 보르도 브라운 투톤');
+insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img,InColorPrice,InColorDesc) values('G90_lwb_inside_sds_brownwhite_two_tone','G90_LONG_WHEEL_BASE','G90_lwb_inside_sds_brownwhite_two_tone_Icon.jpg','G90_lwb_inside_sds_brownwhite_two_tone_car.jpg',0,'어반 브라운 / 글레이셔 화이트 투톤');
 
+update tbl_incolor set InColorCar_Img = 'G90_lwb_inside_sds_black_mono_tone_car.jpg' where pk_InColorCode = 'G90_lwb_inside_sds_black_mono_tone';
+
+commit;
+
+select *
+from tbl_incolor
+where fk_carname = 'G90_LONG_WHEEL_BASE';
 
 insert into tbl_incolor (Pk_InColorCode,Fk_CarName,InColorIcon_Img,InColorCar_Img) values('G90_Black_InColor','G90 BLACK','G90_Black_Inside_Black_icon.jpg','G90_Black_InSide_Black.jpg');
 commit;
@@ -312,17 +326,19 @@ update tbl_OutColor set OutColorDesc='베르비에 화이트 [NA3]' where pk_Out
 
 commit;
 
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_HBK','G90','G90_HBK_Icon.png','G90_HBK_Car.png',0);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_MDY','G90','G90_MDY_Icon.png','G90_MDY_Car.png',0);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_NCM','G90','G90_NCM_Icon.png','G90_NCM_Car.png',0);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_NRB','G90','G90_NRB_Icon.png','G90_NRB_Car.png',0);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_PH3','G90','G90_PH3_Icon.png','G90_PH3_Car.png',0);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_SSS','G90','G90_SSS_Icon.png','G90_SSS_Car.png',0);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_URA','G90','G90_URA_Icon.png','G90_URA_Car.png',0);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_UYH','G90','G90_UYH_Icon.png','G90_UYH_Car.png',0);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_HBK','G90_LONG_WHEEL_BASE','G90_lwb_HBK_Icon.png','G90_lwb_HBK_Car.png',0,'마우이 블랙 [HBK]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_MDY','G90_LONG_WHEEL_BASE','G90_lwb_MDY_Icon.png','G90_lwb_MDY_Car.png',0,'한라산 그린 [MDY]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_NCM','G90_LONG_WHEEL_BASE','G90_lwb_NCM_Icon.png','G90_lwb_NCM_Car.png',0,'마칼루 그레이 [NCM]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_NRB','G90_LONG_WHEEL_BASE','G90_lwb_NRB_Icon.png','G90_lwb_NRB_Car.png',0,'카프리 블루 [NRB]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_PH3','G90_LONG_WHEEL_BASE','G90_lwb_PH3_Icon.png','G90_lwb_PH3_Car.png',0,'비크 블랙 [PH3]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_SSS','G90_LONG_WHEEL_BASE','G90_lwb_SSS_Icon.png','G90_lwb_SSS_Car.png',0,'세빌 실버 [SSS]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_URA','G90_LONG_WHEEL_BASE','G90_lwb_URA_Icon.png','G90_lwb_URA_Car.png',0,'태즈먼 블루 [URA]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_UYH','G90_LONG_WHEEL_BASE','G90_lwb_UYH_Icon.png','G90_lwb_UYH_Car.png',0,'우유니 화이트 [UYH]');
 
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_MATT_MPE','G90','G90_MATT_MPE_Icon.png','G90_MATT_MPE_Car.png',800000);
-insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice)values ('G90_MATT_NA3','G90','G90_MATT_NA3_Icon.png','G90_MATT_NA3_Car.png',800000);
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_MATT_MPE','G90_LONG_WHEEL_BASE','G90_lwb_MATT_MPE_Icon.png','G90_lwb_MATT_MPE_Car.png',800000,'마칼루 그레이 [MPE]');
+insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img,OutColorPrice,OutColorDesc)values ('G90_lwb_MATT_NA3','G90_LONG_WHEEL_BASE','G90_lwb_MATT_NA3_Icon.png','G90_lwb_MATT_NA3_Car.png',800000,'베르비에 화이트 [NA3]');
+
+commit;
 
 insert into tbl_OutColor(Pk_OutColorCode,Fk_CarName,OutColorIcon_Img,OutColorCar_Img) values ('G90_BLACK_OutSideColor','G90 BLACK','G90_BLACK_OutSideColorIcon.png','G90_BLACK_OUTSIDECOLOR_BLACK.png');
 commit;

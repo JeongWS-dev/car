@@ -32,6 +32,20 @@
     var statusIndex = ${status.index};
 </script>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		if( ${empty sessionScope.loginuser} ) {
+	    	   
+	    	   const loginUserid = localStorage.getItem('saveid');
+	    	   
+	    	   if(loginUserid != null) {
+	    		   $("input#loginUserid").val(loginUserid);
+	    		   $("input:checkbox[id='saveid']").prop("checked", true);
+	    	   }
+		  }
+	});	//	end of $(document).ready(function(){------
+</script>
+
 <body>
    <nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
       
@@ -157,18 +171,29 @@
                            <a style="margin-left: 0.75%;" id="purchase" href="#">전시장 찾기 ></a>
                         </div>
                         
+                        
                      </ul>
                      <ul class="nav-item sub-menu">
                      </ul>
                   </li>
+                  
+                  
                   <li class="nav-item" id="nav-item4" style="margin-left: 60%;">
-                     <a style="margin-left: 90%; width: 100%; position: sticky; z-index: 1000;" href="#" class="nav-link px-2 text-white">고객센터</a>
+                     <a style="margin-left: 90%; width: 100%; position: sticky; z-index: 1000;" href="<%= ctxPath%>/support.car" class="nav-link px-2 text-white">고객센터</a>
                      <ul class="nav-item sub-menu">
                      </ul>
                   </li>
                   <li class="nav-item" id="nav-item5" >
-
-                     <a style="margin-left: 80%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage.car">마이페이지</a>
+					
+				<c:if test="${empty sessionScope.loginuser}">
+                  	<a style="margin-left: 80%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage.car">마이페이지</a>
+                  </c:if>
+                  
+                  <c:if test="${not empty sessionScope.loginuser}">
+                  	<a style="margin-left: 80%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/myPage/login_mypage.car">마이페이지</a>
+                  </c:if>
+					
+                     
 
                   </li>
                   <li class="nav-item" id="nav-item6" >

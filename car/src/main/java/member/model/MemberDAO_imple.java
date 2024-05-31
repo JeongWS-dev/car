@@ -236,17 +236,19 @@ public class MemberDAO_imple implements MemberDAO {
 		                  member.setRequirePwdChange(true); // 로그인시 암호를 변경해라는 alert 를 띄우도록 할때 사용한다. } }
 		               }
 		            }
-		               
-		            member.
-		           
+		    
 		         //   member.setUseremail( aes.decrypt(rs.getString("UserEmail")) ); 
 		         //   member.setUsermobile(aes.decrypt(rs.getString("UserMobile")) ); 
-		            member.setUserpostcode(rs.getString("postcode") ); 
-		            member.setUseraddress( rs.getString("address") );
-		            member.setUserdetailaddress( rs.getString("detailaddress") );
-		            member.setUserextraaddress( rs.getString("extraaddress") );
+		           member.setUseremail(aes.decrypt(rs.getString("UserEmail")) );
+		           member.setUsermobile(rs.getString("UserMobile"));
+		            member.setUserpostcode(rs.getString("UserPostcode") ); 
+		            member.setUseraddress( rs.getString("UserAddress") );
+		            member.setUserdetailaddress( rs.getString("UserDetailaddress") );
+		            member.setUserextraaddress( rs.getString("UserExtraaddress") );
 		           
 		         }// end of if(rs.next())-----------------------
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
 		        } finally { 
 		           close(); 
 		        }

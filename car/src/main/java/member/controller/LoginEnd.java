@@ -44,7 +44,7 @@ public class LoginEnd extends AbstractController {
 		
 		// POST 방식으로 넘어온 것이라면
 		String userid = request.getParameter("userid");
-		String pwd = request.getParameter("pwd");
+		String pwd = request.getParameter("password");
 			
 		// === 클라이언트의 IP 주소를 알아오는 것 === //
 		String clientip = request.getRemoteAddr();
@@ -55,7 +55,6 @@ public class LoginEnd extends AbstractController {
 		System.out.println("~~~ 확인용 pwd : " + pwd);
 		System.out.println("~~~ 확인용 clientip : " + clientip);
     */
-		
 		Map<String, String> paraMap = new HashMap<>();
 		paraMap.put("userid", userid);
 		paraMap.put("pwd", pwd);
@@ -70,7 +69,7 @@ public class LoginEnd extends AbstractController {
 			    // 마지막으로 로그인 한것이 1년 이상 지난 경우 
 				
 				String message = "로그인을 한지 1년이 지나서 휴면상태로 되었습니다.\\n휴면을 풀어주는 페이지로 이동합니다!!";
-				String loc = request.getContextPath()+"/index.up";
+				String loc = request.getContextPath()+"/index.car";
 				// 원래는 위와같이 index.up 이 아니라 휴면인 계정을 풀어주는 페이지로 URL을 잡아주어야 한다.!!
 				
 				request.setAttribute("message", message);
@@ -121,7 +120,7 @@ public class LoginEnd extends AbstractController {
 		    	    // 비밀번호를 변경한지 3개월 이상된 경우 
 					
 					String message = "비밀번호를 변경하신지 3개월이 지났습니다.\\n암호를 변경하는 페이지로 이동합니다!!"; 
-					String loc = request.getContextPath()+"/index.up";
+					String loc = request.getContextPath()+"/index.car";
 					// 원래는 위와같이 index.up 이 아니라 암호를 변경하는 페이지로 URL을 잡아주어야 한다.!!
 					
 					request.setAttribute("message", message);
@@ -138,19 +137,8 @@ public class LoginEnd extends AbstractController {
 		    	   // 페이지 이동을 시킨다.
 		    	   super.setRedirect(true);
 		    	   
-		    	   // 로그인을 하면 시작페이지(index.up)로 가는 것이 아니라 로그인을 시도하려고 머물렀던 그 페이지로 가기 위한 것이다.
-		    	   String goBackURL = (String) session.getAttribute("goBackURL");
-		    	   // null 
-		    	   // 또는 /shop/mallHomeMore.up
-		    	   // 또는 /shop/mallHomeScroll.up
+		    	   super.setViewPage(request.getContextPath()+"/myPage/login_mypage.car");
 		    	   
-		    	   if(goBackURL != null) {
-		    		   session.removeAttribute("goBackURL");
-		    		   super.setViewPage(request.getContextPath()+goBackURL);
-		    	   }
-		    	   else {
-		    		   super.setViewPage(request.getContextPath()+"/index.up");
-		    	   }
 		       }
 		       
 		}
@@ -168,5 +156,5 @@ public class LoginEnd extends AbstractController {
 		}
 		
 	}
-
 }
+

@@ -56,6 +56,9 @@ public class SaveCreateCar extends AbstractController {
 			}
 			
 			List<Map<String,String>> paper_mapList = cdao.selectPaper(loginuser.getPk_userid());// 내 견적서 페이지에 있는 모든 견적서 가져오기
+			List<String> list = cdao.selectDrivingLounge();// 드라이빙 라운지 이름을 가져온다.
+			
+			request.setAttribute("list", list);
 			
 			session.removeAttribute("cvo");
 			request.setAttribute("paper_mapList", paper_mapList);
@@ -64,7 +67,9 @@ public class SaveCreateCar extends AbstractController {
 		else {
 			MemberVO loginuser = (MemberVO)session.getAttribute("loginuser");
 			List<Map<String,String>> paper_mapList = cdao.selectPaper(loginuser.getPk_userid());// 내 견적서 페이지에 있는 모든 견적서 가져오기
+			List<String> list = cdao.selectDrivingLounge();// 드라이빙 라운지 이름을 가져온다.
 			
+			request.setAttribute("list", list);
 			request.setAttribute("paper_mapList", paper_mapList);
 			super.setViewPage("/WEB-INF/CreateCar/Paper.jsp");
 		}

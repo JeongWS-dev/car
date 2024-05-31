@@ -25,10 +25,6 @@
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" > 
 
 
-<%-- jQueryUI CSS 및 JS --%>
-<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
-<script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script> 
-
 <%-- Optional JavaScript --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" ></script> 
@@ -126,7 +122,7 @@ $(document).ready(function(){
 			const hp3 = $("input:text[name='hp3']").val().trim();
 			
 		    $.ajax({
-				  url:"<%= ctxPath%>/myPage/member/pwdFind.car",
+				  url:"<%= ctxPath%>/myPage/member/pwdFindJSON.car",
 				  type:"post",
 				  data:{"userid":userid,
 					  	"hp1":hp1,
@@ -134,7 +130,7 @@ $(document).ready(function(){
 					  	"hp3":hp3},
 				  dataType:"json",
 				  success:function(json){ 
-					  console.log("~~~ 확인용 ", JSON.stringify(json));
+					  $("input#ajax").val(json.certification_code);
 				  },
 				  error: function(request, status, error){
 					  alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
@@ -175,29 +171,6 @@ $(document).ready(function(){
 	  
 	  
 	  
-	  
-	  
-	  
-	  // === 인증하기 버튼 클릭시 이벤트 처리해주기 시작 === //
-	  $("button.btn-info").click(function(){
-		  
-		  const input_confirmCode = $("input:text[name='input_confirmCode']").val().trim(); 
-		  
-		  if(input_confirmCode == "") {
-			  alert("인증코드를 입력하세요!!");
-			  return; // 종료
-		  }
-		  
-		  const frm = document.verifyCertificationFrm;
-		  frm.userCertificationCode.value = input_confirmCode;
-		  frm.userid.value = $("input:text[name='userid']").val(); 
-		  
-		  frm.action = "<%= ctxPath%>/myPage/member/verifyCertification_pwdfind.car"; 
-		  frm.method = "post";
-		  frm.submit();
-	  });
-	  // === 인증하기 버튼 클릭시 이벤트 처리해주기 끝 === //
-	  
 }); // end of $(document).ready(function(){})-----------------
 
 
@@ -206,45 +179,89 @@ function goFind() {
 	 
 	  const userid = $("input:text[name='userid']").val().trim();
 	  
-	  console.log(userid,hp1,hp2,hp3)
 	  if(userid == "") {
 		  alert("아이디를 입력하세요!!");
 		  return; // 종료
 	  }
 	  
 	  
+	  const hp1 = $("input:text[name='hp1']").val().trim();
+	  const hp2 = $("input:text[name='hp2']").val().trim();
+	  const hp3 = $("input:text[name='hp3']").val().trim();
 	  
 	  
-	  
-		let dataObj;
-		  
-	    
-		dataObj = {"mobile":hp1+hp2+hp3,
-				   "smsContent":"${sessionScope.certification_code}"};
-	    /*
-	    $.ajax({
-			  url:"${pageContext.request.contextPath}/myPage/member/smsSend.car",
-			  type:"get",
-			  data:dataObj,
-			  dataType:"json",
-			  success:function(json){ 
-				  // json 은 {"group_id":"R2GWPBT7UoW308sI","success_count":1,"error_count":0} 처럼 된다. 
-				  
-				  if(json.success_count == 1) {
-					  $("div#smsResult").html("<span style='color:red; font-weight:bold;'>인증번호가 문자로 전송되었습니다.</span>");
-				  }
-				  else if(json.error_count != 0) {
-					  $("div#smsResult").html("<span style='color:red; font-weight:bold;'>문자전송이 실패되었습니다.ㅜㅜ</span>");
-				  }
-				  
-				  $("div#smsResult").show();
-				  $("textarea#smsContent").val("");
-			  },
-			  error: function(request, status, error){
-				  alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-			  }
-		  });
-     */
+		
+		
+		// 주기적으로 값 확인
+	    let interval = setInterval(function(json) {
+	    	console.log($("input#ajax").val());
+	        if ($("input#ajax").val() != "") {
+	            clearInterval(interval); // 주기적 확인 중지
+	            
+	            let dataObj;
+	    		dataObj = {"mobile":hp1+hp2+hp3,
+	    				   "smsContent":$("input#ajax").val()};
+	            
+	            $.ajax({
+	                url: "${pageContext.request.contextPath}/myPage/member/smsSend.car",
+	                type: "get",
+	                data: dataObj,
+	                dataType: "json",
+	                success: function(json) {
+	                    // json 은 {"group_id":"R2GWPBT7UoW308sI","success_count":1,"error_count":0} 처럼 된다. 
+	                    if (json.success_count === 1) {
+	                        $("div#smsResult").html("<span style='color:red; font-weight:bold;'>인증번호가 문자로 전송되었습니다.</span>");
+	                    } else if (json.error_count !== 0) {
+	                        $("div#smsResult").html("<span style='color:red; font-weight:bold;'>문자전송이 실패되었습니다.ㅜㅜ</span>");
+	                    }
+
+	                    $("div#smsResult").show();
+	                    $("textarea#smsContent").val("");
+	                },
+	                error: function(request, status, error) {
+	                    alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
+	                }
+	            });
+	            
+	            
+	            if ($("#ajax").val() !== "") {
+	  			  $("div#div_findResult").html("<input type='text' name='input_confirmCode' /><button type='button' class='btn btn-info'>인증하기</button>");
+	  			    
+		  	    }
+		  		else{
+		  			$("div#div_findResult").html("<span style='color: red;'>사용자 정보가 없습니다</span>");
+		  		}
+	            
+	            
+	            
+	            
+	         // === 인증하기 버튼 클릭시 이벤트 처리해주기 시작 === //
+	      	  $("button.btn-info").click(function(){
+	      		  
+	      		  const input_confirmCode = $("input:text[name='input_confirmCode']").val().trim(); 
+	      		  const confirmCode = $("input#ajax").val().trim(); 
+	      		  
+	      		  if(input_confirmCode == "") {
+	      			  alert("인증코드를 입력하세요!!");
+	      			  return; // 종료
+	      		  }
+	      		  
+	      		  const frm = document.verifyCertificationFrm;
+	      		  frm.userCertificationCode.value = input_confirmCode;
+	      		  frm.CertificationCode.value=confirmCode;
+	      		  frm.userid.value = $("input:text[name='userid']").val(); 
+	      		  
+	      		  frm.action = "<%= ctxPath%>/myPage/member/verifyCertification_pwdfind.car"; 
+	      		  frm.method = "post";
+	      		  frm.submit();
+	      	  });
+	      	  // === 인증하기 버튼 클릭시 이벤트 처리해주기 끝 === //
+	      	  
+	      	  
+	            
+	        }
+	    }, 1000); // 1초마다 확인
+     
 	    
    
 	  
@@ -264,6 +281,7 @@ function goFind() {
 
 </head>
 <body>
+	<input type="hidden" id="ajax" value="" />
 	<form name="pwdFindFrm">
 	
 	   <ul style="list-style-type: none; margin-top: 10%; margin-left: 37.5%;">
@@ -286,7 +304,7 @@ function goFind() {
 		  	
 		  	<div style="display: flex;">
 		  	   <div style="border: solid 0px blue; width: 19%; margin: auto;">
-		  	      <button id="btnSend" class="btn btn-secondary">인증번호받기</button>
+		  	      <button type="button" id="btnSend" class="btn btn-secondary">인증번호받기</button>
 		  	   </div>
 		  	</div>
 		  	<div id="smsResult" class="p-3"></div>
@@ -297,26 +315,20 @@ function goFind() {
 	</form>
 	
 	<div class="my-3 text-center" id="div_findResult">
-	   <c:if test="${requestScope.isUserExist == false}">
+	   <c:if test="${json.isUserExist == false}">
 	      <span style="color: red;">사용자 정보가 없습니다</span>
 	   </c:if>
 	   
-	   <c:if test="${requestScope.isUserExist == true}">
-		   <div id="smsResult" class="p-3"></div>
-		   <br>
-		   <input type="text" name="input_confirmCode" />
-		   <br><br> 
-		   <button type="button" class="btn btn-info">인증하기</button>
+	   <c:if test="${json.isUserExist == true}">
+		   
 	   </c:if>
 	   
-	   <c:if test="${requestScope.isUserExist == true}">
-	   	   <div id="smsResult" class="p-3"></div>
-	   </c:if>
 	</div>
 	
 	<%-- 인증하기 form --%>
 	<form name="verifyCertificationFrm">
 		<input type="text" name="userCertificationCode" />
+		<input type="text" name="CertificationCode" />
 		<input type="text" name="userid" />
 	</form>
 	

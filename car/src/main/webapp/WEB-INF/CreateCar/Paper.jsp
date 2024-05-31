@@ -197,7 +197,7 @@
 		</c:forEach>
 	</c:if>
 </div>
-<input class="carnameIdx" type="text" value=""/>
+<input class="carnameIdx" type="hidden" value=""/>
 
 <div style="display: flex; position: absolute; top: 30%; left: 37%; border: solid 0px blue;">
 	<div class="loader" style="margin: auto"></div>

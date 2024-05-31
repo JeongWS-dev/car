@@ -94,6 +94,15 @@ create table tbl_option_detail
 ,constraint  tbl_option_detail_Fk_CarName foreign key(Fk_CarName) references tbl_car(Pk_CarName)
 );
 
+select *
+from tbl_paper;
+
+delete from tbl_paper;
+
+delete from tbl_myoption;
+
+commit;
+
 create sequence tbl_option_detail_seq;
 commit;
 

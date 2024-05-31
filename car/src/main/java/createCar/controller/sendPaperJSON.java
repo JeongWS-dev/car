@@ -64,12 +64,13 @@ public class sendPaperJSON extends AbstractController {
 			int n_incolorprice = Integer.parseInt(incolorprice.substring(0,incolorprice.indexOf("원")));
 			
 			int total_price = n_carprice + n_powerprice + n_outcolorprice + n_incolorprice;
-			
-			for(int i=0;i<optionNameArr.length;i++) {
-				Map<String,String> option_map = cdao.selectMyChoiceOption(optionNameArr[i],cvo.getCarName());
-				String optionPrice = String.join("", option_map.get("optionprice").split(","));
-				total_price += Integer.parseInt(optionPrice.substring(1,optionPrice.indexOf("원")));
-				mapList.add(option_map);
+			if(!optionNameJoin.isBlank()) {
+				for(int i=0;i<optionNameArr.length;i++) {
+					Map<String,String> option_map = cdao.selectMyChoiceOption(optionNameArr[i],cvo.getCarName());
+					String optionPrice = String.join("", option_map.get("optionprice").split(","));
+					total_price += Integer.parseInt(optionPrice.substring(1,optionPrice.indexOf("원")));
+					mapList.add(option_map);
+				}
 			}
 			
 			DecimalFormat df = new DecimalFormat("#,###");
@@ -175,7 +176,8 @@ public class sendPaperJSON extends AbstractController {
 			int n_incolorprice = Integer.parseInt(incolorprice.substring(0,incolorprice.indexOf("원")));
 			
 			int total_price = n_carprice + n_powerprice + n_outcolorprice + n_incolorprice;
-			if(optionNameJoin!=null) {
+			
+			if(!optionNameJoin.isBlank()) {
 				for(int i=0;i<optionNameArr.length;i++) {
 					Map<String,String> option_map = cdao.selectMyChoiceOption(optionNameArr[i],request.getParameter("carname"));
 					String optionPrice = String.join("", option_map.get("optionprice").split(","));
@@ -183,6 +185,7 @@ public class sendPaperJSON extends AbstractController {
 					mapList.add(option_map);
 				}
 			}
+			
 			DecimalFormat df = new DecimalFormat("#,###");
 			String final_price = "+"+df.format(total_price)+"원";
 			

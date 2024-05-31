@@ -177,6 +177,18 @@
 			}
 		}
 	}
+
+	function enterGenesis(){
+		location.href = "<%=ctxPath%>/myPage/memberRegister/memberRegister.car";
+	}
+
+	function findID(){
+		location.href = "<%=ctxPath%>/myPage/member/idFind.car";
+	}
+
+	function findPWD(){
+		location.href = "<%=ctxPath%>/myPage/member/pwdFind.car";
+	}
 </script>
 
 <body>
@@ -348,8 +360,9 @@
 						</ul>
 						<input class="goLogin" type="button" onclick='login()' value="로그인">
 					</form>
-					<input class="enterUser" type="button" value="회원가입">
-					<input class="findIdPwd" type="button" value="아이디/비밀번호 찾기">
+					<input class="enterUser" type="button" onclick="enterGenesis()" value="회원가입">
+					<input class="findIdPwd" type="button" onclick="findID()" value="아이디 찾기">
+					<input class="findIdPwd" type="button" onclick="findPWD()" value="비밀번호 찾기">
 				</div>
 			  </div>
 			  

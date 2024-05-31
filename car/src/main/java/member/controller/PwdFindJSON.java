@@ -91,7 +91,7 @@ public class PwdFindJSON extends AbstractController {
 			
 			//////////////////////////////////////////////////////
 			
-			System.out.println("JSON 직전 확인용 : " + isUserExist);
+			System.out.println("JSON 직전 확인용1 : " + isUserExist);
 			
 			JSONObject jsonObj = new JSONObject();
 			jsonObj.put("isUserExist", isUserExist);

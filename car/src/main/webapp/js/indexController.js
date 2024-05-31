@@ -7,7 +7,6 @@ $(document).ready(function(){
 
     const ctx = $("input.ctx").val();
 
-    
     carMenu(ctx);
     
 

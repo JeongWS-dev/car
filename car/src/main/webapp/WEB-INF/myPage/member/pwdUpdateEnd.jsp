@@ -25,9 +25,6 @@
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" > 
 
 
-<%-- jQueryUI CSS 및 JS --%>
-<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
-<script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script> 
 
 <%-- Optional JavaScript --%>
 <script type="text/javascript" src="<%= ctxPath%>/js/jquery-3.7.1.min.js"></script>
@@ -171,9 +168,11 @@
   </c:if>
   
   <c:if test="${requestScope.method == 'POST'}">
-	   <div style="text-align: center; font-size: 14pt; color: navy;">
+	   <div style="text-align: center; font-size: 14pt; color: navy; margin-top: 10%;">
 		   <c:if test="${requestScope.n == 1}">
 		      사용자 ID ${requestScope.userid}님의 비밀번호가 새로이 변경되었습니다.
+		      <br><br><br>
+		      <a type="button" class="btn btn-secondary" style="margin-top: 1.5%; margin-bottom: 1.5%;" href="<%= ctxPath%>/index.car">홈으로</a>
 		   </c:if>
 		   
 		   <c:if test="${requestScope.n == 0}">

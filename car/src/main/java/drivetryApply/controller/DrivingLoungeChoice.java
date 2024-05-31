@@ -1,18 +1,20 @@
 package drivetryApply.controller;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import car.model.CarDAO_Choijh;
-import car.model.CarDAO_imple_Choijh;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import car.model.CarDAO_imple_kimdohyeon;
 import car.model.CarDAO_kimdohyeon;
 import common.controller.AbstractController;
-import drivietryApply.domain.DriveLoungeVO; 
+import drivietryApply.domain.DriveLoungeVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 
 public class DrivingLoungeChoice extends AbstractController {
 	private CarDAO_kimdohyeon cdao = null;
@@ -22,34 +24,38 @@ public class DrivingLoungeChoice extends AbstractController {
 	}
 	
 	
-	// area 조회하기
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 해당 페이지에서 장소와 일정(모달창)을 다 가지고 온다. 
-		String area = request.getParameter("area");
 		
-		List<Map<String,String>> areaList = cdao.areaSearch();
-		List<Map<String,String>> area2List = cdao.area2Search(area);
+		String method = request.getMethod(); // "GET" 또는 "POST" 
 
+		DriveLoungeVO dvo = new DriveLoungeVO();
+
+//		String Area = request.getParameter("area");
+//		String City = request.getParameter("city");
+//		String Place_name = request.getParameter("place_name"); 
+      
+//		boolean cityExists = cdao.cityExists(Area);  무조건 있으니까 안해도됨.
 		
-        String drivingDate = request.getParameter("drivingDate");
-        // 페이지에서 해당 값들을 다 가지고 온다.
-         
-        request.setAttribute("area", area);
-        request.setAttribute("drivingDate", drivingDate);
-        System.out.println(area2List.size());
- 
-		for(int i=0; i<areaList.size(); i++) {
-			area += areaList.get(i)+",";
+		
+		List<Map<String,String>> AreaList = cdao.areaSearch();
+//		System.out.println("확인용 AreaList : " + AreaList);
+		String Area = "";
+		for(Map<String,String> map:AreaList) {
+			Area += map.get("Area")+",";
 		}
-		String[] area_arr = area.split(",");
-		System.out.println(area_arr[0]);
-		
-        request.setAttribute("areaList", areaList);
+		System.out.println(Area);
+		String[]area_arr = Area.split(",");
+
+        request.setAttribute("areaList", AreaList);
+
         
+        System.out.println("확인용 areaList size : " +AreaList.size());
+
+
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/drivetryApply/drivingLoungeChoice.jsp");	
-
 	}
 
 }

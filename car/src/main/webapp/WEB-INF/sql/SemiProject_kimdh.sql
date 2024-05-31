@@ -94,3 +94,11 @@ from tbl_drivingLounge
 where area = '서울'
 group by city
 ;
+
+
+select place_name
+from tbl_drivingLounge
+where area = '서울'
+group by place_name
+order by place_name
+;

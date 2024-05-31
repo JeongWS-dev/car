@@ -75,6 +75,7 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 					  	 + " group by area "
 					  	 + " order by area ";
 			  
+
 			  pstmt = conn.prepareStatement(sql);
 			  
 			  rs = pstmt.executeQuery();
@@ -100,42 +101,42 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 		
 	}// end of public List<DriveLoungeVO> areaSearch() throws SQLException
 
-	@Override
-	public List<Map<String, String>> area2Search(String area) throws SQLException {
-		
-		List<Map<String,String>> area2List = new ArrayList<>();
 
-		  
+	// 라운지 목록을 조회해오기
+	@Override
+	public List<Map<String, String>> getplace_nameList(String area) throws SQLException {
+
+		List<Map<String, String>> place_nameList = new ArrayList<>();
+
 		try {
 			  conn = ds.getConnection();
 			  
-			  String sql = " select city "
-			  			 + " from tbl_drivingLounge "
-			  			 + " where area = ? "
-			  			 + " group by city "
-			  			 + " order by city ";
+			  String sql = " select place_name "
+			  		+ " from tbl_drivingLounge "
+			  		+ " where area = ? "
+			  		+ " group by place_name "
+			  		+ " order by place_name " ;
 			  
+
 			  pstmt = conn.prepareStatement(sql);
 			  pstmt.setString(1, area);
 			  rs = pstmt.executeQuery();
 			  
 			  while(rs.next()) {
-				  Map<String,String> map = new HashMap<>();
-				  map.put("City", rs.getString("City"));
-				  
-				  area2List.add(map); 
+				  Map<String,String> paraMap = new HashMap<>();
+				  paraMap.put("place_name", rs.getString("place_name"));
+				  place_nameList.add(paraMap); 
 			  }// end of while--------------
 			  
-//			  for(int i=0;i<areaList.size();i++) {
-//				  System.out.println("확인용 areaList " + i + "번째 : "+ areaList.get(i)); 
-//			  }
+			  for(int i=0;i<place_nameList.size();i++) {
+				  System.out.println("확인용 place_nameList " + i + "번째 : "+ place_nameList.get(i)); 
+			  }
 			  
 		} finally {
 			close();
 		}
 		
-		return area2List;
-		
+		return place_nameList;
 	}
 
 

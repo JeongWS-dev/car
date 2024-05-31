@@ -22,6 +22,7 @@
 <script src="<%= ctxPath%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
 <script src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
+<script type="text/javascript" src ="<%= ctxPath %>/js/drivingLoungeChoice.js"></script>
 
 <jsp:include page="../drivingApply_header.jsp"></jsp:include>
 
@@ -37,10 +38,10 @@
                         </tr>
                         <c:forEach var = "area_map" items="${requestScope.areaList}">
                             <tr>
-                                <td><button id="areachoicebtn">${area_map.Area}</button></td>
+                                <td><button id="areachoicebtn" onclick="choiceArea('${area_map.Area}')">${area_map.Area}</button></td>
                             </tr>
                         </c:forEach>
-                        
+
                     </table>
                 </div>
             </c:if>

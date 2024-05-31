@@ -104,8 +104,45 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 
 	// 라운지 목록을 조회해오기
 	@Override
-	public List<Map<String, String>> getplace_nameList(String area) throws SQLException {
+	public List<Map<String, String>> getcityList(String area) throws SQLException {
 
+		List<Map<String, String>> cityList = new ArrayList<>();
+
+		try {
+			  conn = ds.getConnection();
+			  
+			  String sql = " select city "
+			  		+ " from tbl_drivingLounge "
+			  		+ " where area = ? "
+			  		+ " group by city "
+			  		+ " order by city " ;
+			  
+
+			  pstmt = conn.prepareStatement(sql);
+			  pstmt.setString(1, area);
+			  rs = pstmt.executeQuery();
+			  
+			  while(rs.next()) {
+				  Map<String,String> paraMap = new HashMap<>();
+				  paraMap.put("city", rs.getString("city"));
+				  cityList.add(paraMap); 
+			  }// end of while--------------
+			  
+			  for(int i=0;i<cityList.size();i++) {
+				  System.out.println("확인용 cityList " + i + "번째 : "+ cityList.get(i)); 
+			  }
+			  
+		} finally {
+			close();
+		}
+		
+		return cityList;
+	}
+
+	// 최종 드라이빙라운지를 가져오는 메소드
+	@Override
+	public List<Map<String, String>> getplace_nameList(String area, String city) throws SQLException{
+		
 		List<Map<String, String>> place_nameList = new ArrayList<>();
 
 		try {
@@ -113,13 +150,14 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 			  
 			  String sql = " select place_name "
 			  		+ " from tbl_drivingLounge "
-			  		+ " where area = ? "
-			  		+ " group by place_name "
-			  		+ " order by place_name " ;
+			  		+ " where area = ? and city = ? "
+			  		+ " order by place_name ";
 			  
 
 			  pstmt = conn.prepareStatement(sql);
 			  pstmt.setString(1, area);
+			  pstmt.setString(2, city);
+			  
 			  rs = pstmt.executeQuery();
 			  
 			  while(rs.next()) {

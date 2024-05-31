@@ -80,7 +80,7 @@ insert into tbl_DrivingLounge(Pk_DLSeq, Area, City, Place_Name, D_address, phone
 
 commit;
 
-select pk_dlseq, area, city, place_name, d_address, phone
+select *
 from tbl_DrivingLounge
 ;
 
@@ -96,9 +96,32 @@ group by city
 ;
 
 
-select place_name
+select city
 from tbl_drivingLounge
 where area = '서울'
-group by place_name
+group by city
+order by city
+;
+
+select place_name
+from tbl_drivingLounge
+where area = '서울' and city ='성동구'
 order by place_name
 ;
+
+
+ALTER TABLE tbl_drivingLounge
+ADD lng NUMBER;
+
+-- 위도
+UPDATE tbl_drivingLounge
+SET lat = '35.8201170158222'
+WHERE place_name = '드라이빙 라운지 전주';
+
+
+-- 경도
+UPDATE tbl_drivingLounge
+SET lng = '127.088382377251'
+WHERE place_name = '드라이빙 라운지 전주';
+
+commit;

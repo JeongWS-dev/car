@@ -23,15 +23,15 @@ public class DrivingLoungeChoiceJSON extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String area = request.getParameter("Area");
 		
-		// 내가 선택한 지역의 라운지 불러오기
-		List<Map<String, String>> place_nameList = cdao.getplace_nameList(area);
+		// 내가 선택한 지역의 시,구 불러오기
+		List<Map<String, String>> cityList = cdao.getcityList(area);
 
 		JSONArray jsonArr = new JSONArray(); // []
-		if(place_nameList.size()>0) {
-			for(Map<String, String> map : place_nameList) {
+		if(cityList.size()>0) {
+			for(Map<String, String> map : cityList) {
 				JSONObject jsonObj = new JSONObject(); // {}
 				jsonObj.put("area", map.get("Area"));
-				jsonObj.put("place_name", map.get("place_name"));
+				jsonObj.put("city", map.get("city"));
 				
 				jsonArr.put(jsonObj);
 			}

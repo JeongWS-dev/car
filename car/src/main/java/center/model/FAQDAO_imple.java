@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -61,27 +60,17 @@ public class FAQDAO_imple implements FAQDAO {
 	
 	
 	@Override
-	public List<FAQVO> selectFAQ(Map<String, String> paraMap) throws SQLException {
+	public List<FAQVO> selectFAQ() throws SQLException {
 		
 		List<FAQVO> FAQList = new ArrayList<>();
 		
 		try {
 			  conn = ds.getConnection();
 			  
-			  String sql = " select faqtitle, faqcontent from tbl_faq ";
+			  String sql = " select faqtitle, faqcontent from tbl_faq "
+			  		+ "			  		 order by pk_faqseq  ";
 			  
-			  if(paraMap.get("searchWord") != null) {
-				  sql += "where faqtitle like '%'||?||'%' or faqcontent like '%'||?||'%'"
-				  		+ "			  		 order by pk_faqseq  ";
-				  pstmt = conn.prepareStatement(sql);
-				  pstmt.setString(1, paraMap.get("searchWord"));
-				  pstmt.setString(2, paraMap.get("searchWord"));
-				  
-			  }
-			  else {
-				  sql += "			  		 order by pk_faqseq  ";
-				  pstmt = conn.prepareStatement(sql);
-			  }
+			  pstmt = conn.prepareStatement(sql);
 			  
 			  rs = pstmt.executeQuery();
 			  

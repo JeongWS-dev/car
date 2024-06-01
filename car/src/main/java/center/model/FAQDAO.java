@@ -9,7 +9,7 @@ import center.domain.FAQVO;
 
 public interface FAQDAO {
 
-	List<FAQVO> selectFAQ(Map<String, String> paraMap) throws SQLException;
+	List<FAQVO> selectFAQ() throws SQLException;
 
 	
 	

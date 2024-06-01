@@ -219,18 +219,16 @@ public class CarDAO_imple_Choijh implements CarDAO_Choijh {
 			
 			String sql = " select Pk_UserId "
 			           + " from tbl_User "
-			           + " where UserStatus = 1 and Pk_UserId = ? and UserEmail = ? ";
+			           + " where UserStatus = 1 and Pk_UserId = ? and UserMobile = ? ";
 			
 			pstmt = conn.prepareStatement(sql); 
 			pstmt.setString(1, paraMap.get("userid"));
-			pstmt.setString(2, aes.encrypt(paraMap.get("email")) );
+			pstmt.setString(2, paraMap.get("mobile"));
 			
 			rs = pstmt.executeQuery();
 			
 			isUserExist = rs.next();
 			
-		} catch(GeneralSecurityException | UnsupportedEncodingException e) {
-			e.printStackTrace();
 		} finally {
 			close();
 		}

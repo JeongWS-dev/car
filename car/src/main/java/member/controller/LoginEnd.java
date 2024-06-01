@@ -49,7 +49,12 @@ public class LoginEnd extends AbstractController {
 		// === 클라이언트의 IP 주소를 알아오는 것 === //
 		String clientip = request.getRemoteAddr();
 		// 먼저, C:\NCS\workspace_jsp\MyMVC\src\main\webapp\JSP 파일을 실행시켰을 때 IP 주소가 제대로 출력되기위한 방법.txt 참조할 것!!!!!
-
+		
+	/*	
+		System.out.println("~~~ 확인용 userid : " + userid);
+		System.out.println("~~~ 확인용 pwd : " + pwd);
+		System.out.println("~~~ 확인용 clientip : " + clientip);
+    */
 		Map<String, String> paraMap = new HashMap<>();
 		paraMap.put("userid", userid);
 		paraMap.put("pwd", pwd);
@@ -76,6 +81,9 @@ public class LoginEnd extends AbstractController {
 				return; // 메소드 종료
 		   }
 		
+		   // 로그인 성공시
+		   // System.out.println("~~~ 확인용 로그인한 사용자명 : " + loginuser.getName() );
+		      
 		   
 		   // !!!! session(세션) 이라는 저장소에 로그인 되어진 loginuser 을 저장시켜두어야 한다.!!!! //
 		   // session(세션) 이란 ? WAS 컴퓨터의 메모리(RAM)의 일부분을 사용하는 것으로 접속한 클라이언트 컴퓨터에서 보내온 정보를 저장하는 용도로 쓰인다. 
@@ -99,16 +107,14 @@ public class LoginEnd extends AbstractController {
 		       세션(session)에 저장되어진 loginuser 정보를 사용할 수 있게 된다. !!!! 
 		       그러므로 어떤 정보를 여러 클래스 또는 여러 jsp 페이지에서 공통적으로 사용하고자 한다라면
 		       세션(session)에 저장해야 한다.!!!!          
-		 */	
-		   
-		   
+		 */
+			   
 		       HttpSession session = request.getSession();
 		       // WAS 메모리에 생성되어져 있는 session 을 불러오는 것이다.
 		   
 		       session.setAttribute("loginuser", loginuser);
 		       // session(세션)에 로그인 되어진 사용자 정보인 loginuser 를 키이름을 "loginuser" 으로 저장시켜두는 것이다. 
 		   
-		       
 		       
 		       if(loginuser.isRequirePwdChange()) {
 		    	    // 비밀번호를 변경한지 3개월 이상된 경우 
@@ -130,6 +136,7 @@ public class LoginEnd extends AbstractController {
 		    	   
 		    	   // 페이지 이동을 시킨다.
 		    	   super.setRedirect(true);
+		    	   
 		    	   super.setViewPage(request.getContextPath()+"/myPage/login_mypage.car");
 		    	   
 		       }

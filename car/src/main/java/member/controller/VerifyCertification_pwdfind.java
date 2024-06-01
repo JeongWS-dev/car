@@ -14,21 +14,22 @@ public class VerifyCertification_pwdfind extends AbstractController {
 		if("POST".equalsIgnoreCase(method)) {
 			
 			String userCertificationCode = request.getParameter("userCertificationCode");
+			String CertificationCode = request.getParameter("CertificationCode");
 			String userid = request.getParameter("userid");
 			
 			System.out.println(userid);
+			System.out.println("헤헤"+CertificationCode);
 			
-			HttpSession session = request.getSession(); // 세션불러오기
-			String certification_code = (String) session.getAttribute("certification_code"); 
 			
 			String message = "";
 			String loc = "";
 			
-			if( certification_code.equals(userCertificationCode) ) {
+			if( CertificationCode.equals(userCertificationCode) ) {
 				message = "인증성공 되었습니다.";
 				loc = request.getContextPath()+"/myPage/member/pwdUpdateEnd.car?pk_userid="+userid;
 			}
 			else {
+				System.out.println("인증 클래스 : "+CertificationCode + "   인증 클래스 : "+userCertificationCode);
 				message = "발급된 인증코드가 아닙니다.\\n인증코드를 다시 발급받으세요!!";
 				loc = request.getContextPath()+"/myPage/member/pwdFind.car";
 			}
@@ -39,9 +40,6 @@ public class VerifyCertification_pwdfind extends AbstractController {
 		//	super.setRedirect(false);
 			super.setViewPage("/WEB-INF/msg.jsp");
 			
-			// !!!! 중요 !!!! //
-			// !!!! 세션에 저장된 인증코드 삭제하기 !!!! //
-			session.removeAttribute("certification_code");
 			
 		}// end of if("POST".equalsIgnoreCase(method))-----------
 	}

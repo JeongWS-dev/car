@@ -1,8 +1,6 @@
 package center.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import center.domain.FAQVO;
 import center.model.FAQDAO;
@@ -21,14 +19,10 @@ public class FAQ extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String searchWord = request.getParameter("searchWord");  // "HIT"  "NEW"   "BEST" 
 		
-		
-		Map<String, String> paraMap = new HashMap<>();
-		paraMap.put("searchWord", searchWord);  
-		
-		List<FAQVO> FAQList = fdao.selectFAQ(paraMap);
+		List<FAQVO> FAQList = fdao.selectFAQ();
 		request.setAttribute("FAQList", FAQList);
+		
 		
 		
 		super.setRedirect(false);

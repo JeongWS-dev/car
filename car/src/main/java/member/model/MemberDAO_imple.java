@@ -77,7 +77,7 @@ public class MemberDAO_imple implements MemberDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = " insert into tbl_user(Pk_userid, userpwd, username, useremail, usermobile, userpostcode, useraddress, userdetailaddress, userextraaddress, usergender , userjubun)  "
+			String sql = " insert into tbl_user(Pk_userid, userpwd, username, useremail, usermobile, userpostcode, useraddress, userdetailaddress, userextraaddress, usergender , userbirthday)  "
 					+ "					 values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 			
 			pstmt = conn.prepareStatement(sql);

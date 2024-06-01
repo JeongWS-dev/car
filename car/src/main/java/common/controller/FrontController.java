@@ -87,10 +87,12 @@ public class FrontController extends HttpServlet {
 	 				 확인용 value : test.controller.Test1Controller
 				 */
 				
+//				System.out.println(">>> key = " + key);
 				String className = pr.getProperty(key);
 				
 				if(className != null) {
 					className = className.trim();
+//					System.out.println(">>> className = " + className);
 					Class<?> cls = Class.forName(className);
 					// <?> 은 generic 인데 어떤 클래스 타입인지는 모르지만 하여튼 클래스 타입이 들어온다는 뜻이다.
 	                // String 타입으로 되어진 className 을 클래스화 시켜주는 것이다.

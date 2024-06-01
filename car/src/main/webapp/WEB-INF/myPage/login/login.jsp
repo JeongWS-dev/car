@@ -171,17 +171,16 @@ function goLogin(){
             
         </form>
         <div class="links">
+
             <a href="<%= ctxPath%>/myPage/member/idFind.car">아이디 찾기</a>
             <a href="<%= ctxPath%>/myPage/member/pwdFind.car">비밀번호 찾기</a>
-            <a href="#">회원가입</a>
+			<a href="<%= ctxPath%>/myPage/memberRegister.car">회원가입</a>
+
         </div>
     
         
     	</form>    
     </div>
   	
-    <footer>
-        <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>
-    </footer>
 </body>
 </html>

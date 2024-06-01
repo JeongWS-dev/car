@@ -19,13 +19,13 @@ public class FAQ extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("asdas");
+		
 		List<FAQVO> FAQList = fdao.selectFAQ();
 		request.setAttribute("FAQList", FAQList);
 		
-		String faqtitle = request.getParameter("faqtitle");
-		String faqcontent = request.getParameter("faqcontent");
 		
+		
+		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/support/FAQ.jsp");
 
 	}

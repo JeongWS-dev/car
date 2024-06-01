@@ -19,9 +19,15 @@ public class FAQ extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("asdas");
+		
 		List<FAQVO> FAQList = fdao.selectFAQ();
 		request.setAttribute("FAQList", FAQList);
+		
+		System.out.println(FAQList.size());
+		for(int i=0; i<FAQList.size(); i++) {
+			System.out.println(FAQList.get(i).getFaqtitle());
+			System.out.println(FAQList.get(i).getFaqcontent());
+		}
 		
 		String faqtitle = request.getParameter("faqtitle");
 		String faqcontent = request.getParameter("faqcontent");

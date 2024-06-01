@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <%
     String ctxPath = request.getContextPath();
@@ -39,8 +40,13 @@
 	    padding: 20px;
 	    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	    background-color: #f9f9f9;
-	    text-align: center;
+	    
 		}
+	
+	#faq-top{
+		width: 50%;
+		margin: 1% auto;
+	}
 		
 		.accordion-item {
 		  border-bottom: 1px solid #ccc;
@@ -57,7 +63,10 @@
 		  padding: 10px;
 		}
 
-
+	.accordion-item{
+		width: 50%;
+		margin: 1% auto;
+	}
  </style>
 
 
@@ -77,6 +86,9 @@
 	    });
 	  });
 	});
+ 
+ 
+
 </script>
 
 <head>
@@ -87,50 +99,40 @@
 </head>
 <body>
 
-    <c:if test="${empty requestScope.FAQList}">
-    	<tr>
-            <td colspan="6" align="center">
-              <span style="color: red; font-weight: bold;">
-                 등록된 내용이 없습니다.
-              </span>
-            </td>   
-       </tr>
-    </c:if>
-
-	    <div class="container">
-	        <div class="faq">
-	            <h1>자주 묻는 질문</h1>
-	            <!-- 여기에 자주 묻는 질문 목록 및 내용을 추가하세요 -->
-	        </div>
-	    </div>
-	    <div class="faq-form">
+   <div class="container">
+       <div class="faq">
+           <h1>자주 묻는 질문</h1>
+           <!-- 여기에 자주 묻는 질문 목록 및 내용을 추가하세요 -->
+       </div>
+   </div>
+   
+    <div class="faq-form">
+		<div id=faq-top>
 		<h2>자주 묻는 질문</h2>
-	    <input type="text" id="faq-search" placeholder="검색">
-
+	    <input type="text" id="faq-search" placeholder="검색어를 입력해주세요." style="border-top: none; border-right: none; border-left: none; margin-top: 1%;"/>
+	    <button type="submit" class="ico-search" data-ex-linkage="getSearch" title="검색">
+		<span class="blind">검색</span></button>
+	    </div>
+	    <br><br>
+	
+ 	 <c:if test="${empty requestScope.FAQList}">
+ 	
+      <span style="color: red; font-weight: bold;">등록된 내용이 없습니다.</span>
+   </c:if>
 
    <c:if test="${not empty requestScope.FAQList}">
-   		<c:forEach var="faqvo" items="${requestScope.FAQList}" varStatus="status">
-   		   
-	   <div class="accordion">
-	  <div class="accordion-item">
-	    <div class="accordion-title">${requestScope.FAQTitle}</div>
-	    <div class="accordion-content">
-	      ${requestScope.FAQContent}
-	    </div>
-	  </div>
-	  
-	</div>
-   
-	</div>
-		</c:forEach>
-	</c:if>
-<script>
-    const faqs = document.querySelectorAll('.js-faq_block');
-    faqs.forEach(faq => { new FAQ(faq); });
-</script>
-
+      <c:forEach var="faqvo" items="${requestScope.FAQList}" varStatus="status">
+      
+         <div class="accordion-item">
+            <div class="accordion-title">${faqvo.faqtitle}</div>
+            <div class="accordion-content">
+               ${faqvo.faqcontent}
+            </div>
+         </div>
+      </c:forEach>
+   </c:if>
 </div>
-    
+
 </body>
 
 <jsp:include page="support_Footer.jsp"></jsp:include>

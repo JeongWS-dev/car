@@ -347,8 +347,10 @@ function swiperset(){
       <div class="row main-middle-icon">
          <div class="col-md-2"></div>
             <div class="col-md-2 main-icon" type = "button">
-               <img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Build-And-Price_black_60x60_hover.gif">
-               <div class="icon-text">견적내기</div>
+               <a class="nav-link" href="<%= ctxPath%>/estimate/estimate.car"  class="btn">
+	               <img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Build-And-Price_black_60x60_hover.gif">
+	               <div class="icon-text">견적내기</div>
+               </a>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-2 main-icon" type = "button">

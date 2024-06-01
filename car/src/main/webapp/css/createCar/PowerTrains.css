@@ -1,17 +1,19 @@
 @charset "UTF-8";
 
 body > nav > div {
-	border:solid 0px red;
-	width: 10%;
+	border:solid 0px blue;
+	width: 30%;
 }
 
 body > nav > div > span.model-name{
 	color:rgb(209, 209, 209);
+    border:solid 0px red;
 	font-size: 20pt;
 }
 
 body > nav.top > ul {
 	border:solid 0px blue;
+    width: 75%;
 	margin: 0 auto;
 }
 

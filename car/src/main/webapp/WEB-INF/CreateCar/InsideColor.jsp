@@ -32,6 +32,8 @@
 <!-- 내가만든 js -->
 <script type = "text/javascript">
 	$(document).ready(function(){
+		let carname = $("input[name='sessionCarName']").val();
+		$("span.model-name").text(carname.split("_").join(" "));
 		$("div.option_title").each(function(index,item){
 			if(index==0){
 				$("input[name='option_title']").val($(item).text())
@@ -177,9 +179,10 @@
 
 <body>
 		<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
-			<div>
+			<div style="width:auto; margin-right: 20px;">
 				<div style="color:rgb(151, 151, 151);">GENESIS</div>
-				<span class="model-name">${sessionScope.cvo.carName}</span>
+				<span class="model-name"></span>
+				<input name="sessionCarName" type="hidden" value="${sessionScope.cvo.carName}"/>
 			</div>
 			<!-- Links -->
 			<ul class="navbar-nav">
@@ -188,19 +191,7 @@
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link">구동 타입</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">스포츠 패키지</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
 					<a class="nav-link">외장 컬러</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">휠&타이어</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
@@ -208,19 +199,7 @@
 				</li>
 				<span>〉</span>
 				<li class="nav-item">
-					<a class="nav-link">내장 가니쉬</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">파퓰러 패키지</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
 					<a class="nav-link">선택 품목</a>
-				</li>
-				<span>〉</span>
-				<li class="nav-item">
-					<a class="nav-link">미리보기</a>
 				</li>
 				<span>〉</span>
 				<li class="nav-item">

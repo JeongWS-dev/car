@@ -51,6 +51,9 @@ public class CompleteCreateCar extends AbstractController {
 			Map<String,String> Map = cdao.selectMyOption(paraMap);// 내가 선택한 옵션들의 타이틀, 가격, 사진의 값을 가져온다.
 			//session.setAttribute("loginuser", "loginuser");
 			
+			List<String> list = cdao.selectDrivingLounge();// 드라이빙 라운지 이름을 가져온다.
+			
+			request.setAttribute("list", list);
 			request.setAttribute("mapList", mapList);
 			request.setAttribute("Map", Map);
 			request.setAttribute("total_price", add_total_price.substring(0,add_total_price.indexOf("원")));

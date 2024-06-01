@@ -67,19 +67,22 @@ public class FAQDAO_imple implements FAQDAO {
 		try {
 			  conn = ds.getConnection();
 			  
-			  String sql = " select * from tbl_faq "
-			  		+ " order by pk_faqseq ";
+			  String sql = " select faqtitle, faqcontent from tbl_faq "
+			  		+ "			  		 order by pk_faqseq  ";
 			  
 			  pstmt = conn.prepareStatement(sql);
 			  
 			  rs = pstmt.executeQuery();
 			  
 			  while(rs.next()) {
+				  String faqContent = rs.getString("FAQCONTENT").replaceAll("\r\n", "<br>");
 				  
-				  FAQVO faqvo = new FAQVO();
-				  System.out.println(faqvo);
-				  System.out.println(FAQList);
-				  FAQList.add(faqvo); 
+			  FAQVO faqvo = new FAQVO();
+	            faqvo.setFaqtitle(rs.getString("FAQTITLE")); // faqtitle 컬럼의 값을 설정
+	            faqvo.setFaqcontent(faqContent); // faqcontent 컬럼의 값을 설정
+	            FAQList.add(faqvo); 
+		        
+	            
 			  }// end of while--------------
 			  
 		} finally {

@@ -170,85 +170,90 @@ public class MemberDAO_imple implements MemberDAO {
 		try {
 			conn = ds.getConnection();
 			
-			String sql = " insert into tbl_loginhistory(historyno, fk_userid, clientip) " 
-					  + " values(seq_historyno.nextval, ?, ?) ";
-			  
-		  pstmt = conn.prepareStatement(sql); 
-		  pstmt.setString(1,paraMap.get("userid")); 
-		  pstmt.setString(2, paraMap.get("clientip"));
-		  
-		  pstmt.executeUpdate(); 
-			
-			
-			/*sql = " SELECT userid, name, coin, point, pwdchangegap, " 
-				  		+ " NVL( lastlogingap, trunc( months_between(sysdate, registerday) ) ) AS lastlogingap, "
-				  		+ " idle, email, mobile, " 
-				  		+ " postcode, address, detailaddress, extraaddress FROM " 
-				  		+ " ( select userid, name, coin, point, trunc( months_between(sysdate, lastpwdchangedate) ) AS pwdchangegap, "
-				  		+ " registerday, idle, email, mobile, " 
-				  		+ " postcode, address, detailaddress, extraaddress from tbl_member " 
-				  		+ "   where status = 1 and userid = ? and pwd = ? ) M "
-				  		+ " CROSS JOIN ( select trunc( months_between(sysdate, max(logindate)) ) AS lastlogingap "
-				  		+ "   from tbl_loginhistory  where fk_userid = ? ) H ";
-			  
-		  pstmt = conn.prepareStatement(sql);
-		  
-		  pstmt.setString(1, paraMap.get("userid") ); 
-		  pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd")) ); 
-		  pstmt.setString(3, paraMap.get("userid") );
-		  
-		  rs = pstmt.executeQuery();
-		  */
-		  /*if(rs.next()) {
-		  
-		  member = new MemberVO();
-		  
-		  member.setPk_userid(rs.getString("userid"));
-		  
-		  
-		  if( rs.getInt("lastlogingap") >= 12 ) { 
-			  // 마지막으로 로그인 한 날짜시간이 현재시각으로 부터 1년이 지났으면 휴면으로 지정 
-			  member.setUseridle(1);
-		  
-		  if(rs.getInt("idle") == 0) { // === tbl_member 테이블의 idle 컬럼의 값을 1로 변경하기 ===
-		  sql = " update tbl_member set idle = 1 " + " where userid = ? ";
-		  
-		  pstmt = conn.prepareStatement(sql); pstmt.setString(1,
-		  paraMap.get("userid"));
-		  
-		  pstmt.executeUpdate(); 
-		  } }
-		  
-		  
-		  // === 휴면이 아닌 회원만 tbl_loginhistory(로그인기록) 테이블에 insert 하기 시작 === // 
-		  if(rs.getInt("lastlogingap") < 12 ) { 
-			  sql = " insert into tbl_loginhistory(historyno, fk_userid, clientip) " 
-					  + " values(seq_historyno.nextval, ?, ?) ";
-		  
-		  pstmt = conn.prepareStatement(sql); pstmt.setString(1,
-		  paraMap.get("userid")); pstmt.setString(2, paraMap.get("clientip"));
-		  
-		  pstmt.executeUpdate(); 
-		  // === 휴면이 아닌 회원만 tbl_loginhistory(로그인기록) 테이블에 insert하기 끝 === //
-		  
-		  if( rs.getInt("pwdchangegap") >= 3 ) { 
-			  // 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이지났으면 true // 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지나지 않았으면 false
-		  
-		  member.setRequirePwdChange(true); // 로그인시 암호를 변경해라는 alert 를 띄우도록 할때 사용한다. } }
-		  
-		  member.setUseremail( aes.decrypt(rs.getString("email")) ); 
-		  member.setUsermobile(aes.decrypt(rs.getString("mobile")) ); 
-		  member.setUserpostcode(rs.getString("postcode") ); 
-		  member.setUseraddress( rs.getString("address") );
-		  member.setUserdetailaddress( rs.getString("detailaddress") );
-		  member.setUserextraaddress( rs.getString("extraaddress") );
-		  
-		  }// end of if(rs.next())-----------------------
-		  */
-		  } finally { 
-			  close(); 
-		  }
-		  
-		  return member; 
-	}};// end of public MemberVO login(Map<String, String> paraMap) throws SQLException------
+			String sql =" SELECT Pk_UserId, UserName, pwdchangegap,  "
+		               + "     NVL( lastlogingap, trunc( months_between(sysdate, UserRegisterday) ) ) AS lastlogingap, "
+		               + "     UserIdle, "
+		               + "     UserEmail, UserMobile, "
+		               + "      UserPostcode, UserAddress, UserDetailAddress, UserExtraAddress "
+		               + " FROM "
+		               + " ( select Pk_UserId, UserName, "
+		               + "          trunc( months_between(sysdate, UserLastChangePwd) ) AS pwdchangegap, "
+		               + "         UserRegisterday, UserIdle, "
+		               + "         UserEmail, UserMobile, "
+		               + "         UserPostcode, UserAddress, UserDetailAddress, UserExtraAddress      "
+		               + "   from tbl_User "
+		               + "   where UserStatus = 1 and Pk_UserId = ? and UserPwd = ? ) M "
+		               + " CROSS JOIN "
+		               + " ( select trunc( months_between(sysdate, max(LoginDate)) ) AS lastlogingap "
+		               + "  from tbl_login_log "
+		               + "   where Fk_UserId = ? ) H  ";
+		                   
+		         pstmt = conn.prepareStatement(sql);
+		        
+		         pstmt.setString(1, paraMap.get("userid") ); 
+		         pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd")) ); 
+		         pstmt.setString(3, paraMap.get("userid") );
+		        
+		         rs = pstmt.executeQuery();
+		        
+		         if(rs.next()) {
+		             // 마지막으로 로그인 한 날짜시간이 현재시각으로 부터 1년이 지났으면 휴면으로 지정
+		            member = new MemberVO();
+		        
+		            
+		            member.setPk_userid(rs.getString("Pk_UserId"));
+		            member.setUsername(rs.getString("UserName"));
+		        
+		            if( rs.getInt("lastlogingap") >= 12 ) { 
+		               // 마지막으로 로그인 한 날짜시간이 현재시각으로 부터 1년이 지났으면 휴면으로 지정 
+		               member.setUseridle(1);
+		        
+		               if(rs.getInt("UserIdle") == 0) { // === tbl_member 테이블의 idle 컬럼의 값을 1로 변경하기 ===
+		                  sql = " update tbl_User set UserIdle = 1 " + " where Pk_UserId = ? ";
+		        
+		                  pstmt = conn.prepareStatement(sql); 
+		                  pstmt.setString(1,paraMap.get("userid"));
+		        
+		                  pstmt.executeUpdate(); 
+		               } 
+		            }
+		              
+		              // === 휴면이 아닌 회원만 tbl_loginhistory(로그인기록) 테이블에 insert 하기 시작 === // 
+		            if(rs.getInt("lastlogingap") < 12 ) { 
+		               sql = " insert into tbl_login_log(Pk_LoginSeq, Fk_UserId, IpAddress, LoginDate) " 
+		                     + " values(Pk_LoginSeq.nextval, ?, ?, sysdate) ";
+		     
+		               pstmt = conn.prepareStatement(sql); 
+		               pstmt.setString(1,paraMap.get("userid")); 
+		               pstmt.setString(2, paraMap.get("clientip"));
 
+		               pstmt.executeUpdate(); 
+		               // === 휴면이 아닌 회원만 tbl_loginhistory(로그인기록) 테이블에 insert하기 끝 === //
+		               
+		               if( rs.getInt("pwdchangegap") >= 3 ) { 
+		                  // 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이지났으면 true // 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지나지 않았으면 false
+		        
+		                  member.setRequirePwdChange(true); // 로그인시 암호를 변경해라는 alert 를 띄우도록 할때 사용한다. } }
+		               }
+		            }
+		    
+		         //   member.setUseremail( aes.decrypt(rs.getString("UserEmail")) ); 
+		         //   member.setUsermobile(aes.decrypt(rs.getString("UserMobile")) ); 
+		           member.setUseremail(aes.decrypt(rs.getString("UserEmail")) );
+		           member.setUsermobile(rs.getString("UserMobile"));
+		            member.setUserpostcode(rs.getString("UserPostcode") ); 
+		            member.setUseraddress( rs.getString("UserAddress") );
+		            member.setUserdetailaddress( rs.getString("UserDetailaddress") );
+		            member.setUserextraaddress( rs.getString("UserExtraaddress") );
+		           
+		         }// end of if(rs.next())-----------------------
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		        } finally { 
+		           close(); 
+		        }
+		        
+		        return member; 
+		   }// end of public MemberVO login(Map<String, String> paraMap) throws SQLException------
+
+}

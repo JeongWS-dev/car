@@ -15,8 +15,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import createCar.domain.CreateCarVO;
-import drivietryApply.domain.DriveLoungeVO;
 import util.security.AES256;
 import util.security.SecretMyKey;
 
@@ -149,7 +147,7 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 		try {
 			  conn = ds.getConnection();
 			  
-			  String sql = " select pk_dlseq,place_name,d_address,phone,lat,lng "
+			  String sql = " select place_name,d_address,phone,lat,lng "
 			  		+ " from tbl_drivingLounge "
 			  		+ " where area = ? and city = ? "
 			  		+ " order by place_name ";
@@ -168,7 +166,6 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 				  paraMap.put("phone", rs.getString("phone"));
 				  paraMap.put("lat", rs.getString("lat"));
 				  paraMap.put("lng", rs.getString("lng"));
-				  paraMap.put("pk_dlseq", rs.getString("pk_dlseq"));
 				  
 				  place_nameList.add(paraMap); 
 			  }// end of while--------------
@@ -225,6 +222,40 @@ public class CarDAO_imple_kimdohyeon implements CarDAO_kimdohyeon {
 		}
 		
 		return Extend_map;
+	}
+	
+	
+	@Override
+	public int getapplyList(String name, String phone, String carName, String schedule, String place_name,
+			String payFee) throws SQLException {
+		
+		int n = 0;
+		
+		try {
+			  conn = ds.getConnection();
+			  
+			  String sql = " insert into tbl_DTApply "
+			  		     + " (PK_APPLYSEQ , fk_carname, fk_place_name, fk_userid, schedule, payfee) "
+			  		     + " values(pk_applyseq.nextval , ? , ? , ? , ? , ? ) ";
+			  		
+			  
+
+			  pstmt = conn.prepareStatement(sql);
+			  
+			  pstmt.setString(1, carName);
+			  pstmt.setString(2, place_name);
+			  pstmt.setString(3, name);
+			  pstmt.setString(4, schedule);
+			  pstmt.setString(5, payFee);
+					 
+				 
+			  n = pstmt.executeUpdate();
+			  
+		} finally {
+			close();
+		}
+		
+		return n;
 	}
 
 

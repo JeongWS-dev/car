@@ -22,6 +22,18 @@ create table tbl_DTApply
 ,constraint FK_tbl_DTApply_fk_UserId foreign key(Fk_UserId) references tbl_User(Pk_UserId)
 );
 
+ALTER TABLE tbl_DTApply drop foreign key fk_carname FK_tbl_DTApply_fk_CarName;
+
+-- 등록일자 컬럼 생성
+ALTER TABLE tbl_DTApply
+ADD registerday Date default sysdate;
+
+-- 시승비 컬럼 생성
+ALTER TABLE tbl_DTApply
+ADD payFee VARCHAR2(20);
+
+ALTER TABLE tbl_drivingLounge DROP COLUMN pk_dlseq;
+
 -- 드라이빙라운지 시퀀스
 create sequence Pk_DLSeq
 start with 1
@@ -31,6 +43,7 @@ nominvalue
 nocycle;
 
 rollback;
+
 -- 시승신청기록 시퀀스
 create sequence Pk_ApplySeq
 start with 1
@@ -81,7 +94,7 @@ insert into tbl_DrivingLounge(Pk_DLSeq, Area, City, Place_Name, D_address, phone
 commit;
 
 select *
-from tbl_DrivingLounge
+from tbl_user
 ;
 
 select area
@@ -96,11 +109,9 @@ group by city
 ;
 
 
-select city
+select *
 from tbl_drivingLounge
 where area = '서울'
-group by city
-order by city
 ;
 
 select place_name,d_address,phone,lat,lng
@@ -125,3 +136,11 @@ SET lng = '127.088382377251'
 WHERE place_name = '드라이빙 라운지 전주';
 
 commit;
+
+select *
+from tbl_DTApply
+;
+
+insert into tbl_DTApply(PK_APPLYSEQ, fk_carname, fk_dlseq, fk_userid, schedule, payfee) values(1,'G90', '14', 'kimdh', '2024-07-01', '10원');
+commit;
+

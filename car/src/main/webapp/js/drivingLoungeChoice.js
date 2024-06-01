@@ -249,10 +249,37 @@ $(document).ready(function(){
 
    /* 지도 끝 */
 
+    // // 모달 열기 시작
+    // document.getElementById('clickDrivetrybtn').onclick = function() {
+    //   document.getElementById('myModal').style.display = "block";
+    // }
+    // document.getElementById('showModalBtn2').onclick = function() {
+    //     document.getElementById('myModal2').style.display = "block";
+    // }
+    // //	모달 열기 끝
 
-    b_area_click = true;
-    // "지역" 을 클릭했는지 클릭을 안했는지 여부를 알아오기 위한 용도 
+    // // 모달 닫기 시작
+    // document.getElementsByClassName('modal-footer')[0].onclick = function() {
+    //   document.getElementById('myModal').style.display = "none";
+    // }
+    // document.getElementsByClassName('modal-footer')[1].onclick = function() {
+    //     document.getElementById('myModal2').style.display = "none";
+    // }
+    // // 모달 닫기 끝
 
+    // // 모달 외부를 클릭하여 닫기 시작
+    // window.onclick = function(event) {
+    //   var modal = document.getElementById('myModal');
+    //   if (event.target == modal) {
+    //     modal.style.display = "none";
+    //   }
+      
+    //   var modal2 = document.getElementById('myModal2');
+    //   if (event.target == modal2) {
+    //       modal2.style.display = "none";
+    //     }
+    // }
+    // // 모달 외부를 클릭하여 닫기 끝
 
 });	
  
@@ -278,7 +305,7 @@ function makeOverListener(mapobj, marker, infowindow, infowindowArr) {
 function choiceArea(Area){
   // alert(area)
   $("input[name='areachoicebtn']").val(Area);
-  alert("Area" + Area);
+  // alert("Area" + Area);
   $.ajax({
     url:"/car/drivetryApply/drivingLoungeChoiceJSON.car",
     data:{"Area":Area},
@@ -350,14 +377,18 @@ function choiceArea(Area){
         }
         else{
           v_html ="";
-          alert(json);
+          // alert(json);
           v_html = `<div id="placeName">`;
           $.each(json, function(index, item){
             // alert(item.city);
             v_html += `<h1>${item.place_name}<br></h1>
                        <span>${item.d_address}</span>
                        <span>${item.phone}</span>
-                       <button onclick ="extendmap('${Area}','${city}')">시승&nbsp;신청하기</button>`;
+                       <a class="nav-link" href="/car/drivetryApply/provision.car"  class="btn">
+                        <button id = "clickDrivetrybtn" >시승&nbsp;신청하기</button>
+                       </a>`;
+
+                       
             //지도의 변화
           });//end of each ----------------------
           v_html += `</div>`;
@@ -375,12 +406,12 @@ function choiceArea(Area){
                                "</div>";
                                
             position.latlng = new kakao.maps.LatLng(item.lat, item.lng);
-            position.pk_dlseq = item.pk_dlseq;
+            position.place_name = item.place_name;
             
             positionArr.push(position);
           });// end of $.each(json, function(index, item){})---------------        
         }
-        alert(v_html);
+        // alert(v_html);
         $("div#in-container").html(v_html);
       },
   
@@ -394,7 +425,4 @@ function choiceArea(Area){
 
 
 
-  function extendmap(Area,city,place_name){
-
-  };
 

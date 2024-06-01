@@ -162,7 +162,7 @@
 <input type = "hidden" name="ctxPath" value="<%= ctxPath%>"/>
 <!-- ctxPath를 넘겨줄때는 위와 같이 input태그를 사용하여 값을 태그에 넣어준다음에 불러와주어야만 한다. -->
 <div style="display: none;">
-	<input id="carName" type = "hidden" name="carTitle" value="G90_BLACK"/>
+	<input id="carName" type = "hidden" name="carName" value="G90_BLACK"/>
 </div>
 <!-- 차 이름을 넘겨줄 태그 -->
 
@@ -191,6 +191,8 @@
 	</div>
 </div>
 
-
+<a class="nav-link" id = "clickDrivetrybtn" href="<%= ctxPath%>/drivetryApply/provision.car"  type="button">
+	<div class="icon-text">시승&nbsp;신청하기</div>
+</a>
 
 <jsp:include page="../Main_Footer.jsp"></jsp:include>

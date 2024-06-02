@@ -50,12 +50,6 @@ public class LoginEnd extends AbstractController {
 		String clientip = request.getRemoteAddr();
 		// 먼저, C:\NCS\workspace_jsp\MyMVC\src\main\webapp\JSP 파일을 실행시켰을 때 IP 주소가 제대로 출력되기위한 방법.txt 참조할 것!!!!!
 		
-		
-		System.out.println("~~~ 확인용 userid : " + userid);
-		System.out.println("~~~ 확인용 pwd : " + pwd);
-		System.out.println("~~~ 확인용 clientip : " + clientip);
-    
-		
 		Map<String, String> paraMap = new HashMap<>();
 		paraMap.put("userid", userid);
 		paraMap.put("pwd", pwd);

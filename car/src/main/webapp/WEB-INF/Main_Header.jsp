@@ -34,6 +34,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+			
 		if( ${empty sessionScope.loginuser} ) {
 	    	   
 	    	   const loginUserid = localStorage.getItem('saveid');
@@ -43,7 +44,10 @@
 	    		   $("input:checkbox[id='saveid']").prop("checked", true);
 	    	   }
 		  }
+		
+		
 	});	//	end of $(document).ready(function(){------
+		
 </script>
 
 <body>
@@ -177,12 +181,26 @@
                      </ul>
                   </li>
                   
-                  
-                  <li class="nav-item" id="nav-item4" style="margin-left: 60%;">
+                  <c:if test="${not empty sessionScope.loginuser}">
+                  <li class="nav-item" id="nav-item3" style="margin-left: 60%;">
+                  	<a style="margin-left: 80%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/mypage/logout.car">로그아웃</a>
+                  </li>
+                  <li class="nav-item" id="nav-item4"">
+                  	
                      <a style="margin-left: 90%; width: 100%; position: sticky; z-index: 1000;" href="<%= ctxPath%>/support.car" class="nav-link px-2 text-white">고객센터</a>
                      <ul class="nav-item sub-menu">
                      </ul>
                   </li>
+                  </c:if>
+                  
+                  <c:if test="${empty sessionScope.loginuser}">
+                  <li class="nav-item" id="nav-item4" style="margin-left: 60%;">
+                  	
+                     <a style="margin-left: 90%; width: 100%; position: sticky; z-index: 1000;" href="<%= ctxPath%>/support.car" class="nav-link px-2 text-white">고객센터</a>
+                     <ul class="nav-item sub-menu">
+                     </ul>
+                  </li>
+                  </c:if>
                   <li class="nav-item" id="nav-item5" >
 					
 				<c:if test="${empty sessionScope.loginuser}">

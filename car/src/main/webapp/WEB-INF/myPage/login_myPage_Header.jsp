@@ -46,9 +46,10 @@
 	
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="nav col-6 col-lg-auto me-lg-auto mb-4 mb-md-0">
+			
 				<c:if test="${not empty sessionScope.loginuser && sessionScope.loginuser.pk_userid != 'admin'}" > <%-- admin이 아닌 일반 회원 로그인 했으면 --%>
 					<li class="nav-item">
-		           		<a class="nav-link text-white" href="#">내 정보 보기/수정</a>
+		           		<a class="nav-link text-white" href="<%= ctxPath %>/myPage/myinfoEdit.car">내 정보 보기/수정</a>
 		           	</li>
 		           	<li class="nav-item">
 		              	<a class="nav-link text-white" href="#">보유차량 조회</a>
@@ -68,6 +69,16 @@
 	              		<a class="nav-link text-white" href="#">전체 주문 내역</a>
 	           		</li>
 	           	</c:if>
+	           	
+	           	
+	           	<c:if test="${not empty sessionScope.loginuser}">
+                  
+    				<li class="nav-item" id="nav-item5">
+                  	<a style="margin-left: 800%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/mypage/logout.car">로그아웃</a>
+                  </li>
+                  
+       		</c:if>
+	           	
 	          </ul>
 		</div>
 	</nav>

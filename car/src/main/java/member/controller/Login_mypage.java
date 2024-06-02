@@ -31,8 +31,6 @@ public class Login_mypage extends AbstractController {
 				
 				request.setAttribute("loginuser", loginuser);
 				
-				System.out.println("loginuser ==> " + loginuser.getPk_userid());
-				
 				super.setRedirect(false);
 				super.setViewPage("/WEB-INF/myPage/login_myPage.jsp");
 				

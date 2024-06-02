@@ -10,7 +10,11 @@
 <jsp:include page="../login_myPage_Header.jsp" />  
 
 <style type="text/css">
- 
+   div.container{
+ 	padding: 3% 0; 
+ 	border: solid 0px red; 
+ 	margin-left : 7%;
+}
   table#memberTbl {
      width: 80%;
      margin: 0 auto;
@@ -117,18 +121,18 @@
 	  
   }// end of  function goSearch(){}------------------------
 </script>
-<div class="container" style="padding: 3% 0; border: solid 0px red; margin-left : 7%;">
-  <h2 class="text-center mb-5">::: 회원전체 목록 :::</h2>
+<div class="container">
+  <h2 class="text-center mb-5"> &lt; 회원 전체 목록 &gt; </h2>
  
   <form name="member_search_frm">
-     <select name="searchType">
+     <select name="searchType" style="height : 30px;">
         <option value="">검색대상</option>
         <option value="username">회원명</option>
         <option value="pk_userid">아이디</option>
         <option value="useremail">이메일</option>
      </select>
      &nbsp;
-     <input type="text" name="searchWord" />
+     <input type="text" name="searchWord"  style="height : 30px;" />
      <%--
             form 태그내에서 데이터를 전송해야 할 input 태그가 만약에 1개 밖에 없을 경우에는
             input 태그내에 값을 넣고나서 그냥 엔터를 해버리면 submit 되어져 버린다.
@@ -143,8 +147,8 @@
     
      	<button type="button" class="btn btn-secondary" onclick="goSearch()">검색</button>
     
-     	<span style="font-size: 12pt; font-weight: bold;">페이지당 회원명수&nbsp;-&nbsp;</span>
-     	<select name="sizePerPage">
+     	<span style="font-size: 12pt; font-weight: bold;">페이지당 회원명수&nbsp;:&nbsp;</span>
+     	<select name="sizePerPage"  style="height : 30px;">
         	<option value="10">10명</option>
         	<option value="5">5명</option>
         	<option value="3">3명</option>     

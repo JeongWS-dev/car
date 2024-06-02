@@ -65,7 +65,7 @@
 		              	<a class="nav-link text-white" href="#">시승신청 목록 보기</a>
 		           	</li>
 	           		<li class="nav-item">
-	              		<a class="nav-link text-white" href="#">전체 주문 내역</a>
+	              		<a class="nav-link text-white" href="<%= ctxPath %>/admin/paperList.car">전체 견적 내역</a>
 	           		</li>
 	           	</c:if>
 	          </ul>

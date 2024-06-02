@@ -151,7 +151,7 @@ public class LoginEnd extends AbstractController {
 		else {
 		//	System.out.println("~~~ 확인용 로그인 실패 ㅜㅜ");
 			
-			String message = "로그인 실패";
+			String message = "회원정보가 없습니다.\n아이디와 비밀번호를 확인해주세요.";
 			String loc = "javascript:history.back()";
 			
 			request.setAttribute("message", message);

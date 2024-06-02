@@ -464,6 +464,8 @@ public class MemberDAO_imple implements MemberDAO {
 
 		} // public int getTotalPage(Map<String, String> paraMap) throws SQLException
 
+		
+		
 		// 입력받은 userid 를 가지고 한명의 회원정보를 리턴시켜주는 메소드
 		@Override
 		public MemberVO selectOneMember(String userid) throws SQLException{
@@ -510,8 +512,37 @@ public class MemberDAO_imple implements MemberDAO {
 		      
 		      return member;
 		}// end of public MemberVO selectOneMember(String userid) --------------------------------
-	
-	
+
+		
+		
+		
+		//		회원 탈퇴
+			@Override
+			public int deleteMember(String userid) throws SQLException {
+				int result = 0;
+				
+				
+				try {
+					conn = ds.getConnection();
+					
+					String sql =" update tbl_User set UserStatus = 0 " + " where Pk_UserId = ? ";
+			        
+	                  pstmt = conn.prepareStatement(sql); 
+	                  pstmt.setString(1,userid);
+	        
+	      			result = pstmt.executeUpdate();
+	                
+			            
+			        } finally { 
+			           close(); 
+			        }
+			        
+			        return result;
+				
+			}	//	public int deleteMember(String userid) throws SQLException {
+		
+		
+		
 	
 	
 	

@@ -22,6 +22,9 @@ create table tbl_User
 ,constraint CK_tbl_User_UserIdle check( UserIdle in(0,1) )
 );
 
+select *
+from tbl_user;
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 select place_name, d_address, phone, lat, lng

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <%
@@ -67,11 +67,23 @@
 		width: 50%;
 		margin: 1% auto;
 	}
+	
+	body > div.faq-form > span{
+		width: 50%;
+		margin: 1% auto;
+	}
  </style>
 
 
 <script type="text/javascript">
  $(document).ready(function(){
+	 
+	 if( "${requestScope.searchWord}" != "") {
+			
+			$("input:text[name='faq-search']").val("${requestScope.searchWord}");
+			
+		}
+	 
 	 
 	 const accordionTitles = document.querySelectorAll(".accordion-title");
 
@@ -85,39 +97,60 @@
 	      }
 	    });
 	  });
-	});
- 
- 
+	  
+	  
+	  
+ }); // end of $(document).ready(function(){-------------
+	
+ function goSearch(){
+		
+		const searchType = $("input[name='searchWord']").val();
+		
+		if(searchType == "") {
+			alert("ê²€ìƒ‰ëŒ€ìƒì„ ì„ íƒí•˜ì„¸ìš”!!");
+			return; // goSearch() í•¨ìˆ˜ë¥¼ ì¢…ë£Œí•œë‹¤.
+		}
+		
+		const frm = document.searchForm;
+        frm.method = "post";
+
+        frm.submit();
+		
+	}// end of function goSearch(){}-----------------------
 
 </script>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ÀÚÁÖ ¹¯´Â Áú¹®</title>
+    <title>ìì£¼ ë¬»ëŠ” ì§ˆë¬¸</title>
     
 </head>
 <body>
 
    <div class="container">
        <div class="faq">
-           <h1>ÀÚÁÖ ¹¯´Â Áú¹®</h1>
-           <!-- ¿©±â¿¡ ÀÚÁÖ ¹¯´Â Áú¹® ¸ñ·Ï ¹× ³»¿ëÀ» Ãß°¡ÇÏ¼¼¿ä -->
+           <h1>ìì£¼ ë¬»ëŠ” ì§ˆë¬¸</h1>
+           <!-- ì—¬ê¸°ì— ìì£¼ ë¬»ëŠ” ì§ˆë¬¸ ëª©ë¡ ë° ë‚´ìš©ì„ ì¶”ê°€í•˜ì„¸ìš” -->
        </div>
    </div>
    
+   
     <div class="faq-form">
 		<div id=faq-top>
-		<h2>ÀÚÁÖ ¹¯´Â Áú¹®</h2>
-	    <input type="text" id="faq-search" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." style="border-top: none; border-right: none; border-left: none; margin-top: 1%;"/>
-	    <button type="submit" class="ico-search" data-ex-linkage="getSearch" title="°Ë»ö">
-		<span class="blind">°Ë»ö</span></button>
+		<h2>ìì£¼ ë¬»ëŠ” ì§ˆë¬¸</h2>
+		
+		<form name="searchForm" onSubmit='event.preventDefault(); goSearch();'>
+	    <input type="text" name="searchWord" id="faq-search" placeholder="ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”." style="border-top: none; border-right: none; border-left: none; margin-top: 1%;"/>
+	    <button type="submit" class="ico-search"  title="ê²€ìƒ‰">
+		<span class="blind">ê²€ìƒ‰</span></button>
+		</form>
 	    </div>
 	    <br><br>
-	
+		
  	 <c:if test="${empty requestScope.FAQList}">
  	
-      <span style="color: red; font-weight: bold;">µî·ÏµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.</span>
+      <span style="color: red; font-weight: bold;">ë“±ë¡ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.</span>
    </c:if>
 
    <c:if test="${not empty requestScope.FAQList}">
@@ -132,6 +165,7 @@
       </c:forEach>
    </c:if>
 </div>
+
 
 </body>
 

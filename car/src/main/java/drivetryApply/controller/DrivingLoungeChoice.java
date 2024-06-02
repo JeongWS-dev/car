@@ -47,7 +47,8 @@ public class DrivingLoungeChoice extends AbstractController {
 		}
 //		System.out.println("execute result: " + Area);
 		String[]area_arr = Area.split(",");
-
+		
+		request.setAttribute("pk_carname", request.getParameter("pk_carname"));
         request.setAttribute("areaList", AreaList);
 
         

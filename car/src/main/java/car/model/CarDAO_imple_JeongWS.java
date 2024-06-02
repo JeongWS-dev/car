@@ -689,6 +689,146 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		}
 		return email;
 	}// end of public String selectPlaceEmail(String place) throws SQLException {
+	
+	// 모든 드라이빙 라운지의 좌표정보를 가져온다.
+	@Override
+	public List<Map<String, String>> selectDrivingLoungeLocation() throws SQLException {
+		List<Map<String, String>> mapList = new ArrayList<>();
+		
+		try {
+	         conn = ds.getConnection();
+	         String sql = " select place_name, d_address, phone, lat, lng "
+	         			+ " from tbl_drivinglounge ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 Map<String,String> Map = new HashMap<>();
+	        	 Map.put("place_name", rs.getString("place_name"));
+	        	 Map.put("d_address", rs.getString("d_address"));
+	        	 Map.put("phone", rs.getString("phone"));
+	        	 Map.put("lat", rs.getString("lat"));
+	        	 Map.put("lng", rs.getString("lng"));
+	        	 
+	        	 mapList.add(Map);
+	         } 
+	         
+	      } finally {
+	         close();
+	      }
+		
+		return mapList;
+	}// end of public List<Map<String, String>> selectDrivingLoungeLocation() {
+	
+	// 내가 선택한 도시에 위치한 라운지의 드라이브 센터 목록을 가져온다.
+	@Override
+	public List<Map<String, String>> selectChoiceCityLounge(String area) throws SQLException {
+		List<Map<String, String>> mapList = new ArrayList<>();
+		
+		try {
+	         conn = ds.getConnection();
+	         String sql = " select place_name, d_address, phone, lat, lng "
+	         			+ " from tbl_drivinglounge "
+	         			+ " where area = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, area);
+	         rs = pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 Map<String,String> Map = new HashMap<>();
+	        	 Map.put("place_name", rs.getString("place_name"));
+	        	 Map.put("d_address", rs.getString("d_address"));
+	        	 Map.put("phone", rs.getString("phone"));
+	        	 Map.put("lat", rs.getString("lat"));
+	        	 Map.put("lng", rs.getString("lng"));
+	        	 
+	        	 mapList.add(Map);
+	         } 
+	         
+	      } finally {
+	         close();
+	      }
+		
+		return mapList;
+	}// end of public List<Map<String, String>> selectChoiceCityLounge(String area) throws SQLException {
 
+	// 드라이빙 라운지 테이블의 도시정보를 가져온다.
+	@Override
+	public List<String> selectArea() throws SQLException {
+		List<String> List = new ArrayList<>();
+		
+		try {
+	         conn = ds.getConnection();
+	         String sql = " select area "
+	         			+ " from tbl_drivinglounge "
+	         			+ " group by area ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 List.add(rs.getString("area"));
+	         } 
+	         
+	      } finally {
+	         close();
+	      }
+		
+		return List;
+	}// end of public List<String> selectArea() throws SQLException {
+	
+	// 내가 선택한 드라이빙 라운지 한곳의 정보를 가져온다.
+	@Override
+	public Map<String, String> select_one_drivinglounge(String location) throws SQLException {
+		Map<String,String> map = new HashMap<>();
+		
+		try {
+	         conn = ds.getConnection();
+	         String sql = " select place_name, d_address, phone, lat, lng "
+	         			+ " from tbl_drivinglounge "
+	         			+ " where place_name = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, location);
+	         rs = pstmt.executeQuery();
+	         while(rs.next()) {
+	        	 map.put("place_name", rs.getString("place_name"));
+	        	 map.put("d_address", rs.getString("d_address"));
+	        	 map.put("phone", rs.getString("phone"));
+	        	 map.put("lat", rs.getString("lat"));
+	        	 map.put("lng", rs.getString("lng"));
+	         } 
+	         
+	      } finally {
+	         close();
+	      }
+		
+		return map;
+
+	}// end of public Map<String, String> select_one_drivinglounge(String location) throws SQLException {
+	
+	
+	// 예약 정보를 저장하는 테이블 생성
+	@Override
+	public int insert_reservation(Map<String, String> paraMap) throws SQLException {
+		int result = 0;
+		
+		try {
+	         conn = ds.getConnection();
+	         String sql = " insert into tbl_dtapply(pk_applyseq, fk_carname, fk_userid, schedule, registerday ,payfee ,fk_place_name) values(pk_applyseq.nextval,?,?,?,sysdate,?,?) ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, paraMap.get("carName"));
+	         pstmt.setString(2, paraMap.get("userid"));
+	         pstmt.setString(3, paraMap.get("date"));
+	         pstmt.setInt(4, 10000);
+	         pstmt.setString(5, paraMap.get("place_name"));
+	         result = pstmt.executeUpdate();
+	         
+	      } finally {
+	         close();
+	      }
+		
+		return result;
+	}// end of public int insert_reservation(Map<String, String> paraMap) throws SQLException {
     
 }

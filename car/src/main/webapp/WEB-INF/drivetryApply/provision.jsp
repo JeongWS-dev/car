@@ -32,7 +32,7 @@
 
         $('.offers').click(function() {
             if ($('.offers:checked').length == $('.offers').length) {
-                $('.news').prop('checked', true);
+                $('#news').prop('checked', true);
             } else {
                 $('#news').prop('checked', false);
             }
@@ -41,7 +41,10 @@
         $('#nextPage').click(function() {
                 if ($('#offer1').prop('checked') && $('#offer2').prop('checked') ) {
                     // 모든 필수 체크박스가 선택된 경우 다음 페이지로 이동
-                    window.location.href = "/car/drivetryApply/applyCheck.car"; // 다음 페이지 URL로 변경
+                    const frm = document.choice_lounge;
+                	frm.method = "post";
+                	frm.action = "<%=ctxPath%>/drivetryApply/applyCheck.car"
+                	frm.submit();
                 } else {
                     // 필수 체크박스가 선택되지 않은 경우 경고 메시지 표시
                     alert("모든 필수 약관에 동의해야 합니다.");
@@ -96,5 +99,8 @@
         </h2>
     </div>
 </div>
-
+<form name="choice_lounge">
+	<input name="lounge_name" type="text" value="${requestScope.lounge_name }"/>
+	<input name="carName" type="text" value="${requestScope.carname}"/>
+</form>
 <jsp:include page="../Main_Footer.jsp"></jsp:include>

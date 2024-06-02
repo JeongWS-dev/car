@@ -48,25 +48,14 @@
 	font-size: 15pt;
   }
 
-  #appCheck > tr:nth-child(1) > td:nth-child(2),
-  #appCheck > tr:nth-child(2) > td:nth-child(2),
-  #appCheck > tr:nth-child(3) > td:nth-child(2),
-  #appCheck > tr:nth-child(4) > td:nth-child(2),
-  #appCheck > tr:nth-child(5) > td:nth-child(2),
-  #appCheck > tr:nth-child(6) > td:nth-child(2),
-  #appCheck > tr:nth-child(1) > td:nth-child(3),
-  #appCheck > tr:nth-child(2) > td:nth-child(3),
-  #appCheck > tr:nth-child(3) > td:nth-child(3),
-  #appCheck > tr:nth-child(4) > td:nth-child(3),
-  #appCheck > tr:nth-child(5) > td:nth-child(3),
-  #appCheck > tr:nth-child(6) > td:nth-child(3){
+  #appCheck tr td{
 	  text-align: left;
 	  padding-left: 2%;
 	  color: black;
 	  font-weight: 300;
 	  font-size: 15pt;
 	  padding-top: 1%;
-	  padding-bottom: 1%;
+	  padding-bottom: 1%; 
   }
   div.cp-table__item{
 	  padding-bottom: 10%;

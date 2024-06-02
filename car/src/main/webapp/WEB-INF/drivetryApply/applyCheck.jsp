@@ -12,7 +12,7 @@
 <!-- bootstrap -->
 <link rel="stylesheet" href="<%= ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
 <!-- 내가만든 css -->
-<link rel="stylesheet" href="<%= ctxPath%>/css/applyCheck.css">
+<link rel="stylesheet" href="<%= ctxPath%>/css/applyCheck.css" type="text/css">
 <!-- Font Awesome 6 Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -26,118 +26,64 @@
 
 <script type="text/javascript">
 
-// $(document).ready(function() {
 
 
-    function goPay(ctxPath, userid){
+//=== 포트원(구 아임포트) 결제를 해주는 함수 === //
+function goCoinPayment(userid,ctxPath){
+	
+ // alert(`확인용 부모창의 함수 호출함.\n결제금액 : ${coinmoney}원, 사용자id : ${userid}`); 
+	if($("input[name='reservation_date']").val()!=""){
+		// >>> 포트원(구 아임포트) 결제 팝업창 띄우기 <<<
+	    // 너비 1000, 높이 600 인 팝업창을 화면 가운데 위치시키기
+		const width = 1000;
+		const height = 600;
 
-            var name = document.getElementById('name').getAttribute('data-value');
-            var phone = document.getElementById('phone').getAttribute('data-value');
-            // 'data-value' 속성 값을 가져오기
-            
-            var carName = document.getElementById('carName').getAttribute('data-value');
-            // 'data-value' 속성 값을 가져오기
-            var schedule = document.getElementById('schedule').getAttribute('data-value');
-            // 'data-value' 속성 값을 가져오기
-            var place_name = document.getElementById('place_name').getAttribute('data-value');
-            // 'data-value' 속성 값을 가져오기
-            var payFee = document.getElementById('payFee').getAttribute('value');
-            // 'data-value' 속성 값을 가져오기
-            // alert(name);
-            //window.location.href = "/car/drivetryApply/applyFinal.car";
+	    const left = Math.ceil( (window.screen.width - width)/2 ); // 정수로 만듬
+	    const top = Math.ceil( (window.screen.height - height)/2 ); // 정수로 만듬
+	    
+	    const url = `\${ctxPath}/drivetryApply/reservation.car?userid=\${userid}`;      
+
+	    window.open(url, "coinPurchaseEnd",
+	               `left=${left}, top=${top}, width=${width}, height=${height}`);
+	}
+	else{
+		alert("예약 일정을 선택하세요.");
+	}
+
+}// end of function goCoinPurchaseEnd(ctxPath, coinmoney, userid)----------------------------
 
 
-            // 결제하기 버튼을 누르면 해당 정보들을 데이터베이스에 넣어준다.
-        $.ajax({
-            url:"/car/drivetryApply/applyCheck.car",
-            data:{"name":name,
-                  "phone":phone,
-                  "carName":carName,
-                  "schedule":schedule,
-                  "place_name":place_name,
-                  "payFee":payFee},
-            //  ,"userid":$("input:hidden[name='userid']").val() // data 속성은 http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다. 
-            // type:"get",  //  type 을 생략하면 type:"get" 이다.
-            
-            // async:true,   // async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
-            //                  // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.   
-            
-            dataType:"json", // Javascript Standard Object Notation.  dataType은 /MyMVC/member/emailDuplicateCheck.up 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
-                            // 만약에 dataType:"xml" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 xml 형식이어야 한다. 
-                            // 만약에 dataType:"json" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 json 형식이어야 한다. 
-
-            success:function(json){
-            let v_html = ``;
-            console.log("확인용 json: " + json);
-            if(json.length == 0) { // json== null하면 오류 남. 넘겨 받을 때 new 선언해서 받아서 빈 껍데기 배열이기 때문에 null이 아니고 길이가 0임.
-                v_html = `드라이빙 라운지가 준비중입니다.`;
-            }
-            else{
-                v_html ="";
-                // alert(json);
-                v_html = `<div id="place" style="text-align: center; background-color: lightgray; ">
-                            <span style="color: gray; padding: 2% 0">지역 선택</span>
-                            <div id="table">
-                                <table id="areatable"> <tr>`;
-                $.each(json, function(index, item){
-                // alert(item.city);
-                v_html += `<td><button id="areachoicebtn" onclick="choiceCity('${Area}','${item.city}')">${item.city}</button></td>`;
-                });//end of each ----------------------
-                v_html += `</tr> </table></div></div></div>`;
-            
-            }
-            // alert(v_html);
-            $("div#in-container").html(v_html);
-            },
-
-            
-            error: function(request, status, error){
+function sendReservation(ctxPath,userid){
+	alert("sendReservation 함수를 실행했습니다.");
+	
+	const carName = $("input[name='carname']").val();
+	const date = $("input[name='reservation_date']").val();
+	const place_name = $("input[name='place_name']").val();
+	
+	
+	$.ajax({
+        url : ctxPath+"/drivetryApply/sendReservationJSON.car",
+        data : {"carName":carName,"date":date,"place_name":place_name}, 
+        type : "post",  
+        async : true,
+        dataType : "json",
+        success : function(json){
+          
+              if(json.isSuccess == 1){
+            	  alert("시승 신청이 성공적으로 접수되었습니다.");
+            	  location.href = ctxPath+"/index.car";
+              }
+              else{
+            	  alert("시승 신청이 실패했습니다.")
+              }
+        },
+        
+        error: function(request, status, error){
             alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-            }
-        })
-
-
-        /* 결제 시작 */
-        const checked_cnt = $("input:radio[name='coinmoney']:checked").length; 
-
-        if(checked_cnt == 0){
-        // 결제금액을 선택하지 않았을 경우
-        $("td#error").show();
-        return; // 종료
-        }
-        else {
-        // 결제하러 들어간다.
-        const coinmoney = $("input:radio[name='coinmoney']:checked").val(); // 충전금액 
-        //  alert(`${coinmoney}원 결제하러 들어간다.`);
-
-        /* === 팝업창에서 부모창 함수 호출 방법 3가지 ===
-            1-1. 일반적인 방법
-            opener.location.href = "javascript:부모창스크립트 함수명();";
-                                
-            1-2. 일반적인 방법
-            window.opener.부모창스크립트 함수명();
-
-            2. jQuery를 이용한 방법
-            $(opener.location).attr("href", "javascript:부모창스크립트 함수명();");
-        */
-
-        opener.location.href = `javascript:goCoinPurchaseEnd("${ctxPath}", "${coinmoney}", "${userid}")`;
-
-        self.close(); // 자신의 팝업창을 닫는 것이다. 
         }
 
-        /* 결제 끝 */
-
-    }// end of function goCoinPayment(ctxPath, userid)-------------------- 
-
-
-    
-
-
-
-
-// });
-
+    });
+}
 </script>
 
 <div id="container" style="background-color: white; color: black;">
@@ -157,42 +103,45 @@
                 <tbody id="appCheck">
                     <tr>
                         <th scope="row">신청자 이름</th>
-                        <td  id = "name" name="name" data-value="홍길동">홍길동</td>
+                        <td  id = "name" name="name">${requestScope.username }</td>
                     </tr>
                     <tr>
                         <th scope="row" >휴대폰</th>
-                        <td id = "phone"  name="phone" data-value="01071842459">01071842459</td>
+                        <td id = "phone"  name="phone">${requestScope.mobile }</td>
                     </tr>
                     <tr>
                         <th scope="row"  >시승 희망 차량</th>
-                        <td id = "carName"  name="carName" data-value="G90">G90</td>
+                        <td id = "carName"  name="carName">${requestScope.carName }</td>
                     </tr>
                     <tr>
                         <th scope="row">신청일</th>
-                        <td id = "schedule" name="schedule" data-value="2024-07-01">2024-07-01</td>
+                        <td id = "schedule" name="schedule"><input name="reservation_date" type="date" value=""/></td>
                     </tr>
                     <tr>
                         <th scope="row">신청 지점</th>
-                        <td  id = "place_name" name="place_name" data-value="드라이빙 라운지 성수">드라이빙 라운지 성수</td>
+                        <td  id = "place_name" name="place_name">${requestScope.place_name }</td>
                     </tr>
                     <tr>
                         <th scope="row" >시승 구분</th>
                         <td>동승 시승 서비스</td>
                     </tr>
+                    <tr>
+                        <th scope="row" >시승비</th>
+                        <td>10,000원</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div id="ApplyFee">
-            <span style="font-size: 25pt; font-weight: 300;" id="payFee" name="payFee" value="10원">시승비 : 10원 <br></span>
-        </div>
 
         <div id="input-button">
-            <input type="button" class="cta-button type-line type-white" style="background-color: white; color: black;" value="아니오(이전 화면으로)" onclick="goBack()" />
-            <input type="button"  id = "go-pay" class="cta-button type-line js-layer-opener is-async" style="background-color: black; color: white;"  value="결제 하기" onclick="goCoinPayment('<%= ctxPath%>','${sessionScope.loginuser.userid}')"/>
+            <input type="button" class="cta-button type-line type-white" style="background-color: white; color: black;" value="아니오(메인 화면으로)" onclick="goMain()" />
+            <input type="button" class="cta-button type-line js-layer-opener is-async" style="background-color: black; color: white;"  value="결제 하기" onclick="goCoinPayment('${requestScope.userid}','<%=ctxPath%>')"/>
         </div>
     </div>
+    
+	<input name="carname" type="hidden" value="${requestScope.carName}"/>
+	<input name="place_name" type="hidden" value="${requestScope.place_name }"/>
 </div>
 
-<input >
 
 <jsp:include page="../Main_Footer.jsp"></jsp:include> 

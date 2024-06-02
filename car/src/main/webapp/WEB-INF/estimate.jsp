@@ -24,35 +24,6 @@
 <input name="ctxPath" type="hidden" value="<%=ctxPath%>"/>
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
-		
-		<!-- Brand -->
-		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
-	
-		<!-- Links -->
-		<ul class="navbar-nav">
-			<li class="nav-item"> 
-				<a class="nav-link" href="#">모델</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<%= ctxPath%>/estimate/estimate.car">구매</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">체험</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">고객센터</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<%= ctxPath%>/myPage.car"  class="btn">마이페이지</a>
-			</li>
-			<li class="nav-item">
-				<a class="navbar-brand" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-			</li>
-		</ul>
-	</nav>
-
->>>>>>> refs/remotes/origin/kimmr
 	<div id="container">
 		<div id="top_context">
 			<h1>

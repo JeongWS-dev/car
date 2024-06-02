@@ -1,6 +1,10 @@
 
 $(document).ready(function(){
 
+$("button.LoginClose").click(function(){
+	$("div#LoginnoAccept").fadeOut();
+})
+
   const ctxPath = $("input[name='ctxPath']").val();
   //console.log("ctxPath", ctxPath);
   let carSearchType = 'ALL';
@@ -60,39 +64,6 @@ $(document).ready(function(){
   // 차량선택하기 버튼 클릭시 로그인 유무 알아오기
   // $("img#zipcodeSearch").click(function(){ }
   
-  $('#checkLoginButton').on('click', function(e) {
-    
-    $.ajax({
-      url:"/car/drivetryApply/drivingLounge.car",
-      type:"get",
-      success: function(response) {
-        carNameOrigin = $("input#carName").val();
-          if (!response.isLoggedIn) {
-              // 로그인이 되어 있지 않으면 모달 창을 띄움
-              e.preventDefault();
-              $('#loginModal').modal('show');
-          } else {
-              // 로그인이 되어 있으면 원래 버튼의 기능을 수행
-              goDrivingLounge(ctxPath,carNameOrigin);
-          }
-      },
-      error: function() {
-          console.error('Error checking login status');
-      }
-    });
-
-    const isLoggedIn = getLoginStatus();
-
-    if (!isLoggedIn) {
-      // 로그인 안 한 경우
-      e.preventDefault(); // 기존 동작 막기
-      $('#LoginnoAccept').modal('show');
-    }
-    else{
-      goDrivingLounge(ctxPath,carNameOrigin);
-    }
-
-  });// end of function checkLoginStatus()----------------------------
 
 
 });// end of $(document).ready(function(){---------
@@ -117,11 +88,28 @@ let v_html = ``;
 
   // 로그인이 되어있는 경우 드라이빙라운지로 이동하는 함수
   function goDrivingLounge(ctxPath,carNameOrigin){ 
-    carNameOrigin = $("input#carName").val();
-    // var carName = document.getElementById('carTitle').text;
-    console.log("carName: " + carNameOrigin);
+    
+    $.ajax({
+      url:ctxPath+"/drivetryApply/drivingLoungJSON.car",
+      type:"post",
+      dataType:"json",
+      success: function(json) {
+      	  if(json.isLogin == true){
+			  carNameOrigin = $("input#carName").val();
+    		// var carName = document.getElementById('carTitle').text;
+    		console.log("carName: " + carNameOrigin);
 
-    location.href=`${ctxPath}/drivetryApply/drivingLoungeChoice.car?pk_carname=${carNameOrigin}`;
+    		location.href=`${ctxPath}/drivetryApply/drivingLoungeChoice.car?pk_carname=${carNameOrigin}`;}
+		  else{
+      		    $('div#LoginnoAccept').fadeIn();
+		  }
+      },
+      error: function() {
+          console.error('Error checking login status');
+      }
+    });
+    
+    
   }
 ////////////////////////////////////////////////////
 
@@ -319,3 +307,53 @@ function showMain(mainCar, ctxPath){
 
 }
 
+function login(){
+	let ID = $("input[name='ID']").val().trim();
+	let PWD = $("input[name='PWD']").val().trim();
+	
+	if(ID.length == 0){
+		alert("아이디를 입력하세요.");
+		$("input[name='ID']").val("").focus();
+		return;
+	}
+	else if(PWD.length == 0){
+		alert("비밀번호를 입력하세요.");
+		$("input[name='PWD']").val("").focus();
+		return;
+	}
+	else{
+		$.ajax({
+			url : "/car/createCar/loginJSON.car",
+			type : "post",
+			data : {"ID":ID,"PWD":PWD},
+			dataType:"json",
+			success:function(json){
+				if(json.loginuser.length > 0){
+					$("div#LoginnoAccept").fadeOut();
+
+					sessionStorage.setItem("userid",json.loginuser);
+				}
+				else{
+					alert("아이디 혹은 비밀번호가 일치하지 않습니다.")
+					$("input[name='PWD']").val("");
+					$("input[name='ID']").val("").focus();
+				}
+			},
+			error: function(request, status, error){
+				alert("첨부된 파일의 크기의 총합이 20MB 를 초과하여 제품등록이 실패했습니다.ㅜㅜ");
+			}
+		})
+	}
+}
+
+function enterGenesis(){
+	location.href = "<%=ctxPath%>/myPage/memberRegister/memberRegister.car";
+}
+
+function findID(){
+	location.href = "<%=ctxPath%>/myPage/member/idFind.car";
+}
+
+function findPWD(){
+	location.href = "<%=ctxPath%>/myPage/member/pwdFind.car";
+}

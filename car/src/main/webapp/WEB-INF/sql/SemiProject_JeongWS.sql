@@ -22,7 +22,21 @@ create table tbl_User
 ,constraint CK_tbl_User_UserIdle check( UserIdle in(0,1) )
 );
 
+select *
+from tbl_user;
+
+select *
+from user_tables;
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+select place_name, d_address, phone, lat, lng
+from tbl_drivinglounge
+where place_name = '드라이빙 라운지 강남'; 
+
+select *
+from tbl_drivinglounge;
+
 
  -- 차량 테이블 (생성 완료)
 create table tbl_car

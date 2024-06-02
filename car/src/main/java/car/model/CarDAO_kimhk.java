@@ -24,5 +24,8 @@ public interface CarDAO_kimhk {
 	/* >>> 뷰단(memberList.jsp)에서 "페이징 처리시 보여주는 순번 공식" 에서 사용하기 위해 
     검색이 있는 또는 검색이 없는 견적 총개수 알아오기  <<< */
 	int getTotalPaperCount(Map<String, String> paraMap) throws SQLException;
+
+	// 입력받은 paperseq 를 가지고 한 개의 견적 정보를 리턴시켜주는 메소드
+	Map<String, String> selectOnePaper(String paperseq) throws SQLException;
 	
 }

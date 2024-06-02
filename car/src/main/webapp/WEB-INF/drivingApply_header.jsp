@@ -42,7 +42,7 @@
             </li>
             <span id="next">〉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <li class="nav-item">
-                <a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#ApplynoAccept" data-dismiss="modal">드라이빙 라운지 및 일정 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#ApplynoAccept" data-dismiss="modal">드라이빙 라운지 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
             </li>
             <span id="next">〉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <li class="nav-item">

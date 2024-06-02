@@ -5,6 +5,8 @@ import car.model.CarDAO_kimdohyeon;
 import common.controller.AbstractController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import member.domain.MemberVO;
 
 public class ApplyCheck extends AbstractController {
 
@@ -16,23 +18,25 @@ public class ApplyCheck extends AbstractController {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String name = request.getParameter("name");
-		System.out.println("name : " + name);
+		HttpSession session = request.getSession();
+		MemberVO loginuser =  (MemberVO)session.getAttribute("loginuser");
 		
-		if (name == null) {
-			super.setViewPage("/WEB-INF/drivetryApply/applyCheck.jsp");	
-			return;
-		}
+		String userid = loginuser.getPk_userid();
+		String username = loginuser.getUsername();
+		String mobile = loginuser.getUsermobile();
 		
-		String phone = request.getParameter("phone");
+		mobile = mobile.substring(0,3) + "-" + mobile.substring(3,7) + "-" + mobile.substring(7);
 		String carName = request.getParameter("carName");
-		String schedule = request.getParameter("schedule");
-		String place_name = request.getParameter("place_name");
-		String payFee = request.getParameter("payFee");
+		carName = String.join(" ", carName.split("_")); 
+		String place_name = request.getParameter("lounge_name");
 		
-		int n = cdao.getapplyList(name, phone, carName, schedule, place_name, payFee);
+		// int n = cdao.getapplyList(name, phone, carName, schedule, place_name, payFee);
 		
-		System.out.println("ApplyCheck execute Result : " + n);
+		request.setAttribute("username", username);
+		request.setAttribute("mobile", mobile);
+		request.setAttribute("carName", carName);
+		request.setAttribute("place_name", place_name);
+		request.setAttribute("userid", userid);
 		
 		super.setViewPage("/WEB-INF/drivetryApply/applyCheck.jsp");
 

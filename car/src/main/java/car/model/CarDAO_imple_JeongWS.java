@@ -804,6 +804,31 @@ public class CarDAO_imple_JeongWS implements CarDAO_JeongWS {
 		
 		return map;
 
-	}// end of public Map<String, String> select_one_drivinglounge(String location) throws SQLException { 
+	}// end of public Map<String, String> select_one_drivinglounge(String location) throws SQLException {
+	
+	
+	// 예약 정보를 저장하는 테이블 생성
+	@Override
+	public int insert_reservation(Map<String, String> paraMap) throws SQLException {
+		int result = 0;
+		
+		try {
+	         conn = ds.getConnection();
+	         String sql = " insert into tbl_dtapply(pk_applyseq, fk_carname, fk_userid, schedule, registerday ,payfee ,fk_place_name) values(pk_applyseq.nextval,?,?,?,sysdate,?,?) ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, paraMap.get("carName"));
+	         pstmt.setString(2, paraMap.get("userid"));
+	         pstmt.setString(3, paraMap.get("date"));
+	         pstmt.setInt(4, 10000);
+	         pstmt.setString(5, paraMap.get("place_name"));
+	         result = pstmt.executeUpdate();
+	         
+	      } finally {
+	         close();
+	      }
+		
+		return result;
+	}// end of public int insert_reservation(Map<String, String> paraMap) throws SQLException {
     
 }

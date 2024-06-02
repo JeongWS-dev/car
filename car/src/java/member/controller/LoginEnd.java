@@ -153,7 +153,7 @@ public class LoginEnd extends AbstractController {
 			
 			String message = "회원정보가 없습니다.\n아이디와 비밀번호를 확인해주세요.";
 			String loc = "javascript:history.back()";
-			
+			 
 			request.setAttribute("message", message);
 			request.setAttribute("loc", loc);
 			

@@ -54,7 +54,7 @@
         input[type="text"],
         input[type="password"],
         input[type="submit"] {
-            width: 20%;
+            width: 10%;
 		    padding: 10px;
 		    margin-top: 25px;
 		    border: 1px solid #ccc;
@@ -121,23 +121,6 @@ $(document).ready(function(){
 			const hp2 = $("input:text[name='hp2']").val().trim();
 			const hp3 = $("input:text[name='hp3']").val().trim();
 			
-		    $.ajax({
-				  url:"<%= ctxPath%>/myPage/member/pwdFindJSON.car",
-				  type:"post",
-				  data:{"userid":userid,
-					  	"hp1":hp1,
-					  	"hp2":hp2,
-					  	"hp3":hp3},
-				  dataType:"json",
-				  success:function(json){ 
-					  $("input#ajax").val(json.certification_code);
-				  },
-				  error: function(request, status, error){
-					  alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-				  }
-			  });
-		    
-		    
 		    // hp2 검사
 		    const regExp_hp2 = /^[1-9][0-9]{3}$/;
 		    bool2 = regExp_hp2.test($("input#hp2").val());
@@ -166,6 +149,28 @@ $(document).ready(function(){
 		  		  }
 		  	  });// end of $("input:text[name='email']").bind("keyup", function(e){})-------
 		    }
+		    
+		    
+		    $.ajax({
+				  url:"<%= ctxPath%>/myPage/member/pwdFindJSON.car",
+				  type:"post",
+				  data:{"userid":userid,
+					  	"hp1":hp1,
+					  	"hp2":hp2,
+					  	"hp3":hp3},
+				  dataType:"json",
+				  success:function(json){ 
+					  $("input#ajax").val(json.certification_code);
+					  
+					  if(json.isUserExist == false){
+						  alert("사용자 정보가 없습니다");
+					  }
+				  },
+				  error: function(request, status, error){
+					  alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+				  }
+			  });
+		    
 		});
 	  
 	  
@@ -198,14 +203,12 @@ function goFind() {
 	        if ($("input#ajax").val() != "") {
 	            clearInterval(interval); // 주기적 확인 중지
 	            
-	            let dataObj;
-	    		dataObj = {"mobile":hp1+hp2+hp3,
-	    				   "smsContent":$("input#ajax").val()};
 	            
 	            $.ajax({
 	                url: "${pageContext.request.contextPath}/myPage/member/smsSend.car",
 	                type: "get",
-	                data: dataObj,
+	                data: {"mobile":hp1+hp2+hp3,
+	    				   "smsContent":$("input#ajax").val()},
 	                dataType: "json",
 	                success: function(json) {
 	                    // json 은 {"group_id":"R2GWPBT7UoW308sI","success_count":1,"error_count":0} 처럼 된다. 
@@ -219,18 +222,16 @@ function goFind() {
 	                    $("textarea#smsContent").val("");
 	                },
 	                error: function(request, status, error) {
+	                	$("div#smsResult").html("<span style='color:red; font-weight:bold;'>인증번호가 문자로 전송되었습니다.</span>");
 	                    alert("code: " + request.status + "\n" + "message: " + request.responseText + "\n" + "error: " + error);
 	                }
 	            });
 	            
 	            
 	            if ($("#ajax").val() !== "") {
-	  			  $("div#div_findResult").html("<input type='text' name='input_confirmCode' /><button type='button' class='btn btn-info'>인증하기</button>");
+	  			  	$("div#div_findResult").html("<input type='text' name='input_confirmCode' /><button type='button' class='btn btn-info'>인증하기</button>");
 	  			    
 		  	    }
-		  		else{
-		  			$("div#div_findResult").html("<span style='color: red;'>사용자 정보가 없습니다</span>");
-		  		}
 	            
 	            
 	            
@@ -284,13 +285,13 @@ function goFind() {
 	<input type="hidden" id="ajax" value="" />
 	<form name="pwdFindFrm">
 	
-	   <ul style="list-style-type: none; margin-top: 10%; margin-left: 37.5%;">
+	   <ul style="list-style-type: none; margin-top: 10%; margin-left: 34%;">
 	      <li>
-	          <label style="display: inline-block; width: 75px;">아이디</label>
-	          <input type="text" name="userid" size="25" autocomplete="off" /> 
+	          <label style="display: inline-block; width: 75px; margin-left: 2.1%;">아이디</label>
+	          <input type="text" name="userid" size="25" autocomplete="off" style="width: 24%;" /> 
 	      </li>
-	      <li>
-	          <label style="display: inline-block; width: 75px;">휴대폰 번호</label>
+	      <li style="width: 70%;">
+	          <label style="display: inline-block; width: 100px;">휴대폰 번호</label>
 	          <input type="text" name="hp1" id="hp1" size="6" maxlength="3" value="010" readonly />&nbsp;-&nbsp; 
               <input type="text" name="hp2" id="hp2" size="6" maxlength="4" />&nbsp;-&nbsp;
               <input type="text" name="hp3" id="hp3" size="6" maxlength="4" />    
@@ -299,19 +300,18 @@ function goFind() {
 	   </ul> 
 	
 	   <div class="my-3 text-center">
-	      <div class="border my-5 text-center" style="width: 60%; margin: 0 auto;">
+	      
 		  	
 		  	
-		  	<div style="display: flex;">
-		  	   <div style="border: solid 0px blue; width: 19%; margin: auto;">
+		  	<div style="display: flex; margin-top: 3%; margin-left: 40%;">
+		  	   <div style="border: solid 0px blue; width: 19%;">
 		  	      <button type="button" id="btnSend" class="btn btn-secondary">인증번호받기</button>
 		  	   </div>
-		  	</div>
-		  	<div id="smsResult" class="p-3"></div>
-		</div>	  
-	      <a type="button" class="btn btn-success" style="margin-top: 1.5%; margin-bottom: 1.5%;" href="<%= ctxPath%>/index.car">홈으로</a>
+		      <a type="button" class="btn btn-success" href="<%= ctxPath%>/index.car">홈으로</a>
+		   </div>
+		   <div id="smsResult" class="p-3"></div>
+		   
 	   </div>
-	   
 	</form>
 	
 	<div class="my-3 text-center" id="div_findResult">
@@ -327,9 +327,9 @@ function goFind() {
 	
 	<%-- 인증하기 form --%>
 	<form name="verifyCertificationFrm">
-		<input type="text" name="userCertificationCode" />
-		<input type="text" name="CertificationCode" />
-		<input type="text" name="userid" />
+		<input type="hidden" name="userCertificationCode" />
+		<input type="hidden" name="CertificationCode" />
+		<input type="hidden" name="userid" />
 	</form>
 	
 	<footer>

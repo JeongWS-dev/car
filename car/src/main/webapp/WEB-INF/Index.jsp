@@ -347,19 +347,21 @@ function swiperset(){
       <div class="row main-middle-icon">
          <div class="col-md-2"></div>
             <div class="col-md-2 main-icon" type = "button">
-               <a class="nav-link" href="<%= ctxPath%>/estimate/estimate.car"  class="btn">
+               <a class="nav-link" href="<%= ctxPath%>/estimate/estimate.car" class="btn">
 	               <img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Build-And-Price_black_60x60_hover.gif">
 	               <div class="icon-text">견적내기</div>
                </a>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-2 main-icon" type = "button">
-               <img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Price_black_60x60_hover.gif">
-               <div class="icon-text">구매상담신청</div>
+               <a class="nav-link" href="<%=ctxPath%>/estimate/estimate.car" class="btn">
+	               <img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Price_black_60x60_hover.gif">
+	               <div class="icon-text">구매상담신청</div>
+               </a>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-2 main-icon" type = "button">
-               <a class="nav-link" href="<%= ctxPath%>/drivetryApply/drivetryApply.car"  class="btn">
+               <a class="nav-link" href="<%= ctxPath%>/drivetryApply/drivetryApply.car" class="btn">
                   <img class="img-fluid card-img-top icon-image" src="<%= ctxPath%>/images/MainPage/main-middle-icon/Book-a-Test-Drive_black_60x60.gif">
                   <div class="icon-text">시승신청</div>
                </a>
@@ -528,6 +530,6 @@ function swiperset(){
       <div class="customer-voice" style="background-image: url('<%= ctxPath%>/images/MainPage/customer-voice/genesis-kr-main-genesis-events-17-desktop-1920x960-ko-3.jpg');">
          <div style="position:relative; top:300px; color:white; font-size: 50pt; font-weight: lighter; margin:100px 0 0 200px;">GENESIS</div>
          <div style="position:relative; color:white; font-size: 20pt; font-weight: lighter; margin:330px 0 0 200px;">당신의 앞길을 응원합니다.</div>
-         <button class="customer-voice-button">고객의소리</button>
+         <a href="<%=ctxPath%>/support.car"><button class="customer-voice-button">고객의소리</button></a>
       </div>
    <jsp:include page="Main_Footer.jsp"></jsp:include>

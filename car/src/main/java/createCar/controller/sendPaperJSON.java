@@ -90,8 +90,8 @@ public class sendPaperJSON extends AbstractController {
 	    	
 	    	sb.append("	<div style='display: flex; border-bottom: solid 1px rgb(126, 126, 126); '>");
 	    	sb.append("		<img style='width:400px; border:solid 0px red;' src='http://127.0.0.1:9090/car/images/createCar/outColor/outColorCar/"+map.get("outcolorcar_img")+"'/>");
-	    	sb.append("		<div style='font-size:30pt; margin-top: 70px; width: 40%;'>"+cvo.getCarName()+"</div>");
-	    	sb.append("		<div style='font-size:30pt; margin-top: 70px;'>+"+map.get("carprice")+"</div>");
+	    	sb.append("		<div style='font-size:30pt; margin-top: 70px; width: 40%;'>"+String.join(" ", cvo.getCarName().split("_"))+"</div>");
+	    	sb.append("		<div style='font-size:25pt; margin-top: 70px;'>+"+map.get("carprice")+"</div>");
 	    	sb.append("	</div>");
 	    	
 	    	sb.append("	<div style='display: flex; border-bottom: solid 1px rgb(126, 126, 126); '>");

@@ -35,8 +35,7 @@
 	div.div_pwd {
 	 	width: 70%;
 		height: 15%;
-		margin-bottom: 5%;
-		margin-left: 10%;
+		margin-left: 36%;
 	}
 	
     body > nav {
@@ -49,7 +48,7 @@
 	}
         body {
             font-family: Arial, sans-serif;
-            margin-top: 6%;
+            margin-top: 9%;
             padding: 0;
             background-color: #f2f2f2;
         }
@@ -149,20 +148,20 @@
 <body>
 	<c:if test="${requestScope.method == 'GET'}">
 		<form name="pwdUpdateEndFrm">
-		   <div class="div_pwd" style="text-align: center;">
-		      <span style="color: blue; font-size: 12pt;">새암호</span><br/> 
-		      <input type="password" name="pwd" size="25" />
+		   <div class="div_pwd" style="display: flex; text-align: center;">
+		      <span style="color: black; font-size: 12pt; padding-top: 2.7%; ">새암호</span><br/> 
+		      <input type="password" name="pwd" size="25" style="margin-left: 4.3%;"/>
 		   </div>
 		   
-		   <div class="div_pwd" style="text-align: center;">
-		   	  <span style="color: blue; font-size: 12pt;">새암호확인</span><br/>
-		      <input type="password" id="pwd2" size="25" />
+		   <div class="div_pwd" style="display: flex; text-align: center;">
+		   	  <span style=" color: black; font-size: 12pt; padding-top: 2.7%;">새암호확인</span><br/>
+		      <input type="password" id="pwd2" size="25" style="margin-left: 2%;" />
 		   </div>
 		   
-		   <input type="text" name="pk_userid" value="${requestScope.pk_userid}" />
+		   <input type="hidden" name="pk_userid" value="${requestScope.pk_userid}" />
 	
 		   <div style="text-align: center;">
-		      <button type="button" class="btn btn-success">암호변경하기</button>
+		      <button type="button" class="btn btn-success" style="margin-top: 3%; margin-right: 5%;">암호변경하기</button>
 		   </div>
 		</form>
   </c:if>

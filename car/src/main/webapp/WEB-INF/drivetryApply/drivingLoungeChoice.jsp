@@ -157,7 +157,7 @@ $(document).ready(function(){
 			// === 인포윈도우(텍스트를 올릴 수 있는 말풍선 모양의 이미지) 생성하기 === //
 			
 			// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능함.
-			var iwContent = "<div style='padding:5px; font-size:15pt;'>현재 위치</div>";
+			var iwContent = "<div style='padding:5px; font-size:13pt; color:black;'>현재 위치</div>";
 			
 			// 인포윈도우 표시 위치
 		    var iwPosition = locPosition;

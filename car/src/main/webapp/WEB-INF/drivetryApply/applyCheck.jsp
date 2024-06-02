@@ -60,9 +60,6 @@ function sendReservation(ctxPath,userid){
 	const date = $("input[name='reservation_date']").val();
 	const place_name = $("input[name='place_name']").val();
 	
-	alert(carName);
-	alert(date);
-	alert(place_name);
 	
 	$.ajax({
         url : ctxPath+"/drivetryApply/sendReservationJSON.car",

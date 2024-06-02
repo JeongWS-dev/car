@@ -165,7 +165,9 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 
 	         if( (colname != null && !colname.trim().isEmpty()) &&  (searchWord != null && !searchWord.trim().isEmpty())) {
 	        	 // 검색이 있는 경우
-	        	 searchWord = searchWord.toUpperCase().replaceAll(" ", "_");
+	        	 if("fk_carname".equals(colname)) {
+	        		 searchWord = searchWord.toUpperCase().replaceAll(" ", "_");
+	        	 }	        	
 	        	 pstmt.setString(2, searchWord);
 	        	 
 	         }
@@ -190,7 +192,7 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	      try {
 	         conn = ds.getConnection();
 	         
-	         String sql = " SELECT rno, fk_userid, fk_carname, pk_paperseq, fk_incolorcode, fk_powercode, fk_outcolorcode  "
+	         String sql = " SELECT rno, fk_userid, fk_carname, pk_paperseq, fk_incolorcode, fk_powercode, fk_outcolorcode, username  "
 	         			+ "	FROM   ( "
 	         			+ " SELECT rownum as rno, fk_userid, fk_carname, pk_paperseq, fk_incolorcode, fk_powercode, fk_outcolorcode  "
 	         			+ "        FROM "
@@ -213,6 +215,7 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	         
 	         sql += "  order by pk_paperseq DESC) V "
 		        	  + " )T "
+		        	  + " JOIN tbl_user U ON T.fk_userid = U.pk_userid "
 		       		  + " WHERE T.rno between ? and ? ";
 
 	         
@@ -233,7 +236,10 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	         
 	         if( (colname != null && !colname.trim().isEmpty()) &&  (searchWord != null && !searchWord.trim().isEmpty())) {
 	        	 // 검색이 있는 경우
-	        	 searchWord = searchWord.toUpperCase().replaceAll(" ", "_");
+
+	        	 if("fk_carname".equals(colname)) {
+	        		 searchWord = searchWord.toUpperCase().replaceAll(" ", "_");
+	        	}	   
 	        	 
 	        	 pstmt.setString(1, searchWord);
 	        	 pstmt.setLong(2, (currentShowPageNo * sizePerPage) - (sizePerPage - 1)); // 페이징처리 공식
@@ -261,6 +267,8 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	        	 paperMap.put("fk_incolorcode", rs.getString("fk_incolorcode"));
 	        	 paperMap.put("fk_powercode", rs.getString("fk_powercode"));
 	        	 paperMap.put("fk_outcolorcode", rs.getString("fk_outcolorcode"));
+	        	 paperMap.put("username", rs.getString("username"));
+	        	 
 	     
 	        	 paperList.add(paperMap);
 	            
@@ -303,7 +311,9 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 
 	         if( (colname != null && !colname.trim().isEmpty()) &&  (searchWord != null && !searchWord.trim().isEmpty())) {
 	        	 // 검색이 있는 경우
-	        	 searchWord = searchWord.toUpperCase().replaceAll(" ", "_");
+	        	 if("fk_carname".equals(colname)) {
+	        		 searchWord = searchWord.toUpperCase().replaceAll(" ", "_");
+	        	 }
 	        	 pstmt.setString(1, searchWord);
 	        	 
 	         }
@@ -318,7 +328,61 @@ public class CarDAO_imple_kimhk implements CarDAO_kimhk {
 	      }
 	      
 	      return totalPaperCount;
-	}
+	}// end of public int getTotalPaperCount(Map<String, String> paraMap) throws SQLException
+
+	// 입력받은 paperseq 를 가지고 한 개의 견적 정보를 리턴시켜주는 메소드
+	@Override
+	public Map<String, String> selectOnePaper(String paperseq) throws SQLException {
+		Map<String,String> onePapgermap = new HashMap<>();
+		try {
+	         conn = ds.getConnection();
+	         
+	         String sql = " SELECT P.pk_paperseq, U.pk_userid, U.username, P.fk_carname, C.CarPrice, I.incolordesc, I.incolorPrice, O.outcolordesc, O.outcolorprice, PO.powerdesc, PO.powerprice, I.incoloricon_img, O.outcoloricon_img, O.outcolorcar_img, PO.powericon_img\r\n"
+	         		+ " FROM tbl_paper P\r\n"
+	         		+ " JOIN tbl_incolor I ON P.fk_incolorcode = I.pk_incolorCode\r\n"
+	         		+ " JOIN tbl_outcolor O ON P.fk_outcolorcode = O.pk_outcolorcode\r\n"
+	         		+ " JOIN tbl_power PO ON P.fk_powercode = PO.pk_powercode\r\n"
+	         		+ " JOIN tbl_car C ON P.fk_carname = C.pk_carname\r\n"
+	         		+ " JOIN tbl_user U ON P.fk_userid = U.pk_userid\r\n"
+	         		+ " WHERE pk_paperseq = ? ";
+	         		
+	                     
+	         pstmt = conn.prepareStatement(sql);
+	         
+	         pstmt.setString(1, paperseq);
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         if(rs.next()) {
+	        	
+	        	onePapgermap.put("pk_userid", rs.getString("pk_userid"));
+	        	onePapgermap.put("username", rs.getString("username"));
+	        	onePapgermap.put("incoloricon_img", rs.getString("incoloricon_img"));
+	        	onePapgermap.put("outcoloricon_img", rs.getString("outcoloricon_img"));
+	        	onePapgermap.put("outcolorcar_img", rs.getString("outcolorcar_img"));
+	        	onePapgermap.put("powericon_img", rs.getString("powericon_img"));
+	        	onePapgermap.put("pk_paperseq", rs.getString("pk_paperseq"));
+	        	onePapgermap.put("fk_carname", rs.getString("fk_carname"));
+	        	onePapgermap.put("CarPrice", rs.getString("CarPrice"));
+	        	 onePapgermap.put("incolordesc", rs.getString("incolordesc"));
+	        	 onePapgermap.put("incolorPrice", rs.getString("incolorPrice"));
+	        	 onePapgermap.put("outcolordesc", rs.getString("outcolordesc"));
+	        	 onePapgermap.put("outcolorprice", rs.getString("outcolorprice"));
+	        	 onePapgermap.put("powerdesc", rs.getString("powerdesc"));
+	        	 onePapgermap.put("powerprice", rs.getString("powerprice"));
+	        	 int detaultPrice = rs.getInt("CarPrice")+rs.getInt("powerprice")+rs.getInt("outcolorprice")+rs.getInt("incolorPrice");
+	        	 onePapgermap.put("detaultPrice",String.valueOf(detaultPrice));
+	           
+	         } // end of if(rs.next())-------------------
+	         
+	      } finally {
+	         close();
+	      }
+	      
+	      return onePapgermap;
+	}// end of public List<Map<String, String>> selectOnePaper(String paperseq) throws SQLException
 	
+	
+
 	
 }

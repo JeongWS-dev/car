@@ -34,7 +34,7 @@ public class ApplyCheck extends AbstractController {
 		
 		System.out.println("ApplyCheck execute Result : " + n);
 		
-		super.setViewPage("/WEB-INF/drivetryApply/applyCheck.jsp");
+		super.setViewPage("/WEB-INF/drivetryApply/applyFinal.jsp");
 
 	}
 

@@ -29,7 +29,7 @@
 // $(document).ready(function() {
 
 
-    function goPay(ctxPath, userid){
+    function goPay(){
 
             var name = document.getElementById('name').getAttribute('data-value');
             var phone = document.getElementById('phone').getAttribute('data-value');
@@ -97,36 +97,6 @@
         })
 
 
-        /* 결제 시작 */
-        const checked_cnt = $("input:radio[name='coinmoney']:checked").length; 
-
-        if(checked_cnt == 0){
-        // 결제금액을 선택하지 않았을 경우
-        $("td#error").show();
-        return; // 종료
-        }
-        else {
-        // 결제하러 들어간다.
-        const coinmoney = $("input:radio[name='coinmoney']:checked").val(); // 충전금액 
-        //  alert(`${coinmoney}원 결제하러 들어간다.`);
-
-        /* === 팝업창에서 부모창 함수 호출 방법 3가지 ===
-            1-1. 일반적인 방법
-            opener.location.href = "javascript:부모창스크립트 함수명();";
-                                
-            1-2. 일반적인 방법
-            window.opener.부모창스크립트 함수명();
-
-            2. jQuery를 이용한 방법
-            $(opener.location).attr("href", "javascript:부모창스크립트 함수명();");
-        */
-
-        opener.location.href = `javascript:goCoinPurchaseEnd("${ctxPath}", "${coinmoney}", "${userid}")`;
-
-        self.close(); // 자신의 팝업창을 닫는 것이다. 
-        }
-
-        /* 결제 끝 */
 
     }// end of function goCoinPayment(ctxPath, userid)-------------------- 
 
@@ -188,7 +158,7 @@
 
         <div id="input-button">
             <input type="button" class="cta-button type-line type-white" style="background-color: white; color: black;" value="아니오(이전 화면으로)" onclick="goBack()" />
-            <input type="button"  id = "go-pay" class="cta-button type-line js-layer-opener is-async" style="background-color: black; color: white;"  value="결제 하기" onclick="goCoinPayment('<%= ctxPath%>','${sessionScope.loginuser.userid}')"/>
+            <input type="button"  id = "go-pay" class="cta-button type-line js-layer-opener is-async" style="background-color: black; color: white;"  value="결제 하기" onclick="goPay()"/>
         </div>
     </div>
 </div>

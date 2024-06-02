@@ -564,7 +564,7 @@ $(document).ready(function(){
 	            
 	            success : function(json){
 	                
-	
+
 	                if(json.isExists) {
 	                    // 입력한 email 이 이미 사용중이라면 
 	                    $("span#emailCheckResult").html( $("input#email").val() + " 은 이미 사용중 이므로 다른 이메일을 입력하세요").css({"color":"red"});

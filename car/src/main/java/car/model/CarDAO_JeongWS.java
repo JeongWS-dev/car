@@ -28,5 +28,9 @@ public interface CarDAO_JeongWS {
 	List<Map<String, String>> selectOption(String string) throws SQLException;// 내 견적서의 번호에 존재하는 모든 상세견적 출력
 	List<String> selectDrivingLounge() throws SQLException;// 드라이빙 라운지 이름을 가져온다.
 	String selectPlaceEmail(String place) throws SQLException;// 선택한 대리점의 이메일을 가져온다.
+	List<Map<String, String>> selectDrivingLoungeLocation() throws SQLException;// 모든 드라이빙 라운지의 좌표정보를 가져온다.
+	List<Map<String, String>> selectChoiceCityLounge(String area) throws SQLException;// 내가 선택한 도시에 위치한 라운지의 드라이브 센터 목록을 가져온다.
+	List<String> selectArea()  throws SQLException;// 드라이빙 라운지 테이블의 도시정보를 가져온다.
+	Map<String, String> select_one_drivinglounge(String location) throws SQLException;// 내가 선택한 드라이빙 라운지 한곳의 정보를 가져온다.
 
 }

@@ -80,5 +80,10 @@ public class GoogleMail {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void send_reservation(String place_email, String emailContents) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

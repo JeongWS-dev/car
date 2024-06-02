@@ -41,7 +41,7 @@
 				<br>
 				<br>
 				<div id="select_car">
-					<button type="button" class="btn btn-carselect" id="checkLoginButton">차량선택</button>
+					<button type="button" class="btn btn-carselect" id="checkLoginButton" onclick="goDrivingLounge('<%=ctxPath %>','G90 BLACK')">차량선택</button>
 				</div>
 			</div>
 			<div class="main_car_image">
@@ -159,7 +159,7 @@
 	</div>
 </div>
 
-<input type = "hidden" name="ctxPath" value="<%= ctxPath%>"/>
+<input type = "hidden" name="ctxPath" value="<%=ctxPath%>"/>
 <!-- ctxPath를 넘겨줄때는 위와 같이 input태그를 사용하여 값을 태그에 넣어준다음에 불러와주어야만 한다. -->
 <div style="display: none;">
 	<input id="carName" type = "hidden" name="carName" value="G90_BLACK"/>
@@ -167,29 +167,34 @@
 <!-- 차 이름을 넘겨줄 태그 -->
 
 
-<div class="modal fade" id="LoginnoAccept" data-backdrop="static">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-	  
-		<!-- Modal header -->
-		<div class="modal-header">
-		  <button type="button" class="close noAccept" data-dismiss="modal">&times;</button>   <!-- 이 버튼이 x -->
+
+<div class="modal" id="LoginnoAccept"> <%-- 만약에 모달이 안보이거나 뒤로 가버릴 경우에는 모달의 class 에서 fade 를 뺀 class="modal" 로 하고서 해당 모달의 css 에서 zindex 값을 1050; 으로 주면 된다. --%> 
+		<div class="modal-dialog modal-lg">
+		  <div class="modal-content">
+		  
+			<!-- Modal header -->
+			<div class="modal-header" style="background-color: black;">
+			  <h4 class="modal-title" style="color:white;">LOGIN</h4>
+			  <button type="button" class="close LoginClose" style="color:white;">&times;</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body" id="Login-modal-body" style="text-align: center; margin-top: 50px;">
+				<form name="Login" style="display: flex; width:50%; margin: auto;">
+					<ul>
+						<li><input name="ID" type="text" placeholder="ID"/></li>
+						<li><input name="PWD" type="password" placeholder="PASSWORD"/></li>
+					</ul>
+					<input class="goLogin" type="button" onclick='login()' value="로그인">
+				</form>
+				<input class="enterUser" type="button" onclick="enterGenesis()" value="회원가입">
+				<input class="findIdPwd" type="button" onclick="findID()" value="아이디 찾기">
+				<input class="findIdPwd" type="button" onclick="findPWD()" value="비밀번호 찾기">
+			</div>
+		  </div>
+		  
 		</div>
-		
-		<!-- Modal body -->
-		<div class="modal-body" id="afterLogin">
-			로그인 후 시승신청이 가능합니다.
-		</div>
-		
-		<!-- Modal footer -->
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-danger idFindClose" data-dismiss="modal">Login</button>
-		  <button type="button" class="btn btn-danger idFindClose" data-dismiss="modal">Back</button>
-		</div>
-	  </div>
-	  
 	</div>
-</div>
 
 <a class="nav-link" id = "clickDrivetrybtn" href="<%= ctxPath%>/drivetryApply/provision.car"  type="button">
 	<div class="icon-text">시승&nbsp;신청하기</div>

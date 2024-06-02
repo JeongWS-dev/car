@@ -377,3 +377,50 @@ a.bar_share:active {
 #ApplynoAccept > div > div > div.modal-body{
 	color:black;
 }
+
+div#Login-modal-body{
+    display: block;
+}
+
+input.goLogin{
+    width:80px;
+    height:60px;
+    background-color: black;
+    border:solid 1px black;
+    color:white;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+
+div#Login-modal-body > form > ul > li {
+    list-style: none;
+}
+
+input.enterUser,
+input.findIdPwd{
+    border:none;
+    background-color: rgba(0,0,0,0);
+    color:rgb(104, 104, 104);
+}
+
+label.send_label{
+    display: inline-block;
+    text-align: left;
+    border:solid 1px red;
+    font-size: 17pt;
+    width:20%;
+}
+
+input.send_input{
+    font-size: 15pt;
+    border:solid 1px gray;
+}
+
+li{
+    list-style: none;
+}
+
+div#Login-modal-body > ul > li  a{
+    background-color: black;
+    color:white;
+}

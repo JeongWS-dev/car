@@ -24,6 +24,14 @@ create table tbl_User
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+select place_name, d_address, phone, lat, lng
+from tbl_drivinglounge
+where place_name = '드라이빙 라운지 강남'; 
+
+select *
+from tbl_drivinglounge;
+
+
  -- 차량 테이블 (생성 완료)
 create table tbl_car
 (Pk_CarName   VARCHAR2(20)  not null -- 차량이름

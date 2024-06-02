@@ -39,6 +39,9 @@ public interface MemberDAO {
 	int deleteMember(String userid) throws SQLException;
 
 	//	회원 정보 업데이트
-	int updateMember(MemberVO member) throws SQLException;;
+	int updateMember(MemberVO member) throws SQLException;
+
+	// 비밀번호 변경 확인
+	boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException;
 		
 }

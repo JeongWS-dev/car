@@ -585,6 +585,35 @@ public class MemberDAO_imple implements MemberDAO {
 				return result;		
 				
 			}
+
+			//	비밀번호 조회
+			@Override
+			public boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException {
+				boolean isExists = false;
+				
+				try {
+					conn = ds.getConnection();
+					
+					String sql = " select userpwd "
+							   + " from tbl_user "
+							   + " where pk_userid = ? and userpwd = ? ";
+					
+					pstmt = conn.prepareStatement(sql); 
+					pstmt.setString(1, paraMap.get("userid"));
+					pstmt.setString(2, Sha256.encrypt(paraMap.get("new_pwd")));
+					
+					rs = pstmt.executeQuery();
+					
+					isExists = rs.next(); // 행이 있으면(현재 사용중인 비밀번호) true,
+					                      // 행이 없으면(새로운 비밀번호) false
+					
+				} finally {
+					close();
+				}
+				
+				return isExists;				
+				
+			}// end of public boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException----------
 		
 		
 		

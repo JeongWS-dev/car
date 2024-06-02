@@ -540,6 +540,51 @@ public class MemberDAO_imple implements MemberDAO {
 			        return result;
 				
 			}	//	public int deleteMember(String userid) throws SQLException {
+
+			
+			//	회원정보 업데이트
+			@Override
+			public int updateMember(MemberVO member) throws SQLException {
+				int result = 0;
+				
+				try {
+					conn = ds.getConnection();
+					
+					String sql = " update tbl_user set username = ? "
+							   + "                     , userpwd = ? "
+							   + "                     , useremail = ? "
+							   + "                     , usermobile = ? "
+							   + "                     , userpostcode = ? " 
+							   + "                     , useraddress = ? "
+							   + "                     , userdetailaddress = ? "
+							   + "                     , userextraaddress = ? "
+							   + "                     , userlastchangepwd = sysdate "
+							   + " where pk_userid = ? ";
+								
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, member.getUsername());
+					pstmt.setString(2, Sha256.encrypt(member.getUserpwd()) ); // 암호를 SHA256 알고리즘으로 단방향 암호화 시킨다.
+					pstmt.setString(3, aes.encrypt(member.getUseremail()) );  // 이메일을 AES256 알고리즘으로 양방향 암호화 시킨다. 
+					pstmt.setString(4, member.getUsermobile()); // 휴대폰번호를 AES256 알고리즘으로 양방향 암호화 시킨다. 
+					pstmt.setString(5, member.getUserpostcode());
+					pstmt.setString(6, member.getUseraddress());
+					pstmt.setString(7, member.getUserdetailaddress());
+					pstmt.setString(8, member.getUserextraaddress());
+					pstmt.setString(9, member.getPk_userid());
+								
+					result = pstmt.executeUpdate();
+					
+				} catch(GeneralSecurityException | UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+				 finally {
+					close();
+				}
+				
+				return result;		
+				
+			}
 		
 		
 		

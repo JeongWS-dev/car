@@ -37,5 +37,8 @@ public interface MemberDAO {
 
 	//	회원 삭제
 	int deleteMember(String userid) throws SQLException;
+
+	//	회원 정보 업데이트
+	int updateMember(MemberVO member) throws SQLException;;
 		
 }

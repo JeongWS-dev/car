@@ -75,5 +75,10 @@ public class GoogleMail {
     	Transport.send(msg);
     	
 	}// end of public void send_certification_code(String recipient, String certification_code) throws Exception--------	
+
+	public void send_paper(String email, String emailContents) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

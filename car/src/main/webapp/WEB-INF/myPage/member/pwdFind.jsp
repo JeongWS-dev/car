@@ -208,7 +208,7 @@ function goFind() {
 	                url: "${pageContext.request.contextPath}/myPage/member/smsSend.car",
 	                type: "get",
 	                data: {"mobile":hp1+hp2+hp3,
-	    				   "smsContent":$("input#ajax").val()},
+	    				   "smsContent":"[GENESIS] 인증번호는 ["+$("input#ajax").val()+"] 입니다."},
 	                dataType: "json",
 	                success: function(json) {
 	                    // json 은 {"group_id":"R2GWPBT7UoW308sI","success_count":1,"error_count":0} 처럼 된다. 

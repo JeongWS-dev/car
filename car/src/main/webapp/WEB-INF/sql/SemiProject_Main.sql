@@ -60,6 +60,14 @@ create table tbl_MyOption
 -- 내 선택품목 시퀀스(생성 완료)
 create sequence Pk_MyOptionSeq;
 
+delete from tbl_myoption;
+delete from tbl_paper;
+
+select *
+from tbl_myoption;
+
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 선택품목 상세 테이블(생성 완료)

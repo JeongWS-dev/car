@@ -52,7 +52,8 @@
         });
 
         $('#prewPage').click(function() {
-                window.location.href = "/car/drivetryApply/drivingLoungeChoice.car"; // 이전 페이지 url 변경(request 정보가 포함되서 가는지 확인하려면)
+            const carName = $("input[name='carName']").val();
+        	window.location.href = "<%=ctxPath%>/drivetryApply/drivingLoungeChoice.car?pk_carname="+carName; // 이전 페이지 url 변경(request 정보가 포함되서 가는지 확인하려면)
     
         });
     });

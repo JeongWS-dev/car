@@ -121,4 +121,3 @@
 
 </div>
 
-<jsp:include page="../Main_Footer.jsp"></jsp:include>

@@ -84,6 +84,10 @@ function sendReservation(ctxPath,userid){
 
     });
 }
+
+function goMain(){
+	location.href="<%=ctxPath%>/index.car";
+}
 </script>
 
 <div id="container" style="background-color: white; color: black;">

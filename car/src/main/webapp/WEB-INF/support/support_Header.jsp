@@ -26,7 +26,10 @@
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top top">
 		
 		<!-- Brand -->
-		<img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:6%;"> 
+		<a href="<%= ctxPath%>/index.car" style = "margin-left: 7%;">
+	      <img src="<%= ctxPath%>/images/MainPage/logo.png" style = "width:86%;"> 
+	    </a>
+		
 	
 		<!-- Links -->
 		<ul class="navbar-nav">

@@ -122,7 +122,7 @@
                                  <a id="purchase" href="<%= ctxPath %>/estimate/estimate.car">견적내기</a> 
                               </div>
                               <div style="margin-left: 9%;">
-                                 <a id="purchase" href="#">구매 상담 신청</a>
+                                 <a id="purchase" href="<%= ctxPath %>/estimate/estimate.car">구매 상담 신청</a>
                               </div>
                            </div>
                            
@@ -131,8 +131,8 @@
                         <div style="margin-top: 0.25%; border-bottom: solid 1px #404040; opacity: 0.3;"></div>
 
                         <div style="margin-top: 0.28%; margin-left: 11.825%; font-size: 14px; font-weight: normal;">
-                           <a id="purchase" href="#">시승신청 ></a>
-                           <a style="margin-left: 0.75%;" id="purchase" href="#">전시장 찾기 ></a>
+                           <a id="purchase" href="<%= ctxPath %>/drivetryApply/drivingLounge.car">시승신청 ></a>
+                           <a style="margin-left: 0.75%;" id="purchase" href="<%= ctxPath %>/drivetryApply/space.car">전시장 찾기 ></a>
                         </div>
                         
                      </ul>
@@ -162,7 +162,7 @@
                                  <a id="purchase" href="<%= ctxPath %>/drivetryApply/space.car">스페이스</a> 
                               </div>
                               <div style="margin-left: 9%;">
-                                 <a id="purchase" href="#">시승신청</a>
+                                 <a id="purchase" href="<%= ctxPath %>/drivetryApply/drivingLounge.car">시승신청</a>
                               </div>
                            </div>
                            
@@ -171,8 +171,8 @@
                         <div style="margin-top: 0.25%; border-bottom: solid 1px #404040; opacity: 0.3;"></div>
 
                         <div style="margin-top: 0.28%; margin-left: 11.825%; font-size: 14px; font-weight: normal;">
-                           <a id="purchase" href="#">시승신청 ></a>
-                           <a style="margin-left: 0.75%;" id="purchase" href="#">전시장 찾기 ></a>
+                           <a id="purchase" href="<%= ctxPath %>/drivetryApply/drivingLounge.car">시승신청 ></a>
+                           <a style="margin-left: 0.75%;" id="purchase" href="<%= ctxPath %>/drivetryApply/space.car">전시장 찾기 ></a>
                         </div>
                         
                         

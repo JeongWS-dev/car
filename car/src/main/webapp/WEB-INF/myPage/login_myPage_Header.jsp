@@ -59,7 +59,7 @@
 		           		<a class="nav-link text-white" href="<%= ctxPath %>/admin/memberList.car">회원 목록 보기</a>
 		           	</li>
 				   	<li class="nav-item">
-		              	<a class="nav-link text-white" href="#">시승신청 목록 보기</a>
+		              	<a class="nav-link text-white" href="<%=ctxPath%>/admin/drivingList.car">시승신청 목록 보기</a>
 		           	</li>
 	           		<li class="nav-item">
 	              		<a class="nav-link text-white" href="<%= ctxPath %>/admin/paperList.car">전체 견적 내역</a>
@@ -69,7 +69,7 @@
 <c:if test="${not empty sessionScope.loginuser}">
                   
     				<li class="nav-item" id="nav-item5">
-                  	<a style="margin-left: 800%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/mypage/logout.car">로그아웃</a>
+                  	<a style="margin-left: 1200%; width: 100%; position: sticky; z-index: 1000;" class="nav-link px-2 text-white" href="<%= ctxPath%>/mypage/logout.car">로그아웃</a>
                   </li>
                   
        		</c:if>

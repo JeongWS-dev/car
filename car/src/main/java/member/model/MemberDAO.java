@@ -43,5 +43,34 @@ public interface MemberDAO {
 
 	// 비밀번호 변경 확인
 	boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//hkadd
+	// 페이징 처리를 위한 검색이 있는 또는 검색이 없는 회원에 대한 총페이지수 알아오기
+	int getTotalPageDriving(Map<String, String> paraMap) throws SQLException;
+
+	// *** 페이징 처리를 한 모든 시승내역 또는 검색한 시승 목록 보여주기 ***//
+	List<Map<String, String>> select_Driving_paging(Map<String, String> paraMap) throws SQLException;
+	
+	/* >>> 뷰단(memberList.jsp)에서 "페이징 처리시 보여주는 순번 공식" 에서 사용하기 위해 
+    검색이 있는 또는 검색이 없는 회원의 총개수 알아오기  <<< */
+	int getTotalDrivingCount(Map<String, String> paraMap) throws SQLException;
+
+	// 입력받은 번호를 가지고 한명의 견적정보 리턴시켜주는 메소드
+	Map<String, String> selectOneDriving(String applyseq)  throws SQLException;
 		
 }

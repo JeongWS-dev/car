@@ -163,7 +163,7 @@ function goLogin(){
     
     <div class="container">
         <form name="loginFrm" action="<%= ctxPath%>/car/login/login.car" method="post">
-        	<p style="font-color: grey;">*이메일 로그인</p>
+        	<p style="font-color: grey;">*로그인</p>
             <input type="text" name="userid" placeholder="아이디">
             <input type="password" name="password" placeholder="비밀번호">
             <input type="checkbox" id="saveid" style="width:12px;height:12px;" />&nbsp;<label for="saveid" style="font-size: 10pt;">아이디저장</label>

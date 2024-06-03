@@ -23,11 +23,13 @@
   table#memberTbl th {
      text-align: center;
      font-size: 14pt;
+ 
   }
  
   table#memberTbl tr.memberInfo:hover {
-     background-color: #e6ffe6;
-     cursor: pointer;
+    background-color : #F5F5F5;
+    cursor: pointer;
+   	color : #ff8040;
   }
  
   form[name="member_search_frm"] {

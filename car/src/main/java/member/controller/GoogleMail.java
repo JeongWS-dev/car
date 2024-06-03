@@ -61,7 +61,7 @@ public class GoogleMail {
     	msg.setFrom(fromAddr);
     	        
     	// 받는 사람의 메일주소
-    	Address toAddr = new InternetAddress("abc_alfks@naver.com");
+    	Address toAddr = new InternetAddress(recipient);
     	msg.addRecipient(Message.RecipientType.TO, toAddr);
     	        
     	// 메시지 본문의 내용과 형식, 캐릭터 셋 설정

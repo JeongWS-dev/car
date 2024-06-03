@@ -120,7 +120,7 @@ public class GoogleMail {
     	MimeMessage msg = new MimeMessage(ses);
 
     	// 제목 설정
-    	String subject = "회원가입 인증코드 발송";
+    	String subject = "견적 요청이 도착했습니다.";
     	msg.setSubject(subject);
     	        
     	// 보내는 사람의 메일주소
@@ -186,7 +186,7 @@ public class GoogleMail {
     	MimeMessage msg = new MimeMessage(ses);
 
     	// 제목 설정
-    	String subject = "회원가입 인증코드 발송";
+    	String subject = "시승 요청이 도착했습니다.";
     	msg.setSubject(subject);
     	        
     	// 보내는 사람의 메일주소

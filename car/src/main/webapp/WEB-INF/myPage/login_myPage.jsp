@@ -10,7 +10,8 @@
 
 <jsp:include page="login_myPage_Header.jsp" />
 
-	<div style="border : solid 1px blue;">메인 페이지다</div>
-
+	<video id="video" autoplay muted loop>
+        <source src="<%= ctxPath %>/video/GV70 _ Style Meets Performance _ 제네시스.mp4" type="video/mp4">
+    </video>
 
 <jsp:include page="login_myPage_Footer.jsp" />

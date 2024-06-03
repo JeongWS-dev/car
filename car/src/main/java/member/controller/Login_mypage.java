@@ -32,15 +32,8 @@ public class Login_mypage extends AbstractController {
             request.setAttribute("loginuser", loginuser);
             
             //System.out.println("loginuser ==> " + loginuser.getPk_userid());
-            if("admin".equals(loginuser.getPk_userid())) {
-                super.setRedirect(true);
-                super.setViewPage(request.getContextPath()+"/admin/memberList.car"); 
-            }
-            else {
-            
-               super.setRedirect(false);
-               super.setViewPage("/WEB-INF/myPage/login_myPage.jsp");
-            }
+        	super.setRedirect(false);
+            super.setViewPage("/WEB-INF/myPage/login_myPage.jsp");
 
           }
          

@@ -5,11 +5,6 @@
     String ctxPath = request.getContextPath();
     //    /MyMVC
 %>
-<!DOCTYPE html>
-<html>
-<head>
-
-<title>드라이빙 라운지 선택</title> 
 <!-- 내가만든 css -->
 <link rel="stylesheet" href="<%= ctxPath%>/css/drivingLoungeChoice.css">
 <!-- Font Awesome 6 Icons -->
@@ -87,6 +82,7 @@ function backLounge(){
 
 
 function choiceLounge(placeName){
+	// alert(placeName)
 	$("input[name='lounge_name']").val(placeName);
 	
 	const frm = document.choice_lounge;
@@ -226,7 +222,6 @@ $(document).ready(function(){
 				                   "  </div>"+
 				                   "  <div class='desc'>"+
 				                   "    <span class='address'>주소 : "+item.d_address+"  <br>전화번호 : "+item.phone+"</span>"+
-				                    
 				                   "  </div>"+
 				                   "</div>";
 				                   

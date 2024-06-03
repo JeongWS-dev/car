@@ -44,7 +44,7 @@ function goCoinPayment(userid,ctxPath){
 	    const url = `\${ctxPath}/drivetryApply/reservation.car?userid=\${userid}`;      
 
 	    window.open(url, "coinPurchaseEnd",
-	               `left=${left}, top=${top}, width=${width}, height=${height}`);
+	               `left=\${left}, top=\${top}, width=\${width}, height=\${height}`);
 	}
 	else{
 		alert("예약 일정을 선택하세요.");

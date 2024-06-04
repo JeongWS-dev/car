@@ -37,7 +37,7 @@ public class DrivingLoungeChoiceJSON extends AbstractController {
 			}
 		}
 		else {
-			System.out.println("areaList가 없습니다.");
+			System.out.println("cityList가 없습니다.");
 		}
 		String json = jsonArr.toString();
 		

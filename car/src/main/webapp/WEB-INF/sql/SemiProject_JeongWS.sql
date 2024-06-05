@@ -22,8 +22,6 @@ select *
 from tbl_car;
 
 
-
-
 -- 회원 테이블 (생성 완료)
 create table tbl_User    
 (Pk_UserId             VARCHAR2(30)   not null  -- 회원아이디

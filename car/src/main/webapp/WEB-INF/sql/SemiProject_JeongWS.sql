@@ -1,3 +1,29 @@
+----- **** local 한 sys 로 연결하기 **** ------
+show user;
+-- USER이(가) "SYS"입니다.
+
+-- 이제 부터 오라클 계정생성시 계정명앞에 c## 붙이지 않고 생성하도록 하겠다.
+alter session set "_ORACLE_SCRIPT"=true;
+-- Session이(가) 변경되었습니다.
+
+create user semi_orauser5 identified by gclass default tablespace users;
+-- User SEMI_ORAUSER5이(가) 생성되었습니다.
+
+grant connect, resource, create view, unlimited tablespace to semi_orauser5;
+-- Grant을(를) 성공했습니다.
+
+-- **** local한 semi_orauser5 로 연결하기 **** --
+show user;
+-- USER이(가) "SEMI_ORAUSER5"입니다.
+
+select * from tab;
+
+select *
+from tbl_car;
+
+
+
+
 -- 회원 테이블 (생성 완료)
 create table tbl_User    
 (Pk_UserId             VARCHAR2(30)   not null  -- 회원아이디
